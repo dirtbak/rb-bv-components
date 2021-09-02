@@ -61,18 +61,3 @@ export default /*#__PURE__*/{
     </button>
   </div>
 </template>
-
-<style scoped>
-  .rb-bv-components-sample {
-    display: block;
-    width: 400px;
-    margin: 25px auto;
-    border: 1px solid #ccc;
-    background: #eaeaea;
-    text-align: center;
-    padding: 25px;
-  }
-  .rb-bv-components-sample p {
-    margin: 0 0 1em;
-  }
-</style>
