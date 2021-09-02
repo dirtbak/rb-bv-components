@@ -1,5 +1,8 @@
-@import 'functions';
-@import 'mixins';
+// --- Rb Custom components SCSS ---
+
+// Requires at least the Bootstrap functions, variables and
+// mixins to be imported first
+
 @import 'variables';
 @import 'components/rb-boolean-button-input';
 @import 'components/rb-boolean-single-option-input';
