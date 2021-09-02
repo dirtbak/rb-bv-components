@@ -1,1 +1,55 @@
+@import '../../node_modules/bootstrap/scss/variables';
+
+// Colors
 $rb-primary-text-color: #434a54 !default;
+$rb-gray-secondary: #edefee !default;
+$rb-secondary-text-color: #656d78 !default;
+$rb-tertiary-text-color: #969ea7 !default;
+
+// Icons
+$rb-include-fontello: true !default;
+
+$rb-btn-light-bg: #fff;
+
+// RbBooleanButtonInput
+$rb-boolean-button-input-border-width: $btn-border-width !default;
+$rb-boolean-button-input-border-color: $border-color !default;
+$rb-boolean-button-input-border-radius: $btn-border-radius !default;
+
+// RbBooleanSingleOptionInput
+$rb-boolean-single-option-input-invalid-border-color: $danger !default;
+
+// RbColorDropdownInput
+$rb-color-dropdown-input-border-width: 1px !default;
+$rb-color-dropdown-input-border-color: $input-border-color !default;
+
+// RbDropdownInput
+$rb-dropdown-input-dropdown-menu-max-height: 200px !default;
+$rb-dropdown-input-dropdown-menu-overflow: auto !default;
+$rb-dropdown-input-dropdown-menu-icon-font-size: 14px !default;
+$rb-dropdown-input-dropdown-menu-icon-margin-right: 5px !default;
+$rb-dropdown-input-border-color: $input-border-color !default;
+$rb-dropdown-input-border-width: $input-border-width !default;
+$rb-dropdown-input-invalid-border-color: $danger !default;
+$rb-dropdown-input-icon-font-size: 14px !default;
+$rb-dropdown-input-dropdown-toggle-text-overflow: hidden !default;
+$rb-dropdown-input-dropdown-toggle-text-align: left !default;
+
+// RbEmptyState
+$rb-empty-state-padding: 20px !default;
+$rb-empty-state-display: flex !default;
+$rb-empty-state-align-items: center !default;
+$rb-empty-state-text-align: center !default;
+$rb-empty-state-height: 100% !default;
+$rb-empty-state-main-icon-font-size: 78px !default;
+$rb-empty-state-title-font-size: 1.125rem !default;
+$rb-empty-state-title-color: $rb-primary-text-color !default;
+$rb-empty-state-description-font-size: $font-size-base !default;
+$rb-empty-state-description-color: $rb-secondary-text-color !default;
+$rb-empty-state-max-width: 60% !default;
+
+// RbIcon
+$rb-icon-color: #8f97a1 !default;
+
+// RbListGroupInput
+$rb-list-group-input-item-hover-bg: $rb-gray-secondary !default;
