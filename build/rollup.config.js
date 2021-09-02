@@ -10,6 +10,7 @@ import babel from '@rollup/plugin-babel';
 import {terser} from 'rollup-plugin-terser';
 import minimist from 'minimist';
 import copy from "rollup-plugin-copy-assets";
+import sass from 'rollup-plugin-sass';
 
 
 // Get browserslist config and remove ie from es build targets
@@ -55,9 +56,13 @@ const baseConfig = {
             commonjs(),
             copy({
                 assets: [
-                    "src/assets"
+                    'src/assets',
+                    'src/scss',
                 ]
             }),
+            sass({
+                output: true,
+            })
         ],
         babel: {
             exclude: 'node_modules/**',
