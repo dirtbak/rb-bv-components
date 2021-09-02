@@ -1,0 +1,10 @@
+.rb-boolean-button-input {
+  &.rb-bordered {
+    border: $rb-boolean-button-input-border-width solid $rb-boolean-button-input-border-color;
+    border-radius: $rb-boolean-button-input-border-radius;
+  }
+
+  &.rb-flex {
+    flex: 1;
+  }
+}
