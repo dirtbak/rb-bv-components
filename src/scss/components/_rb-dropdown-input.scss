@@ -1,0 +1,34 @@
+.rb-dropdown-input {
+  .dropdown-menu.show {
+    max-height: $rb-dropdown-input-dropdown-menu-max-height;
+    overflow: $rb-dropdown-input-dropdown-menu-overflow;
+  }
+
+  &.rb-bordered {
+    .dropdown-toggle {
+      border-right: $rb-dropdown-input-border-width solid $rb-dropdown-input-border-color;
+    }
+
+    &.is-invalid .dropdown-toggle {
+      border-color: $rb-dropdown-input-invalid-border-color !important;
+    }
+  }
+
+  .dropdown-toggle {
+    overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
+    text-align: $rb-dropdown-input-dropdown-toggle-text-align;
+
+    .rb-icon {
+      font-size: $rb-dropdown-input-icon-font-size;
+    }
+
+    .rb-text {
+      overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
+    }
+  }
+
+  .dropdown-item .rb-icon {
+    font-size: $rb-dropdown-input-dropdown-menu-icon-font-size;
+    margin-right: $rb-dropdown-input-dropdown-menu-icon-margin-right;
+  }
+}

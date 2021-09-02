@@ -1,0 +1,10 @@
+.rb-color-dropdown-input {
+  &.rb-bordered button {
+    border-right: $rb-color-dropdown-input-border-width solid $rb-color-dropdown-input-border-color;
+  }
+
+  button {
+    overflow: hidden;
+    text-align: left;
+  }
+}

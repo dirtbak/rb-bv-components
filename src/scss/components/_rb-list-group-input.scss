@@ -1,0 +1,6 @@
+.rb-list-group-input {
+  .list-group-item:hover:not(.active) {
+    background-color: $rb-list-group-input-item-hover-bg;
+    cursor: pointer;
+  }
+}

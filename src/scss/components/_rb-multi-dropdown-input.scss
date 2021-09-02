@@ -1,0 +1,32 @@
+.rb-multi-dropdown-input {
+  .dropdown-toggle {
+    display: flex;
+    text-align: left;
+
+    &::after {
+      margin-top: 12px;
+    }
+
+    .rb-text {
+      flex: 1;
+    }
+
+    .rb-counter {
+      margin-left: 10px;
+      margin-top: 3px;
+      color: white;
+      height: 22px;
+      width: 22px;
+      display: inline-block;
+      background-color: theme-color('primary');
+      border-radius: 11px;
+      text-align: center;
+      line-height: 22px;
+      margin-right: 10px;
+    }
+  }
+
+  .rb-selected a {
+    color: theme-color('primary');
+  }
+}

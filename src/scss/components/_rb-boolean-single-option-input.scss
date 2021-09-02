@@ -1,0 +1,9 @@
+.rb-boolean-single-option-input {
+  white-space: nowrap;
+
+  &.rb-bordered {
+    &.is-invalid button {
+      border-color: $rb-boolean-single-option-input-invalid-border-color !important;
+    }
+  }
+}
