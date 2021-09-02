@@ -47,7 +47,8 @@
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^12.1.0",
     "vue": "^2.6.14",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
   },
   "peerDependencies": {
     "vue": "^2.6.14"
