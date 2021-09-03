@@ -16,7 +16,7 @@
 .icon-chevron-double-right { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe830;&nbsp;'); }
 .icon-search { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe834;&nbsp;'); }
 .icon-checkbox-marked { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe838;&nbsp;'); }
-.icon-checkbox-blank-outline { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe839;&nbsp;'); }
+.icon-checkbox-blank { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe839;&nbsp;'); }
 .icon-close { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe841;&nbsp;'); }
 .icon-none { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf1a3;&nbsp;'); }
 .icon-circle-small { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf539;&nbsp;'); }

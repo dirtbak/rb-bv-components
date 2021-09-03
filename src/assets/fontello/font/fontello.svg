@@ -18,7 +18,7 @@
 
 <glyph glyph-name="checkbox-marked" unicode="&#xe838;" d="M417 142l-209 208 59 59 150-149 316 316 59-59m0 208h-584c-46 0-83-37-83-83v-584c0-45 38-83 83-83h584c46 0 83 38 83 83v584c0 46-37 83-83 83z" horiz-adv-x="1000" />
 
-<glyph glyph-name="checkbox-blank-outline" unicode="&#xe839;" d="M792 725h-584c-46 0-83-37-83-83v-584c0-45 38-83 83-83h584c46 0 83 38 83 83v584c0 46-37 83-83 83m0-83v-584h-584v584h584z" horiz-adv-x="1000" />
+<glyph glyph-name="checkbox-blank" unicode="&#xe839;" d="M792 725h-584c-46 0-83-37-83-83v-584c0-45 38-83 83-83h584c46 0 83 38 83 83v584c0 46-37 83-83 83m0-83v-584h-584v584h584z" horiz-adv-x="1000" />
 
 <glyph glyph-name="close" unicode="&#xe841;" d="M792 583l-59 59-233-233-233 233-59-59 233-233-233-233 59-59 233 233 233-233 59 59-233 233 233 233z" horiz-adv-x="1000" />
 

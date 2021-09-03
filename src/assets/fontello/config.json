@@ -64,7 +64,7 @@
     },
     {
       "uid": "d645f12ed6b538a7adec8ec23e4589a7",
-      "css": "checkbox-blank-outline",
+      "css": "checkbox-blank",
       "code": 59449,
       "src": "custom_icons",
       "selected": true,
