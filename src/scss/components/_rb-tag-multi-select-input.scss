@@ -1,0 +1,30 @@
+.rb-tag-multi-select-input {
+  position: relative;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+
+  .form-control {
+    border: unset;
+  }
+
+  .form-control:focus {
+    box-shadow: unset;
+  }
+
+  .options {
+    position: absolute;
+    top: calc(1.5em + 0.75rem + 2px);
+  }
+
+  .selected-items {
+    padding: 0 5px 2px 5px;
+  }
+}
+
+.rb-tag-multi-select-input-focused {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

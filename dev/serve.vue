@@ -126,13 +126,98 @@
         <form>
             <h3>RbIcon</h3>
             <b-form-group label="Иконки">
-                <rb-icon icon="icon-arrow-up"></rb-icon>
+                <rb-icon icon="icon-none"></rb-icon>
             </b-form-group>
         </form>
         <form>
             <h3>RbListGroupInput</h3>
             <b-form-group label="Выбор одного значения" style="width: 200px;">
                 <rb-list-group-input :items="rbDropdownInput1Items" v-model="rbListGroupInput1"></rb-list-group-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbMultiDropdownInput</h3>
+            <b-form-group label="Выбор нескольких значений">
+                <rb-multi-dropdown-input :items="rbDropdownInput1Items"
+                                         v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbMultiOptionInput</h3>
+            <b-form-group label="Выбор нескольких значений" style="width: 200px;">
+                <rb-multi-option-input :items="rbDropdownInput1Items"
+                                       v-model="rbMultiOptionInput1"></rb-multi-option-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbMultiPhoneInput</h3>
+            <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
+                <rb-multi-phone-input v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbMultiSelectInput</h3>
+            <b-form-group label="Typeahead инпут с выбором нескольких значений" style="width: 200px;">
+                <rb-multi-select-input v-model="rbMultiSelectInput1" :search-options="rbMultiSelectSearch1"
+                ></rb-multi-select-input>
+            </b-form-group>
+        </form>
+        <!--<form>
+            <h3>RbPagination</h3>
+            <b-form-group label="Пагинация">
+                <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
+            </b-form-group>
+        </form>-->
+        <form>
+            <h3>RbPeriodInput</h3>
+            <b-form-group label="Выбор периода">
+                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbPhoneInput</h3>
+            <b-form-group label="Ввод телефона" style="width: 200px;">
+                <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbPhoneLink</h3>
+            <b-form-group label="Ссылка на телефон" style="width: 200px;">
+                <rb-phone-link phone="+77011000888"></rb-phone-link>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbPriceInput</h3>
+            <b-form-group label="Ввод цены" style="width: 200px;">
+                <rb-price-input v-model="rbPriceInput1"></rb-price-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbSelectInput</h3>
+            <b-form-group label="Выбор одного значения" style="width: 200px;">
+                <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"></rb-select-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbSingleOptionInput</h3>
+            <b-form-group label="Выбор одного значения" style="width: 200px;">
+                <rb-single-option-input :items="rbDropdownInput1Items"
+                                        v-model="rbSingleOptionInput1"></rb-single-option-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbTagMultiSelectInput</h3>
+            <b-form-group label="Выбор тегов" style="width: 200px;">
+                <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
+                                           v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+            </b-form-group>
+        </form>
+        <form>
+            <h3>RbTypeaheadInput</h3>
+            <b-form-group label="Typeahead инпут" style="width: 200px;">
+                <rb-typeahead-input v-model="rbTypeaheadInput1"
+                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
             </b-form-group>
         </form>
     </div>

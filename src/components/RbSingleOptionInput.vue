@@ -1,0 +1,49 @@
+<template>
+    <b-button-group class="rb-single-option-input" :class="{'rb-bordered': bordered}">
+        <b-button v-for="item in items"
+                  :key="item[valueField]"
+                  :variant="item[valueField] === value ? 'primary' : 'light'"
+                  :data-id="item[valueField]"
+                  @click="onItemClick(item)"
+                  :title="showTitles ? item[displayField] : ''">
+            <template v-if="showIcon">
+                <span class="rb-icon mdi" :class="item[iconProperty]"></span>
+            </template>
+            <span class="rb-text">{{item[displayField]}}</span>
+        </b-button>
+    </b-button-group>
+</template>
+
+<script>
+    export default {
+        name: 'RbSingleOptionInput',
+        props: {
+            value: [Number, String],
+            items: Array,
+            bordered: {type: Boolean, default: false},
+            valueField: {
+                type: String,
+                default: 'id'
+            },
+            displayField: {
+                type: String,
+                default: 'name'
+            },
+            showIcon: {
+                type: Boolean,
+                default: false
+            },
+            iconProperty: {
+                type: String,
+                default: 'icon'
+            },
+            showTitles: Boolean,
+        },
+        methods: {
+            onItemClick(item) {
+                this.$emit('input', item[this.valueField]);
+                this.$emit('change', item[this.valueField]);
+            }
+        }
+    };
+</script>
