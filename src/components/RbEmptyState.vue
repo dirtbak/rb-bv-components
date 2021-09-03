@@ -1,10 +1,11 @@
 <template>
     <div class="rb-empty-state">
         <div class="rb-inner">
-            <span class="rb-icon rb-main-icon mdi" :class="icon"
-                  :style="{'color': iconColor === ''? '': iconColor}" v-if="showIcon"></span>
+            <rb-icon icon="icon" :style="{'color': iconColor === ''? '': iconColor}" v-if="showIcon"></rb-icon>
             <p class="rb-title">{{title}}</p>
-            <p class="rb-description"><slot>{{description}}</slot></p>
+            <p class="rb-description">
+                <slot>{{description}}</slot>
+            </p>
         </div>
     </div>
 </template>
