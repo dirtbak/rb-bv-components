@@ -29,7 +29,7 @@
             trueLabel: {type: String, default: 'Да'},
             showIcons: Boolean,
             trueIcon: {type: String, default: 'icon-checkbox-marked'},
-            falseIcon: {type: String, default: 'icon-checkbpx-blank'},
+            falseIcon: {type: String, default: 'icon-checkbox-blank'},
             bordered: {type: Boolean, default: false},
             nullable: Boolean,
             state: {type: Boolean, default: null},

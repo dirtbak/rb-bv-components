@@ -18,7 +18,7 @@
             flex: {type: Boolean, default: false},
             icon: String,
             showCheckbox: {type: Boolean, default: false},
-            falseIcon: {type: String, default: 'icon-checkbpx-blank'},
+            falseIcon: {type: String, default: 'icon-checkbox-blank'},
             trueIcon: {type: String, default: 'icon-checkbox-marked'},
         },
         data() {
