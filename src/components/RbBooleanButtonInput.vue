@@ -1,9 +1,9 @@
 <template>
     <b-button class="rb-boolean-button-input" :variant="value ? 'primary' : 'light'" @click="onClick"
-              :class="{'rb-bordered': bordered, 'rb-flex': flex}" :block="block">
+              :class="cls" :block="block">
         <rb-icon :icon="value? trueIcon: falseIcon" v-if="showCheckbox"></rb-icon>
         <rb-icon :icon="icon" v-if="icon"></rb-icon>
-        <span class="rb-text">{{label}}</span>
+        <rb-text>{{label}}</rb-text>
     </b-button>
 </template>
 
@@ -20,9 +20,20 @@
             showCheckbox: {type: Boolean, default: false},
             falseIcon: {type: String, default: 'icon-checkbox-blank'},
             trueIcon: {type: String, default: 'icon-checkbox-marked'},
+            state: {type: Boolean, default: null},
         },
         data() {
             return {innerValue: false}
+        },
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'rb-flex': this.flex,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            }
         },
         methods: {
             onClick() {

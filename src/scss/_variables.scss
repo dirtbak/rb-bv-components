@@ -7,7 +7,7 @@ $rb-tertiary-text-color: #969ea7 !default;
 // Icons
 $rb-include-fontello: true !default;
 
-$rb-btn-light-bg: #fff;
+$rb-btn-light-bg: #fff !default;
 
 // RbBooleanButtonInput
 $rb-boolean-button-input-border-width: $btn-border-width !default;
@@ -46,8 +46,13 @@ $rb-empty-state-description-font-size: $font-size-base !default;
 $rb-empty-state-description-color: $rb-secondary-text-color !default;
 $rb-empty-state-max-width: 60% !default;
 
-// RbIcon
-$rb-icon-color: #8f97a1 !default;
-
 // RbListGroupInput
 $rb-list-group-input-item-hover-bg: $rb-gray-secondary !default;
+
+// RbSingleOptionInput
+$rb-single-option-input-border-width: $btn-border-width !default;
+$rb-single-option-input-border-color: $border-color !default;
+$rb-single-option-input-invalid-border-color: $danger !default;
+$rb-single-option-input-valid-border-color: $success !default;
+
+

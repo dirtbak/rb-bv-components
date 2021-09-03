@@ -1,12 +1,12 @@
 <template>
-    <b-button-group class="rb-boolean-single-option-input"
-                    :class="{'rb-bordered': bordered, 'is-invalid': state === false}">
+    <b-button-group class="rb-boolean-single-option-input rb-single-option-input"
+                    :class="cls">
         <b-button class="rb-false-button"
                   :variant="(nullable && value == null) ? 'light' : (!value ? 'primary': 'light')"
                   @click="setValue(false)">
             <slot name="false">
                 <rb-icon :icon="falseIcon" v-if="showIcons"></rb-icon>
-                <span class="rb-text">{{falseLabel}}</span>
+                <rb-text>{{falseLabel}}</rb-text>
             </slot>
         </b-button>
         <b-button class="rb-true-button"
@@ -14,7 +14,7 @@
                   @click="setValue(true)">
             <slot name="true">
                 <rb-icon :icon="trueIcon" v-if="showIcons"></rb-icon>
-                <span class="rb-text">{{trueLabel}}</span>
+                <rb-text>{{trueLabel}}</rb-text>
             </slot>
         </b-button>
     </b-button-group>
@@ -33,6 +33,15 @@
             bordered: {type: Boolean, default: false},
             nullable: Boolean,
             state: {type: Boolean, default: null},
+        },
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                };
+            }
         },
         methods: {
             setValue(newValue) {

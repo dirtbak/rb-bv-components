@@ -1,7 +1,8 @@
 <template>
     <div class="rb-empty-state">
         <div class="rb-inner">
-            <rb-icon icon="icon" :style="{'color': iconColor === ''? '': iconColor}"
+            <rb-icon :icon="icon" class="rb-main-icon"
+                     :style="{'color': iconColor === ''? '': iconColor}"
                      v-if="showIcon"></rb-icon>
             <p class="rb-title">{{title}}</p>
             <p class="rb-description">

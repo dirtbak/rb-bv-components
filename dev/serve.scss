@@ -1,4 +1,6 @@
+@import 'theming';
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index';
 @import '../src/scss/components';
+//@import '../src/scss/fixes';
 @import '../src/assets/fontello/css/fontello.css';

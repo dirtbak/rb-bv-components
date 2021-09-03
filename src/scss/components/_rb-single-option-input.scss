@@ -1,3 +1,17 @@
+$rb-single-option-input-border-width: $input-border-width !default;
+
 .rb-single-option-input {
   white-space: nowrap;
+
+  &.rb-bordered .btn {
+    border: $rb-single-option-input-border-width solid $rb-single-option-input-border-color;
+  }
+
+  &.is-invalid .btn, &.rb-bordered.is-invalid .btn {
+    border: $rb-single-option-input-border-width solid $rb-single-option-input-invalid-border-color;
+  }
+
+  &.is-valid .btn, &.rb-bordered.is-valid .btn {
+    border: $rb-single-option-input-border-width solid $rb-single-option-input-valid-border-color;
+  }
 }

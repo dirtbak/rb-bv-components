@@ -1,0 +1,63 @@
+// Colors
+$rb-brand-primary: #4A9B6C;
+$rb-brand-on-primary: #3D7F59;
+$rb-brand-secondary: #2B2D33;
+$rb-brand-on-secondary: #000000;
+$rb-brand-wild-sand: #F4F4F4;
+$rb-brand-white: #fff;
+$rb-gray-140: #404247;
+$rb-gray-120: #55575C;
+$rb-gray-100: #808185;
+$rb-gray-60: #AAABAD;
+$rb-gray-30: #D5D5D6;
+$rb-gray-10: #E9EAEA;
+$rb-gray-05: #F8F8F8;
+$rb-gray-01: #FBFBFB;
+$rb-success-120: #008E7D;
+$rb-success-100: #19B28D;
+$rb-success-60: #52C5A9;
+$rb-success-30: #BFE9DF;
+$rb-success-10: #E8F7F4;
+$rb-error-120: #C74952;
+$rb-error-100: #ee505a;
+$rb-error-60: #F27C83;
+$rb-error-30: #faced1;
+$rb-error-10: #FDEEEE;
+$rb-attention-120: #CB662F;
+$rb-attention-100: #F88545;
+$rb-attention-60: #FAA373;
+$rb-attention-30: #FDDAC7;
+$rb-attention-10: #FEF3EC;
+$rb-primary-text-color: #2B2D33;
+$rb-primary-on-text-color: #000000;
+$rb-secondary-text-color: #656d78;
+$rb-tertiary-text-color: #969ea7;
+$rb-special-emerald: #00809C;
+
+$primary: $rb-brand-primary;
+$secondary: $rb-brand-secondary;
+$success: $rb-success-100;
+$info: #17a2b8;
+$attention: $rb-attention-120;
+$warning: $rb-attention-100;
+$danger: $rb-error-100;
+$light: $rb-gray-01;
+$dark: $rb-gray-140;
+$green: $rb-success-30;
+$red: $rb-error-30;
+$transparent: rgba(255,255,255,1);
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark,
+        "green": $green,
+        "red": $red,
+        "attention": $attention
+);
+
