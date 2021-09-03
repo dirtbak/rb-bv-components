@@ -119,9 +119,9 @@
                     this.isLoading = true;
                     await this.searchOptions(text).then(options => {
                         this.options = options;
-                        if (this.addTagOnEnter){
+                        if (this.addTagOnEnter) {
                             let isManager = this.isManager
-                            if(isManager) {
+                            if (isManager) {
                                 this.addNewTagOption(text);
                             }
                         }

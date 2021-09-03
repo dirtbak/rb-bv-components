@@ -105,12 +105,12 @@
                         } else if (value == this.periods.YEAR) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
                             this.innerDtStart = UtDate.getFirstDayOfYear(this.innerDtEnd);
-                        } else if(value == this.periods.SEVEN_DAYS) {
+                        } else if (value == this.periods.SEVEN_DAYS) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd , 6);
-                        } else if(value == this.periods.THIRTY_DAYS) {
+                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd, 6);
+                        } else if (value == this.periods.THIRTY_DAYS) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd , 29);
+                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd, 29);
                         }
 
                         th.$emit('update:dtStart', this.innerDtStart);

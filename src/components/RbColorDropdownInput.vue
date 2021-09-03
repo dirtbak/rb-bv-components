@@ -18,7 +18,7 @@
         name: 'RbColorDropdownInput',
         props: {
             value: [String, Number],
-            icon: {type: String, default: 'icon-record'},
+            icon: {type: String, default: 'icon-small-circle'},
             /**
              * items:
              *   Список цветов - ['color1', 'color2',...]

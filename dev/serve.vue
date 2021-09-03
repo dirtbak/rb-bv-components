@@ -117,7 +117,7 @@
             <h3>RbEmptyState</h3>
             <b-form-group label="На случай когда показать нечего">
                 <div style="width: 400px; height: 200px;">
-                    <rb-empty-state title="Ничего не найдено" icon="icon-block-helper">
+                    <rb-empty-state title="Ничего не найдено" icon="icon-none">
                         Попробуйте изменить параметры поиска
                     </rb-empty-state>
                 </div>

@@ -1,6 +1,6 @@
 <template>
     <b-button class="rb-boolean-button-input" :variant="value ? 'primary' : 'light'" @click="onClick"
-        :class="{'rb-bordered': bordered, 'rb-flex': flex}" :block="block">
+              :class="{'rb-bordered': bordered, 'rb-flex': flex}" :block="block">
         <rb-icon :icon="value? trueIcon: falseIcon" v-if="showCheckbox"></rb-icon>
         <rb-icon :icon="icon" v-if="icon"></rb-icon>
         <span class="rb-text">{{label}}</span>

@@ -93,7 +93,7 @@
             }
         },
         created() {
-            if(this.fillOptionsAtOnce) this.search()
+            if (this.fillOptionsAtOnce) this.search()
             this.selectedItems = this.value;
             if (this.searchAfterInit) {
                 this.search('');

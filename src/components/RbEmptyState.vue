@@ -1,7 +1,8 @@
 <template>
     <div class="rb-empty-state">
         <div class="rb-inner">
-            <rb-icon icon="icon" :style="{'color': iconColor === ''? '': iconColor}" v-if="showIcon"></rb-icon>
+            <rb-icon icon="icon" :style="{'color': iconColor === ''? '': iconColor}"
+                     v-if="showIcon"></rb-icon>
             <p class="rb-title">{{title}}</p>
             <p class="rb-description">
                 <slot>{{description}}</slot>
@@ -14,7 +15,7 @@
     export default {
         name: 'RbEmptyState',
         props: {
-            icon: {type: String},
+            icon: {type: String, default: 'icon-none'},
             iconColor: {type: String, default: ''},
             showIcon: {type: Boolean, default: true},
             title: {type: String},
