@@ -14,9 +14,9 @@
                 rbBooleanSingleOptionInput1: null,
                 rbBooleanSingleOptionInput2: false,
                 rbColorDropdownInput1Items: [
-                    {id: 1, color: 'dfcfre'},
-                    {id: 2, color: 'dddddd'},
-                    {id: 3, color: '000000'}
+                    {id: 1, color: 'red'},
+                    {id: 2, color: 'blue'},
+                    {id: 3, color: 'green'}
                 ],
                 rbDatePickerInput1: new Date(),
                 rbDropdownInput1Items: [
@@ -54,31 +54,31 @@
         <b-form>
             <h4>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h4>
             <b-form-row>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="Без чекбокса">
                         <rb-boolean-button-input label="Все будет хорошо"
                                                  v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                     </b-form-group>
                 </b-col>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="С бордером">
                         <rb-boolean-button-input label="Все будет хорошо" bordered
                                                  v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                     </b-form-group>
                 </b-col>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="С чекбоксом">
                         <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true"
                                                  v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
                     </b-form-group>
                 </b-col>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="Невалидный">
                         <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true" :state="false"
                                                  v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
                     </b-form-group>
                 </b-col>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="Валидный">
                         <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true" :state="true"
                                                  v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
@@ -90,31 +90,31 @@
         <b-form>
             <h4>Булевый инпут типа "Да/Нет" - <span class="text-muted">RbBooleanSingleOptionInput</span></h4>
             <b-form-row>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="Без иконок">
                         <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" nullable>
                         </rb-boolean-single-option-input>
                     </b-form-group>
                 </b-col>
-                <b-col cols="2">
+                <b-col lg="2" sm="12">
                     <b-form-group label="С бордером">
                         <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" bordered>
                         </rb-boolean-single-option-input>
                     </b-form-group>
                 </b-col>
-                <b-col>
+                <b-col lg="2" sm="12">
                     <b-form-group label="С иконками">
                         <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput2"
                                                         show-icons></rb-boolean-single-option-input>
                     </b-form-group>
                 </b-col>
-                <b-col>
+                <b-col lg="2" sm="12">
                     <b-form-group label="Невалидный">
                         <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput2" :state="false"
                                                         show-icons></rb-boolean-single-option-input>
                     </b-form-group>
                 </b-col>
-                <b-col>
+                <b-col lg="2" sm="12">
                     <b-form-group label="Валидный">
                         <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput2" :state="true"
                                                         show-icons></rb-boolean-single-option-input>
@@ -124,16 +124,53 @@
         </b-form>
 
         <form>
-            <h4>RbColorDropdownInput</h4>
-            <b-form-group label="Выбор цвета">
-                <rb-color-dropdown-input :items="rbColorDropdownInput1Items"></rb-color-dropdown-input>
-            </b-form-group>
+            <h4>Выбор цвета - <span class="text-muted">RbColorDropdownInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор цвета">
+                        <rb-color-dropdown-input :items="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="С бордером">
+                        <rb-color-dropdown-input :items="rbColorDropdownInput1Items" bordered></rb-color-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-color-dropdown-input :items="rbColorDropdownInput1Items"
+                                                 bordered :state="false"></rb-color-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-color-dropdown-input :items="rbColorDropdownInput1Items"
+                                                 bordered :state="true"></rb-color-dropdown-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+
         </form>
         <form>
             <h4>RbDatePickerInput</h4>
-            <b-form-group label="Выбор даты" style="width: 200px;">
-                <rb-date-picker-input v-model="rbDatePickerInput1"></rb-date-picker-input>
-            </b-form-group>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор даты" style="width: 200px;">
+                        <rb-date-picker-input v-model="rbDatePickerInput1"></rb-date-picker-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный" style="width: 200px;">
+                        <rb-date-picker-input v-model="rbDatePickerInput1" :state="false"></rb-date-picker-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный" style="width: 200px;">
+                        <rb-date-picker-input v-model="rbDatePickerInput1" :state="true">></rb-date-picker-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+
         </form>
         <form>
             <h4>RbDropdownInput</h4>

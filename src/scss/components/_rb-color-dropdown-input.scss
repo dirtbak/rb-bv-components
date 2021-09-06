@@ -1,10 +1,13 @@
 .rb-color-dropdown-input {
-  &.rb-bordered button {
-    border-right: $rb-color-dropdown-input-border-width solid $rb-color-dropdown-input-border-color;
+  &.rb-bordered .btn {
+    border: $rb-color-dropdown-input-border-width solid $rb-color-dropdown-input-border-color;
   }
 
-  button {
-    overflow: hidden;
-    text-align: left;
+  &.is-invalid .btn, &.rb-bordered.is-invalid .btn {
+    border: $rb-color-dropdown-input-border-width solid $danger;
+  }
+
+  &.is-valid .btn, &.rb-bordered.is-valid .btn {
+    border: $rb-color-dropdown-input-border-width solid $success;
   }
 }

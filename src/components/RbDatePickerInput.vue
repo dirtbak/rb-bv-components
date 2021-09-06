@@ -7,7 +7,8 @@
                     autocomplete="off"
                     @input="inputChange"
                     v-mask="mask"
-                    :placeholder="placeholder">
+                    :placeholder="placeholder"
+                    :state="state">
             </b-form-input>
             <b-input-group-append>
                 <b-form-datepicker
@@ -38,7 +39,8 @@
             value: {String, Date},
             placeholder: {type: String, default: 'ДД.ММ.ГГГГ'},
             mask: {type: String, default: '##.##.####'},
-            dropup: {type: Boolean, default: false}
+            dropup: {type: Boolean, default: false},
+            state: {type: Boolean, default: null},
         },
         data: function () {
             return {
