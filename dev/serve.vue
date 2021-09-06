@@ -152,7 +152,7 @@
 
         </form>
         <form>
-            <h4>RbDatePickerInput</h4>
+            <h4>Выбор даты - <span class="text-muted">RbDatePickerInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
                     <b-form-group label="Выбор даты" style="width: 200px;">
@@ -173,10 +173,40 @@
 
         </form>
         <form>
-            <h4>RbDropdownInput</h4>
-            <b-form-group label="Выбор одного значения">
-                <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"></rb-dropdown-input>
-            </b-form-group>
+            <h4>Выбор одного значения из списка - <span class="text-muted">RbDropdownInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор одного значения">
+                        <rb-dropdown-input :items="rbDropdownInput1Items"
+                                           v-model="rbDropdownInput1"></rb-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <!--<b-col lg="2" sm="12">
+                    <b-form-group label="Display: block">
+                        <rb-dropdown-input :items="rbDropdownInput1Items"
+                                           v-model="rbDropdownInput1" block></rb-dropdown-input>
+                    </b-form-group>
+                </b-col>-->
+                <b-col lg="2" sm="12">
+                    <b-form-group label="С бордером">
+                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
+                                           bordered></rb-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
+                                           :state="false"></rb-dropdown-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
+                                           :state="true"></rb-dropdown-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+
         </form>
         <form>
             <h4>RbDropdownLinkInput</h4>
