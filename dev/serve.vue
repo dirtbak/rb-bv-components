@@ -1,53 +1,53 @@
 <script>
-import Vue from 'vue';
-import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
+    import Vue from 'vue';
+    import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
+    Vue.use(BootstrapVue);
+    Vue.use(IconsPlugin);
 
-export default Vue.extend({
-  name: 'ServeDev',
-  data() {
-    return {
-      rbBooleanButtonInput1: false,
-      rbBooleanButtonInput2: false,
-      rbBooleanSingleOptionInput1: null,
-      rbBooleanSingleOptionInput2: false,
-      rbColorDropdownInput1Items: [
-        {id: 1, color: 'red'},
-        {id: 2, color: 'blue'},
-        {id: 3, color: 'green'}
-      ],
-      rbDatePickerInput1: new Date(),
-      rbDropdownInput1Items: [
-        {id: 1, name: 'Один'},
-        {id: 2, name: 'Два'},
-        {id: 3, name: 'Три'},
-      ],
-      rbDropdownInput1: null,
-      rbDropdownLinkInput1: null,
-      rbListGroupInput1: null,
-      rbMultiDropdownInput1: [],
-      rbMultiOptionInput1: [],
-      rbMultiPhoneInput1: [],
-      rbMultiSelectInput1: [],
-      rbPeriodInputDtStart1: null,
-      rbPeriodInputDtEnd1: null,
-      rbPhoneInput1: null,
-      rbPriceInput1: null,
-      rbSelectInput1: null,
-      rbSingleOptionInput1: null,
-      rbTagMultiSelectInput1: [],
-      rbTypeaheadInput1: null,
-      rbMultiLangInput: null
-    }
-  },
-  methods: {
-    async rbMultiSelectSearch1(text) {
-      return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
-    }
-  }
-});
+    export default Vue.extend({
+        name: 'ServeDev',
+        data() {
+            return {
+                rbBooleanButtonInput1: false,
+                rbBooleanButtonInput2: false,
+                rbBooleanSingleOptionInput1: null,
+                rbBooleanSingleOptionInput2: false,
+                rbColorDropdownInput1Items: [
+                    {id: 1, color: 'red'},
+                    {id: 2, color: 'blue'},
+                    {id: 3, color: 'green'}
+                ],
+                rbDatePickerInput1: new Date(),
+                rbDropdownInput1Items: [
+                    {id: 1, name: 'Один'},
+                    {id: 2, name: 'Два'},
+                    {id: 3, name: 'Три'},
+                ],
+                rbDropdownInput1: null,
+                rbDropdownLinkInput1: null,
+                rbListGroupInput1: null,
+                rbMultiDropdownInput1: [],
+                rbMultiOptionInput1: [],
+                rbMultiPhoneInput1: [],
+                rbMultiSelectInput1: [],
+                rbPeriodInputDtStart1: null,
+                rbPeriodInputDtEnd1: null,
+                rbPhoneInput1: null,
+                rbPriceInput1: null,
+                rbSelectInput1: null,
+                rbSingleOptionInput1: null,
+                rbTagMultiSelectInput1: [],
+                rbTypeaheadInput1: null,
+                rbMultiLangInput: null
+            }
+        },
+        methods: {
+            async rbMultiSelectSearch1(text) {
+                return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
+            }
+        }
+    });
 </script>
 
 <template>
@@ -210,20 +210,37 @@ export default Vue.extend({
 
         </form>
         <form>
-            <h4>RbDropdownLinkInput</h4>
-            <b-form-group label="Выбор одного значения">
-                <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
-                                        v-model="rbDropdownLinkInput1"></rb-dropdown-link-input>
-            </b-form-group>
+            <h4>Выбор одного значения из списка - <span class="text-muted">RbDropdownLinkInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор одного значения">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1" :state="false"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1" :state="true"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+
         </form>
         <form>
-            <h4>RbEmailLink</h4>
+            <h4>Ссылка на почту - <span class="text-muted">RbEmailLink</span></h4>
             <b-form-group label="Автоматически пересылает на email">
                 <rb-email-link email="rb-components@rebel.kz"></rb-email-link>
             </b-form-group>
         </form>
         <form>
-            <h4>RbEmptyState</h4>
+            <h4>Пустой стейт - <span class="text-muted">RbEmptyState</span></h4>
             <b-form-group label="На случай когда показать нечего">
                 <div style="width: 400px; height: 200px;">
                     <rb-empty-state title="Ничего не найдено" icon="icon-none">
@@ -232,11 +249,19 @@ export default Vue.extend({
                 </div>
             </b-form-group>
         </form>
-        <form>
-            <h4>RbIcon</h4>
-            <b-form-group label="Иконки">
-                <rb-icon icon="icon-none"></rb-icon>
-            </b-form-group>
+        <form class="rb-icons">
+            <h4>Иконки - <span class="text-muted">RbIcon</span></h4>
+            <b-form-row>
+                <b-form-group label="Стандартная">
+                    <rb-icon icon="icon-none"></rb-icon>
+                </b-form-group>
+                <b-form-group label="font-size: 42px">
+                    <rb-icon icon="icon-chevron-right" font-size="42px"></rb-icon>
+                </b-form-group>
+                <b-form-group label="variant = danger">
+                    <rb-icon icon="icon-none" variant="danger"></rb-icon>
+                </b-form-group>
+            </b-form-row>
         </form>
         <form>
             <h4>RbListGroupInput</h4>
@@ -330,24 +355,28 @@ export default Vue.extend({
             </b-form-group>
         </form>
         <form>
-          <h4>RbMultiLangInput</h4>
-          <b-form-group label="Инпут с выбором языка" style="width: 250px">
-            <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
-          </b-form-group>
+            <h4>RbMultiLangInput</h4>
+            <b-form-group label="Инпут с выбором языка" style="width: 250px">
+                <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+            </b-form-group>
         </form>
     </div>
 </template>
 
 <style>
-#app {
-  padding: 20px;
-}
+    #app {
+        padding: 20px;
+    }
 
-#app h4 {
-  margin-bottom: 20px;
-}
+    #app h4 {
+        margin-bottom: 20px;
+    }
 
-#app form {
-  margin-bottom: 40px;
-}
+    #app form {
+        margin-bottom: 40px;
+    }
+
+    #app .rb-icons .form-group {
+        margin-right: 10px;
+    }
 </style>

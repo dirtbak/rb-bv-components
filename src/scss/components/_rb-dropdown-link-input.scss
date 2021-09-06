@@ -19,6 +19,14 @@
     }
   }
 
+  &.is-invalid .btn .rb-text {
+    color: $danger;
+  }
+
+  &.is-valid .btn .rb-text {
+    color: $success;
+  }
+
   .btn.btn-light.dropdown-toggle:focus,
   .btn.btn-light.dropdown-toggle:active,
   &.show > .btn.btn-light.dropdown-toggle {

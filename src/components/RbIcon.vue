@@ -1,5 +1,6 @@
 <template>
-    <span class="rb-icon icon" :class="icon"
+    <span class="rb-icon icon"
+          :class="[icon, `text-${variant}`]"
           :style="getStyle()"
           @click="$emit('click', $event)"
           @mouseover="mouseover"
@@ -12,7 +13,8 @@
         props: {
             icon: String,
             color: String,
-            fontSize: String
+            fontSize: String,
+            variant: String,
         },
         methods: {
             getStyle() {
