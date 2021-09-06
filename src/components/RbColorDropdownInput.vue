@@ -1,8 +1,5 @@
 <template>
-    <b-dropdown class="rb-dropdown rb-color-dropdown-input"
-                :class="{'rb-bordered': bordered}"
-                :block="block"
-                :variant="variant">
+    <b-dropdown class="rb-dropdown rb-color-dropdown-input" :class="cls" :block="block" :variant="variant">
         <template #button-content>
             <rb-icon :icon="icon" :color="getColor(valueItem)"/>
         </template>
@@ -28,9 +25,17 @@
             valueField: {type: String, default: 'id'},
             variant: {type: String, default: 'light'},
             bordered: Boolean,
-            block: Boolean
+            block: Boolean,
+            state: {type: Boolean, default: null},
         },
         computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            },
             valueItem() {
                 if (typeof this.value === 'number') {
                     const item = this.items.find(item => item[this.valueField] === this.value);
@@ -48,9 +53,9 @@
             },
             getColor(item) {
                 if (typeof item === 'object') {
-                    return `#${item.color}`;
+                    return `${item.color}`;
                 } else {
-                    return `#${item}`;
+                    return `${item}`;
                 }
             }
         }
