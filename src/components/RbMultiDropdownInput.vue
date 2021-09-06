@@ -1,6 +1,6 @@
 <template>
     <b-dropdown :variant="variant" class="rb-dropdown-input rb-multi-dropdown-input"
-                :class="{'rb-bordered': bordered}" :block="block">
+                :class="cls" :block="block">
         <template v-slot:button-content>
             <span class="rb-text">
                 {{text? text: (showCancelItem? cancelItemText: placeholder)}}
@@ -36,6 +36,7 @@
             displayField: {type: String, default: 'name'},
             valueAsString: {type: Boolean, default: false},
             block: Boolean,
+            state: {type: Boolean, default: null}
         },
         data() {
             return {
@@ -55,6 +56,13 @@
             th.fillOptions(th.items);
         },
         computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                };
+            },
             text() {
                 let th = this;
                 if (th.innerValue == null) {

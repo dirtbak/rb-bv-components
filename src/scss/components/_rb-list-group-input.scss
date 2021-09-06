@@ -1,4 +1,12 @@
 .rb-list-group-input {
+  &.is-invalid .list-group-item{
+    border-color: $danger;
+  }
+
+  &.is-valid .list-group-item{
+    border-color: $success;
+  }
+
   .list-group-item:hover:not(.active) {
     background-color: $rb-list-group-input-item-hover-bg;
     cursor: pointer;
