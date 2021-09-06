@@ -12,12 +12,14 @@
         props: {
             icon: String,
             color: String,
+            fontSize: String
         },
         methods: {
             getStyle() {
                 const style = {};
 
                 if (this.color) style.color = this.color;
+                if (this.fontSize) style.fontSize = this.fontSize
 
                 return style;
             },

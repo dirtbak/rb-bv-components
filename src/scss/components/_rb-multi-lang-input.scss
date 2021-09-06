@@ -1,0 +1,55 @@
+.rb-multi-lang-input {
+  .rb-text-container {
+    gap: $rb-multi-lang-input-gap;
+  }
+
+  .dropdown-menu {
+    min-width: 320px;
+  }
+
+  .rb-text-primary {
+    font-size: $rb-multi-lang-input-font-size-m;
+    line-height: $rb-multi-lang-input-font-size-m;
+  }
+
+  .rb-text-secondary {
+    font-size: $rb-multi-lang-input-font-size-s;
+    line-height: $rb-multi-lang-input-line-height-s;
+    color: $rb-gray-60;
+  }
+
+  .rb-lang-text {
+    color: $rb-brand-on-primary;
+  }
+
+  input {
+    box-sizing: initial;
+  }
+
+  .btn, .form-control {
+    border: none;
+    border-radius: 0;
+  }
+
+  .btn {
+    min-width: 83.5px;
+  }
+
+  .input-group {
+    border: 2px solid transparent;
+    border-radius: 4px;
+    border-color: $rb-gray-30;
+    &.is-valid{
+      border-color: $rb-brand-primary;
+    }
+    &.is-invalid{
+      border-color: $rb-error-120;
+    }
+  }
+
+
+
+  .dropdown-item {
+    padding: 8px 12px;
+  }
+}
