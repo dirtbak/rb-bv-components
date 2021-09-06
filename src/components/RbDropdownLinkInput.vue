@@ -1,5 +1,5 @@
 <template>
-    <b-dropdown variant="plain" class="rb-dropdown rb-dropdown-link-input" :class="{'is-invalid': state === false}">
+    <b-dropdown variant="plain" class="rb-dropdown rb-dropdown-link-input" :class="cls">
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                   :showCancelItem="showCancelItem">

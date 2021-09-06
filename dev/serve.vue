@@ -211,10 +211,27 @@ export default Vue.extend({
         </form>
         <form>
             <h4>RbDropdownLinkInput</h4>
-            <b-form-group label="Выбор одного значения">
-                <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
-                                        v-model="rbDropdownLinkInput1"></rb-dropdown-link-input>
-            </b-form-group>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор одного значения">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1" :state="false"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-dropdown-link-input :items="rbDropdownInput1Items" placeholder="Выбрать"
+                                                v-model="rbDropdownLinkInput1" :state="true"></rb-dropdown-link-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+
         </form>
         <form>
             <h4>RbEmailLink</h4>
