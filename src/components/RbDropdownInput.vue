@@ -1,6 +1,5 @@
 <template>
-    <b-dropdown :variant="variant" class="rb-dropdown-input" :block="block"
-                :class="{'rb-bordered': bordered, 'is-invalid': state === false}">
+    <b-dropdown :variant="variant" class="rb-dropdown-input" :block="block" :class="cls">
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                   :showCancelItem="showCancelItem">
@@ -51,11 +50,14 @@
                 options: []
             };
         },
-        created() {
-            let th = this;
-            th.innerValue = th.value;
-            th.fillOptions(th.items);
-            th.setText();
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            }
         },
         watch: {
             items() {
@@ -66,6 +68,12 @@
                 this.innerValue = this.value;
                 this.setText();
             }
+        },
+        created() {
+            let th = this;
+            th.innerValue = th.value;
+            th.fillOptions(th.items);
+            th.setText();
         },
         methods: {
             fillOptions(items) {
