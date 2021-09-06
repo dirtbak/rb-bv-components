@@ -6,8 +6,7 @@
         <b-dropdown variant="gray" no-caret right class="rb-dropdown" v-if="languages.length>1">
           <template #button-content>
             {{ selected }}
-            <!--this icon needs to be replaced with chevron-->
-            <rb-icon icon="icon-arrow-carret-down"></rb-icon>
+            <rb-icon icon="icon-chevron-down"></rb-icon>
           </template>
           <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected" @click="selected=lang">
             <template v-if="variants[lang]">
@@ -40,7 +39,7 @@ export default {
   props: {
     state: {
       type: Boolean,
-      default: false
+      default: null
     }
   },
   data() {

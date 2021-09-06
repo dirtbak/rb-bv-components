@@ -15,7 +15,7 @@
   .rb-text-secondary {
     font-size: $rb-multi-lang-input-font-size-s;
     line-height: $rb-multi-lang-input-line-height-s;
-    color: $rb-gray-60;
+    color: $rb-multi-lang-input-text-secondary;
   }
 
   .rb-lang-text {
@@ -36,20 +36,18 @@
   }
 
   .input-group {
-    border: 2px solid transparent;
-    border-radius: 4px;
-    border-color: $rb-gray-30;
+    border: $rb-multi-lang-input-border-width solid transparent;
+    border-radius: $rb-multi-lang-input-input-group-radius;
+    border-color: $primary;
     &.is-valid{
-      border-color: $rb-brand-primary;
+      border-color: $success;
     }
     &.is-invalid{
-      border-color: $rb-error-120;
+      border-color: $danger;
     }
   }
 
-
-
   .dropdown-item {
-    padding: 8px 12px;
+    padding: $rb-multi-lang-input-dropdown-item-padding;
   }
 }
