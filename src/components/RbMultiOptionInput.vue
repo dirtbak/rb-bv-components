@@ -1,5 +1,5 @@
 <template>
-    <b-button-group class="rb-multi-option-input" :class="{'rb-bordered': bordered}">
+    <b-button-group class="rb-multi-option-input" :class="cls">
         <b-button v-for="item in items"
                   :key="item[valueField]"
                   :variant="isItemSelected(item) ? 'primary' : 'light'"
@@ -39,12 +39,32 @@
                 type: Boolean,
                 default: false
             },
-            bordered: {type: Boolean, default: false}
+            bordered: {type: Boolean, default: false},
+            state: {type: Boolean, default: null},
         },
         data: function () {
             return {
                 innerValue: []
             };
+        },
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            }
+        },
+        watch: {
+            value() {
+                let th = this;
+                if (th.valueAsString) {
+                    th.innerValue = th.splitStringValue();
+                } else {
+                    th.innerValue = th.value;
+                }
+            }
         },
         methods: {
             isItemSelected(item) {
@@ -75,16 +95,6 @@
                     return [];
                 }
                 return th.value.split(',').map(i => parseInt(i));
-            }
-        },
-        watch: {
-            value() {
-                let th = this;
-                if (th.valueAsString) {
-                    th.innerValue = th.splitStringValue();
-                } else {
-                    th.innerValue = th.value;
-                }
             }
         },
         created() {

@@ -316,11 +316,35 @@
 
         </form>
         <form>
-            <h4>RbMultiOptionInput</h4>
-            <b-form-group label="Выбор нескольких значений" style="width: 200px;">
-                <rb-multi-option-input :items="rbDropdownInput1Items"
-                                       v-model="rbMultiOptionInput1"></rb-multi-option-input>
-            </b-form-group>
+            <h4>Выбор несольких значений - <span class="text-muted">RbMultiOptionInput</span></h4>
+            <b-form>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор нескольких значений">
+                            <rb-multi-option-input :items="rbDropdownInput1Items"
+                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-multi-option-input :items="rbDropdownInput1Items" bordered
+                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Невалидный">
+                            <rb-multi-option-input :items="rbDropdownInput1Items" :state="false"
+                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Валидный">
+                            <rb-multi-option-input :items="rbDropdownInput1Items" :state="true"
+                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </b-form>
         </form>
         <form>
             <h4>RbMultiPhoneInput</h4>
