@@ -1,16 +1,30 @@
 <template>
     <div class="rb-input-with-button">
-        <b-input :type="type"
-                 :placeholder="placeholder"
-                 :state="state"
-                 v-model="innerValue"
-                 v-mask="mask"
-                 :masked="masked"
-                 @focus="$emit('focus', $event)"
-                 @click="$emit('click', $event)"
-                 @input="$emit('input', $event)"
-                 @change="$emit('change', $event)">
-        </b-input>
+        <template v-if="mask">
+            <b-input :type="type"
+                     :placeholder="placeholder"
+                     :state="state"
+                     v-model="innerValue"
+                     v-mask="mask"
+                     :masked="masked"
+                     @focus="$emit('focus', $event)"
+                     @click="$emit('click', $event)"
+                     @input="$emit('input', $event)"
+                     @change="$emit('change', $event)">
+            </b-input>
+        </template>
+        <template v-else>
+            <b-input :type="type"
+                     :placeholder="placeholder"
+                     :state="state"
+                     v-model="innerValue"
+                     @focus="$emit('focus', $event)"
+                     @click="$emit('click', $event)"
+                     @input="$emit('input', $event)"
+                     @change="$emit('change', $event)">
+            </b-input>
+        </template>
+
         <b-button variant="plain" class="btn-icon rb-input-btn" @click="$emit('buttonClick')">
             <rb-icon :icon="icon"></rb-icon>
         </b-button>
@@ -22,6 +36,7 @@
 
     export default {
         name: 'RbInputWithButton',
+        directives: {mask},
         props: {
             placeholder: String,
             state: {type: Boolean, default: null},

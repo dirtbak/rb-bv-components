@@ -392,7 +392,7 @@
             </b-form-group>
         </form>-->
         <form>
-            <h4>RbPeriodInput</h4>
+            <h4>Выбор периода - <span class="text-muted">RbPeriodInput</span></h4>
             <b-form>
                 <b-form-row>
                     <b-col lg="2" sm="12">
@@ -443,10 +443,26 @@
             </b-form>
         </form>
         <form>
-            <h4>RbPhoneInput</h4>
-            <b-form-group label="Ввод телефона" style="width: 200px;">
-                <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
-            </b-form-group>
+            <h4>Ввод телефона - <span class="text-muted">RbPhoneInput</span></h4>
+            <b-form>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Ввод телефона">
+                            <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Невалидный">
+                            <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Валидный">
+                            <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </b-form>
         </form>
         <form>
             <h4>Ссылка на телефон - <span class="text-muted">RbPhoneLink</span></h4>
@@ -462,27 +478,91 @@
                         <rb-price-input v-model="rbPriceInput1"></rb-price-input>
                     </b-form-group>
                 </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-price-input v-model="rbPriceInput1" :state="false"></rb-price-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-price-input v-model="rbPriceInput1" :state="true"></rb-price-input>
+                    </b-form-group>
+                </b-col>
             </b-form-row>
         </form>
         <form>
-            <h4>RbSelectInput</h4>
-            <b-form-group label="Выбор одного значения" style="width: 200px;">
-                <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"></rb-select-input>
-            </b-form-group>
+            <h4>Обычный селект - <span class="text-muted">RbSelectInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор одного значения">
+                        <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"></rb-select-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-select-input :items="rbDropdownInput1Items"
+                                         v-model="rbSelectInput1" :state="false"></rb-select-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-select-input :items="rbDropdownInput1Items"
+                                         v-model="rbSelectInput1" :state="true"></rb-select-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
-            <h4>RbSingleOptionInput</h4>
-            <b-form-group label="Выбор одного значения" style="width: 200px;">
-                <rb-single-option-input :items="rbDropdownInput1Items"
-                                        v-model="rbSingleOptionInput1"></rb-single-option-input>
-            </b-form-group>
+            <h4>Выбор одного значения кнопками - <span class="text-muted">RbSingleOptionInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор одного значения">
+                        <rb-single-option-input :items="rbDropdownInput1Items"
+                                                v-model="rbSingleOptionInput1"></rb-single-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="С бордером">
+                        <rb-single-option-input :items="rbDropdownInput1Items" bordered
+                                                v-model="rbSingleOptionInput1"></rb-single-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-single-option-input :items="rbDropdownInput1Items" :state="false"
+                                                v-model="rbSingleOptionInput1"></rb-single-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-single-option-input :items="rbDropdownInput1Items" :state="true"
+                                                v-model="rbSingleOptionInput1"></rb-single-option-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
             <h4>RbTagMultiSelectInput</h4>
-            <b-form-group label="Выбор тегов" style="width: 200px;">
-                <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
-                                           v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
-            </b-form-group>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор тегов">
+                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
+                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="false"
+                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="true"
+                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
             <h4>RbTypeaheadInput</h4>

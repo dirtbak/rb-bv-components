@@ -1,26 +1,29 @@
 <template>
-    <the-mask class="form-control"
-              :mask="mask"
-              v-model="innerValueComputed"
-              type="text"
-              :masked="false"
-              :placeholder="placeholder"></the-mask>
+    <b-input type="text"
+             v-mask="mask"
+             v-model="innerValueComputed"
+             :masked="false"
+             :placeholder="placeholder"
+             :state="state"
+    >
+    </b-input>
 </template>
 
 <script>
     import {debounce} from 'debounce';
-    import {TheMask} from 'vue-the-mask';
+    import {mask} from 'vue-the-mask';
 
     export default {
         name: 'RbPhoneInput',
-        components: {TheMask},
+        directives: {mask},
         props: {
             placeholder: {type: String, default: ''},
             mask: {type: String, default: '+# ### ### ####'},
             prefix: {type: String, default: '+'},
             debounceTime: {type: Number, default: 0},
             valueChangeMinLength: Number,
-            value: String
+            value: String,
+            state: {type: Boolean, default: null},
         },
         data() {
             return {

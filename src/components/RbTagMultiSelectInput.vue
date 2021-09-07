@@ -1,11 +1,12 @@
 <template>
-    <div class="rb-tag-multi-select-input" :class="focused ? 'rb-tag-multi-select-input-focused': ''"
+    <div class="rb-tag-multi-select-input" :class="cls"
          v-click-outside="clickOutSide">
 
         <b-input type="text"
                  class="rb-tag-multi-select-search-input"
                  :placeholder="placeholder"
                  ref="input"
+                 :state="state"
                  v-model="inputValue"
                  @focus="focused = true"
                  @blur="focused = false"
@@ -34,12 +35,11 @@
         <div class="selected-items" v-if="selectedItems.length > 0">
             <b-badge href="#" class="rb-tag" variant="light" v-for="item in selectedItems" :key="item[valueField]">
                 <span class="title">{{item[displayField]}}</span>
-                <b-button class="rb-circle-button small remove-btn" @click="remove(item)" variant="outline-secondary">
-                    <b-icon icon="x"></b-icon>
+                <b-button class="small remove-btn" @click="remove(item)" variant="plain">
+                    <rb-icon icon="icon-close"></rb-icon>
                 </b-button>
             </b-badge>
         </div>
-
     </div>
 </template>
 
@@ -73,6 +73,7 @@
             placeholder: {type: String, default: 'Начните набирать...'},
             searchAfterInit: Boolean,
             addTagOnEnter: {type: Boolean, default: false},
+            state: {type: Boolean, default: null},
         },
 
         data: () => {
@@ -88,12 +89,17 @@
                 newTagOptionSuffix: '(Новый тег)'
             };
         },
-        created() {
-            if (this.searchAfterInit) {
-                this.search('');
+
+        computed: {
+            cls() {
+                return {
+                    'rb-tag-multi-select-input-focused': this.focused,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
             }
-            this.selectedItems = this.value || [];
         },
+
         watch: {
             value() {
                 this.selectedItems = this.value;
@@ -104,11 +110,7 @@
                 }
             }
         },
-        computed: {
-            isManager() {
-                return this.$store.getters['getUserInfo'].isManager;
-            }
-        },
+
         methods: {
             debounceSearch: debounce(async function (text) {
                 await this.search(text);
@@ -120,10 +122,7 @@
                     await this.searchOptions(text).then(options => {
                         this.options = options;
                         if (this.addTagOnEnter) {
-                            let isManager = this.isManager
-                            if (isManager) {
-                                this.addNewTagOption(text);
-                            }
+                            this.addNewTagOption(text);
                         }
                         this.activeOptionIndex = null;
                         this.isLoading = false;
@@ -235,7 +234,13 @@
             focusOption() {
                 this.$refs['dropdownItem_' + this.activeOptionIndex][0].focus();
             }
-        }
+        },
 
+        created() {
+            if (this.searchAfterInit) {
+                this.search('');
+            }
+            this.selectedItems = this.value || [];
+        },
     };
 </script>

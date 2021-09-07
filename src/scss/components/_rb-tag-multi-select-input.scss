@@ -1,7 +1,7 @@
 .rb-tag-multi-select-input {
   position: relative;
-  border: 1px solid $border-color;
-  border-radius: 3px;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
 
   .form-control {
     border: unset;
@@ -18,6 +18,23 @@
 
   .selected-items {
     padding: 0 5px 2px 5px;
+  }
+
+  .remove-btn {
+    padding: 0;
+    border: none;
+  }
+
+  .rb-tag {
+    vertical-align: middle;
+  }
+
+  &.is-invalid {
+    border: $input-border-width solid $form-feedback-invalid-color;
+  }
+
+  &.is-valid {
+    border: $input-border-width solid $form-feedback-valid-color;
   }
 }
 

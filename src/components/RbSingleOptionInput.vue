@@ -1,5 +1,5 @@
 <template>
-    <b-button-group class="rb-single-option-input" :class="{'rb-bordered': bordered}">
+    <b-button-group class="rb-single-option-input" :class="cls">
         <b-button v-for="item in items"
                   :key="item[valueField]"
                   :variant="item[valueField] === value ? 'primary' : 'light'"
@@ -38,6 +38,16 @@
                 default: 'icon'
             },
             showTitles: Boolean,
+            state: {type: Boolean, default: null},
+        },
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            }
         },
         methods: {
             onItemClick(item) {
