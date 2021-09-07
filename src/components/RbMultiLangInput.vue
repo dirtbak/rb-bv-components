@@ -38,10 +38,7 @@
     export default {
         name: "RbMultiLangInput",
         props: {
-            state: {
-                type: Boolean,
-                default: null
-            }
+            state: {type: Boolean, default: null}
         },
         data() {
             return {

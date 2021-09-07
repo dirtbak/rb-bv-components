@@ -573,9 +573,13 @@
         </form>
         <form>
             <h4>RbMultiLangInput</h4>
-            <b-form-group label="Инпут с выбором языка" style="width: 250px">
-                <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
-            </b-form-group>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Инпут с выбором языка" style="width: 250px">
+                        <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
     </div>
 </template>

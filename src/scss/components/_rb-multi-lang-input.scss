@@ -35,15 +35,14 @@
   }
 
   .input-group {
-    border: $rb-multi-lang-input-border-width solid transparent;
+    border: $rb-multi-lang-input-border-width solid $input-border-color;
     border-radius: $rb-multi-lang-input-input-group-radius;
-    border-color: $primary;
 
     &.is-valid{
-      border-color: $form-feedback-valid-color;
+      border: $rb-multi-lang-input-border-width solid $form-feedback-valid-color;
     }
     &.is-invalid{
-      border-color: $form-feedback-invalid-color;
+      border: $rb-multi-lang-input-border-width solid $form-feedback-invalid-color;
     }
   }
 
