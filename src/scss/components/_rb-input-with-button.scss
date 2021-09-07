@@ -1,0 +1,46 @@
+$rb-input-with-btn-icon-color: lighten($body-color, 20%) !default;
+$rb-input-with-btn-btn-width: $input-height !default;
+
+.rb-input-with-button {
+  position: relative;
+
+  .rb-input-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: $input-height;
+    width: $input-height;
+    padding-left: 0;
+    padding-right: 0;
+
+    .rb-icon {
+      color: $rb-input-with-btn-icon-color;
+    }
+
+    &:hover {
+      .rb-icon {
+        color: darken($rb-input-with-btn-icon-color, 20%);
+      }
+    }
+  }
+
+  .form-control {
+    padding-right: $rb-input-with-btn-btn-width;
+  }
+
+  .was-validated &:invalid,
+  .was-validated &:valid,
+  .is-invalid,
+  .is-valid {
+    background-position: right $rb-input-with-btn-btn-width center;
+  }
+
+  @if $enable-validation-icons {
+    .was-validated:invalid,
+    .was-validated:valid,
+    .is-invalid,
+    .is-valid {
+      padding-right: add(($input-padding-x-sm / 2), add($input-height-inner-quarter, add($rb-input-with-btn-btn-width, 8px)));
+    }
+  }
+}

@@ -39,12 +39,16 @@
                 rbSingleOptionInput1: null,
                 rbTagMultiSelectInput1: [],
                 rbTypeaheadInput1: null,
-                rbMultiLangInput: null
+                rbMultiLangInput: null,
+                rbInputWithButton: null,
             }
         },
         methods: {
             async rbMultiSelectSearch1(text) {
                 return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
+            },
+            onButtonClick() {
+                alert('button clicked');
             }
         }
     });
@@ -317,40 +321,61 @@
         </form>
         <form>
             <h4>Выбор несольких значений - <span class="text-muted">RbMultiOptionInput</span></h4>
-            <b-form>
-                <b-form-row>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Выбор нескольких значений">
-                            <rb-multi-option-input :items="rbDropdownInput1Items"
-                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="С бордером">
-                            <rb-multi-option-input :items="rbDropdownInput1Items" bordered
-                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Невалидный">
-                            <rb-multi-option-input :items="rbDropdownInput1Items" :state="false"
-                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Валидный">
-                            <rb-multi-option-input :items="rbDropdownInput1Items" :state="true"
-                                                   v-model="rbMultiOptionInput1"></rb-multi-option-input>
-                        </b-form-group>
-                    </b-col>
-                </b-form-row>
-            </b-form>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Выбор нескольких значений">
+                        <rb-multi-option-input :items="rbDropdownInput1Items"
+                                               v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="С бордером">
+                        <rb-multi-option-input :items="rbDropdownInput1Items" bordered
+                                               v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-multi-option-input :items="rbDropdownInput1Items" :state="false"
+                                               v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-multi-option-input :items="rbDropdownInput1Items" :state="true"
+                                               v-model="rbMultiOptionInput1"></rb-multi-option-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
             <h4>RbMultiPhoneInput</h4>
             <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
                 <rb-multi-phone-input v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
             </b-form-group>
+        </form>
+        <form>
+            <h4>RbInputWithBtn</h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Инпут с кнопкой внутри">
+                        <rb-input-with-button v-model="rbInputWithButton"
+                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-input-with-button v-model="rbInputWithButton" :state="false"
+                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-input-with-button v-model="rbInputWithButton" :state="true"
+                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
             <h4>RbMultiSelectInput</h4>
