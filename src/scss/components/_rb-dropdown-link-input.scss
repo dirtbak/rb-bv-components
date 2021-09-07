@@ -1,7 +1,7 @@
 .rb-dropdown-link-input {
   vertical-align: baseline;
 
-  &.dropdown.rb-dropdown {
+  &.dropdown.rb-dropdown-input {
     display: inline;
     width: auto;
   }
@@ -13,18 +13,36 @@
     display: inline;
     flex: none;
     line-height: unset;
+    background-color: transparent;
 
     &::after {
       margin-top: 0;
     }
+
+    &:hover {
+      border-color: transparent;
+      background-color: transparent;
+    }
   }
 
-  &.is-invalid .btn .rb-text {
-    color: $form-feedback-invalid-color;
+  .was-validated &:invalid, &.is-invalid,
+  .wax-validated &:valid, &.is-valid {
+    .btn {
+      border: none;
+    }
   }
 
-  &.is-valid .btn .rb-text {
-    color: $form-feedback-valid-color;
+  .was-validated &:invalid, &.is-invalid {
+    .btn .rb-text {
+      color: $form-feedback-invalid-color;
+    }
+
+  }
+
+  .wax-validated &:valid, &.is-valid {
+    .btn .rb-text {
+      color: $form-feedback-valid-color;
+    }
   }
 
   .btn.btn-light.dropdown-toggle:focus,

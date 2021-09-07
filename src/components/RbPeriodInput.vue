@@ -1,12 +1,17 @@
 <template>
-    <span>
-        <b-dropdown class="rb-dropdown rb-period-dropdown"
-                    :class="{'rb-bordered': bordered, 'rb-dropdown-link': link}"
+    <span class="rb-period-input">
+        <b-dropdown class="rb-dropdown-input"
+                    :class="cls"
                     :variant="variant">
             <template v-slot:button-content>
                 <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                       :showCancelItem="showCancelItem">
-                    <a class="rb-text">{{text? text: (showCancelItem? cancelItemText: placeholder)}}</a>
+                    <template v-if="link">
+                        <a class="rb-text">{{text? text: (showCancelItem? cancelItemText: placeholder)}}</a>
+                    </template>
+                    <template v-else>
+                        <rb-text>{{text? text: (showCancelItem? cancelItemText: placeholder)}}</rb-text>
+                    </template>
                 </slot>
             </template>
 
@@ -32,11 +37,12 @@
             link: Boolean,
             variant: {type: String, default: 'light'},
             bordered: Boolean,
-            cancelItemText: {type: String, default: 'Выберите'},
+            cancelItemText: {type: String, default: 'Не важно'},
             showCancelItem: Boolean,
-            placeholder: String,
+            placeholder: {type: String, default: 'Выберите период'},
             dtStart: [String, Date],
             dtEnd: [String, Date],
+            state: {type: Boolean, default: null},
         },
         data() {
             return {
@@ -59,10 +65,18 @@
                     SEVEN_DAYS: 5,
                     THIRTY_DAYS: 6,
                     CUSTOM: 7,
-                }
+                },
             }
         },
         computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered && !this.link,
+                    'rb-dropdown-link-input': this.link,
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            },
             text() {
                 let dtStart = this.innerDtStart;
                 let dtEnd = this.innerDtEnd;

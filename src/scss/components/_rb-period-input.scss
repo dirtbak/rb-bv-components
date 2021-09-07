@@ -1,3 +1,5 @@
-.rb-period-dropdown.rb-dropdown .dropdown-menu.show {
-  max-height: 230px;
+.rb-period-input {
+  .rb-dropdown .dropdown-menu.show {
+    max-height: $rb-period-input-dropdown-menu-max-height;
+  }
 }

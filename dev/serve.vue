@@ -393,10 +393,54 @@
         </form>-->
         <form>
             <h4>RbPeriodInput</h4>
-            <b-form-group label="Выбор периода">
-                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-            </b-form-group>
+            <b-form>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор периода">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                             :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                             bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Невалидный">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                             :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Валидный">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                             :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="В виде ссылки">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                             bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Невалидный">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                             :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Валидный">
+                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                             :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </b-form>
         </form>
         <form>
             <h4>RbPhoneInput</h4>
