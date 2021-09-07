@@ -17,7 +17,6 @@ $rb-dropdown-input-dropdown-menu-icon-font-size: 14px !default;
 $rb-dropdown-input-dropdown-menu-icon-margin-right: 5px !default;
 $rb-dropdown-input-border-color: $input-border-color !default;
 $rb-dropdown-input-border-width: $input-border-width !default;
-$rb-dropdown-input-invalid-border-color: $danger !default;
 $rb-dropdown-input-icon-font-size: 14px !default;
 $rb-dropdown-input-dropdown-toggle-text-overflow: hidden !default;
 $rb-dropdown-input-dropdown-toggle-text-align: left !default;
@@ -41,8 +40,7 @@ $rb-list-group-input-item-hover-bg: white !default;
 // RbSingleOptionInput
 $rb-single-option-input-border-width: $btn-border-width !default;
 $rb-single-option-input-border-color: $border-color !default;
-$rb-single-option-input-invalid-border-color: $form-feedback-invalid-color !default;
-$rb-single-option-input-valid-border-color: $form-feedback-valid-color !default;
+$rb-single-option-input-border-width: $input-border-width !default;
 
 // RbMultiLangInput
 $rb-multi-lang-input-gap: 8px;

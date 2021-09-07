@@ -1,5 +1,3 @@
-$rb-single-option-input-border-width: $input-border-width !default;
-
 .rb-single-option-input {
   white-space: nowrap;
 
@@ -8,10 +6,10 @@ $rb-single-option-input-border-width: $input-border-width !default;
   }
 
   &.is-invalid .btn, &.rb-bordered.is-invalid .btn {
-    border: $rb-single-option-input-border-width solid $rb-single-option-input-invalid-border-color;
+    border: $rb-single-option-input-border-width solid $form-feedback-invalid-color;
   }
 
   &.is-valid .btn, &.rb-bordered.is-valid .btn {
-    border: $rb-single-option-input-border-width solid $rb-single-option-input-valid-border-color;
+    border: $rb-single-option-input-border-width solid $form-feedback-valid-color;
   }
 }
