@@ -1,3 +1,6 @@
+$rb-multi-select-input-primary-color: $body-color;
+$rb-multi-select-input-secondary-color: lighten($rb-multi-select-input-primary-color, 30%);
+
 .rb-multiselect-input {
   background-color: white;
   min-height: 30px;
@@ -39,7 +42,7 @@
     }
 
     .multiselect__input::placeholder {
-      color: $rb-secondary-text-color;
+      color: $rb-multi-select-input-secondary-color;
     }
 
   }

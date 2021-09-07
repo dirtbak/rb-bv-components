@@ -1,5 +1,8 @@
 <template>
-    <b-form-select v-model="innerValue" :options="options" @change="onChange($event)">
+    <b-form-select v-model="innerValue"
+                   :options="options"
+                   @change="onChange($event)"
+                   :state="state">
     </b-form-select>
 </template>
 
@@ -23,7 +26,8 @@
             displayField: {
                 type: String,
                 default: 'name'
-            }
+            },
+            state: {type: Boolean, default: null},
         },
         data() {
             return {

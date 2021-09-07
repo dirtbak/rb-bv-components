@@ -1,10 +1,10 @@
 .rb-list-group-input {
   &.is-invalid .list-group-item{
-    border-color: $danger;
+    border-color: $form-feedback-invalid-color;
   }
 
   &.is-valid .list-group-item{
-    border-color: $success;
+    border-color: $form-feedback-valid-color;
   }
 
   .list-group-item:hover:not(.active) {

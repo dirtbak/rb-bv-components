@@ -3,7 +3,7 @@
                   type="text"
                   v-model="innerValue"
                   :placeholder="placeholder"
-                  :class="{'rb-bordered': bordered}"
+                  :class="cls"
                   @input="onInput"
                   :state="state"
     ></b-form-input>
@@ -23,6 +23,13 @@
                 innerValue: this.format(this.value),
                 prevValue: null,
                 position: 0,
+            }
+        },
+        computed: {
+            cls() {
+                return {
+                    'rb-bordered': this.bordered
+                }
             }
         },
         watch: {

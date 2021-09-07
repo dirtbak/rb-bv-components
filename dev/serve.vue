@@ -405,16 +405,20 @@
             </b-form-group>
         </form>
         <form>
-            <h4>RbPhoneLink</h4>
-            <b-form-group label="Ссылка на телефон" style="width: 200px;">
+            <h4>Ссылка на телефон - <span class="text-muted">RbPhoneLink</span></h4>
+            <b-form-group label="Ссылка на телефон">
                 <rb-phone-link phone="+77011000888"></rb-phone-link>
             </b-form-group>
         </form>
         <form>
-            <h4>RbPriceInput</h4>
-            <b-form-group label="Ввод цены" style="width: 200px;">
-                <rb-price-input v-model="rbPriceInput1"></rb-price-input>
-            </b-form-group>
+            <h4>Ввод цены - <span class="text-muted">RbPriceInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Ввод цены">
+                        <rb-price-input v-model="rbPriceInput1"></rb-price-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </form>
         <form>
             <h4>RbSelectInput</h4>

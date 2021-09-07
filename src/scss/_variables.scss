@@ -1,14 +1,3 @@
-// Colors
-$rb-primary-text-color: #434a54 !default;
-$rb-gray-secondary: #edefee !default;
-$rb-secondary-text-color: #656d78 !default;
-$rb-tertiary-text-color: #969ea7 !default;
-
-// Icons
-$rb-include-fontello: true !default;
-
-$rb-btn-light-bg: #fff !default;
-
 // RbBooleanButtonInput
 $rb-boolean-button-input-border-width: $btn-border-width !default;
 $rb-boolean-button-input-border-color: $border-color !default;
@@ -41,19 +30,19 @@ $rb-empty-state-text-align: center !default;
 $rb-empty-state-height: 100% !default;
 $rb-empty-state-main-icon-font-size: 78px !default;
 $rb-empty-state-title-font-size: 1.125rem !default;
-$rb-empty-state-title-color: $rb-primary-text-color !default;
+$rb-empty-state-title-color: $body-color !default;
 $rb-empty-state-description-font-size: $font-size-base !default;
-$rb-empty-state-description-color: $rb-secondary-text-color !default;
+$rb-empty-state-description-color: $gray-600 !default;
 $rb-empty-state-max-width: 60% !default;
 
 // RbListGroupInput
-$rb-list-group-input-item-hover-bg: $rb-gray-secondary !default;
+$rb-list-group-input-item-hover-bg: white !default;
 
 // RbSingleOptionInput
 $rb-single-option-input-border-width: $btn-border-width !default;
 $rb-single-option-input-border-color: $border-color !default;
-$rb-single-option-input-invalid-border-color: $danger !default;
-$rb-single-option-input-valid-border-color: $success !default;
+$rb-single-option-input-invalid-border-color: $form-feedback-invalid-color !default;
+$rb-single-option-input-valid-border-color: $form-feedback-valid-color !default;
 
 // RbMultiLangInput
 $rb-multi-lang-input-gap: 8px;
@@ -61,7 +50,7 @@ $rb-multi-lang-input-font-size-m: 14px;
 $rb-multi-lang-input-font-size-s: 12px;
 $rb-multi-lang-input-line-height-m: 20px;
 $rb-multi-lang-input-line-height-s: 20px;
-$rb-multi-lang-input-text-secondary: $rb-gray-60;
+$rb-multi-lang-input-text-secondary: $gray-600;
 $rb-multi-lang-input-dropdown-item-padding: 8px 12px;
 $rb-multi-lang-input-border-width: 2px;
 $rb-multi-lang-input-text-secondary: $secondary;

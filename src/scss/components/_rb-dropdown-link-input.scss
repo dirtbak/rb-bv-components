@@ -20,11 +20,11 @@
   }
 
   &.is-invalid .btn .rb-text {
-    color: $danger;
+    color: $form-feedback-invalid-color;
   }
 
   &.is-valid .btn .rb-text {
-    color: $success;
+    color: $form-feedback-valid-color;
   }
 
   .btn.btn-light.dropdown-toggle:focus,

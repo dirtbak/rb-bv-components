@@ -1,5 +1,5 @@
-$rb-boolean-button-input-invalid-border-color: $danger;
-$rb-boolean-button-input-valid-border-color: $success;
+$rb-boolean-button-input-invalid-border-color: $form-feedback-invalid-color;
+$rb-boolean-button-input-valid-border-color: $form-feedback-valid-color;
 
 .rb-boolean-button-input {
   &.rb-bordered {

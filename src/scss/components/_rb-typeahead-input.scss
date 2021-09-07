@@ -24,7 +24,7 @@
     overflow: hidden;
 
     .multiselect__placeholder {
-      color: $rb-secondary-text-color;
+      color: $gray-600;
       margin-bottom: unset;
       padding-top: unset;
     }
@@ -40,7 +40,7 @@
     }
 
     .multiselect__input::placeholder {
-      color: $rb-secondary-text-color;
+      color: $gray-600;
     }
   }
 

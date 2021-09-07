@@ -19,7 +19,7 @@
   }
 
   .rb-lang-text {
-    color: $rb-brand-on-primary;
+    color: theme-color('primary');
   }
 
   input {
@@ -40,10 +40,10 @@
     border-radius: $rb-multi-lang-input-input-group-radius;
     border-color: $primary;
     &.is-valid{
-      border-color: $success;
+      border-color: $form-feedback-valid-color;
     }
     &.is-invalid{
-      border-color: $danger;
+      border-color: $form-feedback-invalid-color;
     }
   }
 

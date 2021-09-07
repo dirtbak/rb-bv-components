@@ -11,11 +11,11 @@
   }
 
   &.is-invalid .dropdown-toggle, &.is-invalid.rb-bordered .dropdown-toggle {
-    border: $rb-dropdown-input-border-width solid $rb-dropdown-input-invalid-border-color;
+    border: $rb-dropdown-input-border-width solid $form-feedback-invalid-color;
   }
 
   &.is-valid .dropdown-toggle, &.is-valid.rb-bordered .dropdown-toggle {
-    border: $rb-dropdown-input-border-width solid $success;
+    border: $rb-dropdown-input-border-width solid $form-feedback-valid-color;
   }
 
   .dropdown-toggle {

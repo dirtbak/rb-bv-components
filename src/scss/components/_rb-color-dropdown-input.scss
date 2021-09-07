@@ -4,10 +4,10 @@
   }
 
   &.is-invalid .btn, &.rb-bordered.is-invalid .btn {
-    border: $rb-color-dropdown-input-border-width solid $danger;
+    border: $rb-color-dropdown-input-border-width solid $form-feedback-invalid-color;
   }
 
   &.is-valid .btn, &.rb-bordered.is-valid .btn {
-    border: $rb-color-dropdown-input-border-width solid $success;
+    border: $rb-color-dropdown-input-border-width solid $form-feedback-valid-color;
   }
 }
