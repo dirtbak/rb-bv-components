@@ -44,15 +44,17 @@ $rb-single-option-input-border-width: $input-border-width !default;
 
 // RbMultiLangInput
 $rb-multi-lang-input-gap: 8px;
-$rb-multi-lang-input-font-size-m: 14px;
-$rb-multi-lang-input-font-size-s: 12px;
-$rb-multi-lang-input-line-height-m: 20px;
-$rb-multi-lang-input-line-height-s: 20px;
-$rb-multi-lang-input-text-secondary: $gray-600;
-$rb-multi-lang-input-dropdown-item-padding: 8px 12px;
-$rb-multi-lang-input-border-width: 2px;
-$rb-multi-lang-input-text-secondary: $secondary;
-$rb-multi-lang-input-input-group-radius: 4px;
+$rb-multi-lang-input-font-size: $font-size-base !default;
+$rb-multi-lang-input-font-size-sm: $font-size-sm !default;
+$rb-multi-lang-input-line-height: $line-height-base !default;
+$rb-multi-lang-input-line-height-sm: $line-height-sm !default;
+$rb-multi-lang-input-text-secondary: $gray-600 !default;
+$rb-multi-lang-input-dropdown-item-padding: $dropdown-item-padding-y $dropdown-item-padding-y !default;
+$rb-multi-lang-input-border-width: $input-border-width !default;
+$rb-multi-lang-input-text-secondary: $secondary !default;
+$rb-multi-lang-input-input-group-radius: $input-border-radius !default;
+$rb-multi-lang-input-btn-width-min: 83.5px !default;
+$rb-multi-lang-input-dropdown-menu-width-min: 320px !default;
 
 // RbPeriodInput
 $rb-period-input-dropdown-menu-max-height: 230px !default;

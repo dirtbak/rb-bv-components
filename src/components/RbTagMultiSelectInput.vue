@@ -213,8 +213,7 @@
 
             },
             onKeyEnter(e) {
-                let isManager = this.isManager
-                if (this.addTagOnEnter && isManager) {
+                if (this.addTagOnEnter) {
                     this.newTagCounter--; // декрементируем счетчик, чтобы использовать как id для нового тега
                     this.select({id: this.newTagCounter, name: this.inputValue});
                 }
