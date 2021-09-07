@@ -4,6 +4,8 @@
                  :placeholder="placeholder"
                  :state="state"
                  v-model="innerValue"
+                 v-mask="mask"
+                 :masked="masked"
                  @focus="$emit('focus', $event)"
                  @click="$emit('click', $event)"
                  @input="$emit('input', $event)"
@@ -16,6 +18,8 @@
 </template>
 
 <script>
+    import {mask} from 'vue-the-mask'
+
     export default {
         name: 'RbInputWithButton',
         props: {
@@ -23,7 +27,9 @@
             state: {type: Boolean, default: null},
             value: [String, Number],
             type: {type: String, default: 'text'},
-            icon: {type: String, default: 'icon-close'}
+            icon: {type: String, default: 'icon-close'},
+            masked: {type: Boolean, default: false},
+            mask: {type: String, default: null},
         },
         data() {
             return {

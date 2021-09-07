@@ -1,26 +1,23 @@
 <template>
     <div class="rb-multi-phone-input">
-        <the-mask class="form-control contact-phone-form-input"
-                  :mask="mask"
-                  v-model="innerValueComputed"
-                  type="text"
-                  :masked="false"
-                  :placeholder="placeholder"></the-mask>
-
-        <div class="remo@e-btn-wrapper">
-            <b-button class="rb-circle-button remove-btn" variant="outline-secondary" @click="remove">
-                <b-icon icon="x"></b-icon>
-            </b-button>
-        </div>
+        <rb-input-with-button class="contact-phone-form-input"
+                              v-model="innerValueComputed"
+                              v-mask="mask"
+                              type="text"
+                              :placeholder="placeholder"
+                              @buttonClicked="remove">
+        </rb-input-with-button>
     </div>
 </template>
 
 <script>
-    import {TheMask} from 'vue-the-mask';
+    import {mask} from 'vue-the-mask'
+    import RbInputWithButton from "./RbInputWithButton";
 
     export default {
         name: 'RbMultiPhoneInput',
-        components: {TheMask},
+        components: {RbInputWithButton},
+        directives: {mask},
         props: {
             // Массив может хранить номера телефонов либо объекты содержащие номер телефона,
             // зависит от того, задано поле phoneNumberField или нет

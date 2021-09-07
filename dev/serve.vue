@@ -349,13 +349,14 @@
             </b-form-row>
         </form>
         <form>
-            <h4>RbMultiPhoneInput</h4>
+            <h4>Инпут для ввода нескольких телефонов - <span class="text-muted">RbMultiPhoneInput</span></h4>
             <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
-                <rb-multi-phone-input v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
+                <rb-multi-phone-input :id="0"
+                                      v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
             </b-form-group>
         </form>
         <form>
-            <h4>RbInputWithBtn</h4>
+            <h4>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
                     <b-form-group label="Инпут с кнопкой внутри">
