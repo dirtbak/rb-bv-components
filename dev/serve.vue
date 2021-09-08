@@ -39,6 +39,8 @@
                 rbSingleOptionInput1: null,
                 rbTagMultiSelectInput1: [],
                 rbTypeaheadInput1: null,
+                rbBvTypeaheadInput1: null,
+                rbBvTypeaheadInput2: 2,
                 rbMultiLangInput: null,
                 rbInputWithButton: null,
             }
@@ -47,16 +49,13 @@
             async rbMultiSelectSearch1(text) {
                 return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
             },
-            onButtonClick() {
-                alert('button clicked');
-            }
         }
     });
 </script>
 
 <template>
     <div id="app">
-        <b-form>
+        <b-form @submit.stop.prevent>
             <h4>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -92,7 +91,7 @@
             </b-form-row>
         </b-form>
 
-        <b-form>
+        <b-form @submit.stop.prevent>
             <h4>Булевый инпут типа "Да/Нет" - <span class="text-muted">RbBooleanSingleOptionInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -128,7 +127,7 @@
             </b-form-row>
         </b-form>
 
-        <form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор цвета - <span class="text-muted">RbColorDropdownInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -155,8 +154,8 @@
                 </b-col>
             </b-form-row>
 
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор даты - <span class="text-muted">RbDatePickerInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -176,8 +175,8 @@
                 </b-col>
             </b-form-row>
 
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор одного значения из списка - <span class="text-muted">RbDropdownInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -211,8 +210,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор одного значения из списка - <span class="text-muted">RbDropdownLinkInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -234,14 +233,14 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Ссылка на почту - <span class="text-muted">RbEmailLink</span></h4>
             <b-form-group label="Автоматически пересылает на email">
                 <rb-email-link email="rb-components@rebel.kz"></rb-email-link>
             </b-form-group>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Пустой стейт - <span class="text-muted">RbEmptyState</span></h4>
             <b-form-group label="На случай когда показать нечего">
                 <div style="width: 400px; height: 200px;">
@@ -250,8 +249,8 @@
                     </rb-empty-state>
                 </div>
             </b-form-group>
-        </form>
-        <form class="rb-icons">
+        </b-form>
+        <b-form class="rb-icons">
             <h4>Иконки - <span class="text-muted">RbIcon</span></h4>
             <b-form-row>
                 <b-form-group label="Стандартная">
@@ -264,8 +263,8 @@
                     <rb-icon icon="icon-none" variant="danger"></rb-icon>
                 </b-form-group>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор одного значения из списка - <span class="text-muted">RbListGroupInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -287,9 +286,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор нескольких значений - <span class="text-muted">RbMultiDropdownInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -317,9 +315,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор несольких значений - <span class="text-muted">RbMultiOptionInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -347,15 +344,15 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Инпут для ввода нескольких телефонов - <span class="text-muted">RbMultiPhoneInput</span></h4>
             <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
                 <rb-multi-phone-input :id="0"
                                       v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
             </b-form-group>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -377,23 +374,23 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>RbMultiSelectInput</h4>
             <b-form-group label="Typeahead инпут с выбором нескольких значений" style="width: 200px;">
                 <rb-multi-select-input v-model="rbMultiSelectInput1" :search-options="rbMultiSelectSearch1"
                 ></rb-multi-select-input>
             </b-form-group>
-        </form>
-        <!--<form>
+        </b-form>
+        <!--<b-form @submit.stop.prevent>
             <h4>RbPagination</h4>
             <b-form-group label="Пагинация">
                 <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
             </b-form-group>
-        </form>-->
-        <form>
+        </b-form>-->
+        <b-form @submit.stop.prevent>
             <h4>Выбор периода - <span class="text-muted">RbPeriodInput</span></h4>
-            <b-form>
+            <b-form @submit.stop.prevent>
                 <b-form-row>
                     <b-col lg="2" sm="12">
                         <b-form-group label="Выбор периода">
@@ -441,36 +438,34 @@
                     </b-col>
                 </b-form-row>
             </b-form>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Ввод телефона - <span class="text-muted">RbPhoneInput</span></h4>
-            <b-form>
-                <b-form-row>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Ввод телефона">
-                            <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Невалидный">
-                            <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Валидный">
-                            <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
-                        </b-form-group>
-                    </b-col>
-                </b-form-row>
-            </b-form>
-        </form>
-        <form>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Ввод телефона">
+                        <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Ссылка на телефон - <span class="text-muted">RbPhoneLink</span></h4>
             <b-form-group label="Ссылка на телефон">
                 <rb-phone-link phone="+77011000888"></rb-phone-link>
             </b-form-group>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Ввод цены - <span class="text-muted">RbPriceInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -489,8 +484,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Обычный селект - <span class="text-muted">RbSelectInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -511,8 +506,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>Выбор одного значения кнопками - <span class="text-muted">RbSingleOptionInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -540,8 +535,8 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>RbTagMultiSelectInput</h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
@@ -563,24 +558,45 @@
                     </b-form-group>
                 </b-col>
             </b-form-row>
-        </form>
-        <form>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h4>RbTypeaheadInput</h4>
             <b-form-group label="Typeahead инпут" style="width: 200px;">
                 <rb-typeahead-input v-model="rbTypeaheadInput1"
                                     :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
             </b-form-group>
-        </form>
-        <form>
-            <h4>RbMultiLangInput</h4>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h4>Typeahead версия 2 - <span class="text-muted">RbBvTypeaheadInput</span></h4>
+            <b-form-group label="Typeahead инпут" style="width: 200px;">
+                <rb-bv-typeahead-input v-model="rbBvTypeaheadInput1"
+                                    :searchOptions="rbMultiSelectSearch1"></rb-bv-typeahead-input>
+            </b-form-group>
+            <b-form-group label="Typeahead инпут" style="width: 200px;">
+                <rb-bv-typeahead-input v-model="rbBvTypeaheadInput2" :state="false"
+                                       :searchOptions="rbMultiSelectSearch1"></rb-bv-typeahead-input>
+            </b-form-group>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h4>Инпут с выбором языка - <span class="text-muted">RbMultiLangInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
-                    <b-form-group label="Инпут с выбором языка" style="width: 250px">
+                    <b-form-group label="Инпут с выбором языка">
                         <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
                     </b-form-group>
                 </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный">
+                        <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный">
+                        <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
+                    </b-form-group>
+                </b-col>
             </b-form-row>
-        </form>
+        </b-form>
     </div>
 </template>
 
@@ -597,7 +613,11 @@
         margin-bottom: 40px;
     }
 
-    #app .rb-icons .form-group {
+    #app .rb-icons {
         margin-right: 10px;
+    }
+
+    #app .form-group {
+        max-width: 200px;
     }
 </style>

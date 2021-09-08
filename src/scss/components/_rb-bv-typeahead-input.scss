@@ -1,0 +1,30 @@
+.rb-bv-typeahead-input {
+  display: block;
+
+  .rb-typeahead-inner {
+    position: relative;
+  }
+
+  .dropdown {
+    min-width: 100%;
+    position: absolute;
+
+    &.rb-empty .dropdown-menu {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  .dropdown-toggle {
+    padding: 0;
+    border: none;
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
+
+    li.rb-current .dropdown-item {
+      font-weight: bold;
+    }
+  }
+}
