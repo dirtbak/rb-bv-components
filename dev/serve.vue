@@ -39,8 +39,7 @@
                 rbSingleOptionInput1: null,
                 rbTagMultiSelectInput1: [],
                 rbTypeaheadInput1: null,
-                rbBvTypeaheadInput1: null,
-                rbBvTypeaheadInput2: 2,
+                rbTypeaheadInput2: 2,
                 rbMultiLangInput: null,
                 rbInputWithButton: null,
             }
@@ -51,7 +50,7 @@
             },
             async rbSearchOptionByValue(value) {
                 let options = this.rbDropdownInput1Items.filter(i => i && i.id && i.id == value);
-                return options.length > 0? options[0]: null;
+                return options.length > 0 ? options[0] : null;
             }
         }
     });
@@ -564,23 +563,29 @@
             </b-form-row>
         </b-form>
         <b-form @submit.stop.prevent>
-            <h4>RbTypeaheadInput</h4>
-            <b-form-group label="Typeahead инпут" style="width: 200px;">
-                <rb-typeahead-input v-model="rbTypeaheadInput1"
-                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
-            </b-form-group>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h4>Typeahead версия 2 - <span class="text-muted">RbBvTypeaheadInput</span></h4>
-            <b-form-group label="Typeahead инпут" style="width: 200px;">
-                <rb-bv-typeahead-input v-model="rbBvTypeaheadInput1"
-                                    :searchOptions="rbMultiSelectSearch1"></rb-bv-typeahead-input>
-            </b-form-group>
-            <b-form-group label="Typeahead инпут" style="width: 200px;">
-                <rb-bv-typeahead-input v-model="rbBvTypeaheadInput2" :state="false"
-                                       :searchOptionByValue="rbSearchOptionByValue"
-                                       :searchOptions="rbMultiSelectSearch1"></rb-bv-typeahead-input>
-            </b-form-group>
+            <h4>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Typeahead инпут" style="width: 200px;">
+                        <rb-typeahead-input v-model="rbTypeaheadInput1"
+                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Невалидный" style="width: 200px;">
+                        <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
+                                               :searchOptionByValue="rbSearchOptionByValue"
+                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                    </b-form-group>
+                </b-col>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Валидный" style="width: 200px;">
+                        <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
+                                               :searchOptionByValue="rbSearchOptionByValue"
+                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
         </b-form>
         <b-form @submit.stop.prevent>
             <h4>Инпут с выбором языка - <span class="text-muted">RbMultiLangInput</span></h4>
