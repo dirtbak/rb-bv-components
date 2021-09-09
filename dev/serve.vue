@@ -58,39 +58,61 @@
 <template>
     <div id="app">
         <b-form @submit.stop.prevent>
-            <h4>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h4>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Без чекбокса">
-                        <rb-boolean-button-input label="Все будет хорошо"
-                                                 v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="С бордером">
-                        <rb-boolean-button-input label="Все будет хорошо" bordered
-                                                 v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="С чекбоксом">
-                        <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true"
-                                                 v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true" :state="false"
-                                                 v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-boolean-button-input label="Все будет хорошо" :showCheckbox="true" :state="true"
-                                                 v-model="rbBooleanButtonInput2"></rb-boolean-button-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
+            <h5>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h5>
+
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="Без чекбокса"
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="C бордером" bordered
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="С чекбоксом" bordered :showCheckbox="true"
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="Outline" outline :showCheckbox="true"
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="Без чекбокса" disabled
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="C бордером" bordered disabled
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-boolean-button-input label="С чекбоксом" bordered disabled :showCheckbox="true"
+                                                     v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
         </b-form>
 
         <b-form @submit.stop.prevent>
@@ -196,7 +218,7 @@
                 <b-col lg="2" sm="12">
                     <b-form-group label="С бордером">
                         <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
-                                           bordered></rb-dropdown-input>
+                                           bordered block></rb-dropdown-input>
                     </b-form-group>
                 </b-col>
                 <b-col lg="2" sm="12">
@@ -300,7 +322,7 @@
                 </b-col>
                 <b-col lg="2" sm="12">
                     <b-form-group label="С бордером">
-                        <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered
+                        <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered block
                                                  v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                     </b-form-group>
                 </b-col>
@@ -322,7 +344,7 @@
             <h4>Выбор несольких значений - <span class="text-muted">RbMultiOptionInput</span></h4>
             <b-form-row>
                 <b-col lg="2" sm="12">
-                    <b-form-group label="Выбор нескольких значений">
+                    <b-form-group label="Обычный">
                         <rb-multi-option-input :items="rbDropdownInput1Items"
                                                v-model="rbMultiOptionInput1"></rb-multi-option-input>
                     </b-form-group>
@@ -567,21 +589,21 @@
                 <b-col lg="2" sm="12">
                     <b-form-group label="Typeahead инпут" style="width: 200px;">
                         <rb-typeahead-input v-model="rbTypeaheadInput1"
-                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
                     </b-form-group>
                 </b-col>
                 <b-col lg="2" sm="12">
                     <b-form-group label="Невалидный" style="width: 200px;">
                         <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
-                                               :searchOptionByValue="rbSearchOptionByValue"
-                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                            :searchOptionByValue="rbSearchOptionByValue"
+                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
                     </b-form-group>
                 </b-col>
                 <b-col lg="2" sm="12">
                     <b-form-group label="Валидный" style="width: 200px;">
                         <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
-                                               :searchOptionByValue="rbSearchOptionByValue"
-                                               :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                            :searchOptionByValue="rbSearchOptionByValue"
+                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
                     </b-form-group>
                 </b-col>
             </b-form-row>
@@ -615,6 +637,14 @@
     }
 
     #app h4 {
+        margin-bottom: 20px;
+    }
+
+    #app h5 {
+        margin-bottom: 40px;
+    }
+
+    #app .rb-component-row {
         margin-bottom: 20px;
     }
 

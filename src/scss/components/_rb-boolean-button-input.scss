@@ -4,6 +4,12 @@
     border-radius: $rb-boolean-button-input-border-radius;
   }
 
+  &.btn-outline-primary {
+    &.rb-bordered {
+      border-color: theme-color('primary');
+    }
+  }
+
   &.is-invalid, &.rb-bordered.is-invalid {
     border: $rb-boolean-button-input-border-width solid $form-feedback-invalid-color;
   }

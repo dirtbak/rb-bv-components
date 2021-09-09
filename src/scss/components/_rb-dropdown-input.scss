@@ -19,6 +19,8 @@
   }
 
   .dropdown-toggle {
+    display: flex;
+    align-items: center;
     overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
     text-align: $rb-dropdown-input-dropdown-toggle-text-align;
 
@@ -27,6 +29,7 @@
     }
 
     .rb-text {
+      flex: 1;
       overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
     }
   }

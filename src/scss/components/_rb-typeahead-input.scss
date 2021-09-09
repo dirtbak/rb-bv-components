@@ -21,7 +21,7 @@
   }
 
   .dropdown-menu {
-    min-width: 100%;
+    min-width: $rb-typeahead-input-dropdown-menu-min-width;
 
     li.rb-current .dropdown-item {
       font-weight: bold;

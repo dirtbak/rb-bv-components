@@ -1,32 +1,27 @@
 .rb-multi-dropdown-input {
   .dropdown-toggle {
     display: flex;
-    text-align: left;
-
-    &::after {
-      margin-top: 12px;
-    }
+    align-items: center;
 
     .rb-text {
       flex: 1;
     }
 
     .rb-counter {
-      margin-left: 10px;
-      margin-top: 3px;
-      color: white;
-      height: 22px;
-      width: 22px;
+      margin-left: $rb-multi-dropdown-input-counter-margin-left;
+      color: $rb-multi-dropdown-input-counter-color;
+      height: $rb-multi-dropdown-input-counter-height;
+      min-width: $rb-multi-dropdown-input-counter-min-width;
       display: inline-block;
-      background-color: theme-color('primary');
-      border-radius: 11px;
+      background-color: $rb-multi-dropdown-input-counter-bg;
+      border-radius: $rb-multi-dropdown-input-counter-border-radius;
       text-align: center;
-      line-height: 22px;
-      margin-right: 10px;
+      line-height: $rb-multi-dropdown-input-counter-line-height;
+      margin-right: $rb-multi-dropdown-input-counter-margin-right;
     }
   }
 
   .rb-selected a {
-    color: theme-color('primary');
+    color: $rb-multi-dropdown-input-menu-item-active-color;
   }
 }

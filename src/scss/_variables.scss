@@ -56,5 +56,30 @@ $rb-multi-lang-input-input-group-radius: $input-border-radius !default;
 $rb-multi-lang-input-btn-width-min: 83.5px !default;
 $rb-multi-lang-input-dropdown-menu-width-min: 320px !default;
 
+// RbMultiDropdownInput
+$rb-multi-dropdown-input-counter-margin-left: 10px !default;
+$rb-multi-dropdown-input-counter-margin-right: 10px !default;
+$rb-multi-dropdown-input-counter-color: white !default;
+$rb-multi-dropdown-input-counter-height: 22px !default;
+$rb-multi-dropdown-input-counter-min-width: 22px !default;
+$rb-multi-dropdown-input-counter-bg: theme-color('primary') !default;
+$rb-multi-dropdown-input-counter-border-radius: $rb-multi-dropdown-input-counter-height / 2 !default;
+$rb-multi-dropdown-input-counter-line-height: $rb-multi-dropdown-input-counter-height !default;
+$rb-multi-dropdown-input-menu-item-active-color: theme-color('primary') !default;
+
 // RbPeriodInput
 $rb-period-input-dropdown-menu-max-height: 230px !default;
+
+// RbPeriodSelectionModalFrame
+$rb-period-selection-modal-frame-modal-max-width: 640px !default;
+$rb-period-selection-modal-frame-date-input-width: 270px !default;
+$rb-period-selection-modal-frame-date-input-label-font-weight: bold !default;
+$rb-period-selection-modal-frame-date-input-label-font-size: $font-size-base !default;
+$rb-period-selection-modal-frame-date-input-label-margin-bottom: 10px !default;
+
+// RbMultiSelectInput
+$rb-multi-select-input-primary-color: $body-color !default;
+$rb-multi-select-input-secondary-color: lighten($rb-multi-select-input-primary-color, 30%) !default;
+
+// RbTypeaheadInput
+$rb-typeahead-input-dropdown-menu-min-width: 100% !default;
