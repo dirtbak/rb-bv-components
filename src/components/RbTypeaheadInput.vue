@@ -35,63 +35,33 @@
                     {{cancelOption[titleField]}}
                 </b-dropdown-item>
             </b-dropdown>
+            <b-dropdown v-if="multi">
+                <b-dropdown-item v-for="o in selectedOptions"
+                                 :key="o[valueField]">
+                    <rb-text>{{o[titleField]}}</rb-text>
+                    <b-button variant="plain">
+                        <rb-icon class="icon-close"></rb-icon>
+                    </b-button>
+                </b-dropdown-item>
+            </b-dropdown>
         </div>
     </div>
 </template>
 
 <script>
     import typeOf from 'typeof';
-    import {debounce} from "debounce";
-    import Vue from "vue";
-
-    Vue.directive('click-outside', {
-        bind: function (el, binding, vnode) {
-            el.clickOutsideEvent = function (event) {
-                if (!(el == event.target || el.contains(event.target))) {
-                    vnode.context[binding.expression](event);
-                }
-            };
-            document.body.addEventListener('click', el.clickOutsideEvent)
-        },
-        unbind: function (el) {
-            document.body.removeEventListener('click', el.clickOutsideEvent)
-        },
-    });
+    import {typeaheadMixin} from "../mixin/typeahead";
 
     export default {
         name: 'RbTypeaheadInput',
+        mixins: [typeaheadMixin],
         props: {
-            valueField: {type: String, default: 'id'},
-            titleField: {type: String, default: 'name'},
-            placeholder: {type: String, default: 'Начните набрать ...'},
-            state: {type: Boolean, default: null},
-            searchOptions: Function,
-            searchOptionByValue: {type: Function, default: null},
-            value: {type: [String, Number], default: null},
-            showCancelOption: {type: Boolean, default: true},
-            cancelOptionTitle: {type: String, default: 'Не важно'},
-            cancelOptionValue: {type: [String, Number], default: null},
-            async: {type: Boolean, default: true},
-            clearOnFocus: {type: Boolean, default: false},
+            multi: {type: Boolean, default: false},
         },
         data() {
             return {
-                text: null,
                 backupOption: null,
-                isLoading: false,
-                options: [],
-                innerValue: null,
-                dropdownShown: false,
-                dropdownOkToHide: false,
-                selectIndex: 0,
-            }
-        },
-        computed: {
-            cancelOption() {
-                let o = {};
-                o[this.titleField] = this.cancelOptionTitle;
-                o[this.valueField] = this.valueField;
-                return o;
+                selectedOptions: [],
             }
         },
         watch: {
@@ -104,12 +74,6 @@
             }
         },
         methods: {
-            onInput() {
-                this.debounceSearch(this.text);
-                if (!this.dropdownShown) {
-                    this.$refs.dropdown.show();
-                }
-            },
             onFocus() {
                 if (!this.dropdownShown) {
                     this.$refs.dropdown.show();
@@ -123,62 +87,35 @@
                 }
             },
             onOptionSelect(option) {
-                this.text = this.isCancelOption(option)? null :option[this.titleField];
+                this.text = this.isCancelOption(option) ? null : option[this.titleField];
                 this.$emit('input', option[this.valueField]);
                 this.$emit('change', option[this.valueField]);
                 this.closeDropdown();
             },
-            isCancelOption(option) {
-                return option[this.valueField] === option[this.valueField];
-            },
-            debounceSearch: debounce(function (text) {
-                if (this.async) {
-                    this.isLoading = true;
-                    this.searchOptions(text).then(options => {
-                        this.options = options;
-                        this.selectIndex = 0;
-                        this.isLoading = false;
-                    }).catch(err => {
-                        this.isLoading = false;
-                        throw  err;
-                    });
-                } else {
-                    this.selectIndex = 0;
-                    this.options = this.searchOptions(text);
-                }
-            }, 200),
-            defaultSearchOptionByValue(value) {
-                return this.options.find(o => o[this.valueField] === value);
-            },
-            searchInOptions(value) {
-                return this.options.find(o => o[this.valueField] === value);
-            },
             resolveValue(value) {
                 if (value !== null) {
                     let option = this.searchInOptions(value);
-                    if (!option && this.searchOptionByValue) {
+                    if (!option && this.searchOptionByValues) {
                         if (this.async) {
                             this.isLoading = false;
-                            this.searchOptionByValue(value).then(option => {
-                                if(option) {
-                                    if(typeOf(option) === 'array') {
-                                        option = option[0];
-                                    }
-                                    this.options.push(option);
+                            this.searchOptionByValues(value).then(options => {
+                                if(options) {
+                                    this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                    console.info('this.options', this.options);
+                                    option = this.searchInOptions(value);
                                     this.text = option[this.titleField];
                                 }
+
                                 this.isLoading = false;
                             }).catch(err => {
                                 this.isLoading = false;
                                 throw  err;
                             });
                         } else {
-                            option = this.searchOptionByValue(value);
-                            if(option) {
-                                if(typeof option === 'array') {
-                                    option = option[0];
-                                }
-                                this.options.push(option);
+                            let options = this.searchOptionByValues(value);
+                            if (options) {
+                                this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                option = this.searchInOptions(value);
                                 this.text = option[this.titleField];
                             }
                         }
@@ -193,58 +130,6 @@
                     }
                 }
             },
-            closeDropdown() {
-                this.dropdownOkToHide = true;
-                this.$refs.dropdown.hide();
-            },
-            handleDropdownHide(bvEvent) {
-                if (this.dropdownOkToHide) {
-                    this.dropdownOkToHide = false
-                } else {
-                    bvEvent.preventDefault()
-                }
-            },
-            onClickOutside() {
-                this.closeDropdown();
-                this.resolveValue(this.value);
-            },
-            onDropdownShown() {
-                this.dropdownOkToHide = false;
-                this.dropdownShown = true;
-                this.$refs.input.focus();
-            },
-            onDropdownHidden() {
-                this.dropdownShown = false;
-            },
-            onKeyEnter(e) {
-                if (this.selectIndex < this.options.length) {
-                    this.onOptionSelect(this.options[this.selectIndex]);
-                } else if (this.selectIndex === this.options.length && this.showCancelOption) {
-                    this.onOptionSelect(this.isCancelOption);
-                }
-                e.preventDefault();
-            },
-            onKeyArrowDown(e) {
-                if (this.selectIndex < this.options.length) {
-                    this.selectIndex++;
-                }
-                e.preventDefault();
-            },
-            onKeyArrowUp(e) {
-                if (this.selectIndex > 0) {
-                    this.selectIndex--;
-                }
-                e.preventDefault();
-            },
-            onKeyEsc(e) {
-                this.closeDropdown();
-            }
         },
-
-        created() {
-            if (this.value !== null) {
-                this.resolveValue(this.value);
-            }
-        }
     }
 </script>

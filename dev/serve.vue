@@ -1,4 +1,5 @@
 <script>
+    import typeOf from 'typeof';
     import Vue from 'vue';
     import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 
@@ -42,14 +43,18 @@
                 rbTypeaheadInput2: 2,
                 rbMultiLangInput: null,
                 rbInputWithButton: null,
+                rbMultiTypeaheadInput1: [1,2],
             }
         },
         methods: {
             async rbMultiSelectSearch1(text) {
                 return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
             },
-            async rbSearchOptionByValue(value) {
-                return this.rbDropdownInput1Items.filter(i => i && i.id && i.id == value);
+            async rbSearchOptionByValues(value) {
+                if(typeOf(value) !== 'array') {
+                    value = [value];
+                }
+                return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
             }
         }
     });
@@ -595,15 +600,27 @@
                 <b-col lg="2" sm="12">
                     <b-form-group label="Невалидный" style="width: 200px;">
                         <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
-                                            :searchOptionByValue="rbSearchOptionByValue"
+                                            :searchOptionByValues="rbSearchOptionByValues"
                                             :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
                     </b-form-group>
                 </b-col>
                 <b-col lg="2" sm="12">
                     <b-form-group label="Валидный" style="width: 200px;">
                         <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
-                                            :searchOptionByValue="rbSearchOptionByValue"
+                                            :searchOptionByValues="rbSearchOptionByValues"
                                             :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                    </b-form-group>
+                </b-col>
+            </b-form-row>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h4>Выбор нескольких значений с поиском - <span class="text-muted">RbMultiTypeaheadInput</span></h4>
+            <b-form-row>
+                <b-col lg="2" sm="12">
+                    <b-form-group label="Typeahead инпут" style="width: 200px;">
+                        <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1"
+                                            :searchOptionByValues="rbSearchOptionByValues"
+                                            :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
                     </b-form-group>
                 </b-col>
             </b-form-row>

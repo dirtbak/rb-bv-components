@@ -5,7 +5,7 @@
     position: relative;
   }
 
-  .dropdown {
+  .rb-typeahead-dropdown {
     min-width: 100%;
     position: absolute;
 
@@ -13,18 +13,20 @@
       border: none;
       padding: 0;
     }
-  }
 
-  .dropdown-toggle {
-    padding: 0;
-    border: none;
-  }
+    .dropdown-toggle {
+      padding: 0;
+      border: none;
+    }
 
-  .dropdown-menu {
-    min-width: $rb-typeahead-input-dropdown-menu-min-width;
+    .dropdown-menu {
+      min-width: $rb-typeahead-input-dropdown-menu-min-width;
 
-    li.rb-current .dropdown-item {
-      font-weight: bold;
+      li.rb-current .dropdown-item {
+        font-weight: bold;
+      }
     }
   }
+
+
 }

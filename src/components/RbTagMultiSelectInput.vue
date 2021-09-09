@@ -45,22 +45,6 @@
 
 <script>
     import {debounce} from 'debounce';
-    import Vue from 'vue';
-
-    Vue.directive('click-outside', {
-        bind: function (el, binding, vnode) {
-            el.clickOutsideEvent = function (event) {
-                if (!(el == event.target || el.contains(event.target))) {
-                    vnode.context[binding.expression](event);
-                }
-            };
-            document.body.addEventListener('click', el.clickOutsideEvent)
-        },
-        unbind: function (el) {
-            document.body.removeEventListener('click', el.clickOutsideEvent)
-        },
-    });
-
 
     export default {
         name: 'RbTagMultiSelectInput',
@@ -75,7 +59,6 @@
             addTagOnEnter: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
         },
-
         data: () => {
             return {
                 busy: false,
@@ -89,7 +72,6 @@
                 newTagOptionSuffix: '(Новый тег)'
             };
         },
-
         computed: {
             cls() {
                 return {
@@ -99,7 +81,6 @@
                 }
             }
         },
-
         watch: {
             value() {
                 this.selectedItems = this.value;
@@ -110,7 +91,6 @@
                 }
             }
         },
-
         methods: {
             debounceSearch: debounce(async function (text) {
                 await this.search(text);
@@ -234,7 +214,6 @@
                 this.$refs['dropdownItem_' + this.activeOptionIndex][0].focus();
             }
         },
-
         created() {
             if (this.searchAfterInit) {
                 this.search('');

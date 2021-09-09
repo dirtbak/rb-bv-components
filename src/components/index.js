@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 export {UtDate} from '../utils/UtDate';
+export {ClickOutside} from '../directives/click-outside';
 export {default as RbBooleanButtonInput} from './RbBooleanButtonInput';
 export {default as RbBooleanSingleOptionInput} from './RbBooleanSingleOptionInput'
 export {default as RbColorDropdownInput} from '../components/RbColorDropdownInput'
@@ -26,4 +27,5 @@ export {default as RbSingleOptionInput} from '../components/RbSingleOptionInput'
 export {default as RbTagMultiSelectInput} from '../components/RbTagMultiSelectInput'
 export {default as RbText} from '../components/RbText'
 export {default as RbTypeaheadInput} from '../components/RbTypeaheadInput'
+export {default as RbMultiTypeaheadInput} from '../components/RbMultiTypeaheadInput'
 export {default as RbMultiLangInput} from '../components/RbMultiLangInput'
