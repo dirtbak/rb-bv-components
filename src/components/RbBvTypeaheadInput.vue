@@ -29,7 +29,9 @@
                                  @click="onOptionSelect(o)">
                     {{o[titleField]}}
                 </b-dropdown-item>
-                <b-dropdown-item @click="onOptionSelect(cancelOption)" v-if="showCancelOption">
+                <b-dropdown-item @click="onOptionSelect(cancelOption)"
+                                 :active="selectIndex === options.length"
+                                 v-if="showCancelOption">
                     {{cancelOption[titleField]}}
                 </b-dropdown-item>
             </b-dropdown>
@@ -206,6 +208,8 @@
             onKeyEnter(e) {
                 if (this.selectIndex < this.options.length) {
                     this.onOptionSelect(this.options[this.selectIndex]);
+                } else if (this.selectIndex === this.options.length && this.showCancelOption) {
+                    this.onOptionSelect(this.isCancelOption);
                 }
                 e.preventDefault();
             },
