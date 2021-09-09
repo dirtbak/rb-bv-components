@@ -159,9 +159,10 @@
                         if (this.async) {
                             this.isLoading = false;
                             this.searchOptionByValue(value).then(option => {
-                                console.info('option', option);
-                                this.options.push(option);
-                                this.text = option[this.titleField];
+                                if(option) {
+                                    this.options.push(option);
+                                    this.text = option[this.titleField];
+                                }
                                 this.isLoading = false;
                             }).catch(err => {
                                 this.isLoading = false;
@@ -169,8 +170,10 @@
                             });
                         } else {
                             option = this.searchOptionByValue(value);
-                            this.options.push(option);
-                            this.text = option[this.titleField];
+                            if(option) {
+                                this.options.push(option);
+                                this.text = option[this.titleField];
+                            }
                         }
                     } else if (option) {
                         this.text = option[this.titleField];
