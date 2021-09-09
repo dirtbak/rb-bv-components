@@ -104,7 +104,6 @@
 
                 if (value) {
                     if (value == this.periods.CUSTOM) {
-                        console.info('this.$refs', this.$refs);
                         this.$refs['modal'].show();
                     } else {
                         if (value == this.periods.WEEK) {

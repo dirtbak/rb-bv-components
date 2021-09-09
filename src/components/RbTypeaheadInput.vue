@@ -161,8 +161,6 @@
                             this.isLoading = false;
                             this.searchOptionByValue(value).then(option => {
                                 if(option) {
-                                    console.info('option', option);
-                                    console.info("typeOf(option) === 'array'", typeOf(option) === 'array');
                                     if(typeOf(option) === 'array') {
                                         option = option[0];
                                     }
