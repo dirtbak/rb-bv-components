@@ -35,15 +35,6 @@
                     {{cancelOption[titleField]}}
                 </b-dropdown-item>
             </b-dropdown>
-            <b-dropdown v-if="multi">
-                <b-dropdown-item v-for="o in selectedOptions"
-                                 :key="o[valueField]">
-                    <rb-text>{{o[titleField]}}</rb-text>
-                    <b-button variant="plain">
-                        <rb-icon class="icon-close"></rb-icon>
-                    </b-button>
-                </b-dropdown-item>
-            </b-dropdown>
         </div>
     </div>
 </template>
@@ -55,13 +46,9 @@
     export default {
         name: 'RbTypeaheadInput',
         mixins: [typeaheadMixin],
-        props: {
-            multi: {type: Boolean, default: false},
-        },
         data() {
             return {
                 backupOption: null,
-                selectedOptions: [],
             }
         },
         watch: {
@@ -101,7 +88,6 @@
                             this.searchOptionByValues(value).then(options => {
                                 if(options) {
                                     this.options.push(typeOf(options) === 'array'? options[0]: options);
-                                    console.info('this.options', this.options);
                                     option = this.searchInOptions(value);
                                     this.text = option[this.titleField];
                                 }
