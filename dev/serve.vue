@@ -49,8 +49,7 @@
                 return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
             },
             async rbSearchOptionByValue(value) {
-                let options = this.rbDropdownInput1Items.filter(i => i && i.id && i.id == value);
-                return options.length > 0 ? options[0] : null;
+                return this.rbDropdownInput1Items.filter(i => i && i.id && i.id == value);
             }
         }
     });

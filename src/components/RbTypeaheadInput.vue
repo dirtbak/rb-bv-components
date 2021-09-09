@@ -40,6 +40,7 @@
 </template>
 
 <script>
+    import typeOf from 'typeof';
     import {debounce} from "debounce";
     import Vue from "vue";
 
@@ -160,6 +161,11 @@
                             this.isLoading = false;
                             this.searchOptionByValue(value).then(option => {
                                 if(option) {
+                                    console.info('option', option);
+                                    console.info("typeOf(option) === 'array'", typeOf(option) === 'array');
+                                    if(typeOf(option) === 'array') {
+                                        option = option[0];
+                                    }
                                     this.options.push(option);
                                     this.text = option[this.titleField];
                                 }
@@ -171,6 +177,9 @@
                         } else {
                             option = this.searchOptionByValue(value);
                             if(option) {
+                                if(typeof option === 'array') {
+                                    option = option[0];
+                                }
                                 this.options.push(option);
                                 this.text = option[this.titleField];
                             }
