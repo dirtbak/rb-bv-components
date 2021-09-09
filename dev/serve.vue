@@ -49,6 +49,10 @@
             async rbMultiSelectSearch1(text) {
                 return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
             },
+            async rbSearchOptionByValue(value) {
+                let options = this.rbDropdownInput1Items.filter(i => i && i.id && i.id == value);
+                return options.length > 0? options[0]: null;
+            }
         }
     });
 </script>
@@ -574,6 +578,7 @@
             </b-form-group>
             <b-form-group label="Typeahead инпут" style="width: 200px;">
                 <rb-bv-typeahead-input v-model="rbBvTypeaheadInput2" :state="false"
+                                       :searchOptionByValue="rbSearchOptionByValue"
                                        :searchOptions="rbMultiSelectSearch1"></rb-bv-typeahead-input>
             </b-form-group>
         </b-form>
