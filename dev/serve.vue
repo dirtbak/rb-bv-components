@@ -404,13 +404,6 @@
                 </b-col>
             </b-form-row>
         </b-form>
-        <b-form @submit.stop.prevent>
-            <h4>RbMultiSelectInput</h4>
-            <b-form-group label="Typeahead инпут с выбором нескольких значений" style="width: 200px;">
-                <rb-multi-select-input v-model="rbMultiSelectInput1" :search-options="rbMultiSelectSearch1"
-                ></rb-multi-select-input>
-            </b-form-group>
-        </b-form>
         <!--<b-form @submit.stop.prevent>
             <h4>RbPagination</h4>
             <b-form-group label="Пагинация">
