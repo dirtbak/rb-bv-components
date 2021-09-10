@@ -13,6 +13,10 @@
     border-left-width: $rb-single-option-border-between-width;
   }
 
+  & > button.btn:not(:first-child) {
+    margin-left: -$rb-single-option-border-between-width;
+  }
+
   &.rb-bordered .btn {
     border: $rb-single-option-input-border-width solid $rb-single-option-input-border-color;
   }
