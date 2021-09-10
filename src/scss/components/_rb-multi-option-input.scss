@@ -3,18 +3,20 @@
 
   & > button.btn:not(:last-child),
   &.is-invalid > button.btn:not(:last-child),
-  &.is-valid > button.btn:not(:last-child) {
-    border-right-width: $rb-multi-option-border-between-width;
+  &.is-valid > button.btn:not(:last-child),
+  &.disabled > button.btn:not(:first-child) {
+    border-right-width: $rb-single-option-border-between-width;
   }
 
   & > button.btn:not(:first-child),
   &.is-invalid > button.btn:not(:first-child),
-  &.is-valid > button.btn:not(:first-child) {
-    border-left-width: $rb-multi-option-border-between-width;
+  &.is-valid > button.btn:not(:first-child),
+  &.disabled > button.btn:not(:first-child) {
+    border-left-width: $rb-single-option-border-between-width;
   }
 
   & > button.btn:not(:first-child) {
-    margin-left: -$rb-multi-option-border-between-width;
+    margin-left: -$rb-single-option-border-between-width;
   }
 
   &.rb-bordered .btn {
