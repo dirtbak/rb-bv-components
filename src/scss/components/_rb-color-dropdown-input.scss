@@ -1,13 +1,18 @@
 .rb-color-dropdown-input {
-  &.rb-bordered .btn {
-    border: $rb-color-dropdown-input-border-width solid $rb-color-dropdown-input-border-color;
-  }
+  &.rb-no-label {
+    .dropdown-menu {
+      min-width: 100%;
 
-  &.is-invalid .btn, &.rb-bordered.is-invalid .btn {
-    border: $rb-color-dropdown-input-border-width solid $form-feedback-invalid-color;
-  }
+      li {
+        padding-left: 0;
+        padding-right: 0;
 
-  &.is-valid .btn, &.rb-bordered.is-valid .btn {
-    border: $rb-color-dropdown-input-border-width solid $form-feedback-valid-color;
+        a {
+          text-align: center;
+          padding-left: $btn-padding-x;
+          padding-right: $btn-padding-x;
+        }
+      }
+    }
   }
 }

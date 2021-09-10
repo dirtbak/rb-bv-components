@@ -1,7 +1,7 @@
 <template>
     <b-button-group class="rb-boolean-single-option-input rb-single-option-input"
                     :class="cls">
-        <b-button class="rb-false-button"
+        <b-button class="rb-false-button" :disabled="disabled"
                   :variant="(nullable && value == null) ? 'light' : (!value ? 'primary': 'light')"
                   @click="setValue(false)">
             <slot name="false">
@@ -9,7 +9,7 @@
                 <rb-text>{{falseLabel}}</rb-text>
             </slot>
         </b-button>
-        <b-button class="rb-true-button"
+        <b-button class="rb-true-button" :disabled="disabled"
                   :variant="(nullable && value == null) ? 'light' : (value ? 'primary': 'light')"
                   @click="setValue(true)">
             <slot name="true">
@@ -33,6 +33,7 @@
             bordered: {type: Boolean, default: false},
             nullable: Boolean,
             state: {type: Boolean, default: null},
+            disabled: {type: Boolean, default: null},
         },
         computed: {
             cls() {
