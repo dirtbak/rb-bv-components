@@ -1,6 +1,5 @@
 <template>
-    <b-button-group class="rb-boolean-single-option-input rb-single-option-input"
-                    :class="cls">
+    <b-button-group class="rb-boolean-single-option-input rb-single-option-input" :class="cls">
         <b-button class="rb-false-button" :disabled="disabled"
                   :variant="(nullable && value == null) ? 'light' : (!value ? 'primary': 'light')"
                   @click="setValue(false)">
@@ -34,6 +33,7 @@
             nullable: Boolean,
             state: {type: Boolean, default: null},
             disabled: {type: Boolean, default: null},
+            block: Boolean,
         },
         computed: {
             cls() {
@@ -41,6 +41,7 @@
                     'rb-bordered': this.bordered,
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,
+                    'w-100': this.block === true,
                 };
             }
         },
