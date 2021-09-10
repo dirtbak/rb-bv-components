@@ -3,6 +3,7 @@
         <b-button v-for="item in items"
                   :key="item[valueField]"
                   :variant="isItemSelected(item) ? 'primary' : 'light'"
+                  :disabled="disabled"
                   @click="onItemClick(item)">
             {{item[displayField]}}
         </b-button>
@@ -41,6 +42,7 @@
             },
             bordered: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         data: function () {
             return {

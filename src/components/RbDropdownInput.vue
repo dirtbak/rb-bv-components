@@ -1,6 +1,6 @@
 <template>
-    <b-dropdown :variant="variant"
-                class="rb-dropdown-input"
+    <b-dropdown class="rb-dropdown-input"
+                :variant="variant"
                 :block="block"
                 :disabled="disabled"
                 :class="cls">
@@ -8,7 +8,12 @@
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                   :showCancelItem="showCancelItem">
                 <rb-icon v-if="icon" :icon="icon" :color="getIconColor(value)"/>
-                <span class="rb-text">{{text? text: (showCancelItem? cancelItemText: placeholder)}}</span>
+                <a class="rb-text" v-if="link">
+                    {{text? text: (showCancelItem? cancelItemText: placeholder)}}
+                </a>
+                <span class="rb-text" v-else>
+                    {{text? text: (showCancelItem? cancelItemText: placeholder)}}
+                </span>
             </slot>
         </template>
         <b-dropdown-item v-for="o in options" :key="o.value" @click="onClick(o)">
@@ -47,6 +52,7 @@
             state: {type: Boolean, default: null},
             block: Boolean,
             disabled: Boolean,
+            link: Boolean,
         },
         data() {
             return {
@@ -58,6 +64,7 @@
         computed: {
             cls() {
                 return {
+                    'rb-dropdown-link-input': this.link,
                     'rb-bordered': this.bordered,
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,

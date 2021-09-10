@@ -6,7 +6,6 @@ export {default as RbBooleanSingleOptionInput} from './RbBooleanSingleOptionInpu
 export {default as RbColorDropdownInput} from '../components/RbColorDropdownInput'
 export {default as RbDatePickerInput} from '../components/RbDatePickerInput'
 export {default as RbDropdownInput} from '../components/RbDropdownInput'
-export {default as RbDropdownLinkInput} from '../components/RbDropdownLinkInput'
 export {default as RbEmailLink} from '../components/RbEmailLink'
 export {default as RbEmptyState} from '../components/RbEmptyState'
 export {default as RbIcon} from '../components/RbIcon'

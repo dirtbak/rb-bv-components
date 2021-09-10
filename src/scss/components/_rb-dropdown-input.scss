@@ -4,18 +4,20 @@
     overflow: $rb-dropdown-input-dropdown-menu-overflow;
   }
 
-  &.rb-bordered {
-    .dropdown-toggle {
-      border: $rb-dropdown-input-border-width solid $rb-dropdown-input-border-color;
+  &:not(.rb-dropdown-link-input) {
+    &.rb-bordered {
+      .dropdown-toggle {
+        border: $rb-dropdown-input-border-width solid $rb-dropdown-input-border-color;
+      }
     }
-  }
 
-  &.is-invalid .dropdown-toggle, &.is-invalid.rb-bordered .dropdown-toggle {
-    border: $rb-dropdown-input-border-width solid $form-feedback-invalid-color;
-  }
+    &.is-invalid .dropdown-toggle, &.is-invalid.rb-bordered .dropdown-toggle {
+      border: $rb-dropdown-input-border-width solid $form-feedback-invalid-color;
+    }
 
-  &.is-valid .dropdown-toggle, &.is-valid.rb-bordered .dropdown-toggle {
-    border: $rb-dropdown-input-border-width solid $form-feedback-valid-color;
+    &.is-valid .dropdown-toggle, &.is-valid.rb-bordered .dropdown-toggle {
+      border: $rb-dropdown-input-border-width solid $form-feedback-valid-color;
+    }
   }
 
   .dropdown-toggle {
@@ -39,3 +41,59 @@
     margin-right: $rb-dropdown-input-dropdown-menu-icon-margin-right;
   }
 }
+
+.rb-dropdown-link-input {
+  vertical-align: baseline;
+
+  &.dropdown.rb-dropdown-input {
+    display: inline;
+    width: auto;
+  }
+
+  button.dropdown-toggle {
+    vertical-align: baseline;
+    width: auto;
+    padding: 0;
+    display: inline;
+    flex: none;
+    line-height: unset;
+    background-color: transparent;
+
+    &::after {
+      margin-top: 0;
+    }
+
+    &:hover {
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+
+  .was-validated &:invalid, &.is-invalid,
+  .wax-validated &:valid, &.is-valid {
+    .btn {
+      border: none;
+    }
+  }
+
+  .was-validated &:invalid, &.is-invalid {
+    .btn .rb-text {
+      color: $form-feedback-invalid-color;
+    }
+  }
+
+  .wax-validated &:valid, &.is-valid {
+    .btn .rb-text {
+      color: $form-feedback-valid-color;
+    }
+  }
+
+  .btn.btn-light.dropdown-toggle:focus,
+  .btn.btn-light.dropdown-toggle:active,
+  &.show > .btn.btn-light.dropdown-toggle {
+    box-shadow: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+

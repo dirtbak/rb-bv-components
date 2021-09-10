@@ -5,6 +5,7 @@
                   :variant="item[valueField] === value ? 'primary' : 'light'"
                   :data-id="item[valueField]"
                   @click="onItemClick(item)"
+                  :disabled="disabled"
                   :title="showTitles ? item[displayField] : ''">
             <template v-if="showIcon">
                 <span class="rb-icon mdi" :class="item[iconProperty]"></span>
@@ -39,6 +40,7 @@
             },
             showTitles: Boolean,
             state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         computed: {
             cls() {
