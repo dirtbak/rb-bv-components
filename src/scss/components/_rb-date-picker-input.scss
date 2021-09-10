@@ -1,5 +1,20 @@
 .rb-date-picker-input {
   .btn-light-outline {
+    background-color: $rb-date-picker-input-button-bg;
     border: $rb-date-picker-input-border-width solid $rb-date-picker-input-border-color;
+  }
+
+  &.was-validated &:invalid, &.is-invalid {
+    .btn {
+      border-color: $form-feedback-invalid-color;
+      border-left-color: $rb-date-picker-input-border-color;
+    }
+  }
+
+  &.wax-validated &:valid, &.is-valid {
+    .btn {
+      border-color: $form-feedback-valid-color;
+      border-left-color: $rb-date-picker-input-border-color;
+    }
   }
 }

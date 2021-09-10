@@ -1,5 +1,5 @@
 <template>
-    <div class="rb-date-picker-input">
+    <div class="rb-date-picker-input" :class="cls">
         <b-input-group>
             <b-form-input
                     v-model="inputValue"
@@ -24,6 +24,7 @@
                         :show-decade-nav="false"
                         :hide-header="true"
                         :disabled="disabled"
+                        :state="state"
                         @input="datePickerChange"
                 ></b-form-datepicker>
             </b-input-group-append>
@@ -55,8 +56,13 @@
                 pickerPattern: 'YYYY-MM-DD',
             };
         },
-        created() {
-            this.onPropValueChange();
+        computed: {
+            cls() {
+                return {
+                    'is-invalid': this.state === false,
+                    'is-valid': this.state === true,
+                }
+            },
         },
         watch: {
             value() {
@@ -108,7 +114,9 @@
                     return null;
                 }
             }
-
-        }
+        },
+        created() {
+            this.onPropValueChange();
+        },
     }
 </script>
