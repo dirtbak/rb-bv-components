@@ -7,7 +7,7 @@
   &.was-validated &:invalid, &.is-invalid {
     .btn {
       border-color: $form-feedback-invalid-color;
-      border-left-color: $rb-date-picker-input-border-color;
+      border-left: $rb-date-picker-input-border-left-width solid $rb-date-picker-input-border-color;
     }
   }
 
