@@ -1,6 +1,18 @@
 .rb-single-option-input {
   white-space: nowrap;
 
+  & > button.btn:not(:last-child),
+  &.is-invalid > button.btn:not(:last-child),
+  &.is-valid > button.btn:not(:last-child) {
+    border-right-width: $rb-single-option-border-between-width;
+  }
+
+  & > button.btn:not(:first-child),
+  &.is-invalid > button.btn:not(:first-child),
+  &.is-valid > button.btn:not(:first-child) {
+    border-left-width: $rb-single-option-border-between-width;
+  }
+
   &.rb-bordered .btn {
     border: $rb-single-option-input-border-width solid $rb-single-option-input-border-color;
   }
