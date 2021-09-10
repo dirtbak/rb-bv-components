@@ -2,6 +2,7 @@
     <b-list-group class="rb-list-group-input" :class="cls">
         <b-list-group-item :active="item[valueField] === value"
                            :key="item[valueField]"
+                           :disabled="disabled"
                            @click="onChange(item)"
                            v-for="item in items">
             {{item[displayField]}}
@@ -18,6 +19,7 @@
             valueField: {type: String, default: 'id'},
             displayField: {type: String, default: 'name'},
             state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         computed: {
             cls() {

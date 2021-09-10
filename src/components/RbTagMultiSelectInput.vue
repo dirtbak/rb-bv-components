@@ -13,6 +13,7 @@
                  @click="setOptionsVisible"
                  autocomplete="off"
                  @input="debounceSearch"
+                 :disabled="disabled"
                  v-on:keyup.down="onKeyDown"
                  v-on:keyup.up="onKeyUp"
                  v-on:keyup.enter="onKeyEnter"
@@ -58,6 +59,7 @@
             searchAfterInit: Boolean,
             addTagOnEnter: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         data: () => {
             return {

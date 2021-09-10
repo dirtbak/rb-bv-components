@@ -747,19 +747,393 @@
             </div>
         </b-form>
         <b-form @submit.stop.prevent>
+            <h5>Выбор одного значения из списка - <span class="text-muted">RbListGroupInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор одного значения" style="width: 200px;">
+                            <rb-list-group-input :items="rbDropdownInput1Items"
+                                                 v-model="rbListGroupInput1"></rb-list-group-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор одного значения" style="width: 200px;">
+                            <rb-list-group-input :items="rbDropdownInput1Items" disabled
+                                                 v-model="rbListGroupInput1"></rb-list-group-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор одного значения" style="width: 200px;">
+                            <rb-list-group-input :items="rbDropdownInput1Items" :state="false"
+                                                 v-model="rbListGroupInput1"></rb-list-group-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Выбор одного значения" style="width: 200px;">
+                            <rb-list-group-input :items="rbDropdownInput1Items" :state="true"
+                                                 v-model="rbListGroupInput1"></rb-list-group-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-typeahead-input v-model="rbTypeaheadInput1"
+                                                :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-typeahead-input v-model="rbTypeaheadInput1" disabled
+                                                :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
+                                                :searchOptionByValues="rbSearchOptionByValues"
+                                                :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
+                                                :searchOptionByValues="rbSearchOptionByValues"
+                                                :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Выбор нескольких значений с поиском - <span class="text-muted">RbMultiTypeaheadInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Typeahead инпут" style="width: 200px;">
+                            <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1"
+                                                      :searchOptionByValues="rbSearchOptionByValues"
+                                                      :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Typeahead инпут" style="width: 200px;">
+                            <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" disabled
+                                                      :searchOptionByValues="rbSearchOptionByValues"
+                                                      :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Typeahead инпут" style="width: 200px;">
+                            <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" :state="true"
+                                                      :searchOptionByValues="rbSearchOptionByValues"
+                                                      :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Typeahead инпут" style="width: 200px;">
+                            <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" :state="false"
+                                                      :searchOptionByValues="rbSearchOptionByValues"
+                                                      :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Выбор нескольких тегов - <span class="text-muted">RbTagMultiSelectInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
+                                                       v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" disabled
+                                                       v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="false"
+                                                       v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="true"
+                                                       v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Ввод цены - <span class="text-muted">RbPriceInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-price-input v-model="rbPriceInput1"></rb-price-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-price-input v-model="rbPriceInput1" disabled></rb-price-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-price-input v-model="rbPriceInput1" :state="false"></rb-price-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-price-input v-model="rbPriceInput1" :state="true"></rb-price-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Ввод телефона - <span class="text-muted">RbPhoneInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-phone-input v-model="rbPhoneInput1" disabled></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-input-with-button v-model="rbInputWithButton"
+                                                  @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-input-with-button v-model="rbInputWithButton" disabled
+                                                  @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-input-with-button v-model="rbInputWithButton" :state="false"
+                                                  @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group>
+                            <rb-input-with-button v-model="rbInputWithButton" :state="true"
+                                                  @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Инпут с выбором языка - <span class="text-muted">RbMultiLangInput</span></h5>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Инпут с выбором языка">
+                            <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Инпут с выбором языка">
+                            <rb-multi-lang-input v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Инпут с выбором языка">
+                            <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Инпут с выбором языка">
+                            <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+
+        <b-form @submit.stop.prevent>
+            <h5>Инпут для ввода нескольких телефонов - <span class="text-muted">RbMultiPhoneInput</span></h5>
+            <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
+                <rb-multi-phone-input :id="0"
+                                      v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
+            </b-form-group>
+        </b-form>
+        <b-form @submit.stop.prevent>
             <h5>Ссылка на почту - <span class="text-muted">RbEmailLink</span></h5>
             <b-form-group label="Автоматически пересылает на email">
                 <rb-email-link email="rb-components@rebel.kz"></rb-email-link>
             </b-form-group>
         </b-form>
         <b-form @submit.stop.prevent>
-            <h5>Пустой стейт - <span class="text-muted">RbEmptyState</span></h5>
-            <b-form-group label="На случай когда показать нечего">
-                <div style="width: 400px; height: 200px;">
-                    <rb-empty-state title="Ничего не найдено" icon="icon-none">
-                        Попробуйте изменить параметры поиска
-                    </rb-empty-state>
-                </div>
+            <h5>Ссылка на телефон - <span class="text-muted">RbPhoneLink</span></h5>
+            <b-form-group label="Ссылка на телефон">
+                <rb-phone-link phone="+77011000888"></rb-phone-link>
             </b-form-group>
         </b-form>
         <b-form class="rb-icons">
@@ -777,57 +1151,14 @@
             </b-form-row>
         </b-form>
         <b-form @submit.stop.prevent>
-            <h5>Выбор одного значения из списка - <span class="text-muted">RbListGroupInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Выбор одного значения" style="width: 200px;">
-                        <rb-list-group-input :items="rbDropdownInput1Items"
-                                             v-model="rbListGroupInput1"></rb-list-group-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный" style="width: 200px;">
-                        <rb-list-group-input :items="rbDropdownInput1Items" :state="false"
-                                             v-model="rbListGroupInput1"></rb-list-group-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный" style="width: 200px;">
-                        <rb-list-group-input :items="rbDropdownInput1Items" :state="true"
-                                             v-model="rbListGroupInput1"></rb-list-group-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Инпут для ввода нескольких телефонов - <span class="text-muted">RbMultiPhoneInput</span></h5>
-            <b-form-group label="Ввод нескольких телефонных номеров" style="width: 200px;">
-                <rb-multi-phone-input :id="0"
-                                      v-model="rbMultiPhoneInput1"></rb-multi-phone-input>
+            <h5>Пустой стейт - <span class="text-muted">RbEmptyState</span></h5>
+            <b-form-group label="На случай когда показать нечего">
+                <div style="width: 400px; height: 200px;">
+                    <rb-empty-state title="Ничего не найдено" icon="icon-none">
+                        Попробуйте изменить параметры поиска
+                    </rb-empty-state>
+                </div>
             </b-form-group>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Инпут с кнопкой внутри">
-                        <rb-input-with-button v-model="rbInputWithButton"
-                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-input-with-button v-model="rbInputWithButton" :state="false"
-                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-input-with-button v-model="rbInputWithButton" :state="true"
-                                              @buttonClick="rbInputWithButton = null"></rb-input-with-button>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
         </b-form>
         <!--<b-form @submit.stop.prevent>
             <h5>RbPagination</h5>
@@ -835,132 +1166,6 @@
                 <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
             </b-form-group>
         </b-form>-->
-        <b-form @submit.stop.prevent>
-            <h5>Ввод телефона - <span class="text-muted">RbPhoneInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Ввод телефона">
-                        <rb-phone-input v-model="rbPhoneInput1"></rb-phone-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Ссылка на телефон - <span class="text-muted">RbPhoneLink</span></h5>
-            <b-form-group label="Ссылка на телефон">
-                <rb-phone-link phone="+77011000888"></rb-phone-link>
-            </b-form-group>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Ввод цены - <span class="text-muted">RbPriceInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Ввод цены">
-                        <rb-price-input v-model="rbPriceInput1"></rb-price-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-price-input v-model="rbPriceInput1" :state="false"></rb-price-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-price-input v-model="rbPriceInput1" :state="true"></rb-price-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>RbTagMultiSelectInput</h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Выбор тегов">
-                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
-                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="false"
-                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="true"
-                                                   v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Typeahead инпут" style="width: 200px;">
-                        <rb-typeahead-input v-model="rbTypeaheadInput1"
-                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный" style="width: 200px;">
-                        <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
-                                            :searchOptionByValues="rbSearchOptionByValues"
-                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный" style="width: 200px;">
-                        <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
-                                            :searchOptionByValues="rbSearchOptionByValues"
-                                            :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Выбор нескольких значений с поиском - <span class="text-muted">RbMultiTypeaheadInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Typeahead инпут" style="width: 200px;">
-                        <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1"
-                                                  :searchOptionByValues="rbSearchOptionByValues"
-                                                  :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
-        <b-form @submit.stop.prevent>
-            <h5>Инпут с выбором языка - <span class="text-muted">RbMultiLangInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Инпут с выбором языка">
-                        <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-        </b-form>
     </div>
 </template>
 

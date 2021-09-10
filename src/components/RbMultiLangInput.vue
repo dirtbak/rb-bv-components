@@ -1,9 +1,15 @@
 <template>
     <div class="rb-multi-lang-input">
         <b-input-group size="sm" :class="cls">
-            <b-form-input v-model="variants[selected]" :required="selected==='рус'"></b-form-input>
+            <b-form-input v-model="variants[selected]"
+                          :required="selected==='рус'"
+                          :disabled="disabled"></b-form-input>
             <template #append>
-                <b-dropdown variant="gray" no-caret right class="rb-dropdown" v-if="languages.length>1">
+                <b-dropdown class="rb-dropdown"
+                            variant="gray"
+                            no-caret right
+                            :disabled="disabled"
+                            v-if="languages.length>1">
                     <template #button-content>
                         {{ selected }}
                         <rb-icon icon="icon-chevron-down"></rb-icon>
@@ -38,7 +44,8 @@
     export default {
         name: "RbMultiLangInput",
         props: {
-            state: {type: Boolean, default: null}
+            state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         data() {
             return {
