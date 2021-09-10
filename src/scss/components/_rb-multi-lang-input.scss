@@ -32,6 +32,8 @@
 
   .btn {
     min-width: $rb-multi-lang-input-btn-width-min;
+    border-top-right-radius: $rb-multi-lang-input-input-group-radius;
+    border-bottom-right-radius: $rb-multi-lang-input-input-group-radius;
   }
 
   .input-group {
