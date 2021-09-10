@@ -4,11 +4,11 @@
                 :block="block"
                 :variant="variant">
         <template #button-content>
-            <rb-icon :icon="icon" :color="getColor(valueItem)"/>
+            <rb-icon :icon="icon" :color="getColor(valueOption)"/>
         </template>
-        <b-dropdown-item v-for="(item, idx) in items" :key="idx" @click="onSelectItem(item)">
-            <rb-icon :icon="icon" :color="getColor(item)"/>
-            <rb-text v-if="labelField">{{item[labelField]}}</rb-text>
+        <b-dropdown-item v-for="(option, idx) in options" :key="idx" @click="onSelectOption(option)">
+            <rb-icon :icon="icon" :color="getColor(option)"/>
+            <rb-text v-if="labelField">{{option[labelField]}}</rb-text>
         </b-dropdown-item>
     </b-dropdown>
 </template>
@@ -20,12 +20,13 @@
             value: [String, Number],
             icon: {type: String, default: 'icon-circle-small'},
             /**
-             * items:
+             * options:
              *   Список цветов - ['color1', 'color2',...]
              *   Список объектов с цветами - [{... color: 'color1'}, {... color: 'color2'}, ...]
              */
-            items: {type: Array, default: () => ([])},
+            options: {type: Array, default: () => ([])},
             valueField: {type: String, default: 'id'},
+            colorField: {type: String, default: 'color'},
             labelField: {type: String, default: 'name'},
             variant: {type: String, default: 'light'},
             bordered: Boolean,
@@ -42,26 +43,26 @@
                     'is-valid': this.state === true,
                 }
             },
-            valueItem() {
+            valueOption() {
                 if (typeof this.value === 'number') {
-                    const item = this.items.find(item => item[this.valueField] === this.value);
-                    return item || this.value;
+                    const option = this.options.find(option => option[this.valueField] === this.value);
+                    return option || this.value;
                 }
                 return this.value;
             }
         },
         methods: {
-            onSelectItem(item) {
-                let value = (typeof item === 'object') ? item[this.valueField] : item;
+            onSelectOption(option) {
+                let value = (typeof option === 'object') ? option[this.valueField] : option;
 
                 this.$emit('input', value);
                 this.$emit('change', value);
             },
-            getColor(item) {
-                if (typeof item === 'object') {
-                    return `${item.color}`;
-                } else if(item != null) {
-                    return `${item}`;
+            getColor(option) {
+                if (typeof option === 'object') {
+                    return `${option.color}`;
+                } else if (option != null) {
+                    return `${option}`;
                 } else {
                     return 'transparent';
                 }

@@ -8,6 +8,7 @@
                     @input="inputChange"
                     v-mask="mask"
                     :placeholder="placeholder"
+                    :disabled="disabled"
                     :state="state">
             </b-form-input>
             <b-input-group-append>
@@ -21,6 +22,7 @@
                         label-help=""
                         :show-decade-nav="false"
                         :hide-header="true"
+                        :disabled="disabled"
                         @input="datePickerChange"
                 ></b-form-datepicker>
             </b-input-group-append>
@@ -39,8 +41,9 @@
             value: {String, Date},
             placeholder: {type: String, default: 'ДД.ММ.ГГГГ'},
             mask: {type: String, default: '##.##.####'},
-            dropup: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
+            dropup: Boolean,
+            disabled: Boolean,
         },
         data: function () {
             return {

@@ -173,13 +173,15 @@
                 <b-form-row>
                     <b-col lg="2" sm="12">
                         <b-form-group label="Без иконок">
-                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" nullable :state="false">
+                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" nullable
+                                                            :state="false">
                             </rb-boolean-single-option-input>
                         </b-form-group>
                     </b-col>
                     <b-col lg="2" sm="12">
                         <b-form-group label="С бордером">
-                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" bordered :state="false">
+                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" bordered
+                                                            :state="false">
                             </rb-boolean-single-option-input>
                         </b-form-group>
                     </b-col>
@@ -196,13 +198,15 @@
                 <b-form-row>
                     <b-col lg="2" sm="12">
                         <b-form-group label="Без иконок">
-                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" nullable :state="true">
+                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" nullable
+                                                            :state="true">
                             </rb-boolean-single-option-input>
                         </b-form-group>
                     </b-col>
                     <b-col lg="2" sm="12">
                         <b-form-group label="С бордером">
-                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" bordered :state="true">
+                            <rb-boolean-single-option-input v-model="rbBooleanSingleOptionInput1" bordered
+                                                            :state="true">
                             </rb-boolean-single-option-input>
                         </b-form-group>
                     </b-col>
@@ -246,59 +250,218 @@
         </b-form>
         <b-form @submit.stop.prevent>
             <h5>Выбор даты - <span class="text-muted">RbDatePickerInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Выбор даты" style="width: 200px;">
-                        <rb-date-picker-input v-model="rbDatePickerInput1"></rb-date-picker-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный" style="width: 200px;">
-                        <rb-date-picker-input v-model="rbDatePickerInput1" :state="false"></rb-date-picker-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный" style="width: 200px;">
-                        <rb-date-picker-input v-model="rbDatePickerInput1" :state="true">></rb-date-picker-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
-
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-date-picker-input v-model="rbDatePickerInput1"></rb-date-picker-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-date-picker-input v-model="rbDatePickerInput1" disabled></rb-date-picker-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-date-picker-input v-model="rbDatePickerInput1" :state="false"></rb-date-picker-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group style="width: 200px;">
+                            <rb-date-picker-input v-model="rbDatePickerInput1" :state="true"></rb-date-picker-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+        </b-form>
+        <b-form @submit.stop.prevent>
+            <h5>Выбор периода - <span class="text-muted">RbPeriodInput</span></h5>
+            <b-form @submit.stop.prevent>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="В виде ссылки">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                                 bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">disabled</span></h6>
+                    <b-form-row>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." disabled
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." disabled
+                                                 bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="В виде ссылки">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                                 disabled bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 :state="false" bordered
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="В виде ссылки">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                                 :state="false" bordered
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                                 :state="true" bordered
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="2" sm="12">
+                            <b-form-group label="В виде ссылки">
+                                <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
+                                                 :state="true" bordered
+                                                 :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
         </b-form>
         <b-form @submit.stop.prevent>
             <h5>Выбор одного значения из списка - <span class="text-muted">RbDropdownInput</span></h5>
-            <b-form-row>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Выбор одного значения">
-                        <rb-dropdown-input :items="rbDropdownInput1Items"
-                                           v-model="rbDropdownInput1"></rb-dropdown-input>
-                    </b-form-group>
-                </b-col>
-                <!--<b-col lg="2" sm="12">
-                    <b-form-group label="Display: block">
-                        <rb-dropdown-input :items="rbDropdownInput1Items"
-                                           v-model="rbDropdownInput1" block></rb-dropdown-input>
-                    </b-form-group>
-                </b-col>-->
-                <b-col lg="2" sm="12">
-                    <b-form-group label="С бордером">
-                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
-                                           bordered block></rb-dropdown-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Невалидный">
-                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
-                                           :state="false"></rb-dropdown-input>
-                    </b-form-group>
-                </b-col>
-                <b-col lg="2" sm="12">
-                    <b-form-group label="Валидный">
-                        <rb-dropdown-input :items="rbDropdownInput1Items" v-model="rbDropdownInput1"
-                                           :state="true"></rb-dropdown-input>
-                    </b-form-group>
-                </b-col>
-            </b-form-row>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :items="rbDropdownInput1Items"
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="C бордером">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" bordered
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" disabled
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="C бордером">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" disabled bordered
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" :state="false"
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" bordered
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
+            <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" :state="true"
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="2" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" bordered
+                                               v-model="rbDropdownInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </div>
         </b-form>
         <b-form @submit.stop.prevent>
             <h5>Выбор одного значения из списка - <span class="text-muted">RbDropdownLinkInput</span></h5>
@@ -470,57 +633,6 @@
                 <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
             </b-form-group>
         </b-form>-->
-        <b-form @submit.stop.prevent>
-            <h5>Выбор периода - <span class="text-muted">RbPeriodInput</span></h5>
-            <b-form @submit.stop.prevent>
-                <b-form-row>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Выбор периода">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                             :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="С бордером">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                             bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Невалидный">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                             :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Валидный">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                             :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                </b-form-row>
-                <b-form-row>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="В виде ссылки">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                             bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Невалидный">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                             :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                    <b-col lg="2" sm="12">
-                        <b-form-group label="Валидный">
-                            <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                             :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
-                        </b-form-group>
-                    </b-col>
-                </b-form-row>
-            </b-form>
-        </b-form>
         <b-form @submit.stop.prevent>
             <h5>Ввод телефона - <span class="text-muted">RbPhoneInput</span></h5>
             <b-form-row>
@@ -706,7 +818,7 @@
         padding: 20px;
     }
 
-    #app h5 {
+    #app h6 {
         margin-bottom: 20px;
     }
 

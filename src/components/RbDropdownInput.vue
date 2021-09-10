@@ -1,5 +1,9 @@
 <template>
-    <b-dropdown :variant="variant" class="rb-dropdown-input" :block="block" :class="cls">
+    <b-dropdown :variant="variant"
+                class="rb-dropdown-input"
+                :block="block"
+                :disabled="disabled"
+                :class="cls">
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                   :showCancelItem="showCancelItem">
@@ -42,6 +46,7 @@
             icon: String,
             state: {type: Boolean, default: null},
             block: Boolean,
+            disabled: Boolean,
         },
         data() {
             return {

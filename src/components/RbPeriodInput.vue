@@ -2,6 +2,7 @@
     <span class="rb-period-input">
         <b-dropdown class="rb-dropdown-input"
                     :class="cls"
+                    :disabled="disabled"
                     :variant="variant">
             <template v-slot:button-content>
                 <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
@@ -43,6 +44,7 @@
             dtStart: [String, Date],
             dtEnd: [String, Date],
             state: {type: Boolean, default: null},
+            disabled: Boolean,
         },
         data() {
             return {
