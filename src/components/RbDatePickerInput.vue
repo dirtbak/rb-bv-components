@@ -45,7 +45,7 @@
             state: {type: Boolean, default: null},
             dropup: Boolean,
             disabled: Boolean,
-            variant: {type: 'String', default: 'secondary'}
+            variant: {type: 'String', default: 'light-outline'}
         },
         data: function () {
             return {
