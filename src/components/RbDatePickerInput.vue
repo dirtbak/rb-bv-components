@@ -20,6 +20,7 @@
                         :dropup="dropup"
                         locale="ru-RU"
                         label-help=""
+                        :button-variant="variant"
                         :show-decade-nav="false"
                         :hide-header="true"
                         :disabled="disabled"
@@ -44,6 +45,7 @@
             state: {type: Boolean, default: null},
             dropup: Boolean,
             disabled: Boolean,
+            variant: {type: 'String', default: 'secondary'}
         },
         data: function () {
             return {
