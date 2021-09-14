@@ -6,9 +6,13 @@
 <font id="fontello" horiz-adv-x="1000" >
 <font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="chevron-up" unicode="&#xe81e;" d="M309 208l191 191 191-191 59 59-250 250-250-250 59-59z" horiz-adv-x="1000" />
+
 <glyph glyph-name="chevron-right" unicode="&#xe81f;" d="M358 159l191 191-191 191 59 59 250-250-250-250-59 59z" horiz-adv-x="1000" />
 
 <glyph glyph-name="chevron-left" unicode="&#xe820;" d="M642 159l-191 191 191 191-59 59-250-250 250-250 59 59z" horiz-adv-x="1000" />
+
+<glyph glyph-name="chevron-down" unicode="&#xe821;" d="M309 493l191-192 191 192 59-60-250-250-250 250 59 60z" horiz-adv-x="1000" />
 
 <glyph glyph-name="chevron-double-left" unicode="&#xe82f;" d="M767 541l-59 59-250-250 250-250 59 59-191 191 191 191m-250 0l-59 59-250-250 250-250 59 59-191 191 191 191z" horiz-adv-x="1000" />
 

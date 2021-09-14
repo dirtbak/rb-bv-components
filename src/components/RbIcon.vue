@@ -1,6 +1,6 @@
 <template>
     <span class="rb-icon icon"
-          :class="[icon, `text-${variant}`]"
+          :class="cls"
           :style="getStyle()"
           @click="$emit('click', $event)"
           @mouseover="mouseover"
@@ -15,6 +15,17 @@
             color: String,
             fontSize: String,
             variant: String,
+        },
+        computed: {
+            cls() {
+                let a = [this.icon];
+
+                if(this.variant) {
+                    a.push(`text-${this.variant}`)
+                }
+
+                return a;
+            }
         },
         methods: {
             getStyle() {

@@ -20,6 +20,10 @@ $rb-dropdown-input-border-width: $input-border-width !default;
 $rb-dropdown-input-icon-font-size: 14px !default;
 $rb-dropdown-input-dropdown-toggle-text-overflow: hidden !default;
 $rb-dropdown-input-dropdown-toggle-text-align: left !default;
+$rb-dropdown-input-dropdown-indicator-width: $input-height !default;
+$rb-dropdown-input-dropdown-indicator-border-right-radius: $input-border-radius !default;
+$rb-dropdown-input-dropdown-indicator-bg: transparent !default;
+$rb-dropdown-input-dropdown-margin-left: 10px !default;
 
 // RbEmptyState
 $rb-empty-state-padding: 20px !default;
@@ -88,5 +92,5 @@ $rb-typeahead-input-dropdown-menu-min-width: 100% !default;
 $rb-date-picker-input-border-color: $input-border-color !default;
 $rb-date-picker-input-border-width: $input-border-width !default;
 $rb-date-picker-input-icon-color: $body-color !default;
-$rb-date-picker-input-border-left-width: $input-border-width !default;
+$rb-date-picker-input-button-border-left-width: $input-border-width !default;
 $rb-date-picker-input-button-bg: theme-color('light') !default;

@@ -1,6 +1,8 @@
 
+.icon-chevron-up:before { content: '\e81e'; } /* '' */
 .icon-chevron-right:before { content: '\e81f'; } /* '' */
 .icon-chevron-left:before { content: '\e820'; } /* '' */
+.icon-chevron-down:before { content: '\e821'; } /* '' */
 .icon-chevron-double-left:before { content: '\e82f'; } /* '' */
 .icon-chevron-double-right:before { content: '\e830'; } /* '' */
 .icon-search:before { content: '\e834'; } /* '' */

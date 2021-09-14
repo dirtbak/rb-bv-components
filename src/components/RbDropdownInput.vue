@@ -3,6 +3,7 @@
                 :variant="variant"
                 :block="block"
                 :disabled="disabled"
+                :no-caret="true"
                 :class="cls">
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
@@ -13,6 +14,9 @@
                 </a>
                 <span class="rb-text" v-else>
                     {{text? text: (showCancelItem? cancelItemText: placeholder)}}
+                </span>
+                <span class="rb-dropdown-indicator" v-if="!noCaret">
+                    <rb-icon :icon="dropdownIcon"></rb-icon>
                 </span>
             </slot>
         </template>
@@ -53,6 +57,10 @@
             block: Boolean,
             disabled: Boolean,
             link: Boolean,
+            split: Boolean,
+            splitVariant: {type: String, default: 'outline-light'},
+            dropdownIcon: {type: String, default: 'icon-chevron-down'},
+            noCaret: {type: Boolean, default: false},
         },
         data() {
             return {
@@ -66,6 +74,7 @@
                 return {
                     'rb-dropdown-link-input': this.link,
                     'rb-bordered': this.bordered,
+                    'rb-no-dropdown-indicator': this.noCaret,
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,
                 }

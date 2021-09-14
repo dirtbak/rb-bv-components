@@ -147,6 +147,34 @@
       ]
     },
     {
+      "uid": "99510c63f21bc053d06f2279fb43433d",
+      "css": "chevron-down",
+      "code": 59425,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M308.8 357.5L500 548.8 691.3 357.5 750 416.7 500 666.7 250 416.7 308.8 357.5Z",
+        "width": 1000
+      },
+      "search": [
+        "chevron-down"
+      ]
+    },
+    {
+      "uid": "6d2b38fcc8a94c0334d33fe2f738f863",
+      "css": "chevron-up",
+      "code": 59422,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M308.8 642.1L500 451.3 691.3 642.1 750 583.3 500 333.3 250 583.3 308.8 642.1Z",
+        "width": 1000
+      },
+      "search": [
+        "chevron-up"
+      ]
+    },
+    {
       "uid": "77e94851ea409688b2bf1373d743ff97",
       "css": "account",
       "code": 59392,
@@ -494,34 +522,6 @@
       },
       "search": [
         "folder"
-      ]
-    },
-    {
-      "uid": "6d2b38fcc8a94c0334d33fe2f738f863",
-      "css": "chevron-up",
-      "code": 59422,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M308.8 642.1L500 451.3 691.3 642.1 750 583.3 500 333.3 250 583.3 308.8 642.1Z",
-        "width": 1000
-      },
-      "search": [
-        "chevron-up"
-      ]
-    },
-    {
-      "uid": "99510c63f21bc053d06f2279fb43433d",
-      "css": "chevron-down",
-      "code": 59425,
-      "src": "custom_icons",
-      "selected": false,
-      "svg": {
-        "path": "M308.8 357.5L500 548.8 691.3 357.5 750 416.7 500 666.7 250 416.7 308.8 357.5Z",
-        "width": 1000
-      },
-      "search": [
-        "chevron-down"
       ]
     },
     {

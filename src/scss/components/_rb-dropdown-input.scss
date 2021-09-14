@@ -25,6 +25,7 @@
     align-items: center;
     overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
     text-align: $rb-dropdown-input-dropdown-toggle-text-align;
+    padding-right: $rb-dropdown-input-dropdown-indicator-width;
 
     .rb-icon {
       font-size: $rb-dropdown-input-icon-font-size;
@@ -33,12 +34,39 @@
     .rb-text {
       flex: 1;
       overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
+      margin-right: $rb-dropdown-input-dropdown-margin-left;
     }
   }
 
   .dropdown-item .rb-icon {
     font-size: $rb-dropdown-input-dropdown-menu-icon-font-size;
     margin-right: $rb-dropdown-input-dropdown-menu-icon-margin-right;
+  }
+
+  .rb-dropdown-indicator {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: $rb-dropdown-input-dropdown-indicator-width;
+    align-items: center;
+    border-top-right-radius: $rb-dropdown-input-dropdown-indicator-border-right-radius;
+    border-bottom-right-radius: $rb-dropdown-input-dropdown-indicator-border-right-radius;
+    background-color: $rb-dropdown-input-dropdown-indicator-bg;
+
+    .rb-icon {
+      vertical-align: middle;
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+
+  &.rb-no-dropdown-indicator {
+    .dropdown-toggle .rt-text {
+      margin-right: 0;
+    }
   }
 }
 
@@ -68,6 +96,10 @@
       border-color: transparent;
       background-color: transparent;
     }
+
+    .rb-text {
+      margin-right: 0;
+    }
   }
 
   .was-validated &:invalid, &.is-invalid,
@@ -95,6 +127,13 @@
     box-shadow: none;
     background-color: transparent;
     border-color: transparent;
+  }
+
+  .rb-dropdown-indicator {
+    position: unset;
+    right: unset;
+    top: unset;
+    display: inline;
   }
 }
 
