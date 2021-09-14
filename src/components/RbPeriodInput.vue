@@ -3,6 +3,7 @@
         <b-dropdown class="rb-dropdown-input"
                     :class="cls"
                     :disabled="disabled"
+                    no-caret
                     :variant="variant">
             <template v-slot:button-content>
                 <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
@@ -13,6 +14,9 @@
                     <template v-else>
                         <rb-text>{{text? text: (showCancelItem? cancelItemText: placeholder)}}</rb-text>
                     </template>
+                    <span class="rb-dropdown-indicator" v-if="!noCaret">
+                    <rb-icon :icon="dropdownIcon"></rb-icon>
+                </span>
                 </slot>
             </template>
 
@@ -45,6 +49,8 @@
             dtEnd: [String, Date],
             state: {type: Boolean, default: null},
             disabled: Boolean,
+            dropdownIcon: {type: String, default: 'icon-chevron-down'},
+            noCaret: {type: Boolean, default: false},
         },
         data() {
             return {

@@ -3,7 +3,7 @@
                 :variant="variant"
                 :block="block"
                 :disabled="disabled"
-                :no-caret="true"
+                no-caret
                 :class="cls">
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"

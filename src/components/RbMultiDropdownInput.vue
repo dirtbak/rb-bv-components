@@ -1,6 +1,9 @@
 <template>
-    <b-dropdown :variant="variant" class="rb-dropdown-input rb-multi-dropdown-input"
-                :class="cls" :block="block">
+    <b-dropdown class="rb-dropdown-input rb-multi-dropdown-input"
+                :variant="variant"
+                :class="cls"
+                no-caret
+                :block="block">
         <template v-slot:button-content>
             <span class="rb-text">
                 {{text? text: (showCancelItem? cancelItemText: placeholder)}}
@@ -8,6 +11,9 @@
             <span class="rb-counter" v-if="counter > 0">
                 {{counter? counter: ''}}
             </span>
+            <span class="rb-dropdown-indicator" v-if="!noCaret">
+                    <rb-icon :icon="dropdownIcon"></rb-icon>
+                </span>
         </template>
         <b-dropdown-item v-for="o in options" :key="o.value"
                          @click="onClick(o)"
@@ -36,7 +42,9 @@
             displayField: {type: String, default: 'name'},
             valueAsString: {type: Boolean, default: false},
             block: Boolean,
-            state: {type: Boolean, default: null}
+            state: {type: Boolean, default: null},
+            dropdownIcon: {type: String, default: 'icon-chevron-down'},
+            noCaret: {type: Boolean, default: false},
         },
         data() {
             return {
