@@ -46,9 +46,9 @@
   .rb-dropdown-indicator {
     display: flex;
     position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+    right: $rb-dropdown-input-border-width;
+    top: $rb-dropdown-input-border-width;
+    height: subtract($input-height, 2 * $rb-dropdown-input-border-width);
     width: $rb-dropdown-input-dropdown-indicator-width;
     align-items: center;
     border-top-right-radius: $rb-dropdown-input-dropdown-indicator-border-right-radius;

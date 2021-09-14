@@ -63,7 +63,7 @@
 
 <template>
     <div id="app">
-        <div class="container">
+        <b-container>
             <b-form @submit.stop.prevent>
                 <h5>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h5>
 
@@ -1219,7 +1219,7 @@
                     <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
                 </b-form-group>
             </b-form>-->
-        </div>
+        </b-container>
     </div>
 </template>
 
