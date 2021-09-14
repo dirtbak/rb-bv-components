@@ -59,7 +59,7 @@
       vertical-align: middle;
       flex: 1;
       text-align: center;
-      font-size: 18px;
+      font-size: $rb-dropdown-input-dropdown-icon-font-size;
     }
   }
 
@@ -130,6 +130,7 @@
   }
 
   .rb-dropdown-indicator {
+    background-color: transparent;
     position: unset;
     right: unset;
     top: unset;
