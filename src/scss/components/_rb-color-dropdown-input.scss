@@ -15,4 +15,17 @@
       }
     }
   }
+
+  .dropdown-menu {
+    li .dropdown-item {
+      padding-left: $btn-padding-x;
+      padding-right: $btn-padding-x;
+    }
+  }
+
+
+
+  .rb-text {
+    margin-left: 10px;
+  }
 }
