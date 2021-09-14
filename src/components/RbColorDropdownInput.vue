@@ -2,9 +2,13 @@
     <b-dropdown class="rb-dropdown-input rb-color-dropdown-input"
                 :class="cls"
                 :block="block"
+                no-caret
                 :variant="variant">
         <template #button-content>
             <rb-icon :icon="icon" :color="getColor(valueOption)"/>
+            <span class="rb-dropdown-indicator" v-if="!noCaret">
+                <rb-icon :icon="dropdownIcon"></rb-icon>
+            </span>
         </template>
         <b-dropdown-item v-for="(option, idx) in options" :key="idx" @click="onSelectOption(option)">
             <rb-icon :icon="icon" :color="getColor(option)"/>
@@ -33,6 +37,8 @@
             block: Boolean,
             showLabel: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
+            dropdownIcon: {type: String, default: 'icon-chevron-down'},
+            noCaret: {type: Boolean, default: false},
         },
         computed: {
             cls() {

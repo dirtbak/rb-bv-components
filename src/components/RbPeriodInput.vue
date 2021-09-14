@@ -15,11 +15,10 @@
                         <rb-text>{{text? text: (showCancelItem? cancelItemText: placeholder)}}</rb-text>
                     </template>
                     <span class="rb-dropdown-indicator" v-if="!noCaret">
-                    <rb-icon :icon="dropdownIcon"></rb-icon>
-                </span>
+                        <rb-icon :icon="dropdownIcon"></rb-icon>
+                    </span>
                 </slot>
             </template>
-
             <b-dropdown-item v-for="(item, idx) in items" :key="idx" @click="onClick(item)">
                 <span class="rb-text">{{item.name}}</span>
             </b-dropdown-item>
