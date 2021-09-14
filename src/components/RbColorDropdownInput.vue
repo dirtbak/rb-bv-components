@@ -8,8 +8,13 @@
                 :variant="variant">
         <template #button-content>
             <rb-icon :icon="icon" :color="getColor(selectedOption)"/>
-            <rb-text v-if="showLabel && selectedOption">
-                {{selectedOption[labelField]}}
+            <rb-text v-if="showLabel">
+                <template v-if="selectedOption">
+                    {{selectedOption[labelField]}}
+                </template>
+                <template v-else-if="placeholder">
+                    {{placeholder}}
+                </template>
             </rb-text>
             <span class="rb-dropdown-indicator" v-if="!noCaret">
                 <rb-icon :icon="dropdownIcon"></rb-icon>
@@ -18,6 +23,10 @@
         <b-dropdown-item v-for="(option, idx) in options" :key="idx" @click="onSelectOption(option)">
             <rb-icon :icon="icon" :color="getColor(option)"/>
             <rb-text v-if="showLabel">{{option[labelField]}}</rb-text>
+        </b-dropdown-item>
+        <b-dropdown-item @click="onCancelSelection">
+            <rb-icon icon="icon-close"></rb-icon>
+            <rb-text v-if="showLabel">Не важно</rb-text>
         </b-dropdown-item>
     </b-dropdown>
 </template>
@@ -44,8 +53,10 @@
             state: {type: Boolean, default: null},
             dropdownIcon: {type: String, default: 'icon-chevron-down'},
             noCaret: {type: Boolean, default: false},
-            defaultColor: {type: String, default: 'transparent'},
+            defaultColor: {type: String, default: '#dcdcdc'},
             disabled: Boolean,
+            placeholder: String,
+            showCancelOption: Boolean,
         },
         computed: {
             cls() {
@@ -70,12 +81,9 @@
                 this.$emit('input', value);
                 this.$emit('change', value);
             },
-            getName(option) {
-
-            },
             getColor(option) {
                 if(!option) {
-                    return 'transparent';
+                    return this.defaultColor;
                 }
 
                 if (typeof option === 'object' && option[this.colorField]) {
@@ -83,8 +91,12 @@
                 } else if (option != null) {
                     return `${option}`;
                 } else {
-                    return 'transparent';
+                    return this.defaultColor;
                 }
+            },
+            onCancelSelection() {
+                this.$emit('input', null);
+                this.$emit('change', null);
             }
         }
     };

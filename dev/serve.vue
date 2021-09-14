@@ -238,6 +238,7 @@
                         <b-col lg="3" sm="12">
                             <b-form-group label="С названием">
                                 <rb-color-dropdown-input v-model="rbColorDropdownInput1" bordered show-label
+                                                         placeholder="Выбрать"
                                                          :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
