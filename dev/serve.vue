@@ -398,13 +398,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" split
+                                <rb-dropdown-input :items="rbDropdownInput1Items" split block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" bordered
+                                <rb-dropdown-input :items="rbDropdownInput1Items" bordered block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -421,13 +421,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled
+                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled bordered
+                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled bordered block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -444,13 +444,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false"
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" bordered
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" bordered block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -467,13 +467,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true"
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" bordered
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" bordered block
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -493,13 +493,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items"
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -510,13 +510,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" disabled
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" disabled block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered disabled
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered disabled block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -527,13 +527,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="false"
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="false" block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="false"
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="false" block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -544,13 +544,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="true"
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="true" block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="true"
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="true" block
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
