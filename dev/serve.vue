@@ -1134,7 +1134,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
+                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1144,7 +1144,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
+                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1154,7 +1154,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1164,7 +1164,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
+                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>

@@ -2,7 +2,7 @@
     <div class="rb-multi-lang-input">
         <b-input-group size="sm" :class="cls">
             <b-form-input v-model="variants[selected]"
-                          :required="selected==='рус'"
+                          :required="selected==='ru'"
                           :disabled="disabled"></b-form-input>
             <template #append>
                 <b-dropdown class="rb-dropdown"
@@ -11,7 +11,7 @@
                             :disabled="disabled"
                             v-if="languages.length>1">
                     <template #button-content>
-                        {{ selected }}
+                        {{ alias[selected] }}
                         <rb-icon icon="icon-chevron-down"></rb-icon>
                     </template>
                     <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected"
@@ -19,7 +19,7 @@
                         <template v-if="variants[lang]">
               <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
                 {{ variants[lang] }}
-                <span class="rb-lang-text">{{ lang }}</span>
+                <span class="rb-lang-text">{{ alias[lang] }}</span>
               </span>
                         </template>
                         <template v-else>
@@ -33,7 +33,7 @@
                     </b-dropdown-item>
                 </b-dropdown>
                 <b-button variant="light" disabled v-else>
-                    {{ selected }}
+                    {{ alias[selected] }}
                 </b-button>
             </template>
         </b-input-group>
@@ -44,24 +44,33 @@
     export default {
         name: "RbMultiLangInput",
         props: {
+            variants: {
+                type: Object,
+                default: function () {
+                    return {
+                        ru: '',
+                        kz: '',
+                        en: ''
+                    }
+                }
+            },
             state: {type: Boolean, default: null},
             disabled: Boolean,
         },
         data() {
             return {
                 placeholder: {
-                    'рус': 'Hа русском',
-                    'қаз': 'Hа казахском',
-                    'eng': 'Hа английском'
+                    ru: 'Hа русском',
+                    kz: 'Hа казахском',
+                    en: 'Hа английском'
                 },
-                //global language config here
-                languages: ['рус', 'қаз', 'eng'],
-                selected: 'рус',
-                variants: {
-                    'рус': '',
-                    'қаз': '',
-                    'eng': ''
-                }
+                alias: {
+                    ru: 'рус',
+                    kz: 'қаз',
+                    en: 'eng'
+                },
+                languages: ['ru', 'kz', 'en'],
+                selected: 'ru',
             }
         },
         computed: {
