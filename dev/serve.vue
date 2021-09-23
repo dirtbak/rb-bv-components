@@ -42,7 +42,11 @@
                 rbTagMultiSelectInput1: [],
                 rbTypeaheadInput1: null,
                 rbTypeaheadInput2: 2,
-                rbMultiLangInput: null,
+                rbMultiLangInput: {
+                    label_en: '46546',
+                    label_kz: '44545',
+                    label_ru: '13213'
+                },
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
             }
@@ -56,8 +60,12 @@
                     value = [value];
                 }
                 return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
+            },
+            handleChange(val){
+                console.log(val)
             }
-        }
+
+        },
     });
 </script>
 
@@ -1134,7 +1142,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput"></rb-multi-lang-input>
+                                <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1144,7 +1152,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
+                                <rb-multi-lang-input v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1154,7 +1162,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1164,7 +1172,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input :variants="{ru: 'awdawdawd', kz: 'wdawdadaw', en: 'awdadadawd'}" v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
+                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>

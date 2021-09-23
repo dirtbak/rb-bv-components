@@ -1,7 +1,7 @@
 <template>
     <div class="rb-multi-lang-input">
         <b-input-group size="sm" :class="cls">
-            <b-form-input v-model="variants[selected]"
+            <b-form-input v-model="value[fieldName+suffix+selected]"
                           :required="selected==='ru'"
                           :disabled="disabled"></b-form-input>
             <template #append>
@@ -16,9 +16,9 @@
                     </template>
                     <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected"
                                      @click="selected=lang">
-                        <template v-if="variants[lang]">
+                        <template v-if="value[fieldName+suffix+lang]">
               <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
-                {{ variants[lang] }}
+                {{ value[fieldName+suffix+lang] }}
                 <span class="rb-lang-text">{{ alias[lang] }}</span>
               </span>
                         </template>
@@ -44,15 +44,16 @@
     export default {
         name: "RbMultiLangInput",
         props: {
-            variants: {
-                type: Object,
-                default: function () {
-                    return {
-                        ru: '',
-                        kz: '',
-                        en: ''
-                    }
-                }
+            fieldName: {
+                type: String,
+                default: 'label'
+            },
+            suffix: {
+                type: String,
+                default: '_'
+            },
+            value: {
+              type: Object
             },
             state: {type: Boolean, default: null},
             disabled: Boolean,
@@ -81,13 +82,13 @@
                 }
             }
         },
-        watch: {
-            variants: {
-                handler(val) {
-                    this.$emit('input', val)
-                },
-                deep: true
-            }
-        }
+        // watch: {
+        //     value: {
+        //         handler(val) {
+        //             this.$emit('change', val)
+        //         },
+        //         deep: true
+        //     }
+        // }
     }
 </script>
