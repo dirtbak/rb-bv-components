@@ -71,4 +71,8 @@
   .dropdown-item {
     padding: $rb-multi-lang-input-dropdown-item-padding;
   }
+  .input-group-sm > .form-control:not(textarea){
+    height: $rb-multi-lang-input-input-group-height;
+  }
+
 }
