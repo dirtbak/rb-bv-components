@@ -4,7 +4,21 @@
   }
 
   .dropdown-menu {
-    min-width: $rb-multi-lang-input-dropdown-menu-width-min;
+    will-change: unset !important;
+    transform: unset !important;
+    width: 100%;
+  }
+
+  .b-dropdown{
+    width: 100%;
+    border-width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .dropdown-toggle{
+    display: none;
   }
 
   .rb-text-primary {
@@ -18,8 +32,14 @@
     color: $rb-multi-lang-input-text-secondary;
   }
 
-  .rb-lang-text {
+  .rb-lang-type {
     color: theme-color('primary');
+  }
+
+  .rb-lang-text{
+    max-width: 80%;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   input {
@@ -32,8 +52,8 @@
 
   .btn {
     min-width: $rb-multi-lang-input-btn-width-min;
-    border-top-right-radius: $rb-multi-lang-input-input-group-radius;
-    border-bottom-right-radius: $rb-multi-lang-input-input-group-radius;
+    border-top-right-radius: $rb-multi-lang-input-input-group-radius!important;
+    border-bottom-right-radius: $rb-multi-lang-input-input-group-radius!important;
   }
 
   .input-group {

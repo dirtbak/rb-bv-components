@@ -5,30 +5,32 @@
                           :required="selected==='ru'"
                           :disabled="disabled"></b-form-input>
             <template #append>
+                <b-button variant="light" @click="toggleDropdown">
+                    {{ alias[selected] }}
+                    <rb-icon icon="icon-chevron-down"></rb-icon>
+                </b-button>
                 <b-dropdown class="rb-dropdown"
+                            ref="dropdown"
+                            id="button"
                             variant="gray"
                             no-caret right
                             :disabled="disabled"
                             v-if="languages.length>1">
-                    <template #button-content>
-                        {{ alias[selected] }}
-                        <rb-icon icon="icon-chevron-down"></rb-icon>
-                    </template>
                     <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected"
                                      @click="selected=lang">
                         <template v-if="value[fieldName+suffix+lang]">
-              <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
-                {{ value[fieldName+suffix+lang] }}
-                <span class="rb-lang-text">{{ alias[lang] }}</span>
-              </span>
+                          <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
+                              <span class="rb-lang-text">{{ value[fieldName+suffix+lang] }}</span>
+                              <span class="rb-lang-type">{{ alias[lang] }}</span>
+                          </span>
                         </template>
                         <template v-else>
-              <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
-                <span class="rb-text-primary">
-                  {{ placeholder[lang] }}
-                </span>
-                <span class="rb-text-secondary">Добавьте если нужно</span>
-              </span>
+                          <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
+                            <span class="rb-text-primary">
+                              {{ placeholder[lang] }}
+                            </span>
+                            <span class="rb-text-secondary">Добавьте если нужно</span>
+                          </span>
                         </template>
                     </b-dropdown-item>
                 </b-dropdown>
@@ -53,13 +55,14 @@
                 default: '_'
             },
             value: {
-              type: Object
+                type: Object
             },
             state: {type: Boolean, default: null},
             disabled: Boolean,
         },
         data() {
             return {
+                isVisible: false,
                 placeholder: {
                     ru: 'Hа русском',
                     kz: 'Hа казахском',
@@ -82,13 +85,15 @@
                 }
             }
         },
-        // watch: {
-        //     value: {
-        //         handler(val) {
-        //             this.$emit('change', val)
-        //         },
-        //         deep: true
-        //     }
-        // }
+        methods: {
+            toggleDropdown(e) {
+                e.preventDefault()
+                if (this.isVisible) {
+                    this.$refs.dropdown.hide()
+                } else {
+                    this.$refs.dropdown.show()
+                }
+            }
+        }
     }
 </script>
