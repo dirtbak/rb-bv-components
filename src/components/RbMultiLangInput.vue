@@ -1,9 +1,9 @@
 <template>
     <div class="rb-multi-lang-input">
         <b-input-group size="sm" :class="cls">
-            <b-form-input v-model="value[fieldName+suffix+selected]"
+            <b-form-input v-model="value[compileLang(fieldName, suffix, selected)]"
                           :required="selected==='ru'"
-                          :disabled="disabled"></b-form-input>
+                          :disabled="disabled" size="sm"></b-form-input>
             <template #append>
                 <b-button variant="light" @click="toggleDropdown">
                     {{ alias[selected] }}
@@ -11,16 +11,15 @@
                 </b-button>
                 <b-dropdown class="rb-dropdown"
                             ref="dropdown"
-                            id="button"
                             variant="gray"
                             no-caret right
                             :disabled="disabled"
                             v-if="languages.length>1">
                     <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected"
                                      @click="selected=lang">
-                        <template v-if="value[fieldName+suffix+lang]">
+                        <template v-if="value[compileLang(fieldName, suffix, lang)]">
                           <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
-                              <span class="rb-lang-text">{{ value[fieldName+suffix+lang] }}</span>
+                              <span class="rb-lang-text">{{ value[compileLang(fieldName, suffix, lang)] }}</span>
                               <span class="rb-lang-type">{{ alias[lang] }}</span>
                           </span>
                         </template>
@@ -52,7 +51,7 @@
             },
             suffix: {
                 type: String,
-                default: '_'
+                default: ''
             },
             value: {
                 type: Object
@@ -92,6 +91,13 @@
                     this.$refs.dropdown.hide()
                 } else {
                     this.$refs.dropdown.show()
+                }
+            },
+            compileLang(field, suf, lang) {
+                if (suf) {
+                    return field + suf + lang
+                } else {
+                    return field + lang[0].toUpperCase() + lang.slice(1);
                 }
             }
         }

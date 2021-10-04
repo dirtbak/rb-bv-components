@@ -43,9 +43,9 @@
                 rbTypeaheadInput1: null,
                 rbTypeaheadInput2: 2,
                 rbMultiLangInput: {
-                    label_en: '46546',
-                    label_kz: '44545',
-                    label_ru: '13213'
+                    labelEn: '46546',
+                    labelKz: '44545',
+                    labelRu: '13213'
                 },
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
