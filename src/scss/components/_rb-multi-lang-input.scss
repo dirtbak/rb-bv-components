@@ -9,7 +9,7 @@
     width: 100%;
   }
 
-  .b-dropdown{
+  .b-dropdown {
     width: 100%;
     border-width: 0;
     position: absolute;
@@ -17,7 +17,7 @@
     bottom: 0;
   }
 
-  .dropdown-toggle{
+  .dropdown-toggle {
     display: none;
   }
 
@@ -36,40 +36,48 @@
     color: theme-color('primary');
   }
 
-  .rb-lang-text{
+  .rb-lang-text {
     max-width: 80%;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  /*input {
-    box-sizing: initial;
-  }*/
+  &.is-valid {
+    .btn, .form-control {
+      border: $rb-multi-lang-input-border-width solid $form-feedback-valid-color;
+    }
 
-  .btn, .form-control {
-    border: none;
+    .btn {
+      border-left-width: 0;
+    }
+  }
+
+  &.is-invalid {
+    .btn, .form-control {
+      border: $rb-multi-lang-input-border-width solid $form-feedback-invalid-color;
+    }
+
+    .btn {
+      border-left-width: 0;
+    }
+  }
+
+  .btn {
+    border: $rb-multi-lang-input-border-width solid $input-border-color;
+    border-radius: $rb-multi-lang-input-input-group-radius;
+  }
+
+  .btn {
+    border-left-width: 0;
   }
 
   .btn {
     min-width: $rb-multi-lang-input-btn-width-min;
-    border-top-right-radius: $rb-multi-lang-input-input-group-radius!important;
-    border-bottom-right-radius: $rb-multi-lang-input-input-group-radius!important;
-  }
-
-  .input-group {
-    border: $rb-multi-lang-input-border-width solid $input-border-color;
-    border-radius: $rb-multi-lang-input-input-group-radius;
-
-    &.is-valid{
-      border: $rb-multi-lang-input-border-width solid $form-feedback-valid-color;
-    }
-    &.is-invalid{
-      border: $rb-multi-lang-input-border-width solid $form-feedback-invalid-color;
-    }
+    border-top-right-radius: $rb-multi-lang-input-input-group-radius !important;
+    border-bottom-right-radius: $rb-multi-lang-input-input-group-radius !important;
   }
 
   .dropdown-item {
     padding: $rb-multi-lang-input-dropdown-item-padding;
   }
-
 }
