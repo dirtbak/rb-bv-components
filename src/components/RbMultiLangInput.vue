@@ -1,9 +1,9 @@
 <template>
     <div class="rb-multi-lang-input">
-        <b-input-group size="sm" :class="cls">
+        <b-input-group :class="cls">
             <b-form-input v-model="value[compileLang(fieldName, suffix, selected)]"
                           :required="selected==='ru'"
-                          :disabled="disabled" size="sm"></b-form-input>
+                          :disabled="disabled"></b-form-input>
             <template #append>
                 <b-button variant="light" @click="toggleDropdown">
                     {{ alias[selected] }}
