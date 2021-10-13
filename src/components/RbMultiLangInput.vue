@@ -6,7 +6,7 @@
         <template #append>
             <b-button variant="light" @click="toggleDropdown" tabindex="-1">
                 {{ alias[selected] }}
-                <rb-icon icon="icon-chevron-down"></rb-icon>
+                <rb-icon :icon="show?'icon-chevron-up':'icon-chevron-down'"></rb-icon>
             </b-button>
             <b-dropdown class="rb-dropdown"
                         ref="dropdown"
@@ -15,7 +15,7 @@
                         :disabled="disabled"
                         v-if="languages.length>1">
                 <b-dropdown-item v-for="lang of languages" :key="lang" :active="lang===selected"
-                                 @click="selected=lang">
+                                 @click="selectLang(lang)">
                     <template v-if="value[compileLang(fieldName, suffix, lang)]">
                           <span class="rb-text-container d-flex justify-content-between align-items-center w-100">
                               <span class="rb-lang-text">{{ value[compileLang(fieldName, suffix, lang)] }}</span>
@@ -83,12 +83,16 @@
             }
         },
         methods: {
+            selectLang(lang){
+                this.show = false
+                this.selected = lang
+            },
             toggleDropdown(e) {
                 e.preventDefault()
                 this.show = !this.show
 
-                if(!!this.show) this.$refs.dropdown.show();
-                else this.$refs.dropdown.hide();
+                if(!!this.show) this.$refs.dropdown.show()
+                else this.$refs.dropdown.hide()
             },
             compileLang(field, suf, lang) {
                 if (suf) {
