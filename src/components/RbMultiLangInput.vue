@@ -61,7 +61,7 @@
         },
         data() {
             return {
-                isVisible: false,
+                show: false,
                 placeholder: {
                     ru: 'Hа русском',
                     kz: 'Hа казахском',
@@ -87,11 +87,10 @@
         methods: {
             toggleDropdown(e) {
                 e.preventDefault()
-                if (this.isVisible) {
-                    this.$refs.dropdown.hide()
-                } else {
-                    this.$refs.dropdown.show()
-                }
+                this.show = !this.show
+
+                if(!!this.show) this.$refs.dropdown.show();
+                else this.$refs.dropdown.hide();
             },
             compileLang(field, suf, lang) {
                 if (suf) {
