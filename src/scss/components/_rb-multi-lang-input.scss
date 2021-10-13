@@ -79,5 +79,8 @@
 
   .dropdown-item {
     padding: $rb-multi-lang-input-dropdown-item-padding;
+    &.active, &:active{
+      color: $rb-multi-lang-input-dropdown-item-active;
+    }
   }
 }
