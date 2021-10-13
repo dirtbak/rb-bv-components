@@ -1,7 +1,7 @@
 <template>
     <nav :class="{busy}" class="rb-pagination">
         <ul class="pagination flex justify-content-start">
-            <li v-if="controlls"
+            <li v-if="controls"
                 class="controll rb-visible"
                 @click="pagesArray[0] !== localCurrPage && handleClick(null, -1)"
                 :class="[pagesArray[0] === localCurrPage ? 'disabled' : '']">
@@ -64,7 +64,7 @@
                     </div>
                 </form>
             </li>
-            <li v-if="controlls" class="controll rb-visible"
+            <li v-if="controls" class="controll rb-visible"
                 @click="pagesArray[pagesArray.length - 1] !== localCurrPage && handleClick(null, 1)"
                 :class=" pagesArray[pagesArray.length - 1] === localCurrPage ? 'disabled' : ''">
                 <a class="page-link right d-flex justify-content-center align-items-center"
@@ -105,7 +105,7 @@
                 default: false,
                 type: Boolean,
             },
-            controlls: {
+            controls: {
                 default: false,
                 type: Boolean,
             },
