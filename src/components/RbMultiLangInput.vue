@@ -4,7 +4,7 @@
                       :required="selected==='ru'"
                       :disabled="disabled"></b-form-input>
         <template #append>
-            <b-button variant="light" @click="toggleDropdown" tabindex="-1">
+            <b-button variant="light" @click="toggleDropdown" tabindex="-1" :disabled="disabled">
                 {{ alias[selected] }}
                 <rb-icon :icon="show?'icon-chevron-up':'icon-chevron-down'"></rb-icon>
             </b-button>
