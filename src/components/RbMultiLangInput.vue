@@ -1,8 +1,9 @@
 <template>
-    <b-input-group :class="cls" class="rb-multi-lang-input">
+    <b-input-group :class="cls" class="rb-multi-lang-input" v-click-outside="resetDropdown">
         <b-form-input v-model="value[compileLang(fieldName, suffix, selected)]"
                       :required="selected==='ru'"
-                      :disabled="disabled"></b-form-input>
+                      :disabled="disabled"
+                      @focus="resetDropdown"></b-form-input>
         <template #append>
             <b-button variant="light" @click="toggleDropdown" tabindex="-1" :disabled="disabled">
                 {{ alias[selected] }}
@@ -83,7 +84,7 @@
             }
         },
         methods: {
-            selectLang(lang){
+            selectLang(lang) {
                 this.show = false
                 this.selected = lang
             },
@@ -91,7 +92,7 @@
                 e.preventDefault()
                 this.show = !this.show
 
-                if(!!this.show) this.$refs.dropdown.show()
+                if (!!this.show) this.$refs.dropdown.show()
                 else this.$refs.dropdown.hide()
             },
             compileLang(field, suf, lang) {
@@ -100,6 +101,9 @@
                 } else {
                     return field + lang[0].toUpperCase() + lang.slice(1);
                 }
+            },
+            resetDropdown() {
+                this.show = false
             }
         }
     }
