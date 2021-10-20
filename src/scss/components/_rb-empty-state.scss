@@ -6,9 +6,11 @@
   height: $rb-empty-state-height;
 
   .rb-inner {
-    text-align: $rb-empty-state-text-align;
-    margin-left: auto;
-    margin-right: auto;
+    display: $rb-empty-state-display;
+    justify-content: $rb-empty-state-justify-content;
+    align-items: $rb-empty-state-align-items;
+    flex-direction: $rb-empty-state-flex-direction;
+    gap: $rb-empty-state-gap;
   }
 
   .rb-main-icon {
@@ -18,13 +20,17 @@
   .rb-title {
     font-size: $rb-empty-state-title-font-size;
     color: $rb-empty-state-title-color;
+    margin: 0!important;
   }
 
   .rb-description {
     font-size: $rb-empty-state-description-font-size;
     color: $rb-empty-state-description-color;
     max-width: $rb-empty-state-max-width;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
+  }
+
+  .rb-button {
+    color: $rb-empty-state-button-text-color;
   }
 }

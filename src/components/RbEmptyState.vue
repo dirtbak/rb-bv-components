@@ -9,7 +9,7 @@
             <p class="rb-description">
                 <slot>{{description}}</slot>
             </p>
-            <b-button class="rb-button border-primary bg-light"
+            <b-button class="rb-button border-primary bg-transparent"
                       size="sm"
                       @click="emptyAction"
                       v-if="buttonText">
@@ -33,7 +33,7 @@
         },
         methods: {
             emptyAction(){
-                this.$emit('click')
+                this.$emit('emptyStateAction')
             }
         }
     }

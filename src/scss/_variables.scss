@@ -38,7 +38,10 @@ $rb-empty-state-title-color: $secondary !default;
 $rb-empty-state-description-font-size: $font-size-base !default;
 $rb-empty-state-description-color: $gray-600 !default;
 $rb-empty-state-button-text-color: $primary !default;
-$rb-empty-state-max-width: 60% !default;
+$rb-empty-state-max-width: 65% !default;
+$rb-empty-state-justify-content: center !default;
+$rb-empty-state-flex-direction: column !default;
+$rb-empty-state-gap: 16px !default;
 
 // RbListGroupInput
 $rb-list-group-input-item-hover-bg: white !default;

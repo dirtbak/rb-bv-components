@@ -60,7 +60,7 @@
                     value = [value];
                 }
                 return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
-            }
+            },
 
         },
     });
