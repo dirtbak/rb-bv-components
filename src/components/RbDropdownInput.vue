@@ -33,7 +33,7 @@
     export default {
         name: 'RbDropdownInput',
         props: {
-            value: [Number, Boolean],
+            value: [Number, Boolean, String],
             items: {
                 type: Array,
                 default: () => ([])
