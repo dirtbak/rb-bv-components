@@ -14,6 +14,7 @@ export const typeaheadMixin = {
         cancelOptionValue: {type: [String, Number], default: null},
         async: {type: Boolean, default: true},
         clearOnFocus: {type: Boolean, default: false},
+        disabled: {type: Boolean, default: false},
     },
     data() {
         return {
