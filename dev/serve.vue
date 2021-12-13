@@ -49,6 +49,11 @@
                 },
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
+                rbPagination: {
+                    currPage: 1,
+                    perPage: 1,
+                    totalRows: 3,
+                }
             }
         },
         methods: {
@@ -83,19 +88,19 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="C бордером" bordered
+                                <rb-boolean-button-input bordered label="C бордером"
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="С чекбоксом" bordered :showCheckbox="true"
+                                <rb-boolean-button-input :showCheckbox="true" bordered label="С чекбоксом"
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="Outline" outline :showCheckbox="true"
+                                <rb-boolean-button-input :showCheckbox="true" label="Outline" outline
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
@@ -106,19 +111,19 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="Без чекбокса" disabled
+                                <rb-boolean-button-input disabled label="Без чекбокса"
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="C бордером" bordered disabled
+                                <rb-boolean-button-input bordered disabled label="C бордером"
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-boolean-button-input label="С чекбоксом" bordered disabled :showCheckbox="true"
+                                <rb-boolean-button-input :showCheckbox="true" bordered disabled label="С чекбоксом"
                                                          v-model="rbBooleanButtonInput1"></rb-boolean-button-input>
                             </b-form-group>
                         </b-col>
@@ -132,21 +137,21 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Без иконок">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1"
-                                                                nullable>
+                                <rb-boolean-single-option-input block nullable
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" bordered>
+                                <rb-boolean-single-option-input block bordered v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С иконками">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput2"
-                                                                show-icons></rb-boolean-single-option-input>
+                                <rb-boolean-single-option-input block show-icons
+                                                                v-model="rbBooleanSingleOptionInput2"></rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -156,22 +161,22 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Без иконок">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" nullable
-                                                                disabled>
+                                <rb-boolean-single-option-input block disabled nullable
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" bordered
-                                                                disabled>
+                                <rb-boolean-single-option-input block bordered disabled
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С иконками">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput2" disabled
-                                                                show-icons></rb-boolean-single-option-input>
+                                <rb-boolean-single-option-input block disabled show-icons
+                                                                v-model="rbBooleanSingleOptionInput2"></rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -181,23 +186,23 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Без иконок">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" nullable
-                                                                :state="false">
+                                <rb-boolean-single-option-input :state="false" block nullable
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" bordered
-                                                                :state="false">
+                                <rb-boolean-single-option-input :state="false" block bordered
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С иконками">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput2"
-                                                                :state="false"
-                                                                show-icons></rb-boolean-single-option-input>
+                                <rb-boolean-single-option-input :state="false" block
+                                                                show-icons
+                                                                v-model="rbBooleanSingleOptionInput2"></rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -207,23 +212,23 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Без иконок">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" nullable
-                                                                :state="true">
+                                <rb-boolean-single-option-input :state="true" block nullable
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput1" bordered
-                                                                :state="true">
+                                <rb-boolean-single-option-input :state="true" block bordered
+                                                                v-model="rbBooleanSingleOptionInput1">
                                 </rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С иконками">
-                                <rb-boolean-single-option-input block v-model="rbBooleanSingleOptionInput2"
-                                                                :state="true"
-                                                                show-icons></rb-boolean-single-option-input>
+                                <rb-boolean-single-option-input :state="true" block
+                                                                show-icons
+                                                                v-model="rbBooleanSingleOptionInput2"></rb-boolean-single-option-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -236,15 +241,16 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор цвета">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items"
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С названием">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" bordered show-label
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" bordered
                                                          placeholder="Выбрать"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                                         show-label
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -254,14 +260,15 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор цвета">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" disabled
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" disabled
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С названием">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" bordered show-label disabled
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" bordered disabled
+                                                         show-label
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -271,15 +278,15 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор цвета">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" :state="true"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" :state="true"
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С названием">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" bordered show-label
-                                                         :state="true"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" :state="true" bordered
+                                                         show-label
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -289,15 +296,15 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор цвета">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" :state="false"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" :state="false"
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С названием">
-                                <rb-color-dropdown-input v-model="rbColorDropdownInput1" bordered show-label
-                                                         :state="false"
-                                                         :options="rbColorDropdownInput1Items"></rb-color-dropdown-input>
+                                <rb-color-dropdown-input :options="rbColorDropdownInput1Items" :state="false" bordered
+                                                         show-label
+                                                         v-model="rbColorDropdownInput1"></rb-color-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -321,7 +328,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-date-picker-input v-model="rbDatePickerInput1" disabled></rb-date-picker-input>
+                                <rb-date-picker-input disabled v-model="rbDatePickerInput1"></rb-date-picker-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -331,8 +338,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-date-picker-input v-model="rbDatePickerInput1"
-                                                      :state="false"></rb-date-picker-input>
+                                <rb-date-picker-input :state="false"
+                                                      v-model="rbDatePickerInput1"></rb-date-picker-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -342,7 +349,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-date-picker-input v-model="rbDatePickerInput1" :state="true"></rb-date-picker-input>
+                                <rb-date-picker-input :state="true" v-model="rbDatePickerInput1"></rb-date-picker-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -356,20 +363,21 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                                     bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     bordered placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                                     bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     bordered
+                                                     link placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                         </b-form-row>
@@ -379,21 +387,24 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." disabled
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     disabled
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." disabled
-                                                     bordered :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     bordered
+                                                     disabled placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                                     disabled bordered
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     bordered
+                                                     disabled link
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                         </b-form-row>
@@ -403,22 +414,23 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                                     :state="false" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     :state="false" placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
                                                      :state="false" bordered
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                                     :state="false" bordered
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     :state="false"
+                                                     bordered link
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                         </b-form-row>
@@ -428,22 +440,23 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
-                                                     :state="true" :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     :state="true" placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..."
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
                                                      :state="true" bordered
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-start="rbPeriodInputDtStart1" placehoder="Выбрать ..." link
-                                                     :state="true" bordered
-                                                     :dt-end="rbPeriodInputDtStart1"></rb-period-input>
+                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                                     :state="true"
+                                                     bordered link
+                                                     placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                         </b-form-row>
@@ -457,13 +470,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" split block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" block split
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" bordered block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" block bordered
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -480,19 +493,19 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" block disabled
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled bordered block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" block bordered disabled
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="В виде ссылки">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" link disabled
+                                <rb-dropdown-input :items="rbDropdownInput1Items" disabled link
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -509,13 +522,13 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" bordered block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" block bordered
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="В виде ссылки">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" link :state="false"
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" link
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -532,13 +545,13 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" bordered block
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" block bordered
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="В виде ссылки">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" link :state="true"
+                                <rb-dropdown-input :items="rbDropdownInput1Items" :state="true" link
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -558,7 +571,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered block
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block bordered
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -569,13 +582,13 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" disabled block
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block disabled
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered disabled block
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block bordered disabled
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -592,7 +605,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="false" block
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="false" block bordered
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -609,7 +622,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" bordered :state="true" block
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" :state="true" block bordered
                                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -634,8 +647,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"
-                                                 disabled></rb-select-input>
+                                <rb-select-input :items="rbDropdownInput1Items" disabled
+                                                 v-model="rbSelectInput1"></rb-select-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -645,8 +658,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"
-                                                 :state="false"></rb-select-input>
+                                <rb-select-input :items="rbDropdownInput1Items" :state="false"
+                                                 v-model="rbSelectInput1"></rb-select-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -656,8 +669,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-select-input :items="rbDropdownInput1Items" v-model="rbSelectInput1"
-                                                 :state="true"></rb-select-input>
+                                <rb-select-input :items="rbDropdownInput1Items" :state="true"
+                                                 v-model="rbSelectInput1"></rb-select-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -710,7 +723,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-single-option-input :items="rbDropdownInput1Items" bordered :state="false"
+                                <rb-single-option-input :items="rbDropdownInput1Items" :state="false" bordered
                                                         v-model="rbSingleOptionInput1"></rb-single-option-input>
                             </b-form-group>
                         </b-col>
@@ -727,7 +740,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-single-option-input :items="rbDropdownInput1Items" bordered :state="true"
+                                <rb-single-option-input :items="rbDropdownInput1Items" :state="true" bordered
                                                         v-model="rbSingleOptionInput1"></rb-single-option-input>
                             </b-form-group>
                         </b-col>
@@ -781,7 +794,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-option-input :items="rbDropdownInput1Items" bordered :state="false"
+                                <rb-multi-option-input :items="rbDropdownInput1Items" :state="false" bordered
                                                        v-model="rbMultiOptionInput1"></rb-multi-option-input>
                             </b-form-group>
                         </b-col>
@@ -798,7 +811,7 @@
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-option-input :items="rbDropdownInput1Items" bordered :state="true"
+                                <rb-multi-option-input :items="rbDropdownInput1Items" :state="true" bordered
                                                        v-model="rbMultiOptionInput1"></rb-multi-option-input>
                             </b-form-group>
                         </b-col>
@@ -859,8 +872,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-typeahead-input v-model="rbTypeaheadInput1"
-                                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                <rb-typeahead-input :searchOptions="rbMultiSelectSearch1"
+                                                    v-model="rbTypeaheadInput1"></rb-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -870,8 +883,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-typeahead-input v-model="rbTypeaheadInput1" disabled
-                                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                <rb-typeahead-input :searchOptions="rbMultiSelectSearch1" disabled
+                                                    v-model="rbTypeaheadInput1"></rb-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -881,9 +894,10 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-typeahead-input v-model="rbTypeaheadInput2" :state="false"
-                                                    :searchOptionByValues="rbSearchOptionByValues"
-                                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                <rb-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                    :searchOptions="rbMultiSelectSearch1"
+                                                    :state="false"
+                                                    v-model="rbTypeaheadInput2"></rb-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -893,9 +907,10 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group style="width: 200px;">
-                                <rb-typeahead-input v-model="rbTypeaheadInput2" :state="true"
-                                                    :searchOptionByValues="rbSearchOptionByValues"
-                                                    :searchOptions="rbMultiSelectSearch1"></rb-typeahead-input>
+                                <rb-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                    :searchOptions="rbMultiSelectSearch1"
+                                                    :state="true"
+                                                    v-model="rbTypeaheadInput2"></rb-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -908,9 +923,9 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
-                                <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1"
-                                                          :searchOptionByValues="rbSearchOptionByValues"
-                                                          :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                                <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                          :searchOptions="rbMultiSelectSearch1"
+                                                          v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -920,9 +935,10 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
-                                <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" disabled
-                                                          :searchOptionByValues="rbSearchOptionByValues"
-                                                          :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                                <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                          :searchOptions="rbMultiSelectSearch1"
+                                                          disabled
+                                                          v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -932,9 +948,10 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
-                                <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" :state="true"
-                                                          :searchOptionByValues="rbSearchOptionByValues"
-                                                          :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                                <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                          :searchOptions="rbMultiSelectSearch1"
+                                                          :state="true"
+                                                          v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -944,9 +961,10 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
-                                <rb-multi-typeahead-input v-model="rbMultiTypeaheadInput1" :state="false"
-                                                          :searchOptionByValues="rbSearchOptionByValues"
-                                                          :searchOptions="rbMultiSelectSearch1"></rb-multi-typeahead-input>
+                                <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
+                                                          :searchOptions="rbMultiSelectSearch1"
+                                                          :state="false"
+                                                          v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1016,7 +1034,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-price-input v-model="rbPriceInput1" disabled></rb-price-input>
+                                <rb-price-input disabled v-model="rbPriceInput1"></rb-price-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1026,7 +1044,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-price-input v-model="rbPriceInput1" :state="false"></rb-price-input>
+                                <rb-price-input :state="false" v-model="rbPriceInput1"></rb-price-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1036,7 +1054,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-price-input v-model="rbPriceInput1" :state="true"></rb-price-input>
+                                <rb-price-input :state="true" v-model="rbPriceInput1"></rb-price-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1059,7 +1077,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-phone-input v-model="rbPhoneInput1" disabled></rb-phone-input>
+                                <rb-phone-input disabled v-model="rbPhoneInput1"></rb-phone-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1069,7 +1087,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-phone-input v-model="rbPhoneInput1" :state="false"></rb-phone-input>
+                                <rb-phone-input :state="false" v-model="rbPhoneInput1"></rb-phone-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1079,7 +1097,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-phone-input v-model="rbPhoneInput1" :state="true"></rb-phone-input>
+                                <rb-phone-input :state="true" v-model="rbPhoneInput1"></rb-phone-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1092,8 +1110,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-input-with-button v-model="rbInputWithButton"
-                                                      @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                                <rb-input-with-button @buttonClick="rbInputWithButton = null"
+                                                      v-model="rbInputWithButton"></rb-input-with-button>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1103,8 +1121,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-input-with-button v-model="rbInputWithButton" disabled
-                                                      @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                                <rb-input-with-button @buttonClick="rbInputWithButton = null" disabled
+                                                      v-model="rbInputWithButton"></rb-input-with-button>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1114,8 +1132,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-input-with-button v-model="rbInputWithButton" :state="false"
-                                                      @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                                <rb-input-with-button :state="false" @buttonClick="rbInputWithButton = null"
+                                                      v-model="rbInputWithButton"></rb-input-with-button>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1125,8 +1143,8 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group>
-                                <rb-input-with-button v-model="rbInputWithButton" :state="true"
-                                                      @buttonClick="rbInputWithButton = null"></rb-input-with-button>
+                                <rb-input-with-button :state="true" @buttonClick="rbInputWithButton = null"
+                                                      v-model="rbInputWithButton"></rb-input-with-button>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1149,7 +1167,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" disabled></rb-multi-lang-input>
+                                <rb-multi-lang-input disabled v-model="rbMultiLangInput"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1159,7 +1177,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="false"></rb-multi-lang-input>
+                                <rb-multi-lang-input :state="false" v-model="rbMultiLangInput"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1169,7 +1187,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput" :state="true"></rb-multi-lang-input>
+                                <rb-multi-lang-input :state="true" v-model="rbMultiLangInput"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1201,7 +1219,7 @@
                         <rb-icon icon="icon-none"></rb-icon>
                     </b-form-group>
                     <b-form-group label="font-size: 42px">
-                        <rb-icon icon="icon-none" font-size="42px"></rb-icon>
+                        <rb-icon font-size="42px" icon="icon-none"></rb-icon>
                     </b-form-group>
                     <b-form-group label="variant = danger">
                         <rb-icon icon="icon-none" variant="danger"></rb-icon>
@@ -1212,18 +1230,20 @@
                 <h5>Пустой стейт - <span class="text-muted">RbEmptyState</span></h5>
                 <b-form-group label="На случай когда показать нечего">
                     <div style="width: 400px; height: 200px;">
-                        <rb-empty-state title="Ничего не найдено" icon="icon-none">
+                        <rb-empty-state icon="icon-none" title="Ничего не найдено">
                             Попробуйте изменить параметры поиска
                         </rb-empty-state>
                     </div>
                 </b-form-group>
             </b-form>
-            <!--<b-form @submit.stop.prevent>
+            <b-form @submit.stop.prevent>
                 <h5>RbPagination</h5>
                 <b-form-group label="Пагинация">
-                    <rb-pagination :total-rows="500" :per-page="50" :page-num="1" :search="false"></rb-pagination>
+                    <rb-pagination :curr-page="rbPagination.currPage"
+                                   :per-page="rbPagination.perPage"
+                                   :total-rows="rbPagination.totalRows"/>
                 </b-form-group>
-            </b-form>-->
+            </b-form>
         </b-container>
     </div>
 </template>
