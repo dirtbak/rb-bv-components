@@ -27,9 +27,12 @@
                     {id: 3, name: 'Три'},
                 ],
                 rbDropdownInput1: null,
+                rbDropdownAsObjectInput1: null,
                 rbDropdownLinkInput1: null,
                 rbListGroupInput1: null,
+                rbListGroupAsObjectInput1: null,
                 rbMultiDropdownInput1: [],
+                rbMultiDropdownAsObjectInput1: null,
                 rbMultiOptionInput1: [],
                 rbMultiPhoneInput1: [],
                 rbMultiSelectInput1: [],
@@ -559,6 +562,24 @@
                 </div>
             </b-form>
             <b-form @submit.stop.prevent>
+                <h5>Работа с объектами - <span class="text-muted">RbDropdownInput</span></h5>
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="3" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" block split value-as-object
+                                               v-model="rbDropdownAsObjectInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="3" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" block bordered
+                                               value-as-object v-model="rbDropdownAsObjectInput1"></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </b-form>
+            <b-form @submit.stop.prevent>
                 <h5>Выбор нескольких значений - <span class="text-muted">RbMultiDropdownInput</span></h5>
                 <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
@@ -629,6 +650,28 @@
                     </b-form-row>
                 </div>
             </b-form>
+
+            <b-form @submit.stop.prevent>
+                <h5>Выбор нескольких значений - <span class="text-muted">RbMultiDropdownInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block value-as-object
+                                                         v-model="rbMultiDropdownAsObjectInput1"></rb-multi-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block bordered value-as-object
+                                                         v-model="rbMultiDropdownAsObjectInput1"></rb-multi-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+
             <b-form @submit.stop.prevent>
                 <h5>Обычный селект - <span class="text-muted">RbSelectInput</span></h5>
                 <div class="rb-component-row">
@@ -825,7 +868,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :items="rbDropdownInput1Items"
+                                <rb-list-group-input :options="rbDropdownInput1Items"
                                                      v-model="rbListGroupInput1"></rb-list-group-input>
                             </b-form-group>
                         </b-col>
@@ -836,7 +879,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :items="rbDropdownInput1Items" disabled
+                                <rb-list-group-input :options="rbDropdownInput1Items" disabled
                                                      v-model="rbListGroupInput1"></rb-list-group-input>
                             </b-form-group>
                         </b-col>
@@ -847,7 +890,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :items="rbDropdownInput1Items" :state="false"
+                                <rb-list-group-input :options="rbDropdownInput1Items" :state="false"
                                                      v-model="rbListGroupInput1"></rb-list-group-input>
                             </b-form-group>
                         </b-col>
@@ -858,13 +901,40 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :items="rbDropdownInput1Items" :state="true"
+                                <rb-list-group-input :options="rbDropdownInput1Items" :state="true"
                                                      v-model="rbListGroupInput1"></rb-list-group-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
                 </div>
             </b-form>
+
+            <b-form>
+                <h5>Работа с объектами - <span class="text-muted">RbListGroupInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Выбор одного значения" style="width: 200px;">
+                                <rb-list-group-input :options="rbDropdownInput1Items" value-as-object
+                                                     v-model="rbListGroupAsObjectInput1"></rb-list-group-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Выбор одного значения" style="width: 200px;">
+                                <rb-list-group-input :options="rbDropdownInput1Items" :state="true" value-as-object
+                                                     v-model="rbListGroupAsObjectInput1"></rb-list-group-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+
             <b-form @submit.stop.prevent>
                 <h5>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h5>
                 <div class="rb-component-row">

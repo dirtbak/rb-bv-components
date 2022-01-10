@@ -3,8 +3,8 @@
                 :variant="variant"
                 :block="block"
                 :disabled="disabled"
-                no-caret
-                :class="cls">
+                :class="cls"
+                no-caret>
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
                   :showCancelItem="showCancelItem">
@@ -33,7 +33,8 @@
     export default {
         name: 'RbDropdownInput',
         props: {
-            value: [Number, Boolean, String],
+            value: [Number, Boolean, String, Object],
+            valueAsObject: {type: Boolean, default: false},
             items: {
                 type: Array,
                 default: () => ([])
@@ -44,6 +45,10 @@
             showCancelIcon: {type: Boolean, default: false},
             bordered: {type: Boolean, default: false},
             variant: {type: String, default: 'light'},
+            bindField: {
+                type: String,
+                default: 'id'
+            },
             valueField: {
                 type: String,
                 default: 'id'
@@ -86,15 +91,14 @@
                 this.setText();
             },
             value() {
-                this.innerValue = this.value;
+                this.setInnerValue();
                 this.setText();
             }
         },
         created() {
-            let th = this;
-            th.innerValue = th.value;
-            th.fillOptions(th.items);
-            th.setText();
+            this.setInnerValue();
+            this.fillOptions(this.items);
+            this.setText();
         },
         methods: {
             fillOptions(items) {
@@ -115,10 +119,25 @@
                     this.text = this.options[currentValIndex].text;
                 }
             },
+            setInnerValue() {
+                if (this.valueAsObject) {
+                    this.innerValue = this.value != null ? this.value[this.bindField] : null;
+                } else {
+                    this.innerValue = this.value;
+                }
+            },
             onClick(item) {
-                this.$emit('input', item.value);
-                this.$emit('change', item.value);
-                this.$emit('click', item.value);
+                if (this.valueAsObject) {
+                    let objectVal = {[this.bindField]: item.value};
+                    this.$emit('input', objectVal);
+                    this.$emit('change', objectVal);
+                    this.$emit('click', objectVal);
+                } else {
+                    this.$emit('input', item.value);
+                    this.$emit('change', item.value);
+                    this.$emit('click', item.value);
+                }
+
             },
             getIconColor(value) {
                 const item = this.items.find(item => item[this.valueField] === value);
