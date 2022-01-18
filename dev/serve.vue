@@ -50,9 +50,9 @@
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
                 rbPagination: {
-                    currPage: 1,
-                    perPage: 1,
-                    totalRows: 3,
+                    currPage: "5",
+                    perPage: 2,
+                    totalRows: 12,
                 }
             }
         },
@@ -1237,7 +1237,7 @@
                 </b-form-group>
             </b-form>
             <b-form @submit.stop.prevent>
-                <h5>RbPagination</h5>
+                <h5>Пагинация - <span class="text-muted">RbPagination</span></h5>
                 <b-form-group label="Пагинация">
                     <rb-pagination :curr-page="rbPagination.currPage"
                                    :per-page="rbPagination.perPage"

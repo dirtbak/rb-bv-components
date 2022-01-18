@@ -6,7 +6,7 @@
                 class="control rb-visible"
                 v-if="controls">
                 <a class="page-link left d-flex justify-content-center align-items-center" href="#">
-                    <rb-icon icon="icon-chevron-left"></rb-icon>
+                    <rb-icon icon="icon-chevron-left"/>
                 </a>
             </li>
             <li :class="[isMobile ? 'd-none' : 'rb-visible', pagesArray.length == 1 ? 'd-none' : '']"
@@ -55,14 +55,14 @@
                                     placeholder="Страница"
                                     type="number"
                                     v-model="searchInput"/>
-                            <div @click="collapse" class="x-mark"></div>
+                            <div @click="collapse" class="x-mark"/>
                         </div>
                         <button :class="{active}"
                                 @click="clickSearchBox"
                                 class="btn btn-primary d-flex justify-content-center align-items-center"
                                 ref="btn"
                                 type="button">
-                            <rb-icon icon="icon-search" style="color: rgb(33, 150, 243);"></rb-icon>
+                            <rb-icon icon="icon-search" style="color: rgb(33, 150, 243);"/>
                         </button>
                     </div>
                 </form>
@@ -73,7 +73,7 @@
                 v-if="controls">
                 <a class="page-link right d-flex justify-content-center align-items-center"
                    href="#">
-                    <rb-icon icon="icon-chevron-right"></rb-icon>
+                    <rb-icon icon="icon-chevron-right"/>
                 </a>
             </li>
         </ul>
@@ -85,21 +85,21 @@
         name: "RbPagination",
         props: {
             currPage: {
-                default: 0,
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
                 }
             },
             perPage: {
-                default: 0,
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
                 }
             },
             totalRows: {
-                default: 0,
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
