@@ -1300,7 +1300,7 @@
                 <h5>Пустой стейт - <span class="text-muted">RbEmptyState</span></h5>
                 <b-form-group label="На случай когда показать нечего">
                     <div style="width: 400px; height: 200px;">
-                        <rb-empty-state icon="icon-none" title="Ничего не найдено">
+                        <rb-empty-state title="Ничего не найдено" icon="icon-none" button-text="awdawdawd">
                             Попробуйте изменить параметры поиска
                         </rb-empty-state>
                     </div>
