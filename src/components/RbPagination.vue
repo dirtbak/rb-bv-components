@@ -1,75 +1,79 @@
 <template>
     <nav :class="{busy}" class="rb-pagination">
         <ul class="pagination flex justify-content-start">
-            <li v-if="controls"
-                class="controll rb-visible"
+            <li :class="[pagesArray[0] === localCurrPage ? 'disabled' : '']"
                 @click="pagesArray[0] !== localCurrPage && handleClick(null, -1)"
-                :class="[pagesArray[0] === localCurrPage ? 'disabled' : '']">
+                class="control rb-visible"
+                v-if="controls">
                 <a class="page-link left d-flex justify-content-center align-items-center" href="#">
-                    <rb-icon icon="icon-chevron-left"></rb-icon>
+                    <rb-icon icon="icon-chevron-left"/>
                 </a>
             </li>
-            <li class="page-item" :class="[isMobile ? 'd-none' : 'rb-visible', pagesArray.length == 1 ? 'd-none' : '']"
-                @click="handleClick(pagesArray[0])">
-                <a class="page-link d-flex justify-content-center align-items-center" href="#"
-                   :class="[localCurrPage === pagesArray[0] ? 'active' : '']">
+            <li :class="[isMobile ? 'd-none' : 'rb-visible', pagesArray.length == 1 ? 'd-none' : '']"
+                @click="handleClick(pagesArray[0])"
+                class="page-item">
+                <a :class="[localCurrPage === pagesArray[0] ? 'active' : '']"
+                   class="page-link d-flex justify-content-center align-items-center"
+                   href="#">
                     {{ pagesArray[0] }}
                 </a>
             </li>
-            <li class="page-item pad" :class="[leftPad ? 'rb-visible' : 'd-none', isMobile ? 'd-none' : '']">
+            <li :class="[leftPad ? 'rb-visible' : 'd-none', isMobile ? 'd-none' : '']" class="page-item pad">
                 <a class="page-link d-flex justify-content-center align-items-center" href="#">...</a>
             </li>
-            <li class="page-item"
-                v-for="el of pagesArray"
+            <li :class="[visiblePages[el] ? '' :
+                'd-none',(el == pagesArray.length || el == 1) && !isMobile ? 'd-none' : '',]"
                 :key="el"
                 @click="handleClick(el)"
-                :class="[visiblePages[el] ? '' :
-                'd-none',(el == pagesArray.length || el == 1) && !isMobile ? 'd-none' : '',]">
-                <a class="page-link d-flex justify-content-center align-items-center" href="#"
-                   :class="[localCurrPage === el ? 'active' : '']">
+                class="page-item"
+                v-for="el of pagesArray">
+                <a :class="[localCurrPage === el ? 'active' : '']"
+                   class="page-link d-flex justify-content-center align-items-center"
+                   href="#">
                     {{ el }}
                 </a>
             </li>
-            <li class="page-item pad" :class="[rightPad ? 'rb-visible' : 'd-none', isMobile ? 'd-none' : '']">
+            <li :class="[rightPad ? 'rb-visible' : 'd-none', isMobile ? 'd-none' : '']" class="page-item pad">
                 <a class="page-link d-flex justify-content-center align-items-center" href="#">...</a>
             </li>
-            <li class="page-item last" :class="[isMobile ? 'd-none' : 'rb-visible']"
-                @click="localCurrPage = pagesArray[pagesArray.length - 1]">
-                <a class="page-link d-flex justify-content-center align-items-center"
-                   href="#"
-                   :class="[localCurrPage === pagesArray[pagesArray.length - 1]? 'active': '']"
-                   @click="handleClick(pagesArray[pagesArray.length-1])">
+            <li :class="[isMobile ? 'd-none' : 'rb-visible']" @click="localCurrPage = pagesArray[pagesArray.length - 1]"
+                class="page-item last">
+                <a :class="[localCurrPage === pagesArray[pagesArray.length - 1]? 'active': '']"
+                   @click="handleClick(pagesArray[pagesArray.length-1])"
+                   class="page-link d-flex justify-content-center align-items-center"
+                   href="#">
                     {{ pagesArray[pagesArray.length - 1] }}
                 </a>
             </li>
-            <li v-if="search && pagesArray.length > 8" class="search"
-                :class="[pagesArray.length == 1 ? 'd-none' : '', search ? 'rb-visible' : '']">
+            <li :class="[pagesArray.length == 1 ? 'd-none' : '', search ? 'rb-visible' : '']" class="search"
+                v-if="search && pagesArray.length > 8">
                 <form @submit.prevent="validateSearch">
-                    <div class="d-flex justify-content-end searchbox-container" :class="{ active }">
-                        <div class="input-wrapper" :class="{active}">
+                    <div :class="{ active }" class="d-flex justify-content-end searchbox-container">
+                        <div :class="{active}" class="input-wrapper">
                             <input
-                                    type="number"
-                                    v-model="searchInput"
+                                    min="1"
                                     placeholder="Страница"
-                                    min="1"/>
-                            <div class="x-mark" @click="collapse"></div>
+                                    type="number"
+                                    v-model="searchInput"/>
+                            <div @click="collapse" class="x-mark"/>
                         </div>
-                        <button type="button"
+                        <button :class="{active}"
+                                @click="clickSearchBox"
                                 class="btn btn-primary d-flex justify-content-center align-items-center"
                                 ref="btn"
-                                @click="clickSearchBox"
-                                :class="{active}">
-                            <rb-icon icon="icon-search" style="color: rgb(33, 150, 243);"></rb-icon>
+                                type="button">
+                            <rb-icon icon="icon-search" style="color: rgb(33, 150, 243);"/>
                         </button>
                     </div>
                 </form>
             </li>
-            <li v-if="controls" class="controll rb-visible"
+            <li :class=" pagesArray[pagesArray.length - 1] === localCurrPage ? 'disabled' : ''"
                 @click="pagesArray[pagesArray.length - 1] !== localCurrPage && handleClick(null, 1)"
-                :class=" pagesArray[pagesArray.length - 1] === localCurrPage ? 'disabled' : ''">
+                class="control rb-visible"
+                v-if="controls">
                 <a class="page-link right d-flex justify-content-center align-items-center"
                    href="#">
-                    <rb-icon icon="icon-chevron-right"></rb-icon>
+                    <rb-icon icon="icon-chevron-right"/>
                 </a>
             </li>
         </ul>
@@ -80,22 +84,22 @@
     export default {
         name: "RbPagination",
         props: {
-            pageNum: {
-                default: 0,
+            currPage: {
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
                 }
             },
             perPage: {
-                default: 0,
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
                 }
             },
             totalRows: {
-                default: 0,
+                default: 1,
                 type: Number,
                 validate(x) {
                     return typeof x === 'number'
@@ -116,7 +120,7 @@
         },
         data() {
             let arrayFromDigit = Array.from(
-                {length: this.totalRows / this.perPage + (this.totalRows % 10 && 1)},
+                {length: this.totalRows / this.perPage + ((this.totalRows % 10 && this.totalRows >= 10) && 1)},
                 (_, i) => i + 1
             );
             return {
@@ -135,8 +139,7 @@
             };
         },
         methods: {
-
-            validateSearch: function () {
+            validateSearch() {
                 if (
                     new RegExp(/\D/).test(this.searchInput) ||
                     this.searchInput <= 0 ||
@@ -151,7 +154,7 @@
                 }
             },
 
-            collapse: function () {
+            collapse() {
                 this.active = false;
                 if (!this.isButton) {
                     this.$refs.btn.setAttribute("type", "button");
@@ -159,7 +162,7 @@
                 }
             },
 
-            clickSearchBox: function () {
+            clickSearchBox() {
                 if (this.isButton && this.active) {
                     this.$refs.btn.setAttribute("type", "submit");
                     this.isButton = false;
@@ -170,7 +173,7 @@
                 this.active = true;
             },
 
-            reduction: function () {
+            reduction() {
                 const reRenderVisiblePages = (isVisible = false) =>
                     Object.keys(this.visiblePages).forEach(
                         (el) => (this.visiblePages[el] = isVisible)
@@ -210,7 +213,7 @@
                 this.inputLength();
             },
 
-            handleClick: function (page, direction) {
+            handleClick(page, direction) {
                 if (direction) {
                     this.localCurrPage += direction
                 } else {
@@ -219,8 +222,10 @@
                 this.$emit('pageChange', this.localCurrPage)
             },
 
-            inputLength: function () {
+            inputLength() {
+                if (!this.$el.querySelector('.search')) return
                 const computedProp = (el, prop) => parseFloat(window.getComputedStyle(el)[prop])
+
                 let elIndex = 3
                 let totalLength = 0
                 const visibleElements = document.querySelectorAll('.pagination>li:not(.d-none)')
@@ -240,19 +245,17 @@
         },
 
         created() {
-            this.localCurrPage = this.pageNum;
+            this.localCurrPage = this.currPage;
         },
 
         watch: {
-
             localCurrPage: function () {
                 this.reduction()
             },
 
-            pageNum() {
-                this.localCurrPage = this.pageNum
+            currPage() {
+                this.localCurrPage = this.currPage
             }
-
         },
     };
 </script>

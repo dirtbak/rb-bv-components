@@ -6,6 +6,7 @@
                      v-model="text"
                      :placeholder="placeholder"
                      :state="state"
+                     :disabled="disabled"
                      autocomplete="off"
                      v-on:keyup.enter="onKeyEnter"
                      v-on:keydown.down="onKeyArrowDown"
