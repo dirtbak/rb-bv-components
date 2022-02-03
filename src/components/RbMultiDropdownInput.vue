@@ -2,6 +2,7 @@
     <b-dropdown class="rb-dropdown-input rb-multi-dropdown-input"
                 :variant="variant"
                 :class="cls"
+                :disabled="disabled"
                 no-caret
                 :block="block">
         <template v-slot:button-content>
@@ -12,8 +13,8 @@
                 {{counter? counter: ''}}
             </span>
             <span class="rb-dropdown-indicator" v-if="!noCaret">
-                    <rb-icon :icon="dropdownIcon"></rb-icon>
-                </span>
+                <rb-icon :icon="dropdownIcon"></rb-icon>
+            </span>
         </template>
         <b-dropdown-item v-for="o in options" :key="o.value"
                          @click="onClick(o)"
@@ -28,6 +29,7 @@
         name: 'RbMultiDropdownInput',
         props: {
             value: [Array, String, Number],
+            bindField: {type: String, default: 'id'},
             items: {
                 type: Array, default: () => {
                     return [];
@@ -41,27 +43,18 @@
             valueField: {type: String, default: 'id'},
             displayField: {type: String, default: 'name'},
             valueAsString: {type: Boolean, default: false},
+            valueAsObject: {type: Boolean, default: false},
             block: Boolean,
             state: {type: Boolean, default: null},
             dropdownIcon: {type: String, default: 'icon-chevron-down'},
             noCaret: {type: Boolean, default: false},
+            disabled: {type: Boolean, default: false},
         },
         data() {
             return {
                 innerValue: [],
                 options: []
             };
-        },
-        created() {
-            let th = this;
-            if (th.valueAsString) {
-                if (typeof th.value === "number") {
-                    th.innerValue = [th.value]
-                } else {
-                    th.innerValue = th.splitStringValue();
-                }
-            }
-            th.fillOptions(th.items);
         },
         computed: {
             cls() {
@@ -90,14 +83,7 @@
                 th.fillOptions(th.items);
             },
             value() {
-                let th = this;
-                if (th.valueAsString) {
-                    if (typeof th.value === "number") {
-                        th.innerValue = [th.value]
-                    } else {
-                        th.innerValue = th.splitStringValue();
-                    }
-                }
+                this.setInnerValue();
             }
         },
         methods: {
@@ -130,6 +116,8 @@
                     let newValue = th.innerValue;
                     if (th.valueAsString) {
                         newValue = th.innerValue.join(',');
+                    } else if (th.valueAsObject) {
+                        newValue = th.innerValue.map(item => ({[th.bindField]: item}));
                     }
                     th.$emit('input', newValue);
                     th.$emit('change', newValue);
@@ -162,7 +150,29 @@
                     return th.value.split(',').map(i => parseInt(i));
                 }
                 return [th.value];
+            },
+            setInnerValue() {
+                if (this.valueAsString) {
+                    if (typeof this.value === 'number'
+                        || typeof this.value === 'string') {
+                        this.innerValue = [this.value]
+                    } else {
+                        this.innerValue = this.splitStringValue();
+                    }
+                } else if (this.valueAsObject) {
+                    if (!this.value) {
+                        this.innerValue = this.value;
+                    } else {
+                        this.innerValue = this.value.map(item => item[this.bindField]);
+                    }
+                } else {
+                    this.innerValue = this.value;
+                }
             }
-        }
+        },
+        created() {
+            this.setInnerValue();
+            this.fillOptions(this.items);
+        },
     };
 </script>

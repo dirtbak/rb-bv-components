@@ -10,7 +10,7 @@
     export default {
         name: 'RbSelectInput',
         props: {
-            value: Number,
+            value: [Number, String],
             items: {
                 type: Array, default: () => {
                     return [];

@@ -1,11 +1,11 @@
 <template>
     <b-list-group class="rb-list-group-input" :class="cls">
-        <b-list-group-item :active="item[valueField] === value"
-                           :key="item[valueField]"
+        <b-list-group-item :active="option[valueField] === innerValue"
+                           :key="option[valueField]"
                            :disabled="disabled"
-                           @click="onChange(item)"
-                           v-for="item in items">
-            {{item[displayField]}}
+                           @click="onChange(option)"
+                           v-for="option in options">
+            {{option[displayField]}}
         </b-list-group-item>
     </b-list-group>
 </template>
@@ -14,12 +14,14 @@
     export default {
         name: 'RbListGroupInput',
         props: {
-            value: [String, Number],
-            items: {type: Array, default: () => []},
+            value: [String, Number, Object],
+            valueAsObject: {type: Boolean, default: false},
+            bindField: {type: String, default: 'id'},
+            options: {type: Array, default: () => []},
             valueField: {type: String, default: 'id'},
             displayField: {type: String, default: 'name'},
             state: {type: Boolean, default: null},
-            disabled: Boolean,
+            disabled: {type: Boolean, default: null},
         },
         computed: {
             cls() {
@@ -27,12 +29,27 @@
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,
                 }
-            }
+            },
+            innerValue() {
+                if (this.value == null) {
+                    return this.value;
+                }
+
+                return this.valueAsObject ? this.value[this.bindField] : this.value;
+            },
         },
         methods: {
-            onChange: function (item) {
-                this.$emit('input', item[this.valueField]);
+            onChange: function (option) {
+                if (this.valueAsObject) {
+                    let objectVal = {[this.bindField]: option[this.valueField]};
+                    this.$emit('input', objectVal);
+                    this.$emit('change', objectVal);
+                } else {
+                    this.$emit('input', option[this.valueField]);
+                    this.$emit('change', option[this.valueField]);
+                }
+
             }
         }
-    };
+    }
 </script>
