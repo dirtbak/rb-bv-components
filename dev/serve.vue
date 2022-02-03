@@ -978,6 +978,7 @@
                         <b-col lg="3" sm="12">
                             <b-form-group>
                                 <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
+                                                           maxTags="1"
                                                            v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
                             </b-form-group>
                         </b-col>

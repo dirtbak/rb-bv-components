@@ -1,42 +1,42 @@
 <template>
-    <div class="rb-tag-multi-select-input" :class="cls"
+    <div :class="cls" class="rb-tag-multi-select-input"
          v-click-outside="clickOutSide">
 
-        <b-input type="text"
-                 class="rb-tag-multi-select-search-input"
+        <b-input :disabled="disabled || isMaxLength"
                  :placeholder="placeholder"
-                 ref="input"
                  :state="state"
-                 v-model="inputValue"
-                 @focus="focused = true"
                  @blur="focused = false"
                  @click="setOptionsVisible"
-                 autocomplete="off"
+                 @focus="focused = true"
                  @input="debounceSearch"
-                 :disabled="disabled"
+                 autocomplete="off"
+                 class="rb-tag-multi-select-search-input"
+                 ref="input"
+                 type="text"
+                 v-model="inputValue"
+                 v-on:keydown.escape="closeOptions"
                  v-on:keyup.down="onKeyDown"
-                 v-on:keyup.up="onKeyUp"
                  v-on:keyup.enter="onKeyEnter"
-                 v-on:keydown.escape="closeOptions">
+                 v-on:keyup.up="onKeyUp">
         </b-input>
 
-        <ul role="menu" class="options dropdown-menu show" tabindex="-1" v-if="optionsVisible">
-            <li role="presentation" @click="select(item)" v-for="(item, i) in options"
-                :active="i === activeOptionIndex"
-                :key="item[valueField]">
-                <a role="menuitem" class="dropdown-item" :ref="'dropdownItem_' + i"
-                   href="#" target="_self"
+        <ul class="options dropdown-menu show" role="menu" tabindex="-1" v-if="optionsVisible">
+            <li :active="i === activeOptionIndex" :key="item[valueField]" @click="select(item)"
+                role="presentation"
+                v-for="(item, i) in options">
+                <a :ref="'dropdownItem_' + i" class="dropdown-item" href="#"
+                   role="menuitem" target="_self"
+                   v-on:keydown.escape="closeOptions"
                    v-on:keyup.down="onKeyDown"
-                   v-on:keyup.up="onKeyUp"
                    v-on:keyup.enter="onKeyEnter"
-                   v-on:keydown.escape="closeOptions">{{item[displayField]}}</a>
+                   v-on:keyup.up="onKeyUp">{{item[displayField]}}</a>
             </li>
         </ul>
 
         <div class="selected-items" v-if="selectedItems.length > 0">
-            <b-badge href="#" class="rb-tag" variant="light" v-for="item in selectedItems" :key="item[valueField]">
+            <b-badge :key="item[valueField]" class="rb-tag" href="#" v-for="item in selectedItems" variant="light">
                 <span class="title">{{item[displayField]}}</span>
-                <b-button class="small remove-btn" @click="remove(item)" variant="plain">
+                <b-button @click="remove(item)" class="small remove-btn" variant="plain">
                     <rb-icon icon="icon-close"></rb-icon>
                 </b-button>
             </b-badge>
@@ -60,6 +60,7 @@
             addTagOnEnter: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
             disabled: Boolean,
+            maxTags: {type: [String, Number], default: Infinity}
         },
         data: () => {
             return {
@@ -71,7 +72,8 @@
                 activeOptionIndex: null,
                 inputValue: null,
                 newTagCounter: 0, // нужен для генерации id для каждого нового тега (id должны быть отрицательными, чтобы отличить их от сущ.)
-                newTagOptionSuffix: '(Новый тег)'
+                newTagOptionSuffix: '(Новый тег)',
+                isMaxLength: false
             };
         },
         computed: {
@@ -119,7 +121,6 @@
             },
             select(item) {
                 const selectableItem = this.handleSelectableItem(item);
-
                 if (!this.selectedItems.find(i => {
                     if (this.addTagOnEnter) {
                         // условие для того, чтобы не добавлять новые теги с одинаковым названием
@@ -130,6 +131,7 @@
                     return i[this.valueField] === selectableItem[this.valueField];
                 })) {
                     this.selectedItems.push(selectableItem);
+                    if (parseInt(this.maxTags) === this.selectedItems.length) this.isMaxLength = true
                     this.activeOptionIndex = null;
                     this.inputValue = null;
                     this.$emit('input', this.selectedItems);
@@ -141,6 +143,7 @@
                 const index = this.selectedItems.findIndex(i => i[this.valueField] === item[this.valueField] && i[this.displayField] === item[this.displayField]);
                 if (index !== -1) {
                     this.selectedItems.splice(index, 1);
+                    if (parseInt(this.maxTags) > this.selectedItems.length) this.isMaxLength = false
                     this.$emit('input', this.selectedItems);
                     this.$emit('change');
                 }
