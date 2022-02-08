@@ -42,7 +42,9 @@
                 rbPriceInput1: null,
                 rbSelectInput1: null,
                 rbSingleOptionInput1: null,
-                rbTagMultiSelectInput1: [],
+                rbTagMultiSelectInput1: [
+                    {id: 1, name: 'Один'}
+                ],
                 rbTypeaheadInput1: null,
                 rbTypeaheadInput2: 2,
                 rbMultiLangInput: {

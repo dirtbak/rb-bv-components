@@ -17,8 +17,7 @@
                  v-on:keydown.escape="closeOptions"
                  v-on:keyup.down="onKeyDown"
                  v-on:keyup.enter="onKeyEnter"
-                 v-on:keyup.up="onKeyUp">
-        </b-input>
+                 v-on:keyup.up="onKeyUp"/>
 
         <ul class="options dropdown-menu show" role="menu" tabindex="-1" v-if="optionsVisible">
             <li :active="i === activeOptionIndex" :key="item[valueField]" @click="select(item)"
@@ -37,7 +36,7 @@
             <b-badge :key="item[valueField]" class="rb-tag" href="#" v-for="item in selectedItems" variant="light">
                 <span class="title">{{item[displayField]}}</span>
                 <b-button @click="remove(item)" class="small remove-btn" variant="plain">
-                    <rb-icon icon="icon-close"></rb-icon>
+                    <rb-icon icon="icon-close"/>
                 </b-button>
             </b-badge>
         </div>
@@ -72,8 +71,7 @@
                 activeOptionIndex: null,
                 inputValue: null,
                 newTagCounter: 0, // нужен для генерации id для каждого нового тега (id должны быть отрицательными, чтобы отличить их от сущ.)
-                newTagOptionSuffix: '(Новый тег)',
-                isMaxLength: false
+                newTagOptionSuffix: '(Новый тег)'
             };
         },
         computed: {
@@ -83,6 +81,9 @@
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,
                 }
+            },
+            isMaxLength() {
+                return parseInt(this.maxTags) === this.selectedItems.length
             }
         },
         watch: {
@@ -131,7 +132,6 @@
                     return i[this.valueField] === selectableItem[this.valueField];
                 })) {
                     this.selectedItems.push(selectableItem);
-                    if (parseInt(this.maxTags) === this.selectedItems.length) this.isMaxLength = true
                     this.activeOptionIndex = null;
                     this.inputValue = null;
                     this.$emit('input', this.selectedItems);
@@ -143,7 +143,6 @@
                 const index = this.selectedItems.findIndex(i => i[this.valueField] === item[this.valueField] && i[this.displayField] === item[this.displayField]);
                 if (index !== -1) {
                     this.selectedItems.splice(index, 1);
-                    if (parseInt(this.maxTags) > this.selectedItems.length) this.isMaxLength = false
                     this.$emit('input', this.selectedItems);
                     this.$emit('change');
                 }
