@@ -131,7 +131,7 @@
                     return i[this.valueField] === selectableItem[this.valueField];
                 })) {
                     this.selectedItems.push(selectableItem);
-                    if (parseInt(this.maxTags) === this.selectedItems.length) this.isMaxLength = true
+                    this.isMaxLength = parseInt(this.maxTags) === this.selectedItems.length
                     this.activeOptionIndex = null;
                     this.inputValue = null;
                     this.$emit('input', this.selectedItems);
@@ -143,7 +143,7 @@
                 const index = this.selectedItems.findIndex(i => i[this.valueField] === item[this.valueField] && i[this.displayField] === item[this.displayField]);
                 if (index !== -1) {
                     this.selectedItems.splice(index, 1);
-                    if (parseInt(this.maxTags) > this.selectedItems.length) this.isMaxLength = false
+                    this.isMaxLength = parseInt(this.maxTags) === this.selectedItems.length
                     this.$emit('input', this.selectedItems);
                     this.$emit('change');
                 }
@@ -224,6 +224,7 @@
                 this.search('');
             }
             this.selectedItems = this.value || [];
+            this.isMaxLength = parseInt(this.maxTags) === this.selectedItems.length
         },
     };
 </script>
