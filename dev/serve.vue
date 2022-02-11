@@ -53,9 +53,9 @@
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
                 rbPagination: {
-                    currPage: "5",
-                    perPage: 2,
-                    totalRows: 12,
+                    currPage: 5,
+                    perPage: 5,
+                    totalRows: 0,
                 }
             }
         },
@@ -69,8 +69,19 @@
                 }
                 return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
             },
+            async asyncMockPageReq() {
+                return this.wait(100, {
+                    totalRows: 12
+                })
+            },
 
+            wait(ms, value) {
+                return new Promise(resolve => setTimeout(resolve, ms, value));
+            }
         },
+        created() {
+            this.asyncMockPageReq().then(res => this.$set(this.rbPagination, 'totalRows', res.totalRows))
+        }
     });
 </script>
 
@@ -567,14 +578,15 @@
                 <b-form-row>
                     <b-col lg="3" sm="12">
                         <b-form-group label="Обычный">
-                            <rb-dropdown-input :items="rbDropdownInput1Items" block split value-as-object
-                                               v-model="rbDropdownAsObjectInput1"></rb-dropdown-input>
+                            <rb-dropdown-input :items="rbDropdownInput1Items" block split
+                                               v-model="rbDropdownAsObjectInput1"
+                                               value-as-object></rb-dropdown-input>
                         </b-form-group>
                     </b-col>
                     <b-col lg="3" sm="12">
                         <b-form-group label="С бордером">
                             <rb-dropdown-input :items="rbDropdownInput1Items" :state="false" block bordered
-                                               value-as-object v-model="rbDropdownAsObjectInput1"></rb-dropdown-input>
+                                               v-model="rbDropdownAsObjectInput1" value-as-object></rb-dropdown-input>
                         </b-form-group>
                     </b-col>
                 </b-form-row>
@@ -658,14 +670,16 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block value-as-object
-                                                         v-model="rbMultiDropdownAsObjectInput1"></rb-multi-dropdown-input>
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block
+                                                         v-model="rbMultiDropdownAsObjectInput1"
+                                                         value-as-object></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block bordered value-as-object
-                                                         v-model="rbMultiDropdownAsObjectInput1"></rb-multi-dropdown-input>
+                                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block bordered
+                                                         v-model="rbMultiDropdownAsObjectInput1"
+                                                         value-as-object></rb-multi-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -916,8 +930,9 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :options="rbDropdownInput1Items" value-as-object
-                                                     v-model="rbListGroupAsObjectInput1"></rb-list-group-input>
+                                <rb-list-group-input :options="rbDropdownInput1Items"
+                                                     v-model="rbListGroupAsObjectInput1"
+                                                     value-as-object></rb-list-group-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -927,8 +942,9 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Выбор одного значения" style="width: 200px;">
-                                <rb-list-group-input :options="rbDropdownInput1Items" :state="true" value-as-object
-                                                     v-model="rbListGroupAsObjectInput1"></rb-list-group-input>
+                                <rb-list-group-input :options="rbDropdownInput1Items" :state="true"
+                                                     v-model="rbListGroupAsObjectInput1"
+                                                     value-as-object></rb-list-group-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1228,7 +1244,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Инпут с выбором языка">
-                                <rb-multi-lang-input v-model="rbMultiLangInput"></rb-multi-lang-input>
+                                <rb-multi-lang-input v-model="rbMultiLangInput" maxLength="5"></rb-multi-lang-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -1301,7 +1317,7 @@
                 <h5>Пустой стейт - <span class="text-muted">RbEmptyState</span></h5>
                 <b-form-group label="На случай когда показать нечего">
                     <div style="width: 400px; height: 200px;">
-                        <rb-empty-state title="Ничего не найдено" icon="icon-none" button-text="awdawdawd">
+                        <rb-empty-state button-text="awdawdawd" icon="icon-none" title="Ничего не найдено">
                             Попробуйте изменить параметры поиска
                         </rb-empty-state>
                     </div>
@@ -1312,7 +1328,8 @@
                 <b-form-group label="Пагинация">
                     <rb-pagination :curr-page="rbPagination.currPage"
                                    :per-page="rbPagination.perPage"
-                                   :total-rows="rbPagination.totalRows"/>
+                                   :total-rows="rbPagination.totalRows"
+                                   controls/>
                 </b-form-group>
             </b-form>
         </b-container>

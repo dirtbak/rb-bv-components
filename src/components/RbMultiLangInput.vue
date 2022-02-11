@@ -3,7 +3,8 @@
         <b-form-input v-model="value[compileLang(fieldName, suffix, selected)]"
                       :required="selected==='ru'"
                       :disabled="disabled"
-                      @focus="resetDropdown"></b-form-input>
+                      :formatter="formatter"
+                      @focus="resetDropdown"/>
         <template #append>
             <b-button variant="light" @click="toggleDropdown" tabindex="-1" :disabled="disabled">
                 {{ alias[selected] }}
@@ -57,6 +58,7 @@
             },
             state: {type: Boolean, default: null},
             disabled: Boolean,
+            maxLength: [String,Number]
         },
         data() {
             return {
@@ -104,6 +106,9 @@
             },
             resetDropdown() {
                 this.show = false
+            },
+            formatter(val){
+                return val.slice(0, this.maxLength)
             }
         }
     }
