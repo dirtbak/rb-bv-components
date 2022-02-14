@@ -89,6 +89,7 @@
             selectLang(lang) {
                 this.show = false
                 this.selected = lang
+                this.$emit('curLang', this.selected)
             },
             toggleDropdown(e) {
                 e.preventDefault()
