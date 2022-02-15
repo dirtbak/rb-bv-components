@@ -134,13 +134,13 @@
         computed: {
             arrayFromDigit() {
                 return (this.totalRows && this.currPage) ? Array.from(
-                    {length: this.totalRows },
+                    {length: this.totalRows},
                     (_, i) => i + 1
                 ) : []
             },
             arrayFromDigitForVisibility() {
                 return (this.totalRows && this.currPage) ? Array.from(
-                    {length: this.totalRows / this.perPage + ((this.totalRows % 10 && this.totalRows >= 10) && 1) },
+                    {length: this.totalRows / this.perPage + ((this.totalRows % 10 && this.totalRows >= 10) && 1)},
                     (_, i) => i + 1
                 ) : []
             }
@@ -186,11 +186,7 @@
                         (el) => (this.visiblePages[el] = isVisible)
                     );
                 const step = this.isMobile ? 4 : 5;
-                if (this.pagesArray.length <= 8) {
-                    // if array is too short, display all pages and stop the function
-                    reRenderVisiblePages(true);
-                    return;
-                }
+
                 reRenderVisiblePages();
                 //leftpad logic
                 if (this.localCurrPage - step <= 0) {
@@ -251,14 +247,14 @@
 
         watch: {
             localCurrPage: {
-                handler(){
+                handler() {
                     this.reduction()
                 },
                 immediate: true
             },
 
             currPage: {
-                handler(){
+                handler() {
                     this.localCurrPage = this.currPage
                 },
                 immediate: true
