@@ -119,16 +119,9 @@
             }
         },
         data() {
-            let arrayFromDigit = Array.from(
-                {length: this.totalRows / this.perPage + ((this.totalRows % 10 && this.totalRows >= 10) && 1)},
-                (_, i) => i + 1
-            );
             return {
-                pagesArray: arrayFromDigit,
-                visiblePages: arrayFromDigit.reduce(
-                    (acc, el) => ({...acc, [el]: true}),
-                    {}
-                ),
+                pagesArray: [],
+                visiblePages: [],
                 searchInput: "",
                 active: false,
                 localCurrPage: 1,
@@ -137,6 +130,20 @@
                 rightPad: false,
                 isMobile: window.innerWidth < 768
             };
+        },
+        computed: {
+            arrayFromDigit() {
+                return (this.totalRows && this.currPage) ? Array.from(
+                    {length: this.totalRows },
+                    (_, i) => i + 1
+                ) : []
+            },
+            arrayFromDigitForVisibility() {
+                return (this.totalRows && this.currPage) ? Array.from(
+                    {length: this.totalRows / this.perPage + ((this.totalRows % 10 && this.totalRows >= 10) && 1) },
+                    (_, i) => i + 1
+                ) : []
+            }
         },
         methods: {
             validateSearch() {
@@ -238,23 +245,32 @@
             }
         },
 
-
         mounted() {
-            this.reduction();
             this.$nextTick(() => this.inputLength())
         },
 
-        created() {
-            this.localCurrPage = this.currPage;
-        },
-
         watch: {
-            localCurrPage: function () {
-                this.reduction()
+            localCurrPage: {
+                handler(){
+                    this.reduction()
+                },
+                immediate: true
             },
 
-            currPage() {
-                this.localCurrPage = this.currPage
+            currPage: {
+                handler(){
+                    this.localCurrPage = this.currPage
+                },
+                immediate: true
+            },
+
+            arrayFromDigit() {
+                this.$set(this, 'pagesArray', this.arrayFromDigit)
+                this.visiblePages = this.arrayFromDigitForVisibility.reduce(
+                    (acc, el) => ({...acc, [el]: true}),
+                    {}
+                )
+                this.reduction();
             }
         },
     };
