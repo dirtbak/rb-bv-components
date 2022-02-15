@@ -7,6 +7,7 @@
                      v-model="innerValue"
                      v-mask="mask"
                      :masked="masked"
+                     ref="input"
                      @focus="$emit('focus', $event)"
                      @click="$emit('click', $event)"
                      @input="$emit('input', $event)"
@@ -18,6 +19,7 @@
                      :placeholder="placeholder"
                      :state="state"
                      v-model="innerValue"
+                     ref="input"
                      @focus="$emit('focus', $event)"
                      @click="$emit('click', $event)"
                      @input="$emit('input', $event)"
@@ -55,6 +57,25 @@
             value() {
                 this.innerValue = this.value;
             }
+        },
+        methods: {
+            blur() {
+                if(this.$refs.input) {
+                    return this.$refs.input.blur();
+                }
+            },
+            select() {
+                if(this.$refs.input) {
+                    return this.$refs.input.select();
+                }
+            },
+            focus() {
+                if(this.$refs.input) {
+                    return this.$refs.input.focus();
+                }
+
+
+            },
         },
         created() {
             this.innerValue = this.value;
