@@ -94,7 +94,7 @@
                                     }
 
                                     option = this.searchInOptions(value);
-                                    this.text = option[this.titleField];
+                                    this.text = option? option[this.titleField]: null;
                                 }
 
                                 this.isLoading = false;
@@ -110,7 +110,7 @@
                                     this.options.push(addOption);
                                 }
                                 option = this.searchInOptions(value);
-                                this.text = option[this.titleField];
+                                this.text = option? option[this.titleField]: null;
                             }
                         }
                     } else if (option) {
