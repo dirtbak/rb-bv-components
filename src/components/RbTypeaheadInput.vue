@@ -87,14 +87,16 @@
                         if (this.async) {
                             this.isLoading = false;
                             this.searchOptionByValues(value).then(options => {
-                                if(options) {
-                                    let addOption = typeOf(options) === 'array'? options[0]: options;
-                                    if(!this.searchInOptions(addOption)) {
-                                        this.options.push(addOption);
+                                if (options) {
+                                    let addOption = typeOf(options) === 'array' ? options[0] : options;
+                                    if (addOption) {
+                                        if (!this.searchInOptions(addOption)) {
+                                            this.options.push(addOption);
+                                        }
                                     }
 
                                     option = this.searchInOptions(value);
-                                    this.text = option? option[this.titleField]: null;
+                                    this.text = option ? option[this.titleField] : null;
                                 }
 
                                 this.isLoading = false;
@@ -105,12 +107,14 @@
                         } else {
                             let options = this.searchOptionByValues(value);
                             if (options) {
-                                let addOption = typeOf(options) === 'array'? options[0]: options;
-                                if(!this.searchInOptions(addOption)) {
-                                    this.options.push(addOption);
+                                let addOption = typeOf(options) === 'array' ? options[0] : options;
+                                if (addOption) {
+                                    if (!this.searchInOptions(addOption)) {
+                                        this.options.push(addOption);
+                                    }
                                 }
                                 option = this.searchInOptions(value);
-                                this.text = option? option[this.titleField]: null;
+                                this.text = option ? option[this.titleField] : null;
                             }
                         }
                     } else if (option) {
