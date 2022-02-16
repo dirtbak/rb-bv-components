@@ -88,7 +88,11 @@
                             this.isLoading = false;
                             this.searchOptionByValues(value).then(options => {
                                 if(options) {
-                                    this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                    let addOption = typeOf(options) === 'array'? options[0]: options;
+                                    if(!this.searchInOptions(addOption)) {
+                                        this.options.push(addOption);
+                                    }
+
                                     option = this.searchInOptions(value);
                                     this.text = option[this.titleField];
                                 }
@@ -101,7 +105,10 @@
                         } else {
                             let options = this.searchOptionByValues(value);
                             if (options) {
-                                this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                let addOption = typeOf(options) === 'array'? options[0]: options;
+                                if(!this.searchInOptions(addOption)) {
+                                    this.options.push(addOption);
+                                }
                                 option = this.searchInOptions(value);
                                 this.text = option[this.titleField];
                             }
