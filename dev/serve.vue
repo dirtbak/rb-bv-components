@@ -73,7 +73,7 @@
             },
             async asyncMockPageReq() {
                 return this.wait(100, {
-                    totalRows: 12
+                    totalRows: 9
                 })
             },
 
