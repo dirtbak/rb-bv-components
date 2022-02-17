@@ -27,7 +27,8 @@
             </b-input>
         </template>
 
-        <b-button variant="plain" class="btn-icon rb-input-btn" @click="$emit('buttonClick')">
+        <b-button variant="plain" class="btn-icon rb-input-btn" v-if="buttonVisible"
+                  @click="$emit('buttonClick')">
             <rb-icon :icon="icon"></rb-icon>
         </b-button>
     </div>
@@ -47,6 +48,7 @@
             icon: {type: String, default: 'icon-close'},
             masked: {type: Boolean, default: false},
             mask: {type: String, default: null},
+            buttonVisible: {type: Boolean, default: true},
         },
         data() {
             return {
