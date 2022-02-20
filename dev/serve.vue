@@ -55,9 +55,9 @@
                 rbInputWithButton: null,
                 rbMultiTypeaheadInput1: [1, 2],
                 rbPagination: {
-                    currPage: 5,
+                    currPage: 1,
                     perPage: 5,
-                    totalRows: 0,
+                    totalRows: 1,
                 }
             }
         },
@@ -73,7 +73,7 @@
             },
             async asyncMockPageReq() {
                 return this.wait(100, {
-                    totalRows: 9
+                    totalRows: 10
                 })
             },
 
@@ -1328,10 +1328,8 @@
             <b-form @submit.stop.prevent>
                 <h5>Пагинация - <span class="text-muted">RbPagination</span></h5>
                 <b-form-group label="Пагинация">
-                    <rb-pagination :curr-page="rbPagination.currPage"
-                                   :per-page="rbPagination.perPage"
-                                   :total-rows="rbPagination.totalRows"
-                                   controls/>
+                    <rb-pagination v-model="rbPagination.currPage"
+                                :lastPage="rbPagination.totalRows"/>
                 </b-form-group>
             </b-form>
         </b-container>

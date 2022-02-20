@@ -103,3 +103,20 @@ $rb-date-picker-input-border-width: $input-border-width !default;
 $rb-date-picker-input-icon-color: $body-color !default;
 $rb-date-picker-input-button-border-left-width: $input-border-width !default;
 $rb-date-picker-input-button-bg: theme-color('light') !default;
+
+// RbPagination
+$rb-pagination-icon-size: 24px !default;
+$rb-pagination-fixed-page-width-height: $rb-pagination-icon-size + 5px!default;
+$rb-pagination-gap: 8px!default;
+$rb-pagination-input-width: ($rb-pagination-fixed-page-width-height + $rb-pagination-gap) * 3!default;
+$rb-pagination-font-size: 20px!default;
+$rb-pagination-active-page-color: $primary!default;
+$rb-pagination-dots-color: $gray-500!default;
+$rb-pagination-search-wrapper-offset: $rb-pagination-input-width*-1!default;
+$rb-pagination-input-border-radius: 0!default;
+$rb-pagination-input-outline: none!default;
+$rb-pagination-input-invalid-border-width: 1px!default;
+$rb-pagination-input-invalid-border-color: $danger!default;
+$rb-pagination-search-reset-icon-color: $secondary!default;
+$rb-pagination-search-reset-icon-font-size: 14px!default;
+$rb-pagination-busy-opacity: .5!default;
