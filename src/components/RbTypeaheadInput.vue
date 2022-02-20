@@ -87,10 +87,16 @@
                         if (this.async) {
                             this.isLoading = false;
                             this.searchOptionByValues(value).then(options => {
-                                if(options) {
-                                    this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                if (options) {
+                                    let addOption = typeOf(options) === 'array' ? options[0] : options;
+                                    if (addOption) {
+                                        if (!this.searchInOptions(addOption)) {
+                                            this.options.push(addOption);
+                                        }
+                                    }
+
                                     option = this.searchInOptions(value);
-                                    this.text = option[this.titleField];
+                                    this.text = option ? option[this.titleField] : null;
                                 }
 
                                 this.isLoading = false;
@@ -101,9 +107,14 @@
                         } else {
                             let options = this.searchOptionByValues(value);
                             if (options) {
-                                this.options.push(typeOf(options) === 'array'? options[0]: options);
+                                let addOption = typeOf(options) === 'array' ? options[0] : options;
+                                if (addOption) {
+                                    if (!this.searchInOptions(addOption)) {
+                                        this.options.push(addOption);
+                                    }
+                                }
                                 option = this.searchInOptions(value);
-                                this.text = option[this.titleField];
+                                this.text = option ? option[this.titleField] : null;
                             }
                         }
                     } else if (option) {

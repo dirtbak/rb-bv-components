@@ -61,7 +61,7 @@ export const typeaheadMixin = {
             }
         }, 200),
         searchInOptions(value) {
-            return this.options.find(o => o[this.valueField] === value);
+            return this.options.find(o => o[this.valueField] == value);
         },
         closeDropdown() {
             this.dropdownOkToHide = true;
