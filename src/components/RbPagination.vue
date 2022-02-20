@@ -1,5 +1,5 @@
 <template>
-    <div :class="{busy}" class="d-flex pagination-custom">
+    <div :class="{busy}" class="d-flex rb-pagination">
         <rb-icon :class="currPage===1?'disabled':''"
                  @click="changePage(-1)"
                  icon="icon-chevron-left"/>
@@ -31,7 +31,7 @@
 
 <script>
     export default {
-        name: "Pagination",
+        name: "RbPagination",
         props: {
             value: {
                 type: Number,
