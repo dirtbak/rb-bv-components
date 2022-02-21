@@ -8,7 +8,7 @@
               v-for="page of pages">
             {{page}}
         </span>
-        <span :class="[isSearchVisible?'active':'', 'd-flex search position-relative']">
+        <span :class="[isSearchVisible?'active':'', lastPage<=5?'d-none':'d-flex','search position-relative']">
             <span class="position-absolute search-wrapper">
                 <input :max="lastPage"
                        @keyup.enter="selectPage()"

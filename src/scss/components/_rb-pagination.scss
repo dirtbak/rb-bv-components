@@ -46,13 +46,12 @@
     gap: $rb-pagination-gap;
 
     .search-wrapper {
-      background-color: $white;
       display: flex;
       align-items: center;
       justify-content: center;
       left: $rb-pagination-search-wrapper-offset;
       width: $rb-pagination-input-width;
-
+      background-color: $white;
       input {
         width: 0;
         flex: 1;
@@ -86,6 +85,7 @@
 
     &.active {
       overflow: visible;
+      background-color: $white;
     }
   }
 
