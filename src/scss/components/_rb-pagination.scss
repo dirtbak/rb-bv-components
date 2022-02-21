@@ -51,7 +51,7 @@
       justify-content: center;
       left: $rb-pagination-search-wrapper-offset;
       width: $rb-pagination-input-width;
-      background-color: $white;
+      background-color: $rb-pagination-search-background-color;
       input {
         width: 0;
         flex: 1;
@@ -85,7 +85,7 @@
 
     &.active {
       overflow: visible;
-      background-color: $white;
+      background-color: $rb-pagination-search-background-color;
     }
   }
 
