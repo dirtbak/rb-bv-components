@@ -71,6 +71,7 @@ $rb-multi-lang-input-input-group-radius: $input-border-radius !default;
 $rb-multi-lang-input-btn-width-min: 83.5px !default;
 $rb-multi-lang-input-dropdown-menu-width-min: 320px !default;
 $rb-multi-lang-input-dropdown-indicator-width: 50px !default;
+$rb-multi-lang-input-height: calc(1.5em + 0.75rem + 2px) !default;
 
 // RbMultiDropdownInput
 $rb-multi-dropdown-input-counter-margin-left: 10px !default;
@@ -106,18 +107,18 @@ $rb-date-picker-input-button-bg: theme-color('light') !default;
 
 // RbPagination
 $rb-pagination-icon-size: 24px !default;
-$rb-pagination-fixed-page-width-height: $rb-pagination-icon-size + 5px!default;
-$rb-pagination-gap: 8px!default;
-$rb-pagination-input-width: ($rb-pagination-fixed-page-width-height + $rb-pagination-gap) * 3!default;
-$rb-pagination-font-size: 20px!default;
-$rb-pagination-active-page-color: $primary!default;
-$rb-pagination-dots-color: $gray-500!default;
-$rb-pagination-search-wrapper-offset: $rb-pagination-input-width*-1!default;
-$rb-pagination-input-border-radius: 0!default;
-$rb-pagination-input-outline: none!default;
-$rb-pagination-input-invalid-border-width: 1px!default;
-$rb-pagination-input-invalid-border-color: $danger!default;
-$rb-pagination-search-reset-icon-color: $secondary!default;
-$rb-pagination-search-reset-icon-font-size: 14px!default;
-$rb-pagination-busy-opacity: .5!default;
-$rb-pagination-search-background-color: $white!default;
+$rb-pagination-fixed-page-width-height: $rb-pagination-icon-size + 5px !default;
+$rb-pagination-gap: 8px !default;
+$rb-pagination-input-width: ($rb-pagination-fixed-page-width-height + $rb-pagination-gap) * 3 !default;
+$rb-pagination-font-size: 20px !default;
+$rb-pagination-active-page-color: $primary !default;
+$rb-pagination-dots-color: $gray-500 !default;
+$rb-pagination-search-wrapper-offset: $rb-pagination-input-width*-1 !default;
+$rb-pagination-input-border-radius: 0 !default;
+$rb-pagination-input-outline: none !default;
+$rb-pagination-input-invalid-border-width: 1px !default;
+$rb-pagination-input-invalid-border-color: $danger !default;
+$rb-pagination-search-reset-icon-color: $secondary !default;
+$rb-pagination-search-reset-icon-font-size: 14px !default;
+$rb-pagination-busy-opacity: .5 !default;
+$rb-pagination-search-background-color: $white !default;
