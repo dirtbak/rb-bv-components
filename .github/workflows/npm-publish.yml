@@ -27,13 +27,20 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          scope: '@aksultan'
+      
+      - name: 'Setup git config'
       - run: |
           git config user.email "aksultan.zhumadil@gmail.com"
           git config user.name "aksultan"
+      
+      - name: 'Publishing new version'
       - run: npm version patch
       - run: npm publish
+      
+      - name: 'Pushing new version into main'
       - run: git add .
-      - run: git commit -m "new library version"
+      - run: git commit -m "Release ${{ github.event.inputs.version }} 📣"
       - run: git push
         env:
           NODE_AUTH_TOKEN: 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
