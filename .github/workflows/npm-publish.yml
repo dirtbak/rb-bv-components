@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: type=$(${{ github.event.head_commit.message }} | cut -d ' ' -f1)
+      - run: type=$(`${{ github.event.head_commit.message }}` | cut -d ' ' -f1)
               echo $type
 #       - run: npm ci rimraf
 #       - run: npm run build
