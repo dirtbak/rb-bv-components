@@ -24,7 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - uses: martinbeentjes/npm-get-version-action@v1.1.0
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
@@ -36,9 +35,8 @@ jobs:
           git config user.name "aksultan"
       
       - name: 'Publishing new version'
-        id: package-version
         run: |
-            npm version patch -m "Release ${{ steps.package-version.outputs.current-version }} 📣"
+            npm version patch -m "Release 📣"
             npm publish
         env:
            NODE_AUTH_TOKEN: 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
