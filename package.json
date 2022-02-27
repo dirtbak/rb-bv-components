@@ -43,7 +43,6 @@
     "cross-env": "^7.0.3",
     "minimist": "^1.2.5",
     "node-sass": "^6.0.1",
-    "rimraf": "^3.0.2",
     "rollup": "^2.52.8",
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-sass": "^1.2.6",
