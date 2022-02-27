@@ -15,8 +15,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: type=$(`${{ github.event.head_commit.message }}` | cut -d ' ' -f1)
-              echo $type
+      - run: who=(`who am i`) |
+              echo ${who[0]}
 #       - run: npm ci rimraf
 #       - run: npm run build
 
