@@ -36,13 +36,13 @@ jobs:
       
       - name: 'Publishing new version'
         run: |
-          npm version patch
+          npm version patch -m "Release ${{ github.event.inputs.version }} 📣"
           npm publish
-      
+        env:
+           NODE_AUTH_TOKEN: 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
+
       - name: 'Pushing new version into main'
         run: |
-          git add .
-          git commit -m "Release ${{ github.event.inputs.version }} 📣"
           git push
         env:
           NODE_AUTH_TOKEN: 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
