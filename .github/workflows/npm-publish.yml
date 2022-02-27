@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm i rimraf
+      - run: npm ci rimraf
       - run: npm run build
 
   publish-npm:
@@ -27,7 +27,8 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: git config user.email "aksultan.zhumadil@gmail.com"
+      - run: git config user.name "aksultan"
       - run: npm version minor
       - run: npm publish
         env:
