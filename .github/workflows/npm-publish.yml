@@ -27,6 +27,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+          scope: '@aksultan'
       
       - name: 'Setup git config'
         run: |
