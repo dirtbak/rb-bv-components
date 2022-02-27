@@ -31,5 +31,8 @@ jobs:
       - run: git config user.name "aksultan"
       - run: npm version patch
       - run: npm publish
+      - run: git add .
+      - run: git commit -m "new library version"
+      - run: git push
         env:
           NODE_AUTH_TOKEN: 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
