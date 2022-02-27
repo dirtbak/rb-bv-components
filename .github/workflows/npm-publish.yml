@@ -29,17 +29,19 @@ jobs:
           registry-url: https://registry.npmjs.org/
       
       - name: 'Setup git config'
-      - run: |
+        run: |
           git config user.email "aksultan.zhumadil@gmail.com"
           git config user.name "aksultan"
       
       - name: 'Publishing new version'
-      - run: npm version patch
-      - run: npm publish
+        run: |
+          npm version patch
+          npm publish
       
       - name: 'Pushing new version into main'
-      - run: git add .
-      - run: git commit -m "Release ${{ github.event.inputs.version }} 📣"
-      - run: git push
+        run: |
+          git add .
+          git commit -m "Release ${{ github.event.inputs.version }} 📣"
+          git push
         env:
           NODE_AUTH_TOKEN: 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
