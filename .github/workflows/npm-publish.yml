@@ -34,6 +34,9 @@ jobs:
           git config user.email "aksultan.zhumadil@gmail.com"
           git config user.name "aksultan"
       
+      - name: 'Building packages'
+        run: npm ci
+        
       - name: 'Publishing new version'
         run: |
             npm version patch -m "Release 📣"
