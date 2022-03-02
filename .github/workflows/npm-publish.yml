@@ -23,9 +23,6 @@ jobs:
             
       - name: 'Building'
         run: npm run build
-        
-      - name: 'Check directory'
-        run: pwd
 
   publish-npm:
     needs: build
@@ -42,28 +39,20 @@ jobs:
         run: |
           git config user.email "aksultan.zhumadil@gmail.com"
           git config user.name "aksultan"
-      - name: Pushes to another repository
-        id: push_directory
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: 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
-        with:
-          source-directory: dist
-          destination-github-username: 'aksultan'
-          destination-repository-name: 'test'
-          user-email: aksultan.zhumadil@gmail.com
-          commit-message: lib build
-          target-branch: main
           
-#       - name: 'Publishing new version'
-#         run: |
-#             npm version patch -m "Release 📣"
-#              npm publish
-#         env:
-#            NODE_AUTH_TOKEN: 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
+      - name: Get current package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.1.0
 
-#       - name: 'Pushing new version into main'
-#         run: |
-#           git push
-#         env:
-#           NODE_AUTH_TOKEN: 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
+      - name: 'Publishing new version'
+        run: |
+          npm version patch -m `Release ${{ steps.package-version.outputs.current-version}} 📣`
+          npm publish
+        env:
+           NODE_AUTH_TOKEN: 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
+
+      - name: 'Pushing new version into main'
+        run: |
+          git push
+        env:
+          NODE_AUTH_TOKEN: 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
