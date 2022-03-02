@@ -15,7 +15,17 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm run build
+          
+      - name: 'Installing dependecies'
+        run: |
+            npm ci
+            npm ci rimraf
+            
+      - name: 'Building'
+        run: npm run build
+        
+      - name: 'Check directory'
+        run: pwd
 
   publish-npm:
     needs: build
@@ -26,7 +36,34 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
+          scope: '@aksultan'
+      
+      - name: 'Setup git config'
+        run: |
+          git config user.email "aksultan.zhumadil@gmail.com"
+          git config user.name "aksultan"
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
         env:
-          NODE_AUTH_TOKEN: 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
+          API_TOKEN_GITHUB: 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
+        with:
+          source-directory: dist
+          destination-github-username: 'aksultan'
+          destination-repository-name: 'test'
+          user-email: aksultan.zhumadil@gmail.com
+          commit-message: lib build
+          target-branch: main
+          
+#       - name: 'Publishing new version'
+#         run: |
+#             npm version patch -m "Release 📣"
+#              npm publish
+#         env:
+#            NODE_AUTH_TOKEN: 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
+
+#       - name: 'Pushing new version into main'
+#         run: |
+#           git push
+#         env:
+#           NODE_AUTH_TOKEN: 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
