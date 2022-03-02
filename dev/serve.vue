@@ -1329,7 +1329,8 @@
                 <h5>Пагинация - <span class="text-muted">RbPagination</span></h5>
                 <b-form-group label="Пагинация">
                     <rb-pagination v-model="rbPagination.currPage"
-                                :lastPage="rbPagination.totalRows"/>
+                                   :per-page="rbPagination.perPage"
+                                   :total-rows="rbPagination.totalRows"/>
                 </b-form-group>
             </b-form>
         </b-container>

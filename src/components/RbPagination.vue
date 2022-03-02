@@ -10,7 +10,7 @@
         </span>
         <span :class="[isSearchVisible?'active':'', lastPage<=5?'d-none':'d-flex','search position-relative']">
             <span class="position-absolute search-wrapper">
-                <input :max="lastPage"
+                <input :max="totalRows"
                        @keyup.enter="selectPage()"
                        min="1"
                        placeholder="Страница..."
@@ -35,13 +35,23 @@
         props: {
             value: {
                 type: Number,
+                required: true,
                 default: 1,
                 validate: (x) => {
                     return typeof x === "number"
                 }
             },
-            lastPage: {
+            perPage: {
                 type: Number,
+                required: true,
+                default: 1,
+                validate: (x) => {
+                    return typeof x === 'number'
+                }
+            },
+            totalRows: {
+                type: Number,
+                required: true,
                 default: 1,
                 validate: (x) => {
                     return typeof x === "number"
@@ -64,6 +74,11 @@
         created() {
             this.currPage = this.value
             this.generatePageRange(this.currPage, this.lastPage)
+        },
+        computed: {
+            lastPage() {
+                return Math.ceil(this.totalRows / this.perPage)
+            }
         },
         watch: {
             lastPage: {
