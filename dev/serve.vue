@@ -36,8 +36,8 @@
                 rbMultiOptionInput1: [],
                 rbMultiPhoneInput1: [],
                 rbMultiSelectInput1: [],
-                rbPeriodInputDtStart1: null,
-                rbPeriodInputDtEnd1: null,
+                rbPeriodInputDtStart1: '2022-03-01',
+                rbPeriodInputDtEnd1: '2022-03-04',
                 rbPhoneInput1: null,
                 rbPriceInput1: null,
                 rbSelectInput1: null,
@@ -379,19 +379,22 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
-                                                     placehoder="Выбрать ..."></rb-period-input>
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
+                                                     placehoder="Выбрать ..." show-cancel-item></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sycn="rbPeriodInputDtStart1"
                                                      bordered placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      bordered
                                                      link placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
@@ -403,21 +406,24 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      disabled
                                                      placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      bordered
                                                      disabled placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      bordered
                                                      disabled link
                                                      placehoder="Выбрать ..."></rb-period-input>
@@ -430,20 +436,23 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="false" placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="false" bordered
                                                      placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="false"
                                                      bordered link
                                                      placehoder="Выбрать ..."></rb-period-input>
@@ -456,20 +465,23 @@
                         <b-form-row>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="Обычный">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="true" placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="С бордером">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="true" bordered
                                                      placehoder="Выбрать ..."></rb-period-input>
                                 </b-form-group>
                             </b-col>
                             <b-col lg="3" sm="12">
                                 <b-form-group label="В виде ссылки">
-                                    <rb-period-input :dt-end="rbPeriodInputDtStart1" :dt-start="rbPeriodInputDtStart1"
+                                    <rb-period-input :dt-end.sync="rbPeriodInputDtEnd1"
+                                                     :dt-start.sync="rbPeriodInputDtStart1"
                                                      :state="true"
                                                      bordered link
                                                      placehoder="Выбрать ..."></rb-period-input>

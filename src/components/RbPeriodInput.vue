@@ -22,6 +22,9 @@
             <b-dropdown-item v-for="(item, idx) in items" :key="idx" @click="onClick(item)">
                 <span class="rb-text">{{item.name}}</span>
             </b-dropdown-item>
+            <b-dropdown-item v-if="showCancelItem" @click="onClick(cancelItem)">
+                {{cancelItem.name}}
+            </b-dropdown-item>
         </b-dropdown>
         <rb-period-selection-modal-frame :dt-start="innerDtStart" :dt-end="innerDtEnd"
                                          id="rb-period-selection-modal-frame" @ok="onOk()" ref="modal"
@@ -33,6 +36,7 @@
     import RbPeriodSelectionModalFrame from "./RbPeriodSelectionModalFrame";
     import {dateFormat} from "vue-filter-date-format";
     import {UtDate} from "../utils/UtDate";
+    import typeOf from 'typeof';
 
     export default {
         name: 'RbPeriodInput',
@@ -87,9 +91,10 @@
             text() {
                 let dtStart = this.innerDtStart;
                 let dtEnd = this.innerDtEnd;
+
                 if (dtStart || dtEnd) {
                     if (dtStart == dtEnd) {
-                        return dtStart;
+                        return dateFormat(dtStart, 'DD.MM.YYYY');
                     } else {
                         let val = dtStart ? dateFormat(dtStart, 'DD.MM.YYYY') : '';
 
@@ -102,6 +107,17 @@
                 } else {
                     return null;
                 }
+            },
+            cancelItem() {
+                return {id: null, name: this.cancelItemText};
+            }
+        },
+        watch: {
+            dtStart() {
+                this.assignToInnerValue('dtStart');
+            },
+            dtEnd() {
+                this.assignToInnerValue('dtEnd');
             }
         },
         methods: {
@@ -136,6 +152,16 @@
                         th.$emit('update:dtStart', this.innerDtStart);
                         th.$emit('update:dtEnd', this.innerDtEnd);
                     }
+                } else if (value == null) {
+                    th.$emit('update:dtStart', null);
+                    th.$emit('update:dtEnd', null);
+                }
+            },
+            assignToInnerValue(field) {
+                let dt = typeOf(this[field]) === 'string' ? new Date(this[field]) : this[field];
+                let innerField = field === 'dtStart' ? 'innerDtStart' : 'innerDtEnd';
+                if (dt !== this[innerField]) {
+                    this[innerField] = dt;
                 }
             },
             onOk() {
@@ -147,8 +173,8 @@
             }
         },
         created() {
-            this.innerDtStart = this.dtStart;
-            this.innerDtEnd = this.dtEnd;
+            this.assignToInnerValue('dtStart');
+            this.assignToInnerValue('dtEnd');
         },
     }
 </script>
