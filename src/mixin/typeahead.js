@@ -24,6 +24,7 @@ export const typeaheadMixin = {
             dropdownShown: false,
             dropdownOkToHide: false,
             selectIndex: 0,
+            valueResolved: null,
         }
     },
     computed: {
@@ -76,7 +77,7 @@ export const typeaheadMixin = {
         },
         onClickOutside() {
             this.closeDropdown();
-            this.resolveValue(this.value);
+            //this.resolveValue(this.value);
         },
         onDropdownShown() {
             this.dropdownOkToHide = false;
