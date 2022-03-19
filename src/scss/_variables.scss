@@ -122,4 +122,9 @@ $rb-pagination-search-reset-icon-color: $secondary !default;
 $rb-pagination-search-reset-icon-font-size: 14px !default;
 $rb-pagination-busy-opacity: .5 !default;
 $rb-pagination-search-background-color: $white !default;
-// test
+
+// RbMultiTypeaheadInput
+$rb-multi-typeahead-input-options-shower-position-top: $input-padding-y;
+$rb-multi-typeahead-input-options-shower-position-left: $input-padding-x;
+$rb-multi-typeahead-input-options-shower-bg: $input-bg;
+$rb-multi-typeahead-input-options-shower-disabled-bg: $input-disabled-bg;

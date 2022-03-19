@@ -25,6 +25,7 @@
                     {id: 1, name: 'Один'},
                     {id: 2, name: 'Два'},
                     {id: 3, name: 'Три'},
+                    {id: 4, name: 'Четыре'}
                 ],
                 rbDropdownInput1: null,
                 rbDropdownAsObjectInput1: null,
@@ -53,7 +54,7 @@
                     labelRu: '13213'
                 },
                 rbInputWithButton: null,
-                rbMultiTypeaheadInput1: [1, 2],
+                rbMultiTypeaheadInput1: [1, 2, 3, 4],
                 rbPagination: {
                     currPage: 1,
                     perPage: 5,
@@ -1025,6 +1026,7 @@
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
                                 <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
                                                           :searchOptions="rbMultiSelectSearch1"
+                                                          show-options
                                                           v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
                         </b-col>
