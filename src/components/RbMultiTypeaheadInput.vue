@@ -1,6 +1,7 @@
 <template>
     <div class="rb-typeahead-input rb-multi-typeahead-input" v-click-outside="onClickOutside">
-        <div class="rb-typeahead-inner">
+        <div :class="[{disabled}, showOptions?'active':'', 'rb-typeahead-inner']" :data-text="joinedOptions"
+             @click="focusOnInput()">
             <b-input ref="input"
                      type="text"
                      v-model="text"
@@ -13,8 +14,7 @@
                      v-on:keydown.up="onKeyArrowUp"
                      v-on:keyup.esc="onKeyEsc"
                      @focus="onFocus"
-                     @input="onInput">
-            </b-input>
+                     @input="onInput"/>
             <b-dropdown ref="dropdown"
                         class="rb-typeahead-dropdown"
                         :class="{'rb-empty': !options.length && !showCancelOption}"
@@ -64,6 +64,7 @@
         mixins: [typeaheadMixin],
         props: {
             multi: {type: Boolean, default: false},
+            showOptions: {type: Boolean, default: false}
         },
         data() {
             return {
@@ -74,6 +75,9 @@
         computed: {
             counter() {
                 return this.value && this.value.length ? this.value.length : 0;
+            },
+            joinedOptions(){
+                return this.selectedOptions.map(option => option.name).join(', ')
             }
         },
         watch: {
@@ -167,6 +171,9 @@
                     this.$emit('input', newValue);
                     this.$emit('change', newValue);
                 }
+            },
+            focusOnInput(){
+                this.$refs.input.focus()
             }
         },
         created() {

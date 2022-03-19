@@ -1,8 +1,41 @@
 .rb-multi-typeahead-input {
-  .form-control {
-    padding-right: add($rb-multi-dropdown-input-counter-min-width, 2 * $rb-multi-dropdown-input-counter-margin-right);
-  }
+  .rb-typeahead-inner {
+    &::before {
+      display: none;
+      position: absolute;
+      top: $rb-multi-typeahead-input-options-shower-position-top;
+      left: $rb-multi-typeahead-input-options-shower-position-left;
+      right: add($rb-multi-dropdown-input-counter-min-width, 2 * $rb-multi-dropdown-input-counter-margin-right);
+      height: fit-content;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      background-color: $rb-multi-typeahead-input-options-shower-bg;
+      content: attr(data-text);
+      white-space: nowrap;
+      cursor: text;
+    }
 
+    &.disabled {
+      &::before{
+        background-color: $input-disabled-bg;
+      }
+    }
+
+    &:focus-within:not(button)::before{
+      display: none;
+    }
+
+    .form-control {
+      padding-right: add($rb-multi-dropdown-input-counter-min-width, 2 * $rb-multi-dropdown-input-counter-margin-right);
+    }
+
+    &.active{
+      &::before{
+        display: block;
+      }
+    }
+
+  }
   .rb-counter-dropdown {
     position: absolute;
     top: 0;
