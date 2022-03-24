@@ -77,7 +77,7 @@
                 return this.value && this.value.length ? this.value.length : 0;
             },
             joinedOptions(){
-                return this.selectedOptions.map(option => option.name).join(', ')
+                return this.selectedOptions.map(option => option[this.titleField]).join(', ')
             }
         },
         watch: {
