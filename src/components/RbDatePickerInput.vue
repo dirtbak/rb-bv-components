@@ -76,7 +76,7 @@
             datePickerChange(v) {
                 let dt = this.strToDate(v);
                 this.inputValue = dateFormat(dt, this.inputPattern);
-                this.$emit('input', dt.toISOString());
+                this.$emit('input', dt.toString());
             },
             inputChange(v) {
                 const date = this.strToDate(v);
@@ -85,7 +85,7 @@
                 } else if (date) {
                     if (v.length === this.mask.length) {
                         this.datePickerValue = dateFormat(date, this.pickerPattern);
-                        this.$emit('input', date.toISOString());
+                        this.$emit('input', date.toString());
                     }
                 }
             },
