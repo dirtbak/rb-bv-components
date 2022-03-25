@@ -102,9 +102,20 @@ export const UtDate = {
         if (t >= q4) return q4;
     },
 
-    toLocaleIsoString(date) {
-        let tzoffset = (new Date()).getTimezoneOffset() * 60000;
-        let localISOTime = (new Date(date - tzoffset)).toISOString().slice(0, -1);
-        return localISOTime
-    }
+    toIsoString(date) {
+    let tzo = -date.getTimezoneOffset(),
+        dif = tzo >= 0 ? '+' : '-',
+        pad = function(num) {
+            return (num < 10 ? '0' : '') + num;
+        };
+
+    return date.getFullYear() +
+        '-' + pad(date.getMonth() + 1) +
+        '-' + pad(date.getDate()) +
+        'T' + pad(date.getHours()) +
+        ':' + pad(date.getMinutes()) +
+        ':' + pad(date.getSeconds()) +
+        dif + pad(Math.floor(Math.abs(tzo) / 60)) +
+        ':' + pad(Math.abs(tzo) % 60);
+}
 };
