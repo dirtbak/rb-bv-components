@@ -100,5 +100,11 @@ export const UtDate = {
         if (t < q3) return q2;
         if (t < q4) return q3;
         if (t >= q4) return q4;
+    },
+
+    toLocaleIsoString(date) {
+        let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+        let localISOTime = (new Date(date - tzoffset)).toISOString().slice(0, -1);
+        return localISOTime
     }
 };
