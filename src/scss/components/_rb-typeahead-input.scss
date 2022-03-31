@@ -24,6 +24,12 @@
       overflow: auto;
       min-width: $rb-typeahead-input-dropdown-menu-min-width;
 
+      .dropdown-item {
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
       li.rb-current .dropdown-item {
         font-weight: bold;
       }
