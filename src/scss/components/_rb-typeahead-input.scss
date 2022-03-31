@@ -22,6 +22,7 @@
     .dropdown-menu {
       max-height: $rb-dropdown-input-dropdown-menu-max-height;
       overflow: auto;
+      max-width: $rb-typeahead-input-dropdown-menu-min-width;
       min-width: $rb-typeahead-input-dropdown-menu-min-width;
 
       .dropdown-item {
