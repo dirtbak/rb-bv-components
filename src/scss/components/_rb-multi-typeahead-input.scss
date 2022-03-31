@@ -24,6 +24,11 @@
       }
     }
 
+    .dropdown-menu {
+      max-height: $rb-dropdown-input-dropdown-menu-max-height;
+      overflow: auto;
+    }
+
     .dropdown-item {
       display: flex;
       align-items: center;

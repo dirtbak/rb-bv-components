@@ -20,6 +20,8 @@
     }
 
     .dropdown-menu {
+      max-height: $rb-dropdown-input-dropdown-menu-max-height;
+      overflow: auto;
       min-width: $rb-typeahead-input-dropdown-menu-min-width;
 
       li.rb-current .dropdown-item {
@@ -27,6 +29,4 @@
       }
     }
   }
-
-
 }
