@@ -20,7 +20,7 @@
                          icon="icon-close"
                          title="Закрыть поиск"/>
             </span>
-            <rb-icon @click="isSearchVisible=true"
+            <rb-icon @click="toggleSearch()"
                      icon="icon-search"/>
         </span>
         <rb-icon :class="currPage===this.lastPage?'disabled':''"
@@ -105,6 +105,16 @@
                     this.$emit('input', this.currPage)
                     this.isSearchVisible = false
                     this.generatePageRange(this.currPage, this.lastPage)
+                }
+            },
+            toggleSearch() {
+                if (!this.isSearchVisible) {
+                    this.isSearchVisible = true
+                } else {
+                    if (this.searchText) {
+                        this.selectPage();
+                        this.isSearchVisible = false;
+                    }
                 }
             },
             generatePageRange(currentPage, lastPage, delta = 1) {

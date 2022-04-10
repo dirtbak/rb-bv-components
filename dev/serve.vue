@@ -25,7 +25,8 @@
                     {id: 1, name: 'Один'},
                     {id: 2, name: 'Два'},
                     {id: 3, name: 'Три'},
-                    {id: 4, name: 'Четыре'}
+                    {id: 4, name: 'Четыре'},
+                    {id: 5, name: 'Мегасуперогромныйвыборэлемента'}
                 ],
                 rbDropdownInput1: null,
                 rbDropdownAsObjectInput1: null,
@@ -58,7 +59,7 @@
                 rbPagination: {
                     currPage: 1,
                     perPage: 5,
-                    totalRows: 1,
+                    totalRows: 100,
                 }
             }
         },
@@ -74,7 +75,7 @@
             },
             async asyncMockPageReq() {
                 return this.wait(100, {
-                    totalRows: 10
+                    totalRows: 100
                 })
             },
 
