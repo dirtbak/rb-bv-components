@@ -1,7 +1,10 @@
 .rb-dropdown-input {
-  .dropdown-menu.show {
-    max-height: $rb-dropdown-input-dropdown-menu-max-height;
-    overflow: $rb-dropdown-input-dropdown-menu-overflow;
+  .dropdown-menu {
+    width: $rb-dropdown-input-dropdown-width;
+    .show {
+      max-height: $rb-dropdown-input-dropdown-menu-max-height;
+      overflow: $rb-dropdown-input-dropdown-menu-overflow;
+    }
   }
 
   &:not(.rb-dropdown-link-input) {

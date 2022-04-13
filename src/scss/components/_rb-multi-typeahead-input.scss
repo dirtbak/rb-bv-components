@@ -56,25 +56,28 @@
         box-shadow: none;
       }
     }
+    .dropdown-menu {
+      width: $rb-multi-dropdown-input-dropdown-width;
 
-    .dropdown-item {
-      display: flex;
-      align-items: center;
-      padding-right: 10px;
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
 
-      .rb-text {
-        flex: 1;
-      }
-
-      .btn {
-        padding: 3px;
-
-        .rb-icon {
-          color: lighten($body-color, 50%);
+        .rb-text {
+          flex: 1;
         }
 
-        &:hover .rb-icon {
-          color: $body-color;
+        .btn {
+          padding: 3px;
+
+          .rb-icon {
+            color: lighten($body-color, 50%);
+          }
+
+          &:hover .rb-icon {
+            color: $body-color;
+          }
         }
       }
     }

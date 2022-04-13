@@ -25,6 +25,7 @@ $rb-dropdown-input-dropdown-indicator-width: $input-height !default;
 $rb-dropdown-input-dropdown-indicator-border-right-radius: $input-border-radius !default;
 $rb-dropdown-input-dropdown-indicator-bg: #f4f4f4 !default;
 $rb-dropdown-input-dropdown-margin-left: 10px !default;
+$rb-dropdown-input-dropdown-width: 100% !default;
 
 // RbEmptyState
 $rb-empty-state-padding: 20px !default;
@@ -84,6 +85,7 @@ $rb-multi-dropdown-input-counter-border-radius: $rb-multi-dropdown-input-counter
 $rb-multi-dropdown-input-counter-line-height: $rb-multi-dropdown-input-counter-height !default;
 $rb-multi-dropdown-input-menu-item-active-color: theme-color('primary') !default;
 $rb-dropdown-input-dropdown-icon-font-size: $font-size-base !default;
+$rb-multi-dropdown-input-dropdown-width: 100% !default;
 
 // RbPeriodInput
 $rb-period-input-dropdown-menu-max-height: 230px !default;
