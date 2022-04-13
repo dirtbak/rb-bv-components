@@ -1,6 +1,10 @@
 .rb-dropdown-input {
   .dropdown-menu {
     width: $rb-dropdown-input-dropdown-width;
+    transform: none!important;
+    will-change: unset!important;
+    top: 100%!important;
+
     .show {
       max-height: $rb-dropdown-input-dropdown-menu-max-height;
       overflow: $rb-dropdown-input-dropdown-menu-overflow;
