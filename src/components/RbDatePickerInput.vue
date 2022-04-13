@@ -35,6 +35,7 @@
 <script>
     import {dateFormat} from 'vue-filter-date-format';
     import {mask} from 'vue-the-mask';
+    import {UtDate} from '../utils/UtDate';
 
     export default {
         name: 'RbDatePickerInput',
@@ -76,7 +77,7 @@
             datePickerChange(v) {
                 let dt = this.strToDate(v);
                 this.inputValue = dateFormat(dt, this.inputPattern);
-                this.$emit('input', dt.toISOString());
+                this.$emit('input', UtDate.toIsoString(dt));
             },
             inputChange(v) {
                 const date = this.strToDate(v);
@@ -85,7 +86,7 @@
                 } else if (date) {
                     if (v.length === this.mask.length) {
                         this.datePickerValue = dateFormat(date, this.pickerPattern);
-                        this.$emit('input', date.toISOString());
+                        this.$emit('input', UtDate.toIsoString(date));
                     }
                 }
             },
