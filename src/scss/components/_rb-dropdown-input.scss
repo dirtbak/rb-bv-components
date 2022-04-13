@@ -35,16 +35,22 @@
       font-size: $rb-dropdown-input-icon-font-size;
     }
 
+  }
+
+  .dropdown-item {
+    .rb-icon {
+      font-size: $rb-dropdown-input-dropdown-menu-icon-font-size;
+      margin-right: $rb-dropdown-input-dropdown-menu-icon-margin-right;
+    }
+
     .rb-text {
       flex: 1;
       overflow: $rb-dropdown-input-dropdown-toggle-text-overflow;
       margin-right: $rb-dropdown-input-dropdown-margin-left;
+      display: inline-block;
+      text-overflow: ellipsis;
+      width: 100%;
     }
-  }
-
-  .dropdown-item .rb-icon {
-    font-size: $rb-dropdown-input-dropdown-menu-icon-font-size;
-    margin-right: $rb-dropdown-input-dropdown-menu-icon-margin-right;
   }
 
   .btn-block .rb-dropdown-indicator {

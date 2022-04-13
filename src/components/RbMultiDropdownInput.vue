@@ -6,9 +6,9 @@
                 no-caret
                 :block="block">
         <template v-slot:button-content>
-            <span class="rb-text">
+            <rb-text>
                 {{text? text: (showCancelItem? cancelItemText: placeholder)}}
-            </span>
+            </rb-text>
             <span class="rb-counter" v-if="counter > 0">
                 {{counter? counter: ''}}
             </span>
@@ -19,7 +19,9 @@
         <b-dropdown-item v-for="o in options" :key="o.value"
                          @click="onClick(o)"
                          :class="{'rb-selected': (innerValue != null && innerValue.indexOf(o.value) >= 0)}">
-            {{o.text}}
+            <rb-text>
+                {{o.text}}
+            </rb-text>
         </b-dropdown-item>
     </b-dropdown>
 </template>

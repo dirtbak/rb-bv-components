@@ -1,11 +1,21 @@
 .rb-multi-dropdown-input {
+  .dropdown-menu{
+    width: $rb-multi-dropdown-input-dropdown-width;
+  }
+
+  .dropdown-item{
+    .rb-text {
+      flex: 1;
+      display: inline-block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
+
   .dropdown-toggle {
     display: flex;
     align-items: center;
-
-    .rb-text {
-      flex: 1;
-    }
 
     .rb-counter {
       margin-left: $rb-multi-dropdown-input-counter-margin-left;
