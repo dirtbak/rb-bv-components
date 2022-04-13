@@ -1,6 +1,8 @@
 .rb-multi-dropdown-input {
   .dropdown-menu{
     width: $rb-multi-dropdown-input-dropdown-width;
+    max-height: $rb-multi-dropdown-input-dropdown-max-height;
+    overflow-y: scroll;
   }
 
   .dropdown-item{
