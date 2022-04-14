@@ -16,14 +16,14 @@
                     {{text? text: (showCancelItem? cancelItemText: placeholder)}}
                 </span>
                 <span class="rb-dropdown-indicator" v-if="!noCaret">
-                    <rb-icon :icon="dropdownIcon"></rb-icon>
+                    <rb-icon :icon="dropdownIcon"/>
                 </span>
             </slot>
         </template>
         <b-dropdown-item v-for="o in options" :key="o.value" @click="onClick(o)">
             <slot name="option-content" :option="o">
                 <rb-icon v-if="icon" :icon="icon" :color="getIconColor(o.value)"/>
-                <span class="rb-text">{{o.text}}</span>
+                <span class="rb-text" v-b-tooltip.hover="{duration: 200, title: o.text}">{{o.text}}</span>
             </slot>
         </b-dropdown-item>
     </b-dropdown>

@@ -13,13 +13,13 @@
                 {{counter? counter: ''}}
             </span>
             <span class="rb-dropdown-indicator" v-if="!noCaret">
-                <rb-icon :icon="dropdownIcon"></rb-icon>
+                <rb-icon :icon="dropdownIcon"/>
             </span>
         </template>
         <b-dropdown-item v-for="o in options" :key="o.value"
                          @click="onClick(o)"
                          :class="{'rb-selected': (innerValue != null && innerValue.indexOf(o.value) >= 0)}">
-            <rb-text>
+            <rb-text  v-b-tooltip.hover="{duration: 200, title: o.text}">
                 {{o.text}}
             </rb-text>
         </b-dropdown-item>
