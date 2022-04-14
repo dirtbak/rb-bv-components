@@ -46,7 +46,7 @@
                 <b-dropdown-item v-for="o in selectedOptions"
                                  :key="o[valueField]">
                     <rb-text>{{o[titleField]}}</rb-text>
-                    <b-button variant="plain" @click="remove(o[valueField])">
+                    <b-button v-if="!disabled" variant="plain" @click="remove(o[valueField])">
                         <rb-icon class="icon-close"></rb-icon>
                     </b-button>
                 </b-dropdown-item>

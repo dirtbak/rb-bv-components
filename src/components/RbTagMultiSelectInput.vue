@@ -35,7 +35,7 @@
         <div class="selected-items" v-if="selectedItems.length > 0">
             <b-badge :key="item[valueField]" class="rb-tag" href="#" v-for="item in selectedItems" variant="light">
                 <span class="title">{{item[displayField]}}</span>
-                <b-button @click="remove(item)" class="small remove-btn" variant="plain">
+                <b-button v-if="!disabled" @click="remove(item)" class="small remove-btn" variant="plain">
                     <rb-icon icon="icon-close"/>
                 </b-button>
             </b-badge>
