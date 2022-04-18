@@ -4,7 +4,7 @@ export const typeaheadMixin = {
     props: {
         valueField: {type: String, default: 'id'},
         titleField: {type: String, default: 'name'},
-        placeholder: {type: String, default: 'Начните набрать ...'},
+        placeholder: {type: String, default: 'Начните набирать ...'},
         state: {type: Boolean, default: null},
         searchOptions: Function,
         searchOptionByValues: {type: Function, default: null},
