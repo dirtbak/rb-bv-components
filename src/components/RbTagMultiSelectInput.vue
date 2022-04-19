@@ -23,12 +23,12 @@
             <li :active="i === activeOptionIndex" :key="item[valueField]" @click="select(item)"
                 role="presentation"
                 v-for="(item, i) in options">
-                <a :ref="'dropdownItem_' + i" class="dropdown-item" href="#"
+                <span :ref="'dropdownItem_' + i" class="dropdown-item"
                    role="menuitem" target="_self"
                    v-on:keydown.escape="closeOptions"
                    v-on:keyup.down="onKeyDown"
                    v-on:keyup.enter="onKeyEnter"
-                   v-on:keyup.up="onKeyUp">{{item[displayField]}}</a>
+                   v-on:keyup.up="onKeyUp">{{item[displayField]}}</span>
             </li>
         </ul>
 
