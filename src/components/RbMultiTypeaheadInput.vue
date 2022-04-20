@@ -87,9 +87,9 @@
         },
         methods: {
             onFocus() {
-                if (!this.dropdownShown) {
+                /*if (!this.dropdownShown) {
                     this.$refs.dropdown.show();
-                }
+                }*/
             },
             onOptionSelect(option) {
                 if (!this.isCancelOption(option)) {
@@ -103,15 +103,17 @@
                 this.$emit('input', value);
                 this.$emit('change', value);
                 this.clearText();
+                this.options = [];
                 this.closeDropdown();
             },
             resolveValue(value) {
-                if (value !== null) {
+                console.info("resolveValue", value);
+                if (value && value.length > 0) {
                     if (this.async) {
                         this.isLoading = false;
                         this.searchOptionByValues(value).then(options => {
-                            this.mergeOptions(options, this.options);
-                            this.generateSelectedOptions();
+                            this.mergeOptions(this.options, options);
+                            this.generateSelectedOptions(options);
                             this.isLoading = false;
                         }).catch(err => {
                             this.isLoading = false;
@@ -119,18 +121,19 @@
                         });
                     } else {
                         let options = this.searchOptionByValues(value);
-                        this.mergeOptions(options, this.options);
-                        this.generateSelectedOptions();
+                        this.mergeOptions(this.options, options);
+                        this.generateSelectedOptions(options);
                     }
                 } else {
                     this.generateSelectedOptions();
                 }
             },
-            generateSelectedOptions() {
+            generateSelectedOptions(options) {
+                options = options || this.options;
                 this.selectedOptions = [];
                 if(this.value && this.value.length) {
                     this.value.forEach(v => {
-                        let found = this.options.find(o => o[this.valueField] === v);
+                        let found = options.find(o => o[this.valueField] === v);
                         if(found) {
                             this.selectedOptions.push(found);
                         }

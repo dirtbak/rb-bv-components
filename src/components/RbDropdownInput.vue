@@ -114,7 +114,7 @@
                 }
             },
             setText() {
-                let currentValIndex = this.options.findIndex(option => option.value === this.innerValue);
+                let currentValIndex = this.options.findIndex(option => option.value == this.innerValue);
                 if (currentValIndex !== -1) {
                     this.text = this.options[currentValIndex].text;
                 }

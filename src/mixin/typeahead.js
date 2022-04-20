@@ -43,19 +43,24 @@ export const typeaheadMixin = {
             }
         },
         isCancelOption(option) {
+            console.info('option[this.valueField]', option[this.valueField]);
             return option[this.valueField] === this.cancelOption[this.valueField];
         },
         debounceSearch: debounce(function (text) {
             if (this.async) {
                 this.isLoading = true;
-                this.searchOptions(text).then(options => {
-                    this.options = options;
-                    this.selectIndex = 0;
-                    this.isLoading = false;
-                }).catch(err => {
-                    this.isLoading = false;
-                    throw  err;
-                });
+                if(text != null && text != '') {
+                    this.searchOptions(text).then(options => {
+                        this.options = options;
+                        this.selectIndex = 0;
+                        this.isLoading = false;
+                    }).catch(err => {
+                        this.isLoading = false;
+                        throw  err;
+                    });
+                } else {
+                    this.options = [];
+                }
             } else {
                 this.selectIndex = 0;
                 this.options = this.searchOptions(text);
@@ -91,7 +96,7 @@ export const typeaheadMixin = {
             if (this.selectIndex < this.options.length) {
                 this.onOptionSelect(this.options[this.selectIndex]);
             } else if (this.selectIndex === this.options.length && this.showCancelOption) {
-                this.onOptionSelect(this.isCancelOption);
+                this.onOptionSelect(this.cancelOption);
             }
             e.preventDefault();
         },
