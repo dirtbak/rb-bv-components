@@ -107,7 +107,6 @@
                 this.closeDropdown();
             },
             resolveValue(value) {
-                console.info("resolveValue", value);
                 if (value && value.length > 0) {
                     if (this.async) {
                         this.isLoading = false;

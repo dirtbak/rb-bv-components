@@ -43,7 +43,6 @@ export const typeaheadMixin = {
             }
         },
         isCancelOption(option) {
-            console.info('option[this.valueField]', option[this.valueField]);
             return option[this.valueField] === this.cancelOption[this.valueField];
         },
         debounceSearch: debounce(function (text) {
