@@ -95,6 +95,7 @@
                 if (!this.isCancelOption(option)) {
                     if (!this.selectedOptions.find(o => o[this.valueField] === option[this.valueField])) {
                         this.selectedOptions.push(option);
+                        this.closeDropdown();
                     }
                 } else {
                     this.selectedOptions = [];
