@@ -17,14 +17,23 @@
   }
 
   .selected-items {
+    display: flex;
     padding: 0 5px 2px 5px;
+    flex-wrap: wrap;
     a {
       max-width: 100%;
+      display: flex;
+      align-items: center;
+      max-width: max-content;
+      overflow: hidden;
       span {
         text-overflow: ellipsis;
         overflow: hidden;
         //max-width: 80%;
         display: inline-block;
+      }
+      button{
+        display: flex;
       }
     }
   }
