@@ -81,6 +81,9 @@
 
             wait(ms, value) {
                 return new Promise(resolve => setTimeout(resolve, ms, value));
+            },
+            onShow(event) {
+                console.info('show', event);
             }
         },
         created() {
@@ -500,7 +503,7 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" block split
+                                <rb-dropdown-input :items="rbDropdownInput1Items" block split @show="onShow"
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
