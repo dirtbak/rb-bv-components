@@ -4,6 +4,11 @@
                 :block="block"
                 :disabled="disabled"
                 :class="cls"
+                @click="$emit('click', $event)"
+                @show="$emit('show', $event)"
+                @shown="$emit('shown', $event)"
+                @hide="$emit('hide', $event)"
+                @hidden="$emit('hidden', $event)"
                 no-caret>
         <template v-slot:button-content>
             <slot name="button-content" :text="text" :cancelItemText="cancelItemText" :placeholder="placeholder"
