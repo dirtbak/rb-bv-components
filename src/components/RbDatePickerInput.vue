@@ -7,6 +7,7 @@
                     autocomplete="off"
                     @input="inputChange"
                     v-mask="mask"
+                    :size="size"
                     :placeholder="placeholder"
                     :disabled="disabled"
                     :state="state">
@@ -20,6 +21,7 @@
                         :dropup="dropup"
                         locale="ru-RU"
                         label-help=""
+                        :size="size"
                         :button-variant="variant"
                         :show-decade-nav="false"
                         :hide-header="true"
@@ -47,6 +49,7 @@
             state: {type: Boolean, default: null},
             dropup: Boolean,
             disabled: Boolean,
+            size: {type: String, default: null},
             variant: {type: String, default: 'light-outline'}
         },
         data: function () {
