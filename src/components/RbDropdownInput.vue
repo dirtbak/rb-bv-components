@@ -117,6 +117,7 @@
                 if (th.showCancelItem) {
                     th.options.push({text: th.cancelItemText, value: null});
                 }
+                th.options.push({text: 'Не важно', value: null});
             },
             setText() {
                 let currentValIndex = this.options.findIndex(option => option.value == this.innerValue);
