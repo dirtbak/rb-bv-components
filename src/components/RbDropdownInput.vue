@@ -28,7 +28,7 @@
         <b-dropdown-item v-for="o in options" :key="o.value" @click="onClick(o)">
             <slot name="option-content" :option="o">
                 <rb-icon v-if="icon" :icon="icon" :color="getIconColor(o.value)"/>
-                <span class="rb-text" v-b-tooltip.hover="{duration: 200, title: o.text}">{{o.text}}</span>
+                <span class="rb-text" v-b-tooltip.noninteractive.hover="{duration: 200, title: o.text}">{{o.text}}</span>
             </slot>
         </b-dropdown-item>
     </b-dropdown>
