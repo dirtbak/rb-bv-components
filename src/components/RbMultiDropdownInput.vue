@@ -29,7 +29,13 @@
       @click="onClick(o)"
       :class="{ 'rb-selected': innerValue != null && innerValue.indexOf(o.value) >= 0 }"
     >
-      <rb-text v-b-tooltip.noninteractive.hover="{ duration: 200, title: o.text }">
+      <rb-text
+        v-b-tooltip.noninteractive.hover="{
+          duration: 200,
+          title: o.text,
+          customClass: tooltipCustomClass,
+        }"
+      >
         {{ o.text }}
       </rb-text>
     </b-dropdown-item>
@@ -62,6 +68,7 @@ export default {
     dropdownIcon: { type: String, default: 'icon-chevron-down' },
     noCaret: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
+    tooltipCustomClass: { type: String, default: '' },
   },
   data() {
     return {
