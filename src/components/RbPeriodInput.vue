@@ -131,7 +131,7 @@
                     } else {
                         if (value == this.periods.WEEK) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                            this.innerDtStart = UtDate.getMonday(this.innerDtEnd)
+                            this.innerDtStart = UtDate.withoutTime(UtDate.getMonday(this.innerDtEnd))
                         } else if (value == this.periods.MONTH) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
                             this.innerDtStart = UtDate.getFirstDayOfMonth(this.innerDtEnd);
@@ -143,14 +143,15 @@
                             this.innerDtStart = UtDate.getFirstDayOfYear(this.innerDtEnd);
                         } else if (value == this.periods.SEVEN_DAYS) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd, 6);
+                            this.innerDtStart = UtDate.withoutTime(UtDate.minusDays(this.innerDtEnd, 6));
                         } else if (value == this.periods.THIRTY_DAYS) {
                             this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                            this.innerDtStart = UtDate.minusDays(this.innerDtEnd, 29);
+                            this.innerDtStart = UtDate.withoutTime(UtDate.minusDays(this.innerDtEnd, 29));
                         }
 
                         th.$emit('update:dtStart', this.innerDtStart);
                         th.$emit('update:dtEnd', this.innerDtEnd);
+                        console.log(this.innerDtStart, this.innerDtEnd)
                     }
                 } else if (value == null) {
                     th.$emit('update:dtStart', null);
