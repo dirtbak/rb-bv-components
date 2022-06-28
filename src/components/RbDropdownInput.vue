@@ -10,6 +10,7 @@
     @shown="$emit('shown', $event)"
     @hide="$emit('hide', $event)"
     @hidden="$emit('hidden', $event)"
+    @blur="$emit('blur', $event)"
     no-caret
   >
     <template v-slot:button-content>
