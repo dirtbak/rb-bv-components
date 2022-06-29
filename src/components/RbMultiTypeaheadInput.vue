@@ -151,7 +151,7 @@ export default {
       this.selectedOptions = [];
       if (this.value && this.value.length) {
         this.value.forEach((v) => {
-          let found = options.find((o) => String(o[this.valueField]) === v);
+          let found = options.find((o) => String(o[this.valueField]) === String(v));
           if (found) {
             this.selectedOptions.push(found);
           }
