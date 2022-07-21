@@ -44,7 +44,8 @@
   }
 
   &.is-valid {
-    .btn, .form-control {
+    .btn,
+    .form-control {
       border: $rb-multi-lang-input-border-width solid $form-feedback-valid-color;
     }
 
@@ -54,7 +55,8 @@
   }
 
   &.is-invalid {
-    .btn, .form-control {
+    .btn,
+    .form-control {
       border: $rb-multi-lang-input-border-width solid $form-feedback-invalid-color;
     }
 
@@ -80,8 +82,13 @@
 
   .dropdown-item {
     padding: $rb-multi-lang-input-dropdown-item-padding;
-    &.active, &:active{
+    &.active,
+    &:active {
       color: $rb-multi-lang-input-dropdown-item-active;
     }
+  }
+  .disabled-btn {
+    background-color: #e9ecef;
+    border-color: #ced4da;
   }
 }
