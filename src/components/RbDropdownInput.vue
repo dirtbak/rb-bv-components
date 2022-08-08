@@ -145,8 +145,10 @@ export default {
     this.setInnerValue();
     this.fillOptions(this.items);
     this.setText();
+    document.addEventListener('click', this.onClickOutside);
   },
   methods: {
+    onClickOutside (e) {this.visibleMenu = false},
     fillOptions(items) {
       let th = this;
       th.options = [];
@@ -177,7 +179,7 @@ export default {
       }
     },
     onClick(item) {
-      this.visibleMenu = false
+      this.visibleMenu = false;
       if (this.valueAsObject) {
         let objectVal = { [this.bindField]: item.value };
         this.$emit('input', objectVal);
@@ -194,11 +196,15 @@ export default {
       return item ? `#${item.color}` : this.showCancelIcon ? null : 'transparent';
     },
     visibleDropdownMenu(e) {
-        e.stopPropagation()
-        this.visibleMenu = !this.visibleMenu
+        e.stopPropagation(e);
+        this.visibleMenu = !this.visibleMenu;
 
-        if(this.visibleMenu) this.$refs.dropdown.show();
-        else this.$refs.dropdown.hide();
+        if(this.visibleMenu) {
+            this.$refs.dropdown.show();
+        } else {
+            this.$refs.dropdown.hide();
+            e.target.parentElement.parentElement.blur();
+        }
     }
   },
 };

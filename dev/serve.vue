@@ -91,6 +91,7 @@
                 console.info('show', event);
             },
             onClick(event) {
+                alert('asd');
                 console.info('click', event);
             }
         },
