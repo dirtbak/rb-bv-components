@@ -13,6 +13,11 @@
     }
   }
 
+  &.dropup .dropdown-menu {
+    top: auto !important;
+    bottom: 100% !important;
+  }
+
   &:not(.rb-dropdown-link-input) {
     &.rb-bordered {
       .dropdown-toggle {
@@ -192,3 +197,6 @@
   }
 }
 
+.rb-dropdown-input.dropup .rb-dropdown-indicator .rb-icon {
+  transform: rotate(180deg);
+}

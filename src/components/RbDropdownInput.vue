@@ -1,6 +1,7 @@
 <template>
   <b-dropdown
     class="rb-dropdown-input"
+    :dropup="dropup"
     :variant="variant"
     :block="block"
     :disabled="disabled"
@@ -110,6 +111,7 @@ export default {
     dropdownIcon: { type: String, default: 'icon-chevron-down' },
     noCaret: { type: Boolean, default: false },
     tooltipCustomClass: { type: String, default: '' },
+    dropup: {type: Boolean, default: false}
   },
   data() {
     return {
