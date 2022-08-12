@@ -8,6 +8,7 @@
     :class="cls"
     :split="split"
     :splitText="splitText"
+    :fixedText="fixedText"
     ref="dropdown"
     @click="$emit('click', $event)"
     @show="$emit('show', $event)"
@@ -29,8 +30,11 @@
         <a class="rb-text" v-if="link">
           {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
         </a>
-        <span class="rb-text" v-else>
+        <span class="rb-text" v-else-if="!fixedText">
           {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
+        </span>
+        <span class="rb-text" v-else>
+          {{ fixedText }}
         </span>
         <span class="rb-dropdown-indicator" v-if="!noCaret">
           <rb-icon :icon="dropdownIcon" />
@@ -111,7 +115,8 @@ export default {
     dropdownIcon: { type: String, default: 'icon-chevron-down' },
     noCaret: { type: Boolean, default: false },
     tooltipCustomClass: { type: String, default: '' },
-    dropup: {type: Boolean, default: false}
+    dropup: {type: Boolean, default: false},
+    fixedText: { type: String, default: null },
   },
   data() {
     return {
