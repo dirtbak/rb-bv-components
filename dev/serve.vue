@@ -1337,6 +1337,49 @@
                 </div>
             </b-form>
             <b-form @submit.stop.prevent>
+              <h5>Ввод внутренного телефона - <span class="text-muted">RbInternalPhoneInput</span></h5>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input disabled v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input :state="false" v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-inputt :state="true" v-model="rbInternalPhoneInput1"></rb-internal-phone-inputt>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
                 <h5>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h5>
                 <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
