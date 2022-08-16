@@ -46,6 +46,7 @@
                 rbPeriodInputDtStart1: '2022-03-01',
                 rbPeriodInputDtEnd1: '2022-03-04',
                 rbPhoneInput1: null,
+                rbInternalPhoneInput1: null,
                 rbPriceInput1: null,
                 rbSelectInput1: null,
                 rbSingleOptionInput1: null,
