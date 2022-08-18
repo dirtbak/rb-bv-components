@@ -169,7 +169,7 @@ export default {
       }
 
       if (!this.split) {
-        th.options.push({text: 'Не важно', value: null});
+        th.options.push({text: 'Не выбрано', value: null});
       }
     },
     setText() {

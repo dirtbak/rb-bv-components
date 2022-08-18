@@ -45,7 +45,7 @@
             link: Boolean,
             variant: {type: String, default: 'light'},
             bordered: Boolean,
-            cancelItemText: {type: String, default: 'Не важно'},
+            cancelItemText: {type: String, default: 'Не выбрано'},
             showCancelItem: Boolean,
             placeholder: {type: String, default: 'Выберите период'},
             dtStart: [String, Date],
