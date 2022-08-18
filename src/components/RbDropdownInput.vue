@@ -63,6 +63,7 @@
         <rb-icon v-if="o.icon" :icon="o.icon" />
         <span
           v-b-tooltip.noninteractive.hover="{
+            disabled: disableTooltip,
             duration: 200,
             title: o.text,
             customClass: tooltipCustomClass,
@@ -108,6 +109,10 @@ export default {
     state: { type: Boolean, default: null },
     block: Boolean,
     disabled: Boolean,
+    disableTooltip: {
+      type: Boolean,
+      default: false
+    },
     link: Boolean,
     split: { type: Boolean, default: false },
     splitText: { type: String, default: '' },
