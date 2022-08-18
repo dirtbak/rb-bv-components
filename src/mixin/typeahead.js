@@ -10,7 +10,7 @@ export const typeaheadMixin = {
         searchOptionByValues: {type: Function, default: null},
         value: {type: [String, Number, Array], default: null},
         showCancelOption: {type: Boolean, default: true},
-        cancelOptionTitle: {type: String, default: 'Не важно'},
+        cancelOptionTitle: {type: String, default: 'Не выбрано'},
         cancelOptionValue: {type: [String, Number], default: null},
         async: {type: Boolean, default: true},
         clearOnFocus: {type: Boolean, default: false},
