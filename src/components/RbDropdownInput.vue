@@ -173,11 +173,9 @@ export default {
         });
       });
 
-      if (th.showCancelItem) {
-        return th.options.push({ text: th.cancelItemText, value: null });
-      }
-
-      th.options.push({ text: 'Не важно', value: null });
+      if (!th.showCancelItem) return;
+      let text = this.cancelItemText ? this.cancelItemText : 'Не важно';
+      th.options.push({ text, value: null });
     },
     setText() {
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
