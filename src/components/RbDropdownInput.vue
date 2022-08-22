@@ -42,18 +42,15 @@
       </slot>
     </template>
     <template v-slot:button-content v-else>
-      <slot
-        name="button-content"
-      >
-        <rb-icon v-if="btnIcon" :icon="btnIcon" :color="colorBtnIcon"/>
+      <slot name="button-content">
+        <rb-icon v-if="btnIcon" :icon="btnIcon" :color="colorBtnIcon" />
         <a class="rb-text" v-if="link">
           {{ splitText }}
         </a>
         <span class="rb-text" v-else>
           {{ splitText }}
         </span>
-        <span class="rb-dropdown-indicator"
-              @click="visibleDropdownMenu">
+        <span class="rb-dropdown-indicator" @click="visibleDropdownMenu">
           <rb-icon :icon="dropdownIcon" />
         </span>
       </slot>
@@ -62,13 +59,14 @@
       <slot name="option-content" :option="o">
         <rb-icon v-if="o.icon" :icon="o.icon" />
         <span
-          v-b-tooltip.noninteractive.hover="{
-            disabled: disableTooltip,
-            duration: 200,
+          class="rb-text"
+          v-b-tooltip.show="{
+            duration: 20000000,
             title: o.text,
             customClass: tooltipCustomClass,
-          }">
-            {{ o.text }}
+          }"
+        >
+          {{ o.text }}
         </span>
       </slot>
     </b-dropdown-item>
@@ -111,7 +109,7 @@ export default {
     disabled: Boolean,
     disableTooltip: {
       type: Boolean,
-      default: false
+      default: false,
     },
     link: Boolean,
     split: { type: Boolean, default: false },
@@ -120,7 +118,7 @@ export default {
     dropdownIcon: { type: String, default: 'icon-chevron-down' },
     noCaret: { type: Boolean, default: false },
     tooltipCustomClass: { type: String, default: '' },
-    dropup: {type: Boolean, default: false},
+    dropup: { type: Boolean, default: false },
     fixedText: { type: String, default: null },
   },
   data() {
@@ -160,22 +158,26 @@ export default {
     document.addEventListener('click', this.onClickOutside);
   },
   methods: {
-    onClickOutside (e) {this.visibleMenu = false},
+    onClickOutside(e) {
+      this.visibleMenu = false;
+    },
     fillOptions(items) {
       let th = this;
       th.options = [];
 
       items.forEach((item) => {
-        th.options.push({ text: item[th.displayField], value: item[th.valueField], icon: item.icon });
+        th.options.push({
+          text: item[th.displayField],
+          value: item[th.valueField],
+          icon: item.icon,
+        });
       });
 
       if (th.showCancelItem) {
-        th.options.push({ text: th.cancelItemText, value: null });
+        return th.options.push({ text: th.cancelItemText, value: null });
       }
 
-      if (!this.split && !th.showCancelItem) {
-        th.options.push({text: 'Не выбрано', value: null});
-      }
+      th.options.push({ text: 'Не важно', value: null });
     },
     setText() {
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
@@ -208,16 +210,16 @@ export default {
       return item ? `#${item.color}` : this.showCancelIcon ? null : 'transparent';
     },
     visibleDropdownMenu(e) {
-        e.stopPropagation(e);
-        this.visibleMenu = !this.visibleMenu;
+      e.stopPropagation(e);
+      this.visibleMenu = !this.visibleMenu;
 
-        if(this.visibleMenu) {
-            this.$refs.dropdown.show();
-        } else {
-            this.$refs.dropdown.hide();
-            e.target.parentElement.parentElement.blur();
-        }
-    }
+      if (this.visibleMenu) {
+        this.$refs.dropdown.show();
+      } else {
+        this.$refs.dropdown.hide();
+        e.target.parentElement.parentElement.blur();
+      }
+    },
   },
 };
 </script>
