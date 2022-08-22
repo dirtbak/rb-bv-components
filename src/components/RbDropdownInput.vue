@@ -173,7 +173,7 @@ export default {
         th.options.push({ text: th.cancelItemText, value: null });
       }
 
-      if (!this.split) {
+      if (!this.split && !th.showCancelItem) {
         th.options.push({text: 'Не выбрано', value: null});
       }
     },

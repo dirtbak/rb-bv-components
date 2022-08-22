@@ -514,6 +514,7 @@
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
                                 <rb-dropdown-input disable-tooltip
+                                                   show-cancel-item
                                                    :items="rbDropdownInput1Items" block @show="onShow"
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
