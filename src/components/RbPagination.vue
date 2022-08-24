@@ -19,6 +19,7 @@
             </span>
             <rb-icon @click="toggleSearch()"
                      :class="{'search-active': isSearchVisible}"
+                     v-b-tooltip.hover="{disabled: !isSearchVisible, title: 'Очистить', duration: 400}"
                      :icon="isSearchVisible ? 'icon-close' : 'icon-search'"/>
         </span>
         <rb-icon :class="{disabled: currPage === this.lastPage}"
@@ -112,9 +113,8 @@
                 } else {
                     if (this.searchText) {
                         this.selectPage();
-                        this.searchText = null;
                     }
-                    this.isSearchVisible = false;
+                    this.searchText = null;
                 }
             },
             generatePageRange(currentPage, lastPage, delta = 1) {
