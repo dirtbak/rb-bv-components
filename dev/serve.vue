@@ -1101,6 +1101,20 @@
             <b-form @submit.stop.prevent>
                 <h5>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h5>
                 <div class="rb-component-row">
+                    <h6>Тест без дефолтного выбора</h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group style="width: 200px;">
+                                <rb-typeahead-input
+                                    :searchOptions="rbMultiSelectSearch1"
+                                    :notDefault="true"
+                                    v-model="rbTypeaheadInput1">
+                                </rb-typeahead-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
                     <b-form-row>
                         <b-col lg="3" sm="12">
@@ -1129,6 +1143,8 @@
                             <b-form-group style="width: 200px;">
                                 <rb-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
                                                     :searchOptions="rbMultiSelectSearch1"
+                                                    :notDefault="true"
+
                                                     :state="false"
                                                     v-model="rbTypeaheadInput2"></rb-typeahead-input>
                             </b-form-group>
@@ -1158,6 +1174,7 @@
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
                                 <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
                                                           :searchOptions="rbMultiSelectSearch1"
+                                                          :notDefault="true"
                                                           show-options
                                                           v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
@@ -1247,6 +1264,70 @@
                             <b-form-group>
                                 <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1" :state="true"
                                                            v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
+                <h5>Выбор нескольких тегов - <span class="text-muted">RbTagInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное + maxTag</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              maxTags="1"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">превью</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              maxTags="1"
+                                              :not-edit="true"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">disabled</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              disabled
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              :state="false"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              :state="true"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
