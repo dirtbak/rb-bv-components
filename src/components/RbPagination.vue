@@ -1,29 +1,27 @@
 <template>
-    <div :class="{busy}" class="d-flex rb-pagination">
-        <rb-icon :class="currPage===1?'disabled':''"
+    <div :class="{busy}" class="d-flex rb-pagination" v-click-outside="onClickOutside">
+        <rb-icon :class="{disabled: currPage === 1}"
                  @click="changePage(-1)"
                  icon="icon-chevron-left"/>
-        <span :class="[currPage===page?'active':'', page==='...'?'dots':'', 'page d-flex align-items-center justify-content-center']"
+        <span :class="[{active: currPage === page}, {dots: page === '...'}, 'page d-flex align-items-center justify-content-center']"
               @click="currPage!=='...'&&selectPage(page)"
               v-for="page of pages">
             {{page}}
         </span>
-        <span :class="[isSearchVisible?'active':'', lastPage<=5?'d-none':'d-flex','search position-relative']">
+        <span :class="[{active: isSearchVisible}, lastPage <= 5 ? 'd-none' : 'd-flex','search position-relative']">
             <span class="position-absolute search-wrapper">
                 <input :max="totalRows"
+                       ref="input"
                        @keyup.enter="selectPage()"
                        min="1"
-                       placeholder="Страница..."
                        type="number"
                        v-model="searchText"/>
-                <rb-icon @click="isSearchVisible=false"
-                         icon="icon-close"
-                         title="Закрыть поиск"/>
             </span>
             <rb-icon @click="toggleSearch()"
-                     icon="icon-search"/>
+                     :class="{'search-active': isSearchVisible}"
+                     :icon="isSearchVisible ? 'icon-close' : 'icon-search'"/>
         </span>
-        <rb-icon :class="currPage===this.lastPage?'disabled':''"
+        <rb-icon :class="{disabled: currPage === this.lastPage}"
                  @click="changePage(1)"
                  icon="icon-chevron-right"/>
     </div>
@@ -109,12 +107,14 @@
             },
             toggleSearch() {
                 if (!this.isSearchVisible) {
-                    this.isSearchVisible = true
+                    this.isSearchVisible = true;
+                    this.$refs.input.focus();
                 } else {
                     if (this.searchText) {
                         this.selectPage();
-                        this.isSearchVisible = false;
+                        this.searchText = null;
                     }
+                    this.isSearchVisible = false;
                 }
             },
             generatePageRange(currentPage, lastPage, delta = 1) {
@@ -141,6 +141,9 @@
 
                     return pages;
                 }, []);
+            },
+            onClickOutside() {
+                this.isSearchVisible = false
             }
         }
     }
