@@ -10,7 +10,7 @@
     :splitText="splitText"
     :fixedText="fixedText"
     ref="dropdown"
-    @click="$emit('click', $event)"
+    @click="onSplitClick"
     @show="$emit('show', $event)"
     @shown="$emit('shown', $event)"
     @hide="$emit('hide', $event)"
@@ -202,6 +202,11 @@ export default {
         this.$emit('change', item.value);
         this.$emit('click', item.value);
       }
+    },
+    onSplitClick(event) {
+        event.target.parentElement.blur();
+        event.target.blur();
+        this.$emit('click', event);
     },
     getIconColor(value) {
       const item = this.items.find((item) => item[this.valueField] === value);

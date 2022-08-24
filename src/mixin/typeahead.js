@@ -6,6 +6,7 @@ export const typeaheadMixin = {
         titleField: {type: String, default: 'name'},
         placeholder: {type: String, default: 'Начните набирать ...'},
         state: {type: Boolean, default: null},
+        notDefault: {type: Boolean, default: false},
         searchOptions: Function,
         searchOptionByValues: {type: Function, default: null},
         value: {type: [String, Number, Array], default: null},
