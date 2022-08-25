@@ -1,5 +1,6 @@
 .rb-multi-lang-input {
   height: $rb-multi-lang-input-height;
+
   .rb-text-container {
     gap: $rb-multi-lang-input-gap;
   }
@@ -80,8 +81,15 @@
 
   .dropdown-item {
     padding: $rb-multi-lang-input-dropdown-item-padding;
-    &.active, &:active{
+
+    &.active, &:active {
       color: $rb-multi-lang-input-dropdown-item-active;
+    }
+  }
+
+  .rb-icon {
+    &:before {
+      line-height: 1;
     }
   }
 }
