@@ -43,7 +43,7 @@
         <b-dropdown-item
           @click="onOptionSelect(cancelOption)"
           :active="selectIndex === options.length"
-          v-if="showCancelOption"
+          v-if="showCancelOption && !this.notDefault"
         >
           {{ cancelOption[titleField] }}
         </b-dropdown-item>

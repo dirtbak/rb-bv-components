@@ -26,7 +26,7 @@
         </b-dropdown-item>
         <b-dropdown-item @click="onCancelSelection">
             <rb-icon icon="icon-close"></rb-icon>
-            <rb-text v-if="showLabel">Не важно</rb-text>
+            <rb-text v-if="showLabel">Не выбрано</rb-text>
         </b-dropdown-item>
     </b-dropdown>
 </template>

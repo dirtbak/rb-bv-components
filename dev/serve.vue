@@ -29,6 +29,11 @@
                     {id: 5, name: 'Мегасуперогромныйвыборэлемента'}
                 ],
                 rbDropdownInput1: null,
+                rbDropdownInput2Items: [
+                    {id: 1, name: 'Один', icon: 'icon-none'},
+                    {id: 2, name: 'Два'}
+                ],
+                rbDropdownInput2: null,
                 rbDropdownAsObjectInput1: null,
                 rbDropdownLinkInput1: null,
                 rbListGroupInput1: null,
@@ -41,6 +46,7 @@
                 rbPeriodInputDtStart1: '2022-03-01',
                 rbPeriodInputDtEnd1: '2022-03-04',
                 rbPhoneInput1: null,
+                rbInternalPhoneInput1: null,
                 rbPriceInput1: null,
                 rbSelectInput1: null,
                 rbSingleOptionInput1: null,
@@ -84,6 +90,10 @@
             },
             onShow(event) {
                 console.info('show', event);
+            },
+            onClick(event) {
+                alert('asd');
+                console.info('click', event);
             }
         },
         created() {
@@ -503,7 +513,9 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :items="rbDropdownInput1Items" block split @show="onShow"
+                                <rb-dropdown-input disable-tooltip
+                                                   show-cancel-item
+                                                   :items="rbDropdownInput1Items" block @show="onShow"
                                                    v-model="rbDropdownInput1"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
@@ -597,7 +609,7 @@
                 <b-form-row>
                     <b-col lg="3" sm="12">
                         <b-form-group label="Обычный">
-                            <rb-dropdown-input :items="rbDropdownInput1Items" block split
+                            <rb-dropdown-input :items="rbDropdownInput1Items" block
                                                v-model="rbDropdownAsObjectInput1"
                                                value-as-object></rb-dropdown-input>
                         </b-form-group>
@@ -610,6 +622,122 @@
                     </b-col>
                 </b-form-row>
             </b-form>
+
+            <b-form @submit.stop.prevent>
+                <h5>Выбор одного значения из списка + стандартное действие по кнопке - <span class="text-muted">RbDropdownInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block @show="onShow"
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="C бордером">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block bordered
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="C бордером">
+                                <rb-dropdown-input
+                                    :split="true"
+                                    :split-text="'Split text'"
+                                    :items="rbDropdownInput2Items"
+                                    :btn-icon="'icon-none'"
+                                    :color-btn-icon="'#ffffff'"
+                                    block
+                                    variant="primary"
+                                    v-model="rbDropdownInput2"
+                                    @click="onClick" />
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">disabled</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block disabled
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="C бордером">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block bordered disabled
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block bordered
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="Обычный">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="true" block
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group label="С бордером">
+                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="true" block bordered
+                                                   v-model="rbDropdownInput2"
+                                @click="onClick"></rb-dropdown-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
+                <h5>Работа с объектами - <span class="text-muted">RbDropdownInput</span></h5>
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                    <b-col lg="3" sm="12">
+                        <b-form-group label="Обычный">
+                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block split
+                                               v-model="rbDropdownAsObjectInput1"
+                                               @click="onClick"
+                                               value-as-object></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                    <b-col lg="3" sm="12">
+                        <b-form-group label="С бордером">
+                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block bordered
+                                               v-model="rbDropdownAsObjectInput1"
+                                               @click="onClick"value-as-object></rb-dropdown-input>
+                        </b-form-group>
+                    </b-col>
+                </b-form-row>
+            </b-form>
+
             <b-form @submit.stop.prevent>
                 <h5>Выбор нескольких значений - <span class="text-muted">RbMultiDropdownInput</span></h5>
                 <div class="rb-component-row">
@@ -973,6 +1101,20 @@
             <b-form @submit.stop.prevent>
                 <h5>Выбор 1 значения с поиском - <span class="text-muted">RbTypeaheadInput</span></h5>
                 <div class="rb-component-row">
+                    <h6>Тест без дефолтного выбора</h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group style="width: 200px;">
+                                <rb-typeahead-input
+                                    :searchOptions="rbMultiSelectSearch1"
+                                    :notDefault="true"
+                                    v-model="rbTypeaheadInput1">
+                                </rb-typeahead-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
                     <b-form-row>
                         <b-col lg="3" sm="12">
@@ -1001,6 +1143,8 @@
                             <b-form-group style="width: 200px;">
                                 <rb-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
                                                     :searchOptions="rbMultiSelectSearch1"
+                                                    :notDefault="true"
+
                                                     :state="false"
                                                     v-model="rbTypeaheadInput2"></rb-typeahead-input>
                             </b-form-group>
@@ -1030,6 +1174,7 @@
                             <b-form-group label="Typeahead инпут" style="width: 200px;">
                                 <rb-multi-typeahead-input :searchOptionByValues="rbSearchOptionByValues"
                                                           :searchOptions="rbMultiSelectSearch1"
+                                                          :notDefault="true"
                                                           show-options
                                                           v-model="rbMultiTypeaheadInput1"></rb-multi-typeahead-input>
                             </b-form-group>
@@ -1125,6 +1270,70 @@
                 </div>
             </b-form>
             <b-form @submit.stop.prevent>
+                <h5>Выбор нескольких тегов - <span class="text-muted">RbTagInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное + maxTag</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              maxTags="1"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">превью</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              maxTags="1"
+                                              :not-edit="true"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">disabled</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              disabled
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              :state="false"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
+                                              :state="true"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
                 <h5>Ввод цены - <span class="text-muted">RbPriceInput</span></h5>
                 <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
@@ -1209,6 +1418,49 @@
                         </b-col>
                     </b-form-row>
                 </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
+              <h5>Ввод внутренного телефона - <span class="text-muted">RbInternalPhoneInput</span></h5>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">обычное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">disabled</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input disabled v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-input :state="false" v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
+              <div class="rb-component-row">
+                <h6>Состояние <span class="text-muted">валидное</span></h6>
+                <b-form-row>
+                  <b-col lg="3" sm="12">
+                    <b-form-group>
+                      <rb-internal-phone-inputt :state="true" v-model="rbInternalPhoneInput1"></rb-internal-phone-inputt>
+                    </b-form-group>
+                  </b-col>
+                </b-form-row>
+              </div>
             </b-form>
             <b-form @submit.stop.prevent>
                 <h5>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h5>

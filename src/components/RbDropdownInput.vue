@@ -1,11 +1,16 @@
 <template>
   <b-dropdown
     class="rb-dropdown-input"
+    :dropup="dropup"
     :variant="variant"
     :block="block"
     :disabled="disabled"
     :class="cls"
-    @click="$emit('click', $event)"
+    :split="split"
+    :splitText="splitText"
+    :fixedText="fixedText"
+    ref="dropdown"
+    @click="onSplitClick"
     @show="$emit('show', $event)"
     @shown="$emit('shown', $event)"
     @hide="$emit('hide', $event)"
@@ -13,7 +18,7 @@
     @blur="$emit('blur', $event)"
     no-caret
   >
-    <template v-slot:button-content>
+    <template v-slot:button-content v-if="!split">
       <slot
         name="button-content"
         :text="text"
@@ -25,26 +30,44 @@
         <a class="rb-text" v-if="link">
           {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
         </a>
-        <span class="rb-text" v-else>
+        <span class="rb-text" v-else-if="!fixedText">
           {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
+        </span>
+        <span class="rb-text" v-else>
+          {{ fixedText }}
         </span>
         <span class="rb-dropdown-indicator" v-if="!noCaret">
           <rb-icon :icon="dropdownIcon" />
         </span>
       </slot>
     </template>
+    <template v-slot:button-content v-else>
+      <slot name="button-content">
+        <rb-icon v-if="btnIcon" :icon="btnIcon" :color="colorBtnIcon" />
+        <a class="rb-text" v-if="link">
+          {{ splitText }}
+        </a>
+        <span class="rb-text" v-else>
+          {{ splitText }}
+        </span>
+        <span class="rb-dropdown-indicator" @click="visibleDropdownMenu">
+          <rb-icon :icon="dropdownIcon" />
+        </span>
+      </slot>
+    </template>
     <b-dropdown-item v-for="o in options" :key="o.value" @click="onClick(o)">
       <slot name="option-content" :option="o">
-        <rb-icon v-if="icon" :icon="icon" :color="getIconColor(o.value)" />
+        <rb-icon v-if="o.icon" :icon="o.icon" />
         <span
           class="rb-text"
-          v-b-tooltip.noninteractive.hover="{
-            duration: 200,
+          v-b-tooltip.show="{
+            duration: 20000000,
             title: o.text,
             customClass: tooltipCustomClass,
           }"
-          >{{ o.text }}</span
         >
+          {{ o.text }}
+        </span>
       </slot>
     </b-dropdown-item>
   </b-dropdown>
@@ -79,21 +102,31 @@ export default {
       default: 'name',
     },
     icon: String,
+    btnIcon: String,
+    colorBtnIcon: String,
     state: { type: Boolean, default: null },
     block: Boolean,
     disabled: Boolean,
+    disableTooltip: {
+      type: Boolean,
+      default: false,
+    },
     link: Boolean,
-    split: Boolean,
+    split: { type: Boolean, default: false },
+    splitText: { type: String, default: '' },
     splitVariant: { type: String, default: 'outline-light' },
     dropdownIcon: { type: String, default: 'icon-chevron-down' },
     noCaret: { type: Boolean, default: false },
     tooltipCustomClass: { type: String, default: '' },
+    dropup: { type: Boolean, default: false },
+    fixedText: { type: String, default: null },
   },
   data() {
     return {
       innerValue: null,
       text: null,
       options: [],
+      visibleMenu: false,
     };
   },
   computed: {
@@ -104,6 +137,7 @@ export default {
         'rb-no-dropdown-indicator': this.noCaret,
         'is-invalid': this.state === false,
         'is-valid': this.state === true,
+        'rb-dropdown-input__split': this.split === true,
       };
     },
   },
@@ -121,21 +155,27 @@ export default {
     this.setInnerValue();
     this.fillOptions(this.items);
     this.setText();
+    document.addEventListener('click', this.onClickOutside);
   },
   methods: {
+    onClickOutside(e) {
+      this.visibleMenu = false;
+    },
     fillOptions(items) {
       let th = this;
       th.options = [];
 
       items.forEach((item) => {
-        th.options.push({ text: item[th.displayField], value: item[th.valueField] });
+        th.options.push({
+          text: item[th.displayField],
+          value: item[th.valueField],
+          icon: item.icon,
+        });
       });
 
-      if (th.showCancelItem) {
-        th.options.push({ text: th.cancelItemText, value: null });
-      }
-
-      th.options.push({text: 'Не важно', value: null});
+      if (!th.showCancelItem) return;
+      let text = this.cancelItemText ? this.cancelItemText : 'Не важно';
+      th.options.push({ text, value: null });
     },
     setText() {
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
@@ -151,6 +191,7 @@ export default {
       }
     },
     onClick(item) {
+      this.visibleMenu = false;
       if (this.valueAsObject) {
         let objectVal = { [this.bindField]: item.value };
         this.$emit('input', objectVal);
@@ -162,9 +203,25 @@ export default {
         this.$emit('click', item.value);
       }
     },
+    onSplitClick(event) {
+        event.target.parentElement.blur();
+        event.target.blur();
+        this.$emit('click', event);
+    },
     getIconColor(value) {
       const item = this.items.find((item) => item[this.valueField] === value);
       return item ? `#${item.color}` : this.showCancelIcon ? null : 'transparent';
+    },
+    visibleDropdownMenu(e) {
+      e.stopPropagation(e);
+      this.visibleMenu = !this.visibleMenu;
+
+      if (this.visibleMenu) {
+        this.$refs.dropdown.show();
+      } else {
+        this.$refs.dropdown.hide();
+        e.target.parentElement.parentElement.blur();
+      }
     },
   },
 };

@@ -86,6 +86,10 @@
       color: $rb-multi-lang-input-dropdown-item-active;
     }
   }
+  .disabled-btn {
+    background-color: $rb-multi-lang-input-disabled-btn-background-color !important;
+    border-color: $rb-multi-lang-input-disabled-btn-border-color !important;
+  }
 
   .rb-icon {
     &:before {

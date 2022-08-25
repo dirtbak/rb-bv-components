@@ -25,6 +25,7 @@ $rb-dropdown-input-dropdown-toggle-text-align: left !default;
 $rb-dropdown-input-dropdown-indicator-width: $input-height !default;
 $rb-dropdown-input-dropdown-indicator-border-right-radius: $input-border-radius !default;
 $rb-dropdown-input-dropdown-indicator-bg: #f4f4f4 !default;
+$rb-dropdown-input-dropdown-indicator-primary-border: #3D7F59 !default;
 $rb-dropdown-input-dropdown-margin-left: 10px !default;
 $rb-dropdown-input-dropdown-width: 100% !default;
 
@@ -74,6 +75,8 @@ $rb-multi-lang-input-btn-width-min: 83.5px !default;
 $rb-multi-lang-input-dropdown-menu-width-min: 320px !default;
 $rb-multi-lang-input-dropdown-indicator-width: 50px !default;
 $rb-multi-lang-input-height: calc(1.5em + 0.75rem + 2px) !default;
+$rb-multi-lang-input-disabled-btn-background-color: #e9ecef !default;
+$rb-multi-lang-input-disabled-btn-border-color: #ced4da !default;
 
 // RbMultiDropdownInput
 $rb-multi-dropdown-input-counter-margin-left: 10px !default;
@@ -133,3 +136,9 @@ $rb-multi-typeahead-input-options-shower-position-top: $input-padding-y;
 $rb-multi-typeahead-input-options-shower-position-left: $input-padding-x;
 $rb-multi-typeahead-input-options-shower-bg: $input-bg;
 $rb-multi-typeahead-input-options-shower-disabled-bg: $input-disabled-bg;
+
+// RbTagInput
+$rb-tag-input-tag-bg: #F4F4F4;
+$rb-tag-input-tag-icon-close: #AAABAD;
+$rb-tag-input-tag-text: $secondary !default;
+$rb-tag-input-bdrs: 0.25rem;
