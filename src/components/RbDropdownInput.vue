@@ -61,6 +61,7 @@
         <span
           class="rb-text"
           v-b-tooltip.show="{
+            disabled: disableTooltip,
             duration: 20000000,
             title: o.text,
             customClass: tooltipCustomClass,
