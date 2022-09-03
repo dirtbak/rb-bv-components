@@ -7,7 +7,7 @@
                 <span class="title">Нет</span>
             </b-badge>
             <b-badge :key="item[valueField]" class="rb-tag" v-for="item in selectedItems" variant="light">
-                <span class="title">{{ item[displayField] }}</span>
+                <span class="title" :title="item[displayField]">{{ item[displayField] }}</span>
                 <b-button v-if="!disabled && !isReadonly" @click="remove(item)" class="small remove-btn" variant="plain">
                     <rb-icon icon="icon-close"/>
                 </b-button>
