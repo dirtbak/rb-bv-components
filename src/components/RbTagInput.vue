@@ -12,7 +12,7 @@
                     <rb-icon icon="icon-close"/>
                 </b-button>
             </b-badge>
-            <div v-if="!disabled && !readonly"
+            <div v-if="!disabled && !isReadonly"
                  class="tag-input"
                  @click="setOptionsVisible"
                  v-model="inputValue"
@@ -23,7 +23,7 @@
                  @keyup.up="onKeyUp"
                  :tabindex="_uid"
                  ref="editableContent"
-                 :contenteditable="!isMaxLength && !isReadonly" />
+                 :contenteditable="true" />
             <ul class="options dropdown-menu show" role="menu" tabindex="-1" v-if="optionsVisible">
                 <li :active="i === activeOptionIndex" :key="item[valueField]" @click="select(item, $event)"
                     role="presentation"
@@ -70,7 +70,7 @@ export default {
             inputValue: null,
             newTagCounter: 0, // нужен для генерации id для каждого нового тега (id должны быть отрицательными, чтобы отличить их от сущ.)
             newTagOptionSuffix: '(Новый тег)',
-            isReadonly: false
+            isReadonly: true,
         };
     },
     computed: {
@@ -96,9 +96,11 @@ export default {
         }
     },
     methods: {
-        inputFocused(e) {
+        inputFocused() {
             this.isReadonly = false;
-            this.$refs.editableContent?.focus()
+            setTimeout(() => {
+                this.$refs.editableContent?.focus()
+            }, 100)
         },
         onInput(e) {
             this.inputValue = e.target.innerText
@@ -179,9 +181,12 @@ export default {
             result[this.displayField] = result[this.displayField].replaceAll(` ${this.newTagOptionSuffix}`, '');
             return result;
         },
-        clickOutSide: function () {
-            this.isReadonly = true
+        clickOutSide: function (e) {
             this.optionsVisible = false;
+            if (e.target._prevClass != "dropdown-item") {
+                this.isReadonly = true;
+                this.$emit('save')
+            }
         },
         onKeyDown() {
             if (this.optionsVisible) {
@@ -235,7 +240,6 @@ export default {
             this.search('');
         }
         this.selectedItems = this.value || [];
-        this.isReadonly = this.readonly
     },
 };
 </script>

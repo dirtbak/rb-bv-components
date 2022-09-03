@@ -6,6 +6,9 @@ import './serve.scss';
 import RbBvComponents from '@/entry.esm';
 Vue.use(RbBvComponents);
 
+import vClickOutside from 'v-click-outside'
+Vue.use(vClickOutside)
+
 Vue.config.productionTip = false;
 
 new Vue({
