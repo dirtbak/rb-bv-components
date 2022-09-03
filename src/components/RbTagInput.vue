@@ -183,7 +183,7 @@ export default {
         },
         clickOutSide: function (e) {
             this.optionsVisible = false;
-            if (e.target._prevClass != "dropdown-item") {
+            if (e.target._prevClass != "dropdown-item" && e.target._prevClass != "rb-icon icon icon-close") {
                 this.isReadonly = true;
                 this.$emit('save')
             }
