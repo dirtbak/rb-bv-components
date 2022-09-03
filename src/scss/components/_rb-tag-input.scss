@@ -6,9 +6,19 @@
   -webkit-border-radius: $rb-tag-input-bdrs;
   -moz-border-radius: $rb-tag-input-bdrs;
   border-radius: $rb-tag-input-bdrs;
+  cursor: pointer;
+  transition: .3s;
+
+  &:focus-visible:hover, &:focus:hover {
+    background: none;
+  }
 
   &.no-edit {
     border: none;
+
+    &:hover {
+      background: $rb-tag-input-tag-bg;
+    }
   }
 
   &.is-invalid {
@@ -45,6 +55,13 @@
         color: $rb-tag-input-tag-text;
         text-overflow: ellipsis;
         overflow: hidden;
+      }
+
+      &__empty {
+        background: none;
+        .title {
+          color: $rb-tag-input-tag-icon-close;
+        }
       }
 
       .remove-btn {

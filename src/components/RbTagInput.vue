@@ -1,15 +1,18 @@
 <template>
-    <div :class="[cls, notEdit ? 'no-edit' : '']" class="rb-tag-input"
+    <div :class="[cls, disabled || isReadonly ? 'no-edit' : '']" class="rb-tag-input"
          v-click-outside="clickOutSide"
          @click="inputFocused">
         <div class="selected-items">
-            <b-badge :key="item[valueField]" class="rb-tag" href="#" v-for="item in selectedItems" variant="light">
+            <b-badge v-if="isReadonly && !selectedItems.length" class="rb-tag" variant="light">
+                <span class="title">Нет</span>
+            </b-badge>
+            <b-badge :key="item[valueField]" class="rb-tag" v-for="item in selectedItems" variant="light">
                 <span class="title">{{ item[displayField] }}</span>
-                <b-button v-if="!disabled && !notEdit" @click="remove(item)" class="small remove-btn" variant="plain">
+                <b-button v-if="!disabled && !isReadonly" @click="remove(item)" class="small remove-btn" variant="plain">
                     <rb-icon icon="icon-close"/>
                 </b-button>
             </b-badge>
-            <div v-if="!disabled && !notEdit"
+            <div v-if="!disabled && !readonly"
                  class="tag-input"
                  @click="setOptionsVisible"
                  v-model="inputValue"
@@ -18,7 +21,9 @@
                  @keyup.down="onKeyDown"
                  @keyup.enter="onKeyEnter"
                  @keyup.up="onKeyUp"
-                 :contenteditable="!isMaxLength" />
+                 :tabindex="_uid"
+                 ref="editableContent"
+                 :contenteditable="!isMaxLength && !isReadonly" />
             <ul class="options dropdown-menu show" role="menu" tabindex="-1" v-if="optionsVisible">
                 <li :active="i === activeOptionIndex" :key="item[valueField]" @click="select(item, $event)"
                     role="presentation"
@@ -51,7 +56,7 @@ export default {
         addTagOnEnter: {type: Boolean, default: false},
         state: {type: Boolean, default: null},
         disabled: Boolean,
-        notEdit: {type: Boolean, default: false},
+        readonly: {type: Boolean, default: false},
         maxTags: {type: [String, Number], default: Infinity}
     },
     data: () => {
@@ -64,7 +69,8 @@ export default {
             activeOptionIndex: null,
             inputValue: null,
             newTagCounter: 0, // нужен для генерации id для каждого нового тега (id должны быть отрицательными, чтобы отличить их от сущ.)
-            newTagOptionSuffix: '(Новый тег)'
+            newTagOptionSuffix: '(Новый тег)',
+            isReadonly: false
         };
     },
     computed: {
@@ -91,9 +97,8 @@ export default {
     },
     methods: {
         inputFocused(e) {
-            if (e.target._prevClass === 'selected-items') {
-                e?.srcElement?.children[e.srcElement.children.length - 1].focus()
-            }
+            this.isReadonly = false;
+            this.$refs.editableContent?.focus()
         },
         onInput(e) {
             this.inputValue = e.target.innerText
@@ -175,6 +180,7 @@ export default {
             return result;
         },
         clickOutSide: function () {
+            this.isReadonly = true
             this.optionsVisible = false;
         },
         onKeyDown() {
@@ -229,6 +235,7 @@ export default {
             this.search('');
         }
         this.selectedItems = this.value || [];
+        this.isReadonly = this.readonly
     },
 };
 </script>
