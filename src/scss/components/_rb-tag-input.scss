@@ -13,14 +13,6 @@
     background: none;
   }
 
-  &.no-edit {
-    border: none;
-
-    &:hover {
-      background: $rb-tag-input-tag-bg;
-    }
-  }
-
   &.is-invalid {
     border: $input-border-width solid $form-feedback-invalid-color;
   }
@@ -105,6 +97,19 @@
     span {
       text-overflow: ellipsis;
       overflow: hidden;
+    }
+  }
+
+  &.no-edit {
+    border: none;
+
+    &:hover {
+      background: $rb-tag-input-tag-bg;
+    }
+
+    .default-text {
+      background: none;
+      .title {color: $rb-tag-input-tag-icon-close}
     }
   }
 }

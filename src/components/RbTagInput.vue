@@ -3,7 +3,7 @@
          v-click-outside="clickOutSide"
          @click="inputFocused">
         <div class="selected-items">
-            <b-badge v-if="isReadonly && !selectedItems.length" class="rb-tag" variant="light">
+            <b-badge v-if="isReadonly && !selectedItems.length" class="rb-tag default-text" variant="light">
                 <span class="title">Нет</span>
             </b-badge>
             <b-badge :key="item[valueField]" class="rb-tag" v-for="item in selectedItems" variant="light">
@@ -183,7 +183,7 @@ export default {
         },
         clickOutSide: function (e) {
             this.optionsVisible = false;
-            if (e.target._prevClass != "dropdown-item" && e.target._prevClass != "rb-icon icon icon-close" && !this.isReadonly) {
+            if (!e.path.find(el => el._prevClass === "rb-tag-input") && !this.isReadonly) {
                 this.$emit('save')
                 this.isReadonly = true;
             }
