@@ -1,105 +1,122 @@
 <script>
-    import typeOf from 'typeof';
-    import Vue from 'vue';
-    import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
+import typeOf from 'typeof';
+import Vue from 'vue';
+import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 
-    Vue.use(BootstrapVue);
-    Vue.use(IconsPlugin);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
-    export default Vue.extend({
-        name: 'ServeDev',
-        data() {
-            return {
-                rbBooleanButtonInput1: false,
-                rbBooleanButtonInput2: false,
-                rbBooleanSingleOptionInput1: null,
-                rbBooleanSingleOptionInput2: false,
-                rbColorDropdownInput1Items: [
-                    {id: 1, color: 'red', name: 'Красный'},
-                    {id: 2, color: 'blue', name: 'Синий'},
-                    {id: 3, color: 'green', name: 'Зеленый'}
-                ],
-                rbColorDropdownInput1: null,
-                rbDatePickerInput1: new Date(),
-                rbDropdownInput1Items: [
-                    {id: 1, name: 'Один'},
-                    {id: 2, name: 'Два'},
-                    {id: 3, name: 'Три'},
-                    {id: 4, name: 'Четыре'},
-                    {id: 5, name: 'Мегасуперогромныйвыборэлемента'}
-                ],
-                rbDropdownInput1: null,
-                rbDropdownInput2Items: [
-                    {id: 1, name: 'Один', icon: 'icon-none'},
-                    {id: 2, name: 'Два'}
-                ],
-                rbDropdownInput2: null,
-                rbDropdownAsObjectInput1: null,
-                rbDropdownLinkInput1: null,
-                rbListGroupInput1: null,
-                rbListGroupAsObjectInput1: null,
-                rbMultiDropdownInput1: [],
-                rbMultiDropdownAsObjectInput1: null,
-                rbMultiOptionInput1: [],
-                rbMultiPhoneInput1: [],
-                rbMultiSelectInput1: [],
-                rbPeriodInputDtStart1: '2022-03-01',
-                rbPeriodInputDtEnd1: '2022-03-04',
-                rbPhoneInput1: null,
-                rbInternalPhoneInput1: null,
-                rbPriceInput1: null,
-                rbSelectInput1: null,
-                rbSingleOptionInput1: null,
-                rbTagMultiSelectInput1: [
-                    {id: 1, name: 'Один'}
-                ],
-                rbTypeaheadInput1: null,
-                rbTypeaheadInput2: 2,
-                rbMultiLangInput: {
-                    labelEn: '46546',
-                    labelKz: '44545',
-                    labelRu: '13213'
-                },
-                rbInputWithButton: null,
-                rbMultiTypeaheadInput1: [1, 2, 3, 4],
-                rbPagination: {
-                    currPage: 1,
-                    perPage: 5,
-                    totalRows: 100,
-                }
-            }
-        },
-        methods: {
-            async rbMultiSelectSearch1(text) {
-                return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
-            },
-            async rbSearchOptionByValues(value) {
-                if (typeOf(value) !== 'array') {
-                    value = [value];
-                }
-                return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
-            },
-            async asyncMockPageReq() {
-                return this.wait(100, {
-                    totalRows: 100
-                })
-            },
+export default Vue.extend({
+    name: 'ServeDev',
+    components: {},
 
-            wait(ms, value) {
-                return new Promise(resolve => setTimeout(resolve, ms, value));
+    data() {
+        return {
+            propsEdit: false,
+            rbBooleanButtonInput1: false,
+            rbBooleanButtonInput2: false,
+            rbBooleanSingleOptionInput1: null,
+            rbBooleanSingleOptionInput2: false,
+            rbColorDropdownInput1Items: [
+                {id: 1, color: 'red', name: 'Красный'},
+                {id: 2, color: 'blue', name: 'Синий'},
+                {id: 3, color: 'green', name: 'Зеленый'}
+            ],
+            rbColorDropdownInput1: null,
+            rbDatePickerInput1: new Date(),
+            rbDropdownInput1Items: [
+                {id: 1, name: 'Один'},
+                {id: 2, name: 'Два'},
+                {id: 3, name: 'Три'},
+                {id: 4, name: 'Четыре'},
+                {id: 5, name: 'Мегасуперогромныйвыборэлемента'}
+            ],
+            rbDropdownInput1: null,
+            rbDropdownInput2Items: [
+                {id: 1, name: 'Один', icon: 'icon-none'},
+                {id: 2, name: 'Два'}
+            ],
+            rbDropdownInput2: null,
+            rbDropdownAsObjectInput1: null,
+            rbDropdownLinkInput1: null,
+            rbListGroupInput1: null,
+            rbListGroupAsObjectInput1: null,
+            rbMultiDropdownInput1: [],
+            rbMultiDropdownAsObjectInput1: null,
+            rbMultiOptionInput1: [],
+            rbMultiPhoneInput1: [],
+            rbMultiSelectInput1: [],
+            rbPeriodInputDtStart1: '2022-03-01',
+            rbPeriodInputDtEnd1: '2022-03-04',
+            rbPhoneInput1: null,
+            rbInternalPhoneInput1: null,
+            rbPriceInput1: null,
+            rbSelectInput1: null,
+            rbSingleOptionInput1: null,
+            rbTagMultiSelectInput1: [
+                {id: 1, name: 'Один'}
+            ],
+            rbTypeaheadInput1: null,
+            rbTypeaheadInput2: 2,
+            rbMultiLangInput: {
+                labelEn: '46546',
+                labelKz: '44545',
+                labelRu: '13213'
             },
-            onShow(event) {
-                console.info('show', event);
+            rbInputWithButton: null,
+            rbMultiTypeaheadInput1: [1, 2, 3, 4],
+            rbPagination: {
+                currPage: 1,
+                perPage: 5,
+                totalRows: 100,
             },
-            onClick(event) {
-                alert('asd');
-                console.info('click', event);
-            }
-        },
-        created() {
-            this.asyncMockPageReq().then(res => this.$set(this.rbPagination, 'totalRows', res.totalRows))
+            emails: [
+                {email: 'test@gmail.com'},
+                {email: 'test@outluck.com'},
+                {email: 'test@yandex.ru'},
+                {email: 'test@mail.ru'},
+            ],
         }
-    });
+    },
+    methods: {
+        async rbMultiSelectSearch1(text) {
+            return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
+        },
+        async rbSearchOptionByValues(value) {
+            if (typeOf(value) !== 'array') {
+                value = [value];
+            }
+            return this.rbDropdownInput1Items.filter(i => i && i.id && value.indexOf(i.id) != -1);
+        },
+        async asyncMockPageReq() {
+            return this.wait(100, {
+                totalRows: 100
+            })
+        },
+
+        wait(ms, value) {
+            return new Promise(resolve => setTimeout(resolve, ms, value));
+        },
+        onShow(event) {
+            console.info('show', event);
+        },
+        onClick(event) {
+            alert('asd');
+            console.info('click', event);
+        },
+
+        propsEdited() {
+            this.propsEdit = !this.propsEdit
+        }
+    },
+    created() {
+        this.asyncMockPageReq().then(res => this.$set(this.rbPagination, 'totalRows', res.totalRows))
+
+        let date = new Date();
+        date.setDate(date.getDate() + 20);
+        this.rbDatePickerInput1 = date;
+    }
+});
 </script>
 
 <template>
@@ -609,7 +626,8 @@
                 <b-form-row>
                     <b-col lg="3" sm="12">
                         <b-form-group label="Обычный">
-                            <rb-dropdown-input :items="rbDropdownInput1Items" block
+                            <rb-dropdown-input disable-tooltip
+                                               :items="rbDropdownInput1Items" block
                                                v-model="rbDropdownAsObjectInput1"
                                                value-as-object></rb-dropdown-input>
                         </b-form-group>
@@ -624,27 +642,31 @@
             </b-form>
 
             <b-form @submit.stop.prevent>
-                <h5>Выбор одного значения из списка + стандартное действие по кнопке - <span class="text-muted">RbDropdownInput</span></h5>
+                <h5>Выбор одного значения из списка + стандартное действие по кнопке - <span class="text-muted">RbDropdownInput</span>
+                </h5>
                 <div class="rb-component-row">
                     <h6>Состояние <span class="text-muted">обычное</span></h6>
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block @show="onShow"
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" block @show="onShow" disable-tooltip
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block bordered
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" block bordered disable-tooltip
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
                                 <rb-dropdown-input
+                                    disable-tooltip
                                     :split="true"
                                     :split-text="'Split text'"
                                     :items="rbDropdownInput2Items"
@@ -653,7 +675,7 @@
                                     block
                                     variant="primary"
                                     v-model="rbDropdownInput2"
-                                    @click="onClick" />
+                                    @click="onClick"/>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -663,16 +685,18 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block disabled
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" block disabled
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="C бордером">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block bordered disabled
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" block bordered disabled
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -682,16 +706,18 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" :state="false" block
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block bordered
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" :state="false" block bordered
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -701,16 +727,18 @@
                     <b-form-row>
                         <b-col lg="3" sm="12">
                             <b-form-group label="Обычный">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="true" block
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" :state="true" block
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                         <b-col lg="3" sm="12">
                             <b-form-group label="С бордером">
-                                <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="true" block bordered
+                                <rb-dropdown-input :split="true" :split-text="'Split text'"
+                                                   :items="rbDropdownInput2Items" :state="true" block bordered
                                                    v-model="rbDropdownInput2"
-                                @click="onClick"></rb-dropdown-input>
+                                                   @click="onClick"></rb-dropdown-input>
                             </b-form-group>
                         </b-col>
                     </b-form-row>
@@ -722,7 +750,8 @@
                 <b-form-row>
                     <b-col lg="3" sm="12">
                         <b-form-group label="Обычный">
-                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" block split
+                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items"
+                                               block split
                                                v-model="rbDropdownAsObjectInput1"
                                                @click="onClick"
                                                value-as-object></rb-dropdown-input>
@@ -730,9 +759,10 @@
                     </b-col>
                     <b-col lg="3" sm="12">
                         <b-form-group label="С бордером">
-                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items" :state="false" block bordered
+                            <rb-dropdown-input :split="true" :split-text="'Split text'" :items="rbDropdownInput2Items"
+                                               :state="false" block bordered
                                                v-model="rbDropdownAsObjectInput1"
-                                               @click="onClick"value-as-object></rb-dropdown-input>
+                                               @click="onClick" value-as-object></rb-dropdown-input>
                         </b-form-group>
                     </b-col>
                 </b-form-row>
@@ -1108,6 +1138,7 @@
                                 <rb-typeahead-input
                                     :searchOptions="rbMultiSelectSearch1"
                                     :notDefault="true"
+                                    requared
                                     v-model="rbTypeaheadInput1">
                                 </rb-typeahead-input>
                             </b-form-group>
@@ -1277,7 +1308,14 @@
                         <b-col lg="3" sm="12">
                             <b-form-group>
                                 <rb-tag-input :searchOptions="rbMultiSelectSearch1"
-                                              maxTags="1"
+                                              v-model="rbTagMultiSelectInput1"></rb-tag-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-tag-input :searchOptions="rbMultiSelectSearch1"
                                               v-model="rbTagMultiSelectInput1"></rb-tag-input>
                             </b-form-group>
                         </b-col>
@@ -1287,10 +1325,10 @@
                     <h6>Состояние <span class="text-muted">превью</span></h6>
                     <b-form-row>
                         <b-col lg="3" sm="12">
+                            <div @click="propsEdited">btn edit</div>
                             <b-form-group>
                                 <rb-tag-input :searchOptions="rbMultiSelectSearch1"
-                                              maxTags="1"
-                                              :not-edit="true"
+                                              :stateFocused="propsEdit"
                                               v-model="rbTagMultiSelectInput1"></rb-tag-input>
                             </b-form-group>
                         </b-col>
@@ -1329,6 +1367,28 @@
                                               :state="true"
                                               v-model="rbTagMultiSelectInput1"></rb-tag-input>
                             </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+            </b-form>
+            <b-form @submit.stop.prevent>
+                <h5><span class="text-muted">RbEmailInput</span></h5>
+
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-email-input/>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-email-input :value="emails"/>
+                            </b-form-group>
+                        </b-col>
+                        <b-col lg="9" sm="12">
+                            <rb-email-input :value="emails"/>
                         </b-col>
                     </b-form-row>
                 </div>
@@ -1420,47 +1480,50 @@
                 </div>
             </b-form>
             <b-form @submit.stop.prevent>
-              <h5>Ввод внутренного телефона - <span class="text-muted">RbInternalPhoneInput</span></h5>
-              <div class="rb-component-row">
-                <h6>Состояние <span class="text-muted">обычное</span></h6>
-                <b-form-row>
-                  <b-col lg="3" sm="12">
-                    <b-form-group>
-                      <rb-internal-phone-input v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
-                    </b-form-group>
-                  </b-col>
-                </b-form-row>
-              </div>
-              <div class="rb-component-row">
-                <h6>Состояние <span class="text-muted">disabled</span></h6>
-                <b-form-row>
-                  <b-col lg="3" sm="12">
-                    <b-form-group>
-                      <rb-internal-phone-input disabled v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
-                    </b-form-group>
-                  </b-col>
-                </b-form-row>
-              </div>
-              <div class="rb-component-row">
-                <h6>Состояние <span class="text-muted">невалидное</span></h6>
-                <b-form-row>
-                  <b-col lg="3" sm="12">
-                    <b-form-group>
-                      <rb-internal-phone-input :state="false" v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
-                    </b-form-group>
-                  </b-col>
-                </b-form-row>
-              </div>
-              <div class="rb-component-row">
-                <h6>Состояние <span class="text-muted">валидное</span></h6>
-                <b-form-row>
-                  <b-col lg="3" sm="12">
-                    <b-form-group>
-                      <rb-internal-phone-inputt :state="true" v-model="rbInternalPhoneInput1"></rb-internal-phone-inputt>
-                    </b-form-group>
-                  </b-col>
-                </b-form-row>
-              </div>
+                <h5>Ввод внутренного телефона - <span class="text-muted">RbInternalPhoneInput</span></h5>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">обычное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-internal-phone-input v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">disabled</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-internal-phone-input disabled
+                                                         v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">невалидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-internal-phone-input :state="false"
+                                                         v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
+                <div class="rb-component-row">
+                    <h6>Состояние <span class="text-muted">валидное</span></h6>
+                    <b-form-row>
+                        <b-col lg="3" sm="12">
+                            <b-form-group>
+                                <rb-internal-phone-inputt :state="true"
+                                                          v-model="rbInternalPhoneInput1"></rb-internal-phone-inputt>
+                            </b-form-group>
+                        </b-col>
+                    </b-form-row>
+                </div>
             </b-form>
             <b-form @submit.stop.prevent>
                 <h5>Инпут с кнопкой внутри - <span class="text-muted">RbInputWithButton</span></h5>
@@ -1608,31 +1671,31 @@
 </template>
 
 <style>
-    #app {
-        padding: 20px;
-    }
+#app {
+    padding: 20px;
+}
 
-    #app h6 {
-        margin-bottom: 20px;
-    }
+#app h6 {
+    margin-bottom: 20px;
+}
 
-    #app h5 {
-        margin-bottom: 40px;
-    }
+#app h5 {
+    margin-bottom: 40px;
+}
 
-    #app .rb-component-row {
-        margin-bottom: 20px;
-    }
+#app .rb-component-row {
+    margin-bottom: 20px;
+}
 
-    #app form {
-        margin-bottom: 40px;
-    }
+#app form {
+    margin-bottom: 40px;
+}
 
-    #app .rb-icons {
-        margin-right: 10px;
-    }
+#app .rb-icons {
+    margin-right: 10px;
+}
 
-    #app .form-group {
-        max-width: 200px;
-    }
+#app .form-group {
+    max-width: 200px;
+}
 </style>

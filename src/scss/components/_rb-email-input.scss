@@ -1,0 +1,129 @@
+.rb-email-input {
+  position: relative;
+  border: 1px solid #D5D5D6;
+  -webkit-border-radius: .25rem;
+  -moz-border-radius: .25rem;
+  border-radius: .25rem;
+  padding: .375rem 2.75rem .375rem .75rem;
+  &.empty {
+    padding: .375rem .75rem .375rem .75rem;
+  }
+
+  input[type=email] {
+    border: none;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    border-radius: .25rem;
+    font-size: 1rem;
+    padding: 0;
+    height: auto;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .element-list {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin: 0;
+
+    .badge {
+      background: #F4F4F4;
+      font-weight: 400;
+      border-radius: 1rem;
+      padding: .1rem .5rem;
+      margin-right: .5rem;
+      display: inline-flex;
+      width: 100%;
+      max-width: max-content;
+
+      .title {
+        font-size: 1rem;
+        color: #212529;
+        margin-right: 0.25rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .icon-close {
+        color: #AAABAD;
+        font-size: 1rem;
+      }
+
+      &.empty {
+        padding: 0;
+        background: none;
+        .title {
+          color: #6c757d
+        }
+      }
+    }
+
+    &:last-child .badge {
+      margin-right: 0;
+    }
+  }
+
+  .rb-counter-dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .dropdown-toggle {
+      padding-left: 0;
+      padding-right: 0;
+      flex: none;
+      margin-left: auto;
+
+      &:focus,
+      &:active,
+      &:hover {
+        outline: 0 !important;
+        -webkit-appearance: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+    .dropdown-menu {
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+
+        .rb-text {
+          flex: 1;
+        }
+
+        .btn {
+          padding: 3px;
+
+          .rb-icon {
+            color: lighten($body-color, 50%);
+          }
+
+          &:hover .rb-icon {
+            color: $body-color;
+          }
+        }
+      }
+    }
+
+    .rb-counter {
+      display: inline-block;
+      color: $rb-multi-dropdown-input-counter-color;
+      height: $rb-multi-dropdown-input-counter-height;
+      min-width: $rb-multi-dropdown-input-counter-min-width;
+      background-color: $rb-multi-dropdown-input-counter-bg;
+      border-radius: $rb-multi-dropdown-input-counter-border-radius;
+      text-align: center;
+      line-height: $rb-multi-dropdown-input-counter-line-height;
+      margin-right: $rb-multi-dropdown-input-counter-margin-right;
+    }
+  }
+}
