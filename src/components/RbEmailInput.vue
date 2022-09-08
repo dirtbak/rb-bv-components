@@ -22,6 +22,7 @@
                  :placeholder="placeholder"
                  autocomplete="off"
                  v-on:keyup.enter="onKeyEnter"
+                 v-on:keyup.space="onKeyEnter"
                  v-on:keyup.esc="onKeyEsc"
                  @input="onInput"
         />
@@ -76,6 +77,7 @@ export default {
         },
         selectedItems() {
             this.selectedItems = this.selectedItems === null ? [] : this.selectedItems
+            this.$emit('input', this.selectedItems)
         }
     },
     computed: {
