@@ -3,27 +3,27 @@
         v-click-outside="clickOutSide"
         @click="inputFocused"
         :class="[cls, 'rb-email-input']">
-        <p v-if="!isFocus"
-            class="element-list">
+        <p v-show="!isFocus"
+           class="element-list">
             <b-badge v-if="!selectedItems.length" class="item empty" variant="light">
                 <span class="title">{{ placeholder }}</span>
             </b-badge>
             <b-badge v-for="(item, index) in selectedItems" class="item" variant="light">
-                <span v-b-tooltip.hover="{title: item.email, duration: 400}"
-                      class="title">{{ item.email }}
+                <span v-b-tooltip.hover="{title: item, duration: 400}"
+                      class="title">{{ item }}
                 </span>
                 <rb-icon icon="icon-close" @click="remove(index, $event)"/>
             </b-badge>
         </p>
-        <b-input v-else
-            ref="input"
-            type="email"
-            v-model="email"
-            :placeholder="placeholder"
-            autocomplete="off"
-            v-on:keyup.enter="onKeyEnter"
-            v-on:keyup.esc="onKeyEsc"
-            @input="onInput"
+        <b-input v-show="isFocus"
+                 ref="inputEmail"
+                 type="email"
+                 v-model="email"
+                 :placeholder="placeholder"
+                 autocomplete="off"
+                 v-on:keyup.enter="onKeyEnter"
+                 v-on:keyup.esc="onKeyEsc"
+                 @input="onInput"
         />
         <b-dropdown
             v-if="selectedItems && selectedItems.length"
@@ -38,7 +38,7 @@
                 </span>
             </template>
             <b-dropdown-item v-for="(item, index) in selectedItems">
-                <rb-text>{{ item.email }}</rb-text>
+                <rb-text>{{ item }}</rb-text>
                 <b-button v-if="!disabled" variant="plain" @click="remove(index, $event)">
                     <rb-icon class="icon-close"></rb-icon>
                 </b-button>
@@ -51,7 +51,7 @@
 export default {
     name: 'RbEmailInput',
     props: {
-        value: {type: Array, default: []},
+        value: {type: Array, default: () => []},
         placeholder: {type: String, default: 'Начните набирать...'},
         state: {type: Boolean, default: null},
         multiple: {type: Boolean, default: false},
@@ -69,16 +69,22 @@ export default {
     },
     watch: {
         value() {
-            this.selectedItems = this.value
+            this.selectedItems = this.value || []
         },
         focused() {
             this.isFocus = this.value
         },
+        selectedItems() {
+            this.selectedItems = this.selectedItems === null ? [] : this.selectedItems
+        }
     },
     computed: {
+        valid() {
+            return this.selectedItems && !this.selectedItems.length
+        },
         cls() {
             return {
-                'empty': !this.selectedItems.length,
+                'empty': this.valid,
                 'is-invalid': this.state === false,
                 'is-valid': this.state === true,
             }
@@ -87,8 +93,8 @@ export default {
     methods: {
         onKeyEnter() {
             const email = this.email.toLowerCase()
-            if (email && this.validateEmail(email) && !this.selectedItems.find(item => item.email === email)) {
-                this.selectedItems.push({email: this.email})
+            if (email && this.validateEmail(email) && !this.selectedItems.find(item => item === email)) {
+                this.selectedItems.push(email)
             }
             this.email = '';
         },
@@ -101,12 +107,13 @@ export default {
         },
         remove(index, event) {
             event.stopPropagation()
+            event.preventDefault()
             this.selectedItems.splice(index, 1)
         },
         inputFocused() {
             this.isFocus = true
-            setTimeout(()=>{
-                this.$refs.input.focus()
+            setTimeout(() => {
+                this.$refs.inputEmail.focus()
             }, 100)
         },
         clickOutSide() {
@@ -118,8 +125,7 @@ export default {
         },
     },
     created() {
-        this.selectedItems = this.value
+        this.selectedItems = this.value || []
     }
 };
 </script>
-

@@ -71,10 +71,10 @@ export default Vue.extend({
                 totalRows: 100,
             },
             emails: [
-                {email: 'test@gmail.com'},
-                {email: 'test@outluck.com'},
-                {email: 'test@yandex.ru'},
-                {email: 'test@mail.ru'},
+                'test@gmail.com',
+                'test@outluck.com',
+                'test@yandex.ru',
+                'test@mail.ru',
             ],
         }
     },
