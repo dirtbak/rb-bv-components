@@ -12,7 +12,7 @@
                 <span v-b-tooltip.hover="{title: item, duration: 400}"
                       class="title">{{ item }}
                 </span>
-                <rb-icon icon="icon-close" @click="remove(index, $event)"/>
+                <rb-icon icon="icon-close" v-show="!disabled" @click="remove(index, $event)"/>
             </b-badge>
         </p>
         <b-input v-show="isFocus"
@@ -73,7 +73,7 @@ export default {
             this.selectedItems = this.value || []
         },
         focused() {
-            this.isFocus = this.value
+            this.isFocus = this.focused
         },
         selectedItems() {
             this.selectedItems = this.selectedItems === null ? [] : this.selectedItems
@@ -113,10 +113,12 @@ export default {
             this.selectedItems.splice(index, 1)
         },
         inputFocused() {
-            this.isFocus = true
-            setTimeout(() => {
-                this.$refs.inputEmail.focus()
-            }, 100)
+            if (!this.disabled) {
+                this.isFocus = true
+                setTimeout(() => {
+                    this.$refs.inputEmail.focus()
+                }, 100)
+            }
         },
         clickOutSide() {
             this.isFocus = false
