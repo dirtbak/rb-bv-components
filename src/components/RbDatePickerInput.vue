@@ -10,8 +10,7 @@
                     :size="size"
                     :placeholder="placeholder"
                     :disabled="disabled"
-                    :state="state">
-            </b-form-input>
+                    :state="state"/>
             <b-input-group-append>
                 <b-form-datepicker
                         ref="picker"
@@ -27,8 +26,7 @@
                         :hide-header="true"
                         :disabled="disabled"
                         :state="state"
-                        @input="datePickerChange"
-                ></b-form-datepicker>
+                        @input="datePickerChange"/>
             </b-input-group-append>
         </b-input-group>
     </div>
@@ -87,7 +85,7 @@
                 if (!v || v === '') {
                     this.$emit('input', null)
                 } else if (date) {
-                    if (v.length === this.mask.length) {
+                    if (v.length === this.mask.length && date) {
                         this.datePickerValue = dateFormat(date, this.pickerPattern);
                         this.$emit('input', UtDate.toIsoString(date));
                     }
@@ -108,19 +106,22 @@
                     let dd = str.substring(0, 2);
                     let mm = str.substring(3, 5);
                     let yyyy = str.substring(6, 10);
-                    return new Date(`${mm}.${dd}.${yyyy}`);
+                    return new Date(`${mm}/${dd}/${yyyy}`);
                 } else if (/[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(str)) {
                     let yyyy = str.substring(0, 4);
                     let mm = str.substring(5, 7);
                     let dd = str.substring(8, 10);
-                    return new Date(`${mm}.${dd}.${yyyy}`);
+                    return new Date(`${mm}/${dd}/${yyyy}`);
                 } else {
                     return null;
                 }
             }
         },
         created() {
-            this.onPropValueChange();
+            if(this.value instanceof Date) {
+                this.onPropValueChange();
+                console.log(this.value)
+            }
         },
     }
 </script>
