@@ -121,8 +121,10 @@ export default {
             }
         },
         clickOutSide() {
+            if (this.email !== '') {
+                this.onKeyEnter()
+            }
             this.isFocus = false
-            this.email = ''
         },
         onKeyEsc() {
             this.clickOutSide()
