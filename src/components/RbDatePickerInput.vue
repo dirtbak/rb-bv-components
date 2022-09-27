@@ -67,9 +67,13 @@
             },
         },
         watch: {
-            value() {
-                this.onPropValueChange();
+          'value': {
+            handler() {
+              this.onPropValueChange();
             },
+            immediate: true
+          },
+          
             datePickerValue() {
                 this.$emit('change')
             }
