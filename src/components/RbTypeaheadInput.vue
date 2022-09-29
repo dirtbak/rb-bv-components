@@ -36,7 +36,7 @@
           :class="{ 'rb-current': o[valueField] === value && value !== null }"
           @click="onOptionSelect(o)"
         >
-          {{ o[titleField] }}
+          <slot :item="o">{{ o[titleField] }}</slot>
         </b-dropdown-item>
         <b-dropdown-item
           @click="onOptionSelect(cancelOption)"
