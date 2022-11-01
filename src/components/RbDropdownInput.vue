@@ -60,7 +60,7 @@
         <rb-icon v-if="o.icon" :icon="o.icon" />
         <span
           class="rb-text"
-          v-b-tooltip.show="{
+          v-b-tooltip.noninteractive.show="{
             disabled: disableTooltip,
             duration: 20000000,
             title: o.text,
