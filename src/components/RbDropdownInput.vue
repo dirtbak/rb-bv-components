@@ -179,6 +179,7 @@ export default {
       th.options.push({ text, value: null });
     },
     setText() {
+      if(this.innerValue == null) return this.text = null
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
       if (currentValIndex !== -1) {
         this.text = this.options[currentValIndex].text;
