@@ -26,6 +26,8 @@
                         :hide-header="true"
                         :disabled="disabled"
                         :state="state"
+                        :min="minDate"
+                        :max="maxDate"
                         @input="datePickerChange"/>
             </b-input-group-append>
         </b-input-group>
@@ -48,7 +50,9 @@
             dropup: Boolean,
             disabled: Boolean,
             size: {type: String, default: null},
-            variant: {type: String, default: 'light-outline'}
+            variant: {type: String, default: 'light-outline'},
+            minDate: {type: String, default: ''},
+            maxDate: {type: String, default: ''},
         },
         data: function () {
             return {
