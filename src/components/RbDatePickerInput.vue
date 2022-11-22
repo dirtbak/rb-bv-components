@@ -26,7 +26,7 @@
                         :hide-header="true"
                         :disabled="disabled"
                         :state="state"
-                        :min="minDate"
+                        :min="setMinDate()"
                         :max="maxDate"
                         @input="datePickerChange"/>
             </b-input-group-append>
@@ -37,8 +37,6 @@
 <script>
     import {dateFormat} from 'vue-filter-date-format';
     import {mask} from 'vue-the-mask';
-    import {UtDate} from '../utils/UtDate';
-
     export default {
         name: 'RbDatePickerInput',
         directives: {mask},
@@ -53,6 +51,7 @@
             variant: {type: String, default: 'light-outline'},
             minDate: {type: String, default: ''},
             maxDate: {type: String, default: ''},
+            minCurrentDate: {type: Boolean, default: false}
         },
         data: function () {
             return {
@@ -123,7 +122,15 @@
                 } else {
                     return null;
                 }
-            }
+            },
+            setMinDate() {
+                if (this.minDate) {
+                    return this.minDate
+                }
+                if (this.minCurrentDate) {
+                    return new Date().toISOString()
+                }
+            },
         },
         created() {
             if(this.value instanceof Date) {
