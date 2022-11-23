@@ -1,6 +1,6 @@
 {
   "name": "rb-bv-components",
-  "version": "2.5.0",
+  "version": "2.5.4",
   "description": "",
   "main": "dist/rb-bv-components.ssr.js",
   "browser": "dist/rb-bv-components.esm.js",
@@ -12,7 +12,7 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "serve": "vue-cli-service serve dev/serve.js",
+    "serve": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service serve dev/serve.js",
     "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
