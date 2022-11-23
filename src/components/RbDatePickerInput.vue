@@ -37,6 +37,8 @@
 <script>
     import {dateFormat} from 'vue-filter-date-format';
     import {mask} from 'vue-the-mask';
+    import {UtDate} from '../utils/UtDate';
+
     export default {
         name: 'RbDatePickerInput',
         directives: {mask},
