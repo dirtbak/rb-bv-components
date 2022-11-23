@@ -88,7 +88,7 @@
         },
         watch: {
             value() {
-                this.selectedItems = this.value;
+                this.selectedItems = this.value || [];
             },
             activeOptionIndex(activeOptionIndex) {
                 if (activeOptionIndex !== null) {

@@ -183,7 +183,7 @@ export default {
         },
         clickOutSide: function (e) {
             this.optionsVisible = false;
-            if (!e.path.find(el => el._prevClass === "rb-tag-input") && !this.isReadonly) {
+            if (!e.path?.find(el => el._prevClass === "rb-tag-input") && !this.isReadonly) {
                 this.$emit('save')
                 this.isReadonly = true;
             }
