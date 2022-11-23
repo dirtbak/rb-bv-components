@@ -26,7 +26,7 @@
                         :hide-header="true"
                         :disabled="disabled"
                         :state="state"
-                        :min="minDate"
+                        :min="setMinDate()"
                         :max="maxDate"
                         @input="datePickerChange"/>
             </b-input-group-append>
@@ -53,6 +53,7 @@
             variant: {type: String, default: 'light-outline'},
             minDate: {type: String, default: ''},
             maxDate: {type: String, default: ''},
+            minCurrentDate: {type: Boolean, default: false}
         },
         data: function () {
             return {
@@ -123,7 +124,15 @@
                 } else {
                     return null;
                 }
-            }
+            },
+            setMinDate() {
+                if (this.minDate) {
+                    return this.minDate
+                }
+                if (this.minCurrentDate) {
+                    return new Date().toISOString()
+                }
+            },
         },
         created() {
             if(this.value instanceof Date) {
