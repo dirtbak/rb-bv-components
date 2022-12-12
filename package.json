@@ -1,6 +1,6 @@
 {
   "name": "rb-bv-components",
-  "version": "2.5.11",
+  "version": "2.5.12",
   "description": "",
   "main": "dist/rb-bv-components.ssr.js",
   "browser": "dist/rb-bv-components.esm.js",
