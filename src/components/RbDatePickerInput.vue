@@ -10,7 +10,10 @@
                 :size="size"
                 :placeholder="placeholder"
                 :disabled="disabled"
-                :state="state"/>
+                :state="state"
+                @click="clearInput"
+                v-click-outside="setValue"
+            />
             <b-input-group-append>
                 <b-form-datepicker
                     ref="picker"
@@ -91,7 +94,7 @@ export default {
         },
         inputChange(v) {
             const date = this.strToDate(v);
-            if (!v || v === '') {
+            if (!v || v === '' || !date) {
                 this.$emit('input', null)
             } else if (date) {
                 if (v.length === this.mask.length && date) {
@@ -133,12 +136,19 @@ export default {
                 return new Date().toISOString()
             }
             return '';
+        },
+        clearInput() {
+            if (!this.disabled) this.inputValue = '';
+        },
+        setValue() {
+            const date = new Date(this.value);
+            if (date instanceof Date) {
+                this.onPropValueChange();
+            }
         }
     },
     created() {
-        if (this.value instanceof Date) {
-            this.onPropValueChange();
-        }
+        this.setValue();
     },
 }
 </script>
