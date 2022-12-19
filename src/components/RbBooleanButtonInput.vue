@@ -1,5 +1,6 @@
 <template>
     <b-button class="rb-boolean-button-input"
+              :type="type"
               :variant="variant"
               :class="cls"
               :block="block"
@@ -25,6 +26,7 @@
             trueIcon: {type: String, default: 'icon-checkbox-marked'},
             state: {type: Boolean, default: null},
             outline: {type: Boolean, default: false},
+            type: {type: String, default: 'button'}
         },
         data() {
             return {innerValue: false}
