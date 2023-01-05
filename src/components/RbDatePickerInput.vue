@@ -1,40 +1,42 @@
 <template>
-    <div class="rb-date-picker-input" :class="cls">
-        <b-input-group>
-            <b-form-input
-                v-model="inputValue"
-                type="text"
-                autocomplete="off"
-                @input="inputChange"
-                v-mask="mask"
-                :size="size"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :state="state"
-                @click="clearInput"
-                v-click-outside="setValue"
-            />
-            <b-input-group-append>
-                <b-form-datepicker
-                    ref="picker"
-                    v-model="datePickerValue"
-                    right
-                    button-only
-                    :dropup="dropup"
-                    locale="ru-RU"
-                    label-help=""
-                    :size="size"
-                    :button-variant="variant"
-                    :show-decade-nav="false"
-                    :hide-header="true"
-                    :disabled="disabled"
-                    :state="state"
-                    :min="setMinDate()"
-                    :max="maxDate"
-                    @input="datePickerChange"/>
-            </b-input-group-append>
-        </b-input-group>
-    </div>
+  <div class="rb-date-picker-input" :class="cls">
+    <b-input-group>
+      <b-form-input
+        v-model="inputValue"
+        type="text"
+        autocomplete="off"
+        @input="inputChange"
+        v-mask="mask"
+        :size="size"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :state="state"
+        @click="clearInput"
+        v-click-outside="setValue"
+      />
+      <b-input-group-append>
+        <b-form-datepicker
+          ref="picker"
+          v-model="datePickerValue"
+          right
+          button-only
+          :dropup="dropup"
+          locale="ru-RU"
+          label-help=""
+          :start-weekday="startWeekday"
+          :size="size"
+          :button-variant="variant"
+          :show-decade-nav="false"
+          :hide-header="true"
+          :disabled="disabled"
+          :state="state"
+          :min="setMinDate()"
+          :max="maxDate"
+          @input="datePickerChange"
+        />
+      </b-input-group-append>
+    </b-input-group>
+  </div>
 </template>
 
 <script>
@@ -57,6 +59,9 @@ export default {
         minDate: {type: String, default: ''},
         maxDate: {type: String, default: ''},
         minCurrentDate: {type: Boolean, default: false},
+        startWeekday: {
+          type: [Number, String],  default: 1
+        }
     },
     data: function () {
         return {
