@@ -78,10 +78,6 @@
       color: $rb-tag-input-tag-text;
       max-width: 100%;
 
-      &:focus {
-        border-right: 1px solid;
-      }
-
       &:focus-visible{
         outline: none;
       }

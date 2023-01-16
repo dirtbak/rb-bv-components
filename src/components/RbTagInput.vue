@@ -184,9 +184,12 @@ export default {
         clickOutSide: function (e) {
             this.optionsVisible = false;
             if (!e.path?.find(el => el._prevClass === "rb-tag-input") && !this.isReadonly) {
-                this.$emit('save')
-                this.isReadonly = true;
+              this.save();
             }
+        },
+        save() {
+          this.$emit('save')
+          this.isReadonly = true;
         },
         onKeyDown() {
             if (this.optionsVisible) {
@@ -228,6 +231,7 @@ export default {
             } else {
                 this.search();
             }
+            this.save();
         },
         closeOptions() {
             this.optionsVisible = false;
