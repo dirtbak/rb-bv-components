@@ -18,9 +18,9 @@
                  v-model="inputValue"
                  @input="onInput"
                  @keydown.escape="closeOptions"
-                 @keyup.down="onKeyDown"
-                 @keyup.enter="onKeyEnter"
-                 @keyup.up="onKeyUp"
+                 @keydown.down="onKeyDown"
+                 @keydown.enter="onKeyEnter"
+                 @keydown.up="onKeyUp"
                  :tabindex="_uid"
                  ref="editableContent"
                  :contenteditable="true" />
@@ -214,6 +214,7 @@ export default {
 
         },
         onKeyEnter(e) {
+            e.preventDefault();
             if (this.addTagOnEnter) {
                 this.newTagCounter--; // декрементируем счетчик, чтобы использовать как id для нового тега
                 this.select({id: this.newTagCounter, name: this.inputValue});
