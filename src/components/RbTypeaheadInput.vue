@@ -6,6 +6,7 @@
         type="text"
         v-model="text"
         :placeholder="placeholder"
+        :debounce="debounce"
         :state="state"
         :disabled="disabled"
         autocomplete="off"
