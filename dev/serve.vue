@@ -1140,7 +1140,12 @@ export default Vue.extend({
                                     :notDefault="true"
                                     requared
                                     v-model="rbTypeaheadInput1">
-                                    <template v-slot="item">{{item}}</template>
+                                    <template v-slot:append="{val}">
+                                        <b-button variant="primary">
+                                            {{JSON.stringify(val)}}
+                                        </b-button>
+                                    </template>
+                                    <template v-slot="{val}">{{val.name}}</template>
                                 </rb-typeahead-input>
                             </b-form-group>
                         </b-col>

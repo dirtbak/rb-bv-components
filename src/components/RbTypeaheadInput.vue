@@ -1,23 +1,28 @@
 <template>
   <div class="rb-typeahead-input" v-click-outside="onClickOutside">
     <div class="rb-typeahead-inner">
-      <b-input
-        ref="input"
-        type="text"
-        v-model="text"
-        :placeholder="placeholder"
-        :state="state"
-        :disabled="disabled"
-        autocomplete="off"
-        v-on:keyup.enter="onKeyEnter"
-        v-on:keydown.down="onKeyArrowDown"
-        v-on:keydown.up="onKeyArrowUp"
-        v-on:keyup.esc="onKeyEsc"
-        @focus="onFocus"
-        @blur="$emit('blur', $event)"
-        @input="onInput"
-      >
-      </b-input>
+      <b-input-group>
+        <b-input
+            ref="input"
+            type="text"
+            v-model="text"
+            :placeholder="placeholder"
+            :state="state"
+            :disabled="disabled"
+            autocomplete="off"
+            v-on:keyup.enter="onKeyEnter"
+            v-on:keydown.down="onKeyArrowDown"
+            v-on:keydown.up="onKeyArrowUp"
+            v-on:keyup.esc="onKeyEsc"
+            @focus="onFocus"
+            @blur="$emit('blur', $event)"
+            @input="onInput"
+          />
+          <template #append>
+            <slot name="append" :val="selectedOption"/>
+          </template>
+      </b-input-group>
+      
       <b-dropdown
         ref="dropdown"
         class="rb-typeahead-dropdown"
@@ -60,6 +65,7 @@ export default {
   data() {
     return {
       backupOption: null,
+      selectedOption: null,
     };
   },
   watch: {
@@ -86,6 +92,7 @@ export default {
     },
     onOptionSelect(option) {
       this.text = this.isCancelOption(option) ? null : option[this.titleField];
+      this.selectedOption = option;
       this.$emit('input', option[this.valueField]);
       this.$emit('change', option[this.valueField]);
       this.closeDropdown();
