@@ -48,6 +48,7 @@
                     'rb-bordered': this.bordered,
                     'is-invalid': this.state === false,
                     'is-valid': this.state === true,
+                    'w-100': this.block === true,
                 }
             }
         },
