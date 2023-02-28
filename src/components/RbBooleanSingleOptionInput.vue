@@ -1,7 +1,7 @@
 <template>
     <b-button-group class="rb-boolean-single-option-input rb-single-option-input" :class="cls">
         <b-button class="rb-false-button" :disabled="disabled"
-                  :variant="(nullable && value == null) ? 'light' : (!value ? 'primary': 'light')"
+                  :variant="(nullable && value == null) ? 'light' : (value != null && !value ? 'primary': 'light')"
                   @click="setValue(false)">
             <slot name="false">
                 <rb-icon :icon="falseIcon" v-if="showIcons"></rb-icon>

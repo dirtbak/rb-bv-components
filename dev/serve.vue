@@ -16,7 +16,7 @@ export default Vue.extend({
       rbBooleanButtonInput1: false,
       rbBooleanButtonInput2: false,
       rbBooleanSingleOptionInput1: null,
-      rbBooleanSingleOptionInput2: false,
+      rbBooleanSingleOptionInput2: null,
       rbColorDropdownInput1Items: [
         {id: 1, color: 'red', name: 'Красный'},
         {id: 2, color: 'blue', name: 'Синий'},
