@@ -38,7 +38,7 @@
         </span>
         <span class="rb-dropdown-indicator" v-if="!noCaret">
           <b-spinner
-              v-if="isShowingMenu"
+              v-if="showDropdownSpinner && isShowingMenu"
               small
               variant="primary"/>
           <rb-icon v-else :icon="dropdownIcon"/>
@@ -56,7 +56,7 @@
         </span>
         <span class="rb-dropdown-indicator" @click="visibleDropdownMenu">
           <b-spinner
-              v-if="isShowingMenu"
+              v-if="showDropdownSpinner && isShowingMenu"
               small
               variant="primary"/>
           <rb-icon v-else :icon="dropdownIcon"/>
@@ -129,7 +129,7 @@ export default {
     tooltipCustomClass: {type: String, default: ''},
     dropup: {type: Boolean, default: false},
     fixedText: {type: String, default: null},
-    iconLoading: {type: String, default: ''},
+    showDropdownSpinner: {type: Boolean, default: false},
   },
   data() {
     return {
@@ -240,7 +240,7 @@ export default {
       this.$emit('show', event)
     },
     onMenuShown(event) {
-      //this.$set(this, 'isShowingMenu', false);
+      this.$set(this, 'isShowingMenu', false);
       this.$emit('shown', event);
     }
   },
