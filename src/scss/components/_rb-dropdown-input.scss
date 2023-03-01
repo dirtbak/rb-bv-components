@@ -6,6 +6,7 @@
     top: 100% !important;
     max-height: $rb-dropdown-input-dropdown-menu-max-height;
     overflow-y: scroll;
+
     .show {
       max-height: $rb-dropdown-input-dropdown-menu-max-height;
       overflow: $rb-dropdown-input-dropdown-menu-overflow;
@@ -46,6 +47,10 @@
 
     .rb-icon {
       font-size: $rb-dropdown-input-icon-font-size;
+    }
+
+    .spinner-border {
+      margin-left: $rb-dropdown-input-dropdown-spinner-margin-left;
     }
   }
 
@@ -204,6 +209,7 @@
     top: unset;
     display: inline;
   }
+
   .tooltip {
     position: fixed;
   }

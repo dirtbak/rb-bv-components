@@ -1,32 +1,32 @@
 <template>
   <b-dropdown
-    class="rb-dropdown-input"
-    :dropup="dropup"
-    :variant="variant"
-    :block="block"
-    :disabled="disabled"
-    :class="cls"
-    :split="split"
-    :splitText="splitText"
-    :fixedText="fixedText"
-    ref="dropdown"
-    @click="onSplitClick"
-    @show="$emit('show', $event)"
-    @shown="$emit('shown', $event)"
-    @hide="$emit('hide', $event)"
-    @hidden="$emit('hidden', $event)"
-    @blur="$emit('blur', $event)"
-    no-caret
+      class="rb-dropdown-input"
+      :dropup="dropup"
+      :variant="variant"
+      :block="block"
+      :disabled="disabled"
+      :class="cls"
+      :split="split"
+      :splitText="splitText"
+      :fixedText="fixedText"
+      ref="dropdown"
+      @click="onSplitClick"
+      @show="onMenuShow($event)"
+      @shown="onMenuShown($event)"
+      @hide="$emit('hide', $event)"
+      @hidden="$emit('hidden', $event)"
+      @blur="$emit('blur', $event)"
+      no-caret
   >
     <template v-slot:button-content v-if="!split">
       <slot
-        name="button-content"
-        :text="text"
-        :cancelItemText="cancelItemText"
-        :placeholder="placeholder"
-        :showCancelItem="showCancelItem"
+          name="button-content"
+          :text="text"
+          :cancelItemText="cancelItemText"
+          :placeholder="placeholder"
+          :showCancelItem="showCancelItem"
       >
-        <rb-icon v-if="icon" :icon="icon" :color="getIconColor(value)" />
+        <rb-icon v-if="icon" :icon="icon" :color="getIconColor(value)"/>
         <a class="rb-text" v-if="link">
           {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
         </a>
@@ -37,13 +37,17 @@
           {{ fixedText }}
         </span>
         <span class="rb-dropdown-indicator" v-if="!noCaret">
-          <rb-icon :icon="dropdownIcon" />
+          <b-spinner
+              v-if="isShowingMenu"
+              small
+              variant="primary"/>
+          <rb-icon v-else :icon="dropdownIcon"/>
         </span>
       </slot>
     </template>
     <template v-slot:button-content v-else>
       <slot name="button-content">
-        <rb-icon v-if="btnIcon" :icon="btnIcon" :color="colorBtnIcon" />
+        <rb-icon v-if="btnIcon" :icon="btnIcon" :color="colorBtnIcon"/>
         <a class="rb-text" v-if="link">
           {{ splitText }}
         </a>
@@ -51,16 +55,20 @@
           {{ splitText }}
         </span>
         <span class="rb-dropdown-indicator" @click="visibleDropdownMenu">
-          <rb-icon :icon="dropdownIcon" />
+          <b-spinner
+              v-if="isShowingMenu"
+              small
+              variant="primary"/>
+          <rb-icon v-else :icon="dropdownIcon"/>
         </span>
       </slot>
     </template>
     <b-dropdown-item v-for="o in options" :key="o.value" @click="onClick(o)">
       <slot name="option-content" :option="o">
-        <rb-icon v-if="o.icon" :icon="o.icon" />
+        <rb-icon v-if="o.icon" :icon="o.icon"/>
         <span
-          class="rb-text"
-          v-b-tooltip.noninteractive.show="{
+            class="rb-text"
+            v-b-tooltip.noninteractive.show="{
             disabled: disableTooltip,
             duration: 20000000,
             title: o.text,
@@ -79,17 +87,17 @@ export default {
   name: 'RbDropdownInput',
   props: {
     value: [Number, Boolean, String, Object],
-    valueAsObject: { type: Boolean, default: false },
+    valueAsObject: {type: Boolean, default: false},
     items: {
       type: Array,
       default: () => [],
     },
-    placeholder: { type: String, default: 'Выбрать' },
-    cancelItemText: { type: String, default: 'Не указано' },
-    showCancelItem: { type: Boolean, default: false },
-    showCancelIcon: { type: Boolean, default: false },
-    bordered: { type: Boolean, default: false },
-    variant: { type: String, default: 'light' },
+    placeholder: {type: String, default: 'Выбрать'},
+    cancelItemText: {type: String, default: 'Не указано'},
+    showCancelItem: {type: Boolean, default: false},
+    showCancelIcon: {type: Boolean, default: false},
+    bordered: {type: Boolean, default: false},
+    variant: {type: String, default: 'light'},
     bindField: {
       type: String,
       default: 'id',
@@ -105,7 +113,7 @@ export default {
     icon: String,
     btnIcon: String,
     colorBtnIcon: String,
-    state: { type: Boolean, default: null },
+    state: {type: Boolean, default: null},
     block: Boolean,
     disabled: Boolean,
     disableTooltip: {
@@ -113,14 +121,15 @@ export default {
       default: false,
     },
     link: Boolean,
-    split: { type: Boolean, default: false },
-    splitText: { type: String, default: '' },
-    splitVariant: { type: String, default: 'outline-light' },
-    dropdownIcon: { type: String, default: 'icon-chevron-down' },
-    noCaret: { type: Boolean, default: false },
-    tooltipCustomClass: { type: String, default: '' },
-    dropup: { type: Boolean, default: false },
-    fixedText: { type: String, default: null },
+    split: {type: Boolean, default: false},
+    splitText: {type: String, default: ''},
+    splitVariant: {type: String, default: 'outline-light'},
+    dropdownIcon: {type: String, default: 'icon-chevron-down'},
+    noCaret: {type: Boolean, default: false},
+    tooltipCustomClass: {type: String, default: ''},
+    dropup: {type: Boolean, default: false},
+    fixedText: {type: String, default: null},
+    iconLoading: {type: String, default: ''},
   },
   data() {
     return {
@@ -128,6 +137,7 @@ export default {
       text: null,
       options: [],
       visibleMenu: false,
+      isShowingMenu: false,
     };
   },
   computed: {
@@ -176,10 +186,10 @@ export default {
 
       if (!th.showCancelItem) return;
       let text = this.cancelItemText ? this.cancelItemText : 'Не важно';
-      th.options.push({ text, value: null });
+      th.options.push({text, value: null});
     },
     setText() {
-      if(this.innerValue == null) return this.text = null
+      if (this.innerValue == null) return this.text = null
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
       if (currentValIndex !== -1) {
         this.text = this.options[currentValIndex].text;
@@ -195,7 +205,7 @@ export default {
     onClick(item) {
       this.visibleMenu = false;
       if (this.valueAsObject) {
-        let objectVal = { [this.bindField]: item.value };
+        let objectVal = {[this.bindField]: item.value};
         this.$emit('input', objectVal);
         this.$emit('change', objectVal);
         this.$emit('click', objectVal);
@@ -206,9 +216,9 @@ export default {
       }
     },
     onSplitClick(event) {
-        event.target.parentElement.blur();
-        event.target.blur();
-        this.$emit('click', event);
+      event.target.parentElement.blur();
+      event.target.blur();
+      this.$emit('click', event);
     },
     getIconColor(value) {
       const item = this.items.find((item) => item[this.valueField] === value);
@@ -225,6 +235,14 @@ export default {
         e.target.parentElement.parentElement.blur();
       }
     },
+    onMenuShow(event) {
+      this.$set(this, 'isShowingMenu', true);
+      this.$emit('show', event)
+    },
+    onMenuShown(event) {
+      //this.$set(this, 'isShowingMenu', false);
+      this.$emit('shown', event);
+    }
   },
 };
 </script>
