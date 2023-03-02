@@ -23,8 +23,8 @@
           :dropup="dropup"
           locale="ru-RU"
           label-help=""
-          reset-button
-          @reset="onreset"
+          :reset-button="!!datePickerValue"
+          :reset-value="null"
           label-reset-button="Очистить"
           :start-weekday="startWeekday"
           :size="size"
@@ -97,6 +97,9 @@ export default {
   },
   methods: {
     datePickerChange(v) {
+      if (!v) {
+        return this.$emit('input', null);
+      }
       let dt = this.strToDate(v);
       this.inputValue = dateFormat(dt, this.inputPattern);
       this.$emit('input', UtDate.toIsoString(dt));
