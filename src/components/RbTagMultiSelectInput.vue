@@ -105,8 +105,11 @@
                     this.focusOption();
                 }
             },
-            text() {
-                this.inputValue = this.text;
+            text: {
+                handler() {
+                    this.$set(this, 'inputValue', this.text);
+                },
+                deep: true
             }
         },
         methods: {
