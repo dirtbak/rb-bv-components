@@ -90,7 +90,7 @@
             value(val) {
                 if (val == null) {
                     this.inputValue = val;
-                    this.selectedItems = val;
+                    this.selectedItems = [];
                 } else {
                     this.selectedItems = val || [];
                 }
