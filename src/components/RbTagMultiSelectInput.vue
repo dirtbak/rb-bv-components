@@ -59,7 +59,8 @@
             addTagOnEnter: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
             disabled: Boolean,
-            maxTags: {type: [String, Number], default: Infinity}
+            maxTags: { type: [String, Number], default: Infinity },
+            text: {type: String, default: () => ''}
         },
         data: () => {
             return {
@@ -88,17 +89,24 @@
         },
         watch: {
             value(val) {
-                if (!val) {
-                    this.inputValue = val;
-                    this.selectedItems = [];
-                } else {
+                if (val) {
                     this.selectedItems = val || [];
+                } else {
+                    this.selectedItems = [];
+                }
+            },
+            selectedItems(val) {
+                if (!val.length) {
+                    this.inputValue = null
                 }
             },
             activeOptionIndex(activeOptionIndex) {
                 if (activeOptionIndex !== null) {
                     this.focusOption();
                 }
+            },
+            text() {
+                this.inputValue = this.text;
             }
         },
         methods: {

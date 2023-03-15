@@ -51,9 +51,7 @@ export default Vue.extend({
       rbPriceInput1: null,
       rbSelectInput1: null,
       rbSingleOptionInput1: null,
-      rbTagMultiSelectInput1: [
-        {id: 1, name: 'Один'}
-      ],
+      rbTagMultiSelectInput1: null,
       rbTypeaheadInput1: null,
       rbTypeaheadInput2: 2,
       rbMultiLangInput: {
@@ -73,7 +71,8 @@ export default Vue.extend({
         'test@outluck.com',
         'test@yandex.ru',
         'test@mail.ru',
-      ],
+		],
+	  tagText: 'awdaaw'
     }
   },
   methods: {
@@ -1264,7 +1263,9 @@ export default Vue.extend({
           <b-form-row>
             <b-col lg="3" sm="12">
               <b-form-group>
+                <!-- <b-button @click="tagText = null">reset</b-button> -->
                 <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
+                                          :text="tagText"
                                            maxTags="1"
                                            v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
               </b-form-group>
