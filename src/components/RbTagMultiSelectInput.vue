@@ -60,7 +60,7 @@
             state: {type: Boolean, default: null},
             disabled: Boolean,
             maxTags: { type: [String, Number], default: Infinity },
-            text: {type: String, default: () => ''}
+            resetIndicator: {type: [Date, String, Number], default: () => ''}
         },
         data: () => {
             return {
@@ -105,11 +105,8 @@
                     this.focusOption();
                 }
             },
-            text: {
-                handler() {
-                    this.$set(this, 'inputValue', this.text);
-                },
-                deep: true
+            resetIndicator() {
+                this.inputValue = null;
             }
         },
         methods: {

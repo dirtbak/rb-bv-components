@@ -104,7 +104,10 @@ export default Vue.extend({
 
     propsEdited() {
       this.propsEdit = !this.propsEdit
-    }
+	},
+	setWithDelay() {
+		this.tagText = new Date()
+	}
   },
   created() {
     this.asyncMockPageReq().then(res => this.$set(this.rbPagination, 'totalRows', res.totalRows))
@@ -1263,9 +1266,9 @@ export default Vue.extend({
           <b-form-row>
             <b-col lg="3" sm="12">
               <b-form-group>
-                <!-- <b-button @click="tagText = null">reset</b-button> -->
+                <b-button @click="setWithDelay">reset</b-button>
                 <rb-tag-multi-select-input :searchOptions="rbMultiSelectSearch1"
-                                          :text="tagText"
+                                          :reset-indicator="tagText"
                                            maxTags="1"
                                            v-model="rbTagMultiSelectInput1"></rb-tag-multi-select-input>
               </b-form-group>
@@ -1524,8 +1527,8 @@ export default Vue.extend({
           <b-form-row>
             <b-col lg="3" sm="12">
               <b-form-group>
-                <rb-internal-phone-inputt :state="true"
-                                          v-model="rbInternalPhoneInput1"></rb-internal-phone-inputt>
+                <rb-internal-phone-input :state="true"
+                                          v-model="rbInternalPhoneInput1"></rb-internal-phone-input>
               </b-form-group>
             </b-col>
           </b-form-row>
