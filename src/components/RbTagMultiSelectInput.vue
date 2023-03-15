@@ -87,8 +87,13 @@
             }
         },
         watch: {
-            value() {
-                this.selectedItems = this.value || [];
+            value(val) {
+                if (val == null) {
+                    this.inputValue = val;
+                    this.selectedItems = val;
+                } else {
+                    this.selectedItems = val || [];
+                }
             },
             activeOptionIndex(activeOptionIndex) {
                 if (activeOptionIndex !== null) {
