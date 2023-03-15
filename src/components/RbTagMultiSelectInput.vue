@@ -59,8 +59,7 @@
             addTagOnEnter: {type: Boolean, default: false},
             state: {type: Boolean, default: null},
             disabled: Boolean,
-            maxTags: { type: [String, Number], default: Infinity },
-            resetIndicator: {type: [Date, String, Number], default: () => ''}
+            maxTags: { type: [String, Number], default: Infinity }
         },
         data: () => {
             return {
@@ -104,9 +103,6 @@
                 if (activeOptionIndex !== null) {
                     this.focusOption();
                 }
-            },
-            resetIndicator() {
-                this.inputValue = null;
             }
         },
         methods: {
@@ -229,6 +225,9 @@
             },
             focusOption() {
                 this.$refs['dropdownItem_' + this.activeOptionIndex][0].focus();
+            },
+            resetText() {
+                this.inputValue = null;
             }
         },
         created() {
