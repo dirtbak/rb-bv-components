@@ -88,7 +88,7 @@
         },
         watch: {
             value(val) {
-                if (val == null) {
+                if (!val) {
                     this.inputValue = val;
                     this.selectedItems = [];
                 } else {
