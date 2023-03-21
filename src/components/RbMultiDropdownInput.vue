@@ -1,55 +1,51 @@
 <template>
   <b-dropdown
-      class="rb-dropdown-input rb-multi-dropdown-input"
-      :variant="variant"
-      :class="cls"
-      :disabled="disabled"
-      no-caret
-      :block="block"
-      @click="$emit('click', $event)"
-      @show="$emit('show', $event)"
-      @shown="$emit('shown', $event)"
-      @hide="$emit('hide', $event)"
-      @hidden="$emit('hidden', $event)">
+    class="rb-dropdown-input rb-multi-dropdown-input"
+    :variant="variant"
+    :class="cls"
+    :disabled="disabled"
+    no-caret
+    :block="block"
+    @click="$emit('click', $event)"
+    @show="$emit('show', $event)"
+    @shown="$emit('shown', $event)"
+    @hide="$emit('hide', $event)"
+    @hidden="$emit('hidden', $event)"
+  >
     <template v-slot:button-content>
       <rb-text>
-        {{text ? text : showCancelItem ? cancelItemText : placeholder}}
+        {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
       </rb-text>
-      <slot
-          name="counter"
-          :counter="counter">
-        <span
-            v-if="counter > 0"
-            class="rb-counter">
-          {{counter ? counter : ''}}
+      <slot name="counter" :counter="counter">
+        <span v-if="counter > 0" class="rb-counter">
+          {{ counter ? counter : '' }}
         </span>
       </slot>
-      <span
-          v-if="!noCaret"
-          class="rb-dropdown-indicator">
+      <span v-if="!noCaret" class="rb-dropdown-indicator">
         <rb-icon :icon="dropdownIcon" />
       </span>
     </template>
     <template v-for="o in options">
       <slot
-          name="item"
-          :on-selected="onClick"
-          :is-selected="innerValue != null && innerValue.indexOf(o.value) >= 0"
-          :item="o">
+        name="item"
+        :on-selected="onClick"
+        :is-selected="innerValue != null && innerValue.indexOf(o.value) >= 0"
+        :item="o"
+      >
         <b-dropdown-item
-            :key="o.value"
-            :class="{ 'rb-selected': innerValue != null && innerValue.indexOf(o.value) >= 0 }"
-            @click="onClick(o)">
-          <slot
-              name="item"
-              :item="o">
+          :key="o.value"
+          :class="{ 'rb-selected': innerValue != null && innerValue.indexOf(o.value) >= 0 }"
+          @click="onClick(o)"
+        >
+          <slot name="item" :item="o">
             <rb-text
-                v-b-tooltip.noninteractive.hover="{
-                  duration: 200,
-                  title: o.text,
-                  customClass: tooltipCustomClass,
-                }">
-              {{o.text}}
+              v-b-tooltip.noninteractive.hover="{
+                duration: 200,
+                title: o.text,
+                customClass: tooltipCustomClass,
+              }"
+            >
+              {{ o.text }}
             </rb-text>
           </slot>
         </b-dropdown-item>
@@ -128,7 +124,7 @@ export default {
       th.options = [];
 
       items.forEach((item) => {
-        th.options.push({ text: item[th.displayField], value: item[th.valueField] });
+        th.options.push({ text: item[th.displayField], value: item[th.valueField], data: item });
       });
 
       if (th.showCancelItem) {
