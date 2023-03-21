@@ -1,44 +1,60 @@
 <template>
   <b-dropdown
-    class="rb-dropdown-input rb-multi-dropdown-input"
-    :variant="variant"
-    :class="cls"
-    :disabled="disabled"
-    no-caret
-    @click="$emit('click', $event)"
-    @show="$emit('show', $event)"
-    @shown="$emit('shown', $event)"
-    @hide="$emit('hide', $event)"
-    @hidden="$emit('hidden', $event)"
-    :block="block"
-  >
+      class="rb-dropdown-input rb-multi-dropdown-input"
+      :variant="variant"
+      :class="cls"
+      :disabled="disabled"
+      no-caret
+      :block="block"
+      @click="$emit('click', $event)"
+      @show="$emit('show', $event)"
+      @shown="$emit('shown', $event)"
+      @hide="$emit('hide', $event)"
+      @hidden="$emit('hidden', $event)">
     <template v-slot:button-content>
       <rb-text>
-        {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
+        {{text ? text : showCancelItem ? cancelItemText : placeholder}}
       </rb-text>
-      <span class="rb-counter" v-if="counter > 0">
-        {{ counter ? counter : '' }}
-      </span>
-      <span class="rb-dropdown-indicator" v-if="!noCaret">
+      <slot
+          name="counter"
+          :counter="counter">
+        <span
+            v-if="counter > 0"
+            class="rb-counter">
+          {{counter ? counter : ''}}
+        </span>
+      </slot>
+      <span
+          v-if="!noCaret"
+          class="rb-dropdown-indicator">
         <rb-icon :icon="dropdownIcon" />
       </span>
     </template>
-    <b-dropdown-item
-      v-for="o in options"
-      :key="o.value"
-      @click="onClick(o)"
-      :class="{ 'rb-selected': innerValue != null && innerValue.indexOf(o.value) >= 0 }"
-    >
-      <rb-text
-        v-b-tooltip.noninteractive.hover="{
-          duration: 200,
-          title: o.text,
-          customClass: tooltipCustomClass,
-        }"
-      >
-        {{ o.text }}
-      </rb-text>
-    </b-dropdown-item>
+    <template v-for="o in options">
+      <slot
+          name="item"
+          :on-selected="onClick"
+          :is-selected="innerValue != null && innerValue.indexOf(o.value) >= 0"
+          :item="o">
+        <b-dropdown-item
+            :key="o.value"
+            :class="{ 'rb-selected': innerValue != null && innerValue.indexOf(o.value) >= 0 }"
+            @click="onClick(o)">
+          <slot
+              name="item"
+              :item="o">
+            <rb-text
+                v-b-tooltip.noninteractive.hover="{
+                  duration: 200,
+                  title: o.text,
+                  customClass: tooltipCustomClass,
+                }">
+              {{o.text}}
+            </rb-text>
+          </slot>
+        </b-dropdown-item>
+      </slot>
+    </template>
   </b-dropdown>
 </template>
 
