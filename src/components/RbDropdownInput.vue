@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import {i18n} from "@/i18n";
+
 export default {
   name: 'RbDropdownInput',
   props: {
@@ -92,8 +94,8 @@ export default {
       type: Array,
       default: () => [],
     },
-    placeholder: {type: String, default: 'Выбрать'},
-    cancelItemText: {type: String, default: 'Не указано'},
+    placeholder: {type: String, default: i18n.t('placeholder')},
+    cancelItemText: {type: String, default: i18n.t('notStated')},
     showCancelItem: {type: Boolean, default: false},
     showCancelIcon: {type: Boolean, default: false},
     bordered: {type: Boolean, default: false},

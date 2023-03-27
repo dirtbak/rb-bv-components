@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import vue from 'rollup-plugin-vue';
 import alias from '@rollup/plugin-alias';
+import json from "@rollup/plugin-json";
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
@@ -54,6 +55,7 @@ const baseConfig = {
                 extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
             }),
             commonjs(),
+            json(),
             copy({
                 assets: [
                     'src/assets',
@@ -66,7 +68,7 @@ const baseConfig = {
         ],
         babel: {
             exclude: 'node_modules/**',
-            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'],
             babelHelpers: 'bundled',
         },
     },
@@ -78,6 +80,7 @@ const external = [
     // list external dependencies, exactly the way it is written in the import statement.
     // eg. 'jquery'
     'vue',
+    'vue-i18n'
 ];
 
 // UMD/IIFE shared settings: output.globals
@@ -86,6 +89,7 @@ const globals = {
     // Provide global variable names to replace your external imports
     // eg. jquery: '$'
     vue: 'Vue',
+    'vue-i18n': 'VueI18n'
 };
 
 // Customize configs for individual targets

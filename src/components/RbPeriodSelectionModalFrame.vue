@@ -1,10 +1,10 @@
 <template>
     <b-modal :id="id"
              ref="modal"
-             title="Выберите период"
-             cancel-title="Отмена"
+             :title="$t('Выберите период')"
+             :cancel-title="$t('cancel')"
              @ok="onOk"
-             ok-title="Применить"
+             :ok-title="$t('apply')"
              cancel-variant="plain"
              modal-class="rb-standard-modal rb-period-selection-modal-frame rb-mobile-full-screen-modal"
              ok-variant="primary">
@@ -13,7 +13,7 @@
                 <b-row>
                     <b-col>
                         <div class="rb-left">
-                            <div class="rb-title">Начало периода</div>
+                            <div class="rb-title">{{$t('periodStart')}}</div>
                             <b-form-group>
                                 <b-form-input
                                         v-model="innerDtStartStr"
@@ -34,7 +34,7 @@
                     </b-col>
                     <b-col>
                         <div class="rb-right">
-                            <div class="rb-title">Конец периода</div>
+                            <div class="rb-title">{{ $t('periodEnd') }}</div>
                             <b-form-group>
                                 <b-form-input
                                         v-model="innerDtEndStr"

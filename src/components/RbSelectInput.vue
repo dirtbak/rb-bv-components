@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import {i18n} from "@/i18n";
+
     export default {
         name: 'RbSelectInput',
         props: {
@@ -17,7 +19,7 @@
                 }
             },
             placeholder: {type: String, default: ''},
-            cancelItemText: {type: String, default: 'Не указано'},
+            cancelItemText: {type: String, default: i18n.t('notStated')},
             showCancelItem: {type: Boolean, default: false},
             valueField: {
                 type: String,
