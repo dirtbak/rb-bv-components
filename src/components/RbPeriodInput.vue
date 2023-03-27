@@ -37,6 +37,7 @@
     import {dateFormat} from "vue-filter-date-format";
     import {UtDate} from "../utils/UtDate";
     import typeOf from 'typeof';
+    import {i18n} from "@/i18n";
 
     export default {
         name: 'RbPeriodInput',
@@ -45,9 +46,9 @@
             link: Boolean,
             variant: {type: String, default: 'light'},
             bordered: Boolean,
-            cancelItemText: {type: String, default: 'Не выбрано'},
+            cancelItemText: {type: String, default: i18n.t('notSelected')},
             showCancelItem: Boolean,
-            placeholder: {type: String, default: 'Выберите период'},
+            placeholder: {type: String, default: i18n.t('choosePeriod')},
             dtStart: [String, Date],
             dtEnd: [String, Date],
             state: {type: Boolean, default: null},
@@ -60,13 +61,13 @@
                 innerDtStart: null,
                 innerDtEnd: null,
                 items: [
-                    {id: 1, name: 'За посл. неделю'},
-                    {id: 2, name: 'За посл. месяц.'},
-                    {id: 3, name: 'За посл. квартал'},
-                    {id: 4, name: 'За посл. год'},
-                    {id: 5, name: 'За 7 дней'},
-                    {id: 6, name: 'За 30 дней'},
-                    {id: 7, name: 'Установить диапазон вручную'},
+                    {id: 1, name: this.$t('periods[0]')},
+                    {id: 2, name: this.$t('periods[1]')},
+                    {id: 3, name: this.$t('periods[2]')},
+                    {id: 4, name: this.$t('periods[3]')},
+                    {id: 5, name: this.$t('periods[4]')},
+                    {id: 6, name: this.$t('periods[5]')},
+                    {id: 7, name: this.$t('periods[6]')},
                 ],
                 periods: {
                     WEEK: 1,

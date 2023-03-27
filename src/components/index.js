@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 export {UtDate} from '../utils/UtDate';
+export {i18nPlugin} from '../i18n';
 export {ClickOutside} from '../directives/click-outside';
 export {default as RbBooleanButtonInput} from './RbBooleanButtonInput';
 export {default as RbBooleanSingleOptionInput} from './RbBooleanSingleOptionInput'

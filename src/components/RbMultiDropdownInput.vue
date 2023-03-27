@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import {i18n} from "@/i18n";
+
 export default {
   name: 'RbMultiDropdownInput',
   props: {
@@ -67,8 +69,8 @@ export default {
       },
     },
     bordered: { type: Boolean, default: false },
-    placeholder: { type: String, default: 'Выбрать' },
-    cancelItemText: { type: String, default: 'Не указано' },
+    placeholder: { type: String, default: i18n.t('placeholder') },
+    cancelItemText: { type: String, default: i18n.t('notStated') },
     showCancelItem: { type: Boolean, default: false },
     variant: { type: String, default: 'light' },
     valueField: { type: String, default: 'id' },
@@ -101,7 +103,7 @@ export default {
       if (th.innerValue == null) {
         return null;
       } else {
-        return 'Выбрано';
+        return this.$t('selected');
       }
     },
     counter() {

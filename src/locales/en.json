@@ -1,0 +1,21 @@
+{
+  "placeholder": "Select",
+  "notSelected": "No selection selected",
+  "notStated": "No stated",
+  "startTyping": "Start typing...",
+  "selected": "Selected",
+  "cancel": "Cancel",
+  "apply": "Apply",
+  "newTag": "New Tag",
+  "periodStart": "Period start",
+  "periodEnd": "Period end",
+  "addIfNeed": "Add if needed",
+  "locals": ["In russian",
+    "In kazakh",
+    "In english"
+  ],
+  "clear": "Clear",
+  "choosePeriod": "Choose period",
+  "periods": ["For the last week", "For the last month.", "For the last quarter", "For the last year", "For 7 days", "For 30 days", "Set range manually"]
+
+}

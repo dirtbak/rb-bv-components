@@ -42,6 +42,7 @@
 
 <script>
 import {debounce} from 'debounce';
+import {i18n} from "@/i18n";
 
 export default {
     name: 'RbTagInput',
@@ -51,7 +52,7 @@ export default {
         async: {type: Boolean, default: true},
         displayField: {type: String, default: 'name'},
         valueField: {type: String, default: 'id'},
-        placeholder: {type: String, default: 'Начните набирать...'},
+        placeholder: {type: String, default: i18n.t('startTyping')},
         searchAfterInit: Boolean,
         addTagOnEnter: {type: Boolean, default: false},
         state: {type: Boolean, default: null},
@@ -69,7 +70,7 @@ export default {
             activeOptionIndex: null,
             inputValue: null,
             newTagCounter: 0, // нужен для генерации id для каждого нового тега (id должны быть отрицательными, чтобы отличить их от сущ.)
-            newTagOptionSuffix: '(Новый тег)',
+            newTagOptionSuffix: `(${i18n.t('newTag')})`,
             isReadonly: true,
         };
     },

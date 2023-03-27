@@ -2,16 +2,20 @@
 import typeOf from 'typeof';
 import Vue from 'vue';
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
+import VueI18n from 'vue-i18n';
+import RbDropdownInput from "@/components/RbDropdownInput.vue";
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(VueI18n);
 
 export default Vue.extend({
   name: 'ServeDev',
-  components: {},
+  components: {RbDropdownInput},
 
   data() {
     return {
+      locals: [{name: 'ru'}, {name: 'kz'}, {name: 'en'}],
       propsEdit: false,
       rbBooleanButtonInput1: false,
       rbBooleanButtonInput2: false,
@@ -76,6 +80,12 @@ export default Vue.extend({
     }
   },
   methods: {
+    onLocal(event) {
+     if(localStorage.getItem('bvLocal') === event) return
+
+      localStorage.setItem('bvLocal', event)
+      window.location.reload()
+    },
     async rbMultiSelectSearch1(text) {
       return this.rbDropdownInput1Items.filter(i => i && i.name && i.name.indexOf(text) >= 0);
     },
@@ -123,6 +133,13 @@ export default Vue.extend({
   <div id="app">
     <b-container>
       <b-form @submit.stop.prevent>
+        <div class="rb-component-row">
+          <h6>Локализация - <span class="text-muted">Local</span></h6>
+          <rb-dropdown-input
+              value-field="name"
+              @input="onLocal"
+              :items="locals"/>
+        </div>
         <h5>Булевая инпут-кнопка - <span class="text-muted">RbBooleanButtonInput</span></h5>
 
         <div class="rb-component-row">
