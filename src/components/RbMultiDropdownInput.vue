@@ -14,10 +14,10 @@
   >
     <template v-slot:button-content>
       <rb-text>
-        {{ text ? text : showCancelItem ? cancelItemText : placeholder }}
+        {{ text ? getText : showCancelItem ? cancelItemText : placeholder }}
       </rb-text>
       <slot name="counter" :counter="counter">
-        <span v-if="counter > 0" class="rb-counter">
+        <span v-if="hideCounter" class="rb-counter">
           {{ counter ? counter : '' }}
         </span>
       </slot>
@@ -68,6 +68,7 @@ export default {
         return [];
       },
     },
+    showSingleOption: {type: Boolean, default: false},
     bordered: { type: Boolean, default: false },
     placeholder: { type: String, default: i18n.t('placeholder') },
     cancelItemText: { type: String, default: i18n.t('notStated') },
@@ -105,6 +106,17 @@ export default {
       } else {
         return this.$t('selected');
       }
+    },
+    getText() {
+      if(this.showSingleOption) {
+        const isOnlyElement = this.innerValue?.length === 1;
+        const field = this.items.find(item => item?.[this.bindField] === this.innerValue?.[0])
+        return isOnlyElement ? field?.[this.displayField]: this.text
+      }
+      return this.text
+    },
+    hideCounter() {
+      return this.counter > 0 && !(this.showSingleOption && this.innerValue.length === 1)
     },
     counter() {
       const th = this;

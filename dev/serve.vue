@@ -793,7 +793,7 @@ export default Vue.extend({
           <b-form-row>
             <b-col lg="3" sm="12">
               <b-form-group label="Обычный">
-                <rb-multi-dropdown-input :items="rbDropdownInput1Items" block
+                <rb-multi-dropdown-input show-single-option :items="rbDropdownInput1Items" block
                                          v-model="rbMultiDropdownInput1"></rb-multi-dropdown-input>
               </b-form-group>
             </b-col>
