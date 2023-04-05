@@ -19,7 +19,7 @@
             </span>
             <rb-icon @click="toggleSearch()"
                      :class="{'search-active': isSearchVisible}"
-                     v-b-tooltip.hover="{disabled: !isSearchVisible, title: $t('clear'), duration: 400}"
+                     v-b-tooltip.hover="{disabled: !isSearchVisible, title: $tbv('clear'), duration: 400}"
                      :icon="isSearchVisible ? 'icon-close' : 'icon-search'"/>
         </span>
         <rb-icon :class="{disabled: currPage === this.lastPage}"

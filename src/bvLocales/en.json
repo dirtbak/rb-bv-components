@@ -2,6 +2,8 @@
   "placeholder": "Select",
   "notSelected": "No selection selected",
   "notStated": "No stated",
+  "yes": "Yes",
+  "no": "No",
   "startTyping": "Start typing...",
   "selected": "Selected",
   "cancel": "Cancel",

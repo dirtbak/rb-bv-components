@@ -20,12 +20,14 @@
 </template>
 
 <script>
+import {tbv} from "@/i18n";
+
 export default {
   name: 'RbBooleanSingleOptionInput',
   props: {
     value: {type: Boolean},
-    falseLabel: {type: String, default: 'Нет'},
-    trueLabel: {type: String, default: 'Да'},
+    falseLabel: {type: String, default: tbv('no')},
+    trueLabel: {type: String, default: tbv('yes')},
     showIcons: Boolean,
     trueIcon: {type: String, default: 'icon-checkbox-marked'},
     falseIcon: {type: String, default: 'icon-checkbox-blank'},

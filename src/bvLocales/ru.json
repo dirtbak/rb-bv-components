@@ -1,5 +1,7 @@
 {
   "placeholder": "Выбрать",
+  "yes": "Да",
+  "no": "Нет",
   "notSelected": "Не выбрано",
   "notStated": "Не указано",
   "startTyping": "Начните набирать...",

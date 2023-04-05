@@ -13,7 +13,7 @@
 <script>
     import {mask} from 'vue-the-mask'
     import RbInputWithButton from "./RbInputWithButton";
-    import {i18n} from "@/i18n";
+    import {tbv} from "@/i18n";
 
     export default {
         name: 'RbMultiPhoneInput',
@@ -24,7 +24,7 @@
             // зависит от того, задано поле phoneNumberField или нет
             value: Array,
             id: Number,
-            placeholder: {type: String, default: i18n.t('startTyping')},
+            placeholder: {type: String, default: tbv('startTyping')},
             phoneNumberField: String,
             mask: {type: String, default: '+# ### ### ####'},
             prefix: {type: String, default: '+'}

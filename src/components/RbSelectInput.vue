@@ -7,7 +7,8 @@
 </template>
 
 <script>
-    import {i18n} from "@/i18n";
+
+    import {tbv} from "@/i18n";
 
     export default {
         name: 'RbSelectInput',
@@ -19,7 +20,7 @@
                 }
             },
             placeholder: {type: String, default: ''},
-            cancelItemText: {type: String, default: i18n.t('notStated')},
+            cancelItemText: {type: String, default: tbv('notStated')},
             showCancelItem: {type: Boolean, default: false},
             valueField: {
                 type: String,

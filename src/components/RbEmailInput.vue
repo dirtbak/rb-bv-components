@@ -49,13 +49,13 @@
 </template>
 
 <script>
-import {i18n} from "@/i18n";
+import {tbv} from "@/i18n";
 
 export default {
     name: 'RbEmailInput',
     props: {
         value: {type: Array, default: () => []},
-        placeholder: {type: String, default: i18n.t('startTyping')},
+        placeholder: {type: String, default: tbv('startTyping')},
         state: {type: Boolean, default: null},
         multiple: {type: Boolean, default: false},
         max: {type: [String, Number], default: Infinity},

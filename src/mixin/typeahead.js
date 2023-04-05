@@ -1,18 +1,18 @@
 import {debounce} from "debounce";
-import {i18n} from "@/i18n";
+import {i18n, tbv} from "@/i18n";
 
 export const typeaheadMixin = {
     props: {
         valueField: {type: String, default: 'id'},
         titleField: {type: String, default: 'name'},
-        placeholder: {type: String, default: i18n.t('startTyping')},
+        placeholder: {type: String, default: tbv('startTyping')},
         state: {type: Boolean, default: null},
         notDefault: {type: Boolean, default: false},
         searchOptions: Function,
         searchOptionByValues: {type: Function, default: null},
         value: {type: [String, Number, Array], default: null},
         showCancelOption: {type: Boolean, default: true},
-        cancelOptionTitle: {type: String, default: i18n.t('notStated')},
+        cancelOptionTitle: {type: String, default: tbv('notStated')},
         cancelOptionValue: {type: [String, Number], default: null},
         async: {type: Boolean, default: true},
         clearOnFocus: {type: Boolean, default: false},

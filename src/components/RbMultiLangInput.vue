@@ -44,7 +44,7 @@
               <span class="rb-text-primary">
                 {{ placeholder[lang] }}
               </span>
-              <span class="rb-text-secondary">{{$t('addIfNeed')}}</span>
+              <span class="rb-text-secondary">{{$tbv('addIfNeed')}}</span>
             </span>
           </template>
         </b-dropdown-item>
@@ -79,9 +79,9 @@ export default {
     return {
       show: false,
       placeholder: {
-        ru: this.$t('locals[0]'),
-        kz: this.$t('locals[1]'),
-        en: this.$t('locals[2]'),
+        ru: this.$tbv('locals[0]'),
+        kz: this.$tbv('locals[1]'),
+        en: this.$tbv('locals[2]'),
       },
       alias: {
         ru: 'рус',

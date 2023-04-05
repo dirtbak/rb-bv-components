@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import {i18n} from "@/i18n";
+import {tbv} from "@/i18n";
 
 export default {
   name: 'RbDropdownInput',
@@ -94,8 +94,8 @@ export default {
       type: Array,
       default: () => [],
     },
-    placeholder: {type: String, default: i18n.t('placeholder')},
-    cancelItemText: {type: String, default: i18n.t('notStated')},
+    placeholder: {type: String, default: tbv('placeholder')},
+    cancelItemText: {type: String, default: tbv('notStated')},
     showCancelItem: {type: Boolean, default: false},
     showCancelIcon: {type: Boolean, default: false},
     bordered: {type: Boolean, default: false},

@@ -10,10 +10,13 @@ export const i18n = new VueI18n({
     locale: localStorage.getItem('bvLocal') || 'ru',
     messages: {ru, en, kz},
 });
+export const tbv = (key) => {
+    return i18n.t(key)
+}
 export const i18nPlugin = {
     install(instance) {
-        instance.prototype.$t= function (key) {
-           return i18n.t(key)
+        instance.prototype.$tbv= function (key) {
+           return tbv(key)
         }
     }
 }

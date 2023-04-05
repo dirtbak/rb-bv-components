@@ -37,7 +37,7 @@
     import {dateFormat} from "vue-filter-date-format";
     import {UtDate} from "../utils/UtDate";
     import typeOf from 'typeof';
-    import {i18n} from "@/i18n";
+    import {i18n, tbv} from "@/i18n";
 
     export default {
         name: 'RbPeriodInput',
@@ -46,9 +46,9 @@
             link: Boolean,
             variant: {type: String, default: 'light'},
             bordered: Boolean,
-            cancelItemText: {type: String, default: i18n.t('notSelected')},
+            cancelItemText: {type: String, default: tbv('notSelected')},
             showCancelItem: Boolean,
-            placeholder: {type: String, default: i18n.t('choosePeriod')},
+            placeholder: {type: String, default: tbv('choosePeriod')},
             dtStart: [String, Date],
             dtEnd: [String, Date],
             state: {type: Boolean, default: null},
@@ -61,13 +61,13 @@
                 innerDtStart: null,
                 innerDtEnd: null,
                 items: [
-                    {id: 1, name: this.$t('periods[0]')},
-                    {id: 2, name: this.$t('periods[1]')},
-                    {id: 3, name: this.$t('periods[2]')},
-                    {id: 4, name: this.$t('periods[3]')},
-                    {id: 5, name: this.$t('periods[4]')},
-                    {id: 6, name: this.$t('periods[5]')},
-                    {id: 7, name: this.$t('periods[6]')},
+                    {id: 1, name: this.$tbv('periods[0]')},
+                    {id: 2, name: this.$tbv('periods[1]')},
+                    {id: 3, name: this.$tbv('periods[2]')},
+                    {id: 4, name: this.$tbv('periods[3]')},
+                    {id: 5, name: this.$tbv('periods[4]')},
+                    {id: 6, name: this.$tbv('periods[5]')},
+                    {id: 7, name: this.$tbv('periods[6]')},
                 ],
                 periods: {
                     WEEK: 1,
