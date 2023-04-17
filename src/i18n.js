@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import ru from '@/bvLocales/ru.json';
-import en from '@/bvLocales/en.json';
-import kz from '@/bvLocales/kz.json';
+import Ru from '@/bvLocales/ru.json';
+import En from '@/bvLocales/en.json';
+import Kz from '@/bvLocales/kz.json';
 
 Vue.use(VueI18n);
 
 export const i18n = new VueI18n({
-    locale: localStorage.getItem('bvLocal') || 'ru',
-    messages: {ru, en, kz},
+    locale: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'Ru',
+    fallbackLocale: 'Ru',
+    messages: {Ru, En, Kz},
 });
 export const tbv = (key) => {
     return i18n.t(key)
