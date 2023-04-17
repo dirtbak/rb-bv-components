@@ -4,7 +4,7 @@
          @click="inputFocused">
         <div class="selected-items">
             <b-badge v-if="isReadonly && !selectedItems.length" class="rb-tag default-text" variant="light">
-                <span class="title">Нет</span>
+                <span class="title">{{no}}</span>
             </b-badge>
             <b-badge :key="item[valueField]" class="rb-tag" v-for="item in selectedItems" variant="light">
                 <span class="title" :title="item[displayField]">{{ item[displayField] }}</span>
@@ -43,6 +43,7 @@
 <script>
 import {debounce} from 'debounce';
 import {tbv} from "@/i18n";
+import {i18n} from '../i18n'
 
 export default {
     name: 'RbTagInput',
@@ -84,7 +85,10 @@ export default {
         },
         isMaxLength() {
             return parseInt(this.maxTags) === this.selectedItems.length
-        }
+        },
+        no() {
+            return i18n.t('no')
+        },
     },
     watch: {
         value() {
