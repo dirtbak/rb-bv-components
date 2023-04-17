@@ -34,6 +34,10 @@ export default {
       type: Boolean,
       default: false
     },
+    shortText: {
+      type: Boolean,
+      default: false
+    },
     iconProperty: {
       type: String,
       default: 'icon'
@@ -50,6 +54,7 @@ export default {
         'is-invalid': this.state === false,
         'is-valid': this.state === true,
         'w-100': this.block,
+        'rb-single-option-input__short-text': this.shortText
       }
     }
   },
@@ -61,3 +66,16 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .rb-single-option-input {
+    &__short-text {
+      button {
+        width: 33.3%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+</style>

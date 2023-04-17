@@ -33,6 +33,11 @@ export default Vue.extend({
         {id: 2, name: 'Два'},
         {id: 3, name: 'Три'},
       ],
+      rbSingleOptionInputShortTextItems: [
+        {id: 1, name: 'Один'},
+        {id: 2, name: 'hghgfhgjk'},
+        {id: 3, name: 'dfjgkhkadjfhng'},
+      ],
       rbDropdownInput1: null,
       rbDropdownInput2Items: [
         {id: 1, name: 'Один', icon: 'icon-none'},
@@ -993,6 +998,12 @@ export default Vue.extend({
             <b-col lg="3" sm="12">
               <b-form-group label="С бордером">
                 <rb-single-option-input :items="rbDropdownInput1Items" :state="true" bordered  block
+                                        v-model="rbSingleOptionInput1"></rb-single-option-input>
+              </b-form-group>
+            </b-col>
+            <b-col lg="3" sm="12">
+              <b-form-group label="short text">
+                <rb-single-option-input :items="rbSingleOptionInputShortTextItems" :state="true" bordered  block short-text
                                         v-model="rbSingleOptionInput1"></rb-single-option-input>
               </b-form-group>
             </b-col>
