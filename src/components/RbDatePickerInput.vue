@@ -4,6 +4,7 @@
       <b-form-input
         v-model="inputValue"
         type="text"
+        :resolve-value="inputValue"
         autocomplete="off"
         @input="inputChange"
         v-mask="mask"
