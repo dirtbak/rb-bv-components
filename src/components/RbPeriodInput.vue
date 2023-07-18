@@ -168,8 +168,8 @@
             },
             onOk() {
                 let th = this;
-                th.innerDtStart = new Date(this.$refs.modal.innerDtStart);
-                th.innerDtEnd = new Date(this.$refs.modal.innerDtEnd);
+                th.innerDtStart = UtDate.withoutTime(new Date(this.$refs.modal.innerDtStart));
+                th.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date(this.$refs.modal.innerDtEnd)), 1);
                 th.$emit('update:dtStart', this.innerDtStart);
                 th.$emit('update:dtEnd', this.innerDtEnd);
             }
