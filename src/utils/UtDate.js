@@ -44,6 +44,12 @@ export const UtDate = {
         return date;
     },
 
+    setEndDay(dateTime) {
+        let date = new Date(dateTime.getTime());
+        date.setHours(23, 59, 59, 999);
+        return date;
+    },
+
     minusDays(dateTime, offset) {
         let date = new Date(dateTime.getTime());
         date.setDate(date.getDate() - offset);

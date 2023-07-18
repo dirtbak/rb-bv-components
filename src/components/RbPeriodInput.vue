@@ -169,7 +169,7 @@
             onOk() {
                 let th = this;
                 th.innerDtStart = UtDate.withoutTime(new Date(this.$refs.modal.innerDtStart));
-                th.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date(this.$refs.modal.innerDtEnd)), 1);
+                th.innerDtEnd = UtDate.setEndDay(new Date(this.$refs.modal.innerDtEnd));
                 th.$emit('update:dtStart', this.innerDtStart);
                 th.$emit('update:dtEnd', this.innerDtEnd);
             }
