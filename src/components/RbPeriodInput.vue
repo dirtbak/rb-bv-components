@@ -61,13 +61,13 @@
                 innerDtStart: null,
                 innerDtEnd: null,
                 items: [
+                    {id: 7, name: this.$tbv('periods[6]')},
                     {id: 1, name: this.$tbv('periods[0]')},
                     {id: 2, name: this.$tbv('periods[1]')},
                     {id: 3, name: this.$tbv('periods[2]')},
                     {id: 4, name: this.$tbv('periods[3]')},
                     {id: 5, name: this.$tbv('periods[4]')},
                     {id: 6, name: this.$tbv('periods[5]')},
-                    {id: 7, name: this.$tbv('periods[6]')},
                 ],
                 periods: {
                     WEEK: 1,
