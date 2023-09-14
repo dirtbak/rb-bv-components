@@ -109,9 +109,9 @@ export default {
     },
     getText() {
       if(this.showSingleOption) {
-        const isOnlyElement = Array.isArray(this.innerValue) ? this.innerValue.length === 1 : false;
-        const field = this.items.find(item => item[this.bindField] === this.innerValue[0])
-        return isOnlyElement ? field[this.displayField]: this.text
+        const isOnlyElement = this.innerValue?.length === 1;
+        const field = this.items.find(item => item?.[this.bindField] === this.innerValue?.[0])
+        return isOnlyElement ? field?.[this.displayField]: this.text
       }
       return this.text
     },
