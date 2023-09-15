@@ -105,7 +105,7 @@ if (!argv.format || argv.format === 'es') {
             exports: 'named',
         },
         plugins: [
-            replace(baseConfig.plugins.replace),
+            replace({...baseConfig.plugins.replace, preventAssignment: true}),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
             ...baseConfig.plugins.postVue,
@@ -139,7 +139,7 @@ if (!argv.format || argv.format === 'cjs') {
             globals,
         },
         plugins: [
-            replace(baseConfig.plugins.replace),
+            replace({...baseConfig.plugins.replace, preventAssignment: true}),
             ...baseConfig.plugins.preVue,
             vue({
                 ...baseConfig.plugins.vue,
@@ -168,7 +168,7 @@ if (!argv.format || argv.format === 'iife') {
             globals,
         },
         plugins: [
-            replace(baseConfig.plugins.replace),
+            replace({...baseConfig.plugins.replace, preventAssignment: true}),
             ...baseConfig.plugins.preVue,
             vue(baseConfig.plugins.vue),
             ...baseConfig.plugins.postVue,
