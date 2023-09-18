@@ -38,6 +38,16 @@
     import {UtDate} from "../utils/UtDate";
     import typeOf from 'typeof';
     import {i18n, tbv} from "@/i18n";
+    import quarterOfYear from 'dayjs/plugin/quarterOfYear'
+    import dayjs from "dayjs";
+    dayjs.extend(quarterOfYear)
+    dayjs.locale({
+      name: 'custom',
+      weekdays: 'Понедельник_Вторник_Среда_Четверг_Пятница_Суббота_Воскресенье'.split('_'),
+      weekdaysShort: 'Пн_Вт_Ср_Чт_Пт_Сб_Вс'.split('_'),
+      weekdaysMin: 'Пн_Вт_Ср_Чт_Пт_Сб_Вс'.split('_'),
+      weekStart: 1, // Понедельник
+    });
     export default {
         name: 'RbPeriodInput',
         components: {RbPeriodSelectionModalFrame},
@@ -130,17 +140,17 @@
                         this.$refs['modal'].show();
                     } else {
                       if (value == this.periods.WEEK) {
-                        this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                        this.innerDtStart = UtDate.withoutTime(UtDate.getMonday(this.innerDtEnd))
+                        this.innerDtEnd = dayjs().endOf('week').toDate()
+                        this.innerDtStart = dayjs().startOf('week').toDate()
                       } else if (value == this.periods.MONTH) {
-                        this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                        this.innerDtStart = UtDate.getFirstDayOfMonth(this.innerDtEnd);
+                        this.innerDtEnd = dayjs().endOf('month').toDate()
+                        this.innerDtStart = dayjs().startOf('month').toDate()
                       } else if (value == this.periods.QUARTER) {
-                        this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                        this.innerDtStart = UtDate.getFirstDayOfQuarter(this.innerDtEnd);
+                        this.innerDtEnd = dayjs().endOf('quarter').toDate()
+                        this.innerDtStart = dayjs().startOf('quarter').toDate()
                       } else if (value == this.periods.YEAR) {
-                        this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
-                        this.innerDtStart = UtDate.getFirstDayOfYear(this.innerDtEnd);
+                        this.innerDtEnd = dayjs().endOf('year').toDate()
+                        this.innerDtStart = dayjs().startOf('year').toDate()
                       } else if (value == this.periods.SEVEN_DAYS) {
                         this.innerDtEnd = UtDate.minusMilliseconds(UtDate.withoutTime(new Date()), 1);
                         this.innerDtStart = UtDate.withoutTime(UtDate.minusDays(this.innerDtEnd, 6));
