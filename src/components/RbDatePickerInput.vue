@@ -38,6 +38,7 @@
           :state="state"
           :min="setMinDate()"
           :max="maxDate"
+          @context="onContext"
           @input="datePickerChange"
         />
       </b-input-group-append>
@@ -178,6 +179,11 @@ export default {
       const currentYear = dayjs(currentDate).year();
       const currentMonth = dayjs(currentDate).month() + 1
       this.$emit('shown', currentYear, currentMonth)
+    },
+    onContext(ctx) {
+      const currentYear = dayjs(ctx.activeDate).year();
+      const currentMonth = dayjs(ctx.activeDate).month() + 1
+      this.$emit('onContext', currentYear, currentMonth)
     }
   },
   created() {
