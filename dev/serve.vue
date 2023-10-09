@@ -27,7 +27,7 @@ export default Vue.extend({
         {id: 3, color: 'green', name: 'Зеленый'}
       ],
       rbColorDropdownInput1: null,
-      rbDatePickerInput1: new Date(),
+      rbDatePickerInput1: null,
       rbDropdownInput1Items: [
         {id: 1, name: 'Один'},
         {id: 2, name: 'Два'},
@@ -127,9 +127,9 @@ export default Vue.extend({
   created() {
     this.asyncMockPageReq().then(res => this.$set(this.rbPagination, 'totalRows', res.totalRows))
 
-    let date = new Date();
-    date.setDate(date.getDate() + 20);
-    this.rbDatePickerInput1 = date;
+    // let date = new Date();
+    // date.setDate(date.getDate() + 150);
+    // this.rbDatePickerInput1 = date;
   }
 });
 </script>
@@ -389,6 +389,16 @@ export default Vue.extend({
             <b-col lg="3" sm="12">
               <b-form-group style="width: 200px;">
                 <rb-date-picker-input v-model="rbDatePickerInput1"></rb-date-picker-input>
+              </b-form-group>
+            </b-col>
+          </b-form-row>
+        </div>
+          <div class="rb-component-row">
+          <h6>Состояние <span class="text-muted">disabled определенных дат</span></h6>
+          <b-form-row>
+            <b-col lg="3" sm="12">
+              <b-form-group style="width: 200px;">
+                <rb-date-picker-input :disabled-dates="['2023-10-09', '2023-10-10']" v-model="rbDatePickerInput1"></rb-date-picker-input>
               </b-form-group>
             </b-col>
           </b-form-row>

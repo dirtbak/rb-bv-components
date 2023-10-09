@@ -20,12 +20,14 @@
           ref="picker"
           v-model="datePickerValue"
           right
+          :date-disabled-fn="dateDisabled"
           button-only
           :dropup="dropup"
           locale="ru-RU"
           label-help=""
           :reset-button="!!datePickerValue"
           :reset-value="null"
+          @shown="shown"
           label-reset-button="Очистить"
           :start-weekday="startWeekday"
           :size="size"
@@ -47,6 +49,7 @@
 import { dateFormat } from 'vue-filter-date-format';
 import { mask } from 'vue-the-mask';
 import { UtDate } from '../utils/UtDate';
+import dayjs from 'dayjs'
 
 export default {
   name: 'RbDatePickerInput',
@@ -67,6 +70,7 @@ export default {
       type: [Number, String],
       default: 1,
     },
+    disabledDates: {type: Array, default: () => []}
   },
   data: function () {
     return {
@@ -159,6 +163,22 @@ export default {
         this.onPropValueChange();
       }
     },
+    dateDisabled(ymd) {
+      if (this.disabledDates.includes(ymd)) {
+        return true;
+      }
+    },
+    shown() {
+      let currentDate;
+      if (this.inputValue === null) {
+        currentDate = new Date;
+      } else {
+        currentDate = this.value;
+      }
+      const currentYear = dayjs(currentDate).year();
+      const currentMonth = dayjs(currentDate).month() + 1
+      this.$emit('shown', currentYear, currentMonth)
+    }
   },
   created() {
     this.setValue();
