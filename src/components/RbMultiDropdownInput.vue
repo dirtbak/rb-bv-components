@@ -138,7 +138,7 @@ export default {
       th.options = [];
 
       items.forEach((item) => {
-        th.options.push({ text: item[th.displayField], value: item[th.valueField], data: item });
+        th.options.push({ text: this.validateOption(item), value: item[th.valueField], data: item });
       });
 
       if (th.showCancelItem) {
@@ -214,6 +214,12 @@ export default {
         this.innerValue = this.value;
       }
     },
+    validateOption(option) {
+      if(option[this.displayField] !== null) {
+        return option[this.displayField]
+      }
+      return option.labelRu;
+    }
   },
   created() {
     this.setInnerValue();
