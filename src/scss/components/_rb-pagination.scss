@@ -7,8 +7,8 @@
   }
 
   .search-input {
-    width: 120px;
-    height: 30px;
+    height: $rb-pagination-search-input-height;
+    width: $rb-pagination-search-input-width !important;
     flex: 1;
     background: $rb-pagination-page-bg;
     border-radius: $rb-pagination-page-radius;
