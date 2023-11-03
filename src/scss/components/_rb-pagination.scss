@@ -8,12 +8,10 @@
 
   .search-input {
     height: $rb-pagination-search-input-height;
-    width: $rb-pagination-search-input-width !important;
-    flex: 1;
+    width: $rb-pagination-search-input-width;
     background: $rb-pagination-page-bg;
     border-radius: $rb-pagination-page-radius;
     border: none;
-    padding: 0 10px;
     // disabling input type numbers arrows
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -71,52 +69,51 @@
   }
 
   .search {
-    width: $rb-pagination-fixed-page-width-height;
-    overflow: hidden;
-    gap: $rb-pagination-gap;
+    //width: $rb-pagination-fixed-page-width-height;
+    //gap: $rb-pagination-gap;
 
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      left: $rb-pagination-search-wrapper-offset;
-      width: $rb-pagination-input-width;
-      background-color: $rb-pagination-search-background-color;
-      input {
-        width: 0;
-        flex: 1;
-        height: $rb-pagination-fixed-page-width-height;
-        border: none;
-        border-radius: $rb-pagination-input-border-radius;
-        outline: $rb-pagination-input-outline;
-        font-size: $rb-pagination-font-size;
-
-        // disabling input type numbers arrows
-        &::-webkit-outer-spin-button,
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
-
-        &::placeholder {
-          font-size: 14px;
-        }
-
-        &:invalid {
-          border-bottom: $rb-pagination-input-invalid-border-width solid $rb-pagination-input-invalid-border-color;
-        }
-      }
-
-      .rb-icon {
-        font-size: $rb-pagination-search-reset-icon-font-size;
-        color: $rb-pagination-search-reset-icon-color;
-      }
-    }
-
-    &.active {
-      overflow: visible;
-      background-color: $rb-pagination-search-background-color;
-    }
+    //.search-wrapper {
+    //  display: flex;
+    //  align-items: center;
+    //  justify-content: center;
+    //  left: $rb-pagination-search-wrapper-offset;
+    //  width: $rb-pagination-input-width;
+    //  background-color: $rb-pagination-search-background-color;
+    //  input {
+    //    width: 0;
+    //    flex: 1;
+    //    height: $rb-pagination-fixed-page-width-height;
+    //    border: none;
+    //    border-radius: $rb-pagination-input-border-radius;
+    //    outline: $rb-pagination-input-outline;
+    //    font-size: $rb-pagination-font-size;
+    //
+    //    // disabling input type numbers arrows
+    //    &::-webkit-outer-spin-button,
+    //    &::-webkit-inner-spin-button {
+    //      -webkit-appearance: none;
+    //      margin: 0;
+    //    }
+    //
+    //    &::placeholder {
+    //      font-size: 14px;
+    //    }
+    //
+    //    &:invalid {
+    //      border-bottom: $rb-pagination-input-invalid-border-width solid $rb-pagination-input-invalid-border-color;
+    //    }
+    //  }
+    //
+    //  .rb-icon {
+    //    font-size: $rb-pagination-search-reset-icon-font-size;
+    //    color: $rb-pagination-search-reset-icon-color;
+    //  }
+    //}
+    //
+    //&.active {
+    //  overflow: visible;
+    //  background-color: $rb-pagination-search-background-color;
+    //}
   }
 
   &.busy {

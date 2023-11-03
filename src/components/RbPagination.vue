@@ -8,21 +8,23 @@
               v-for="page of pages">
             {{page}}
         </span>
-      <b-input-group class="input-group">
-        <template #prepend>
-          <rb-icon color="#AAABAD" icon="icon-search"/>
-        </template>
-        <b-form-input
-          :max="totalRows"
-          ref="input"
-          @keyup.enter="selectPage()"
-          min="1"
-          :placeholder="$tbv('goPage')"
-          type="number"
-          v-model="searchText"
-          class="search-input">
-      </b-form-input>
-      </b-input-group>
+      <div class="search">
+        <b-input-group class="input-group flex-nowrap">
+          <template #prepend>
+            <rb-icon color="#AAABAD" icon="icon-search"/>
+          </template>
+          <b-input
+              :max="totalRows"
+              ref="input"
+              @keyup.enter="selectPage()"
+              min="1"
+              :placeholder="$tbv('goPage')"
+              type="number"
+              v-model="searchText"
+              class="search-input">
+          </b-input>
+        </b-input-group>
+      </div>
         <rb-icon :class="{disabled: currPage === this.lastPage}"
                  @click="changePage(1)"
                  icon="icon-chevron-right"/>
