@@ -1,6 +1,34 @@
 .rb-pagination {
   gap: $rb-pagination-gap;
 
+  .input-group {
+    background: $rb-pagination-page-bg;
+    border-radius: $rb-pagination-page-radius;
+  }
+
+  .search-input {
+    width: 120px;
+    height: 30px;
+    flex: 1;
+    background: $rb-pagination-page-bg;
+    border-radius: $rb-pagination-page-radius;
+    border: none;
+    padding: 0 10px;
+    // disabling input type numbers arrows
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+  .page {
+    background: $rb-pagination-page-bg;
+    border-radius: $rb-pagination-page-radius
+  }
+
   span {
     min-width: $rb-pagination-fixed-page-width-height;
     height: $rb-pagination-fixed-page-width-height;
@@ -16,6 +44,8 @@
 
     &.active {
       color: $rb-pagination-active-page-color;
+      background: unset;
+      border: 1px solid $rb-pagination-active-page-color;
     }
 
     &.dots {

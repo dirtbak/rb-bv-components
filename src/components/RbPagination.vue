@@ -8,20 +8,21 @@
               v-for="page of pages">
             {{page}}
         </span>
-        <span :class="[{active: isSearchVisible}, lastPage <= 5 ? 'd-none' : 'd-flex','search position-relative']">
-            <span class="position-absolute search-wrapper">
-                <input :max="totalRows"
-                       ref="input"
-                       @keyup.enter="selectPage()"
-                       min="1"
-                       type="number"
-                       v-model="searchText"/>
-            </span>
-            <rb-icon @click="toggleSearch()"
-                     :class="{'search-active': isSearchVisible}"
-                     v-b-tooltip.hover="{disabled: !isSearchVisible, title: $tbv('clear'), duration: 400}"
-                     :icon="isSearchVisible ? 'icon-close' : 'icon-search'"/>
-        </span>
+      <b-input-group class="input-group">
+        <template #prepend>
+          <rb-icon color="#AAABAD" icon="icon-search"/>
+        </template>
+        <b-form-input
+          :max="totalRows"
+          ref="input"
+          @keyup.enter="selectPage()"
+          min="1"
+          :placeholder="$tbv('goPage')"
+          type="number"
+          v-model="searchText"
+          class="search-input">
+      </b-form-input>
+      </b-input-group>
         <rb-icon :class="{disabled: currPage === this.lastPage}"
                  @click="changePage(1)"
                  icon="icon-chevron-right"/>
@@ -29,8 +30,11 @@
 </template>
 
 <script>
+    import RbIcon from "@/components/RbIcon.vue";
+
     export default {
         name: "RbPagination",
+      components: {RbIcon},
         props: {
             value: {
                 type: Number,
