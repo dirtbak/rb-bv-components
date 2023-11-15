@@ -145,7 +145,7 @@
                     this.activeOptionIndex = null;
                     this.inputValue = null;
                     this.$emit('input', this.selectedItems);
-                    this.$emit('change');
+                    this.$emit('change', this.selectedItems);
                 }
                 this.optionsVisible = false;
             },
