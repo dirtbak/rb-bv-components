@@ -154,7 +154,7 @@
                 if (index !== -1) {
                     this.selectedItems.splice(index, 1);
                     this.$emit('input', this.selectedItems);
-                    this.$emit('change');
+                    this.$emit('change', this.selectedItems);
                 }
             },
             setOptionsVisible() {
