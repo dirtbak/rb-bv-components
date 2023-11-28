@@ -123,7 +123,7 @@
                     this.searchText = null;
                 }
             },
-            generatePageRange(currentPage, lastPage, delta = 1) {
+            generatePageRange(currentPage, lastPage, delta = 5) {
                 // creates array with base 1 index
                 const range = Array(lastPage)
                     .fill()
