@@ -7,12 +7,11 @@
         :resolve-value="inputValue"
         autocomplete="off"
         @input="inputChange"
-        v-mask="mask"
+        @blur="inputBlur"
         :size="size"
         :placeholder="placeholder"
         :disabled="disabled"
         :state="state"
-        @click="clearInput"
         v-click-outside="setValue"
       />
       <b-input-group-append>
@@ -79,6 +78,7 @@ export default {
       datePickerValue: null,
       inputPattern: 'DD.MM.YYYY',
       pickerPattern: 'YYYY-MM-DD',
+      lastNormalDateFormat: null
     };
   },
   computed: {
@@ -104,22 +104,36 @@ export default {
   methods: {
     datePickerChange(v) {
       if (!v) {
+        this.lastNormalDateFormat = null;
         return this.$emit('input', null);
       }
       let dt = this.strToDate(v);
       this.inputValue = dateFormat(dt, this.inputPattern);
+      this.lastNormalDateFormat = dt
       this.$emit('input', UtDate.toIsoString(dt));
     },
     inputChange(v) {
-      const date = this.strToDate(v);
-      if (!v || v === '' || !date) {
-        this.$emit('input', null);
-      } else if (date) {
-        if (v.length === this.mask.length && date) {
-          this.datePickerValue = dateFormat(date, this.pickerPattern);
-          this.$emit('input', UtDate.toIsoString(date));
+
+      if (!v || v === '') {
+        this.lastNormalDateFormat = null;
+      } else {
+
+        const date = this.strToDate(v);
+        if (date) {
+          if (v.length === this.mask.length && date) {
+            this.datePickerValue = dateFormat(date, this.pickerPattern);
+            this.lastNormalDateFormat = date
+          }
         }
       }
+    },
+    inputBlur() {
+      if (this.lastNormalDateFormat) {
+        this.$emit('input', UtDate.toIsoString(this.lastNormalDateFormat));
+      } else {
+        this.$emit('input', null);
+      }
+        
     },
     onPropValueChange() {
       if (this.value) {
@@ -133,18 +147,37 @@ export default {
     },
     strToDate(str) {
       if (/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/.test(str)) {
-        let dd = str.substring(0, 2);
-        let mm = str.substring(3, 5);
-        let yyyy = str.substring(6, 10);
-        return new Date(`${mm}/${dd}/${yyyy}`);
+            const parts = str.split('.');
+            let dd = parts[0];
+            let mm = parts[1];
+            let yyyy = parts[2];
+        if (this.isValidDate(yyyy, mm, dd)) {
+          return new Date(`${mm}/${dd}/${yyyy}`);
+        } else {
+          return null;
+        }
       } else if (/[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(str)) {
-        let yyyy = str.substring(0, 4);
-        let mm = str.substring(5, 7);
-        let dd = str.substring(8, 10);
-        return new Date(`${mm}/${dd}/${yyyy}`);
+          const parts = str.split('-');
+          let yyyy = parts[0];
+          let mm = parts[1];
+          let dd = parts[2];
+
+        if (this.isValidDate(yyyy, mm, dd)) {
+          return new Date(`${mm}/${dd}/${yyyy}`);
+        } else {
+          return null;
+        }
       } else {
         return null;
       }
+    },
+    isValidDate(year, month, day) {
+      const date = new Date(year, month - 1, day);
+      return (
+        date.getFullYear() == year &&
+        date.getMonth() + 1 == month &&
+        date.getDate() == day
+      );
     },
     setMinDate() {
       if (this.minDate) {
@@ -154,9 +187,6 @@ export default {
         return new Date().toISOString();
       }
       return '';
-    },
-    clearInput() {
-      if (!this.disabled) this.inputValue = '';
     },
     setValue() {
       const date = new Date(this.value);
