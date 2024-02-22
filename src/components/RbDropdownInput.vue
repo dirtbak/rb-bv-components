@@ -22,6 +22,7 @@
       <slot
           name="button-content"
           :text="text"
+          :value="optionValue"
           :cancelItemText="cancelItemText"
           :placeholder="placeholder"
           :showCancelItem="showCancelItem"
@@ -137,6 +138,7 @@ export default {
     return {
       innerValue: null,
       text: null,
+      optionValue: null,
       options: [],
       visibleMenu: false,
       isShowingMenu: false,
@@ -192,9 +194,11 @@ export default {
     },
     setText() {
       if (this.innerValue == null) return this.text = null
+      if (this.innerValue == null) return this.optionValue = null
       let currentValIndex = this.options.findIndex((option) => option.value == this.innerValue);
       if (currentValIndex !== -1) {
         this.text = this.options[currentValIndex].text;
+        this.optionValue = this.options[currentValIndex].value;
       }
     },
     setInnerValue() {
