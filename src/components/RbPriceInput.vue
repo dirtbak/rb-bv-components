@@ -1,69 +1,84 @@
 <template>
-    <b-form-input ref="input"
-                  type="text"
-                  v-model="innerValue"
-                  :placeholder="placeholder"
-                  :class="cls"
-                  @input="onInput"
-                  :state="state"
-    ></b-form-input>
+  <b-form-input
+      ref="input"
+      v-model="model"
+      type="text"
+      :formatter="numberInputFormatter" 
+      :placeholder="placeholder"
+      :state="state" />
 </template>
 
 <script>
-    export default {
-        name: 'RbPriceInput',
-        props: {
-            value: [String, Number],
-            placeholder: String,
-            bordered: Boolean,
-            state: {type: Boolean, default: null}
-        },
-        data() {
-            return {
-                innerValue: this.format(this.value),
-                prevValue: null,
-                position: 0,
-            }
-        },
-        computed: {
-            cls() {
-                return {
-                    'rb-bordered': this.bordered
+export default {
+    name: 'RbPriceInput',
+    props: {
+        value: {type: [String, Number], default: ''},
+        placeholder: {type: String, default: ''},
+        state: {type: Boolean, default: null},
+    },
+    data() {
+        return {
+            innerValue: ''
+        };
+    },
+    computed: {
+        model: {
+            get() {
+                if (this.innerValue) {
+                    return this.priceToFloatPriceFormatter(this.innerValue);
+                } else {
+                    return this.priceToFloatPriceFormatter(this.value.replace('.', ','));
                 }
-            }
-        },
-        watch: {
-            value() {
-                this.innerValue = this.format(this.value);
-            }
-        },
-        methods: {
-            format(num) {
-                if (!num) {
-                    return num;
-                }
-                return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ');
             },
-            unformat(str) {
-                if (!str) {
-                    return str;
-                }
-                return ('' + str).replace(/ /g, '');
-            },
-            onInput(val) {
-                let input = this.$refs.input;
-                this.prevValue = input.value;
-                this.position = input.selectionStart;
-                let targetValue = this.unformat(val);
-                this.innerValue = this.format(targetValue);
-                this.$emit("input", targetValue);
-                this.$nextTick(() => {
-                    let prevLength = this.prevValue != null ? this.prevValue.length : 0;
-                    let innerLength = this.innerValue != null ? this.innerValue.length : 0;
-                    input.selectionStart = innerLength - prevLength + this.position + 1;
-                    input.selectionEnd = input.selectionStart;
-                })
+            set(value) {
+                this.innerValue = value;
+                this.$emit('input', value.replace(',', '.').replace(/\s/g, ''));
             }
         }
+    },
+    methods: {
+        numberInputFormatter(value) {
+            const cleanedValue = value.replace(/[^\d.,]+/g, '');
+
+            const dotCount = cleanedValue.split('.').length - 1;
+            const commaCount = cleanedValue.split(',').length - 1;
+
+            const hasDigits = /\d/.test(cleanedValue);
+
+            if (hasDigits && dotCount < 2 && commaCount < 2) {
+                if (dotCount === 1 && cleanedValue.includes('.') && value.endsWith(',')) {
+                    return this.priceToFloatPriceFormatter(cleanedValue.slice(0, -1));
+                } else if (commaCount === 1 && cleanedValue.includes(',') && value.endsWith('.')) {
+                    return this.priceToFloatPriceFormatter(cleanedValue.slice(0, -1));
+                } else {
+                    return this.priceToFloatPriceFormatter(cleanedValue);
+                }
+            } else {
+                return this.priceToFloatPriceFormatter(cleanedValue.slice(0, -1));
+            }
+        },
+        priceToFloatPriceFormatter(value) {
+            const separatedByDotParts = value.split('.');
+            const separatedByCommaParts = value.split(',');
+
+            if (separatedByDotParts.length === 1 && separatedByCommaParts.length === 1) {
+                return this.numberToPriceFormatter(value);
+            } else if (separatedByDotParts.length > 1) {
+                return `${this.numberToPriceFormatter(separatedByDotParts[0])}.${separatedByDotParts[1]}`;
+            } else if (separatedByCommaParts.length > 1) {
+                return `${this.numberToPriceFormatter(separatedByCommaParts[0])},${separatedByCommaParts[1]}`;
+            } else {
+                return value;
+            }
+
+        },
+        numberToPriceFormatter(value) {
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        }
     }
+};
 </script>
+
+<style>
+
+</style>
