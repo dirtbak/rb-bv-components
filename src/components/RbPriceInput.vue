@@ -26,8 +26,10 @@ export default {
             get() {
                 if (this.innerValue) {
                     return this.priceToFloatPriceFormatter(this.innerValue);
-                } else {
+                } else if (this.value) {
                     return this.priceToFloatPriceFormatter(this.value.replace('.', ','));
+                } else {
+                    return '';
                 }
             },
             set(value) {
