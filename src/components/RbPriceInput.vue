@@ -3,6 +3,7 @@
       ref="input"
       v-model="model"
       type="text"
+	  :disabled="disabled"
       :formatter="numberInputFormatter" 
       :placeholder="placeholder"
       :state="state" />
@@ -15,6 +16,7 @@ export default {
         value: {type: [String, Number], default: ''},
         placeholder: {type: String, default: ''},
         state: {type: Boolean, default: null},
+		disabled: {type: Boolean, default: false}
     },
     data() {
         return {
@@ -27,14 +29,14 @@ export default {
                 if (this.innerValue) {
                     return this.priceToFloatPriceFormatter(this.innerValue);
                 } else if (this.value) {
-                    return this.priceToFloatPriceFormatter(this.value.replace('.', ','));
+                    return this.priceToFloatPriceFormatter(this.value.toString().replace('.', ','));
                 } else {
                     return '';
                 }
             },
             set(value) {
                 this.innerValue = value;
-                this.$emit('input', value.replace(',', '.').replace(/\s/g, ''));
+                this.$emit('input', parseFloat(value.replace(',', '.').replace(/\s/g, '')));
             }
         }
     },
