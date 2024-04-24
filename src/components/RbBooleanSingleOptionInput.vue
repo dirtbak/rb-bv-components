@@ -47,6 +47,12 @@ export default {
       };
     }
   },
+  created() {
+    //TODO: Костыль
+    if(this.value === null || this.value === undefined) {
+      this.setValue(false)
+    }
+  },
   methods: {
     setValue(newValue) {
       let innerValue = newValue;
