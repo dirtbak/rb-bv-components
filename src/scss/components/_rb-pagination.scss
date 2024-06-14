@@ -1,6 +1,10 @@
 .rb-pagination {
   gap: $rb-pagination-gap;
 
+  .icon-search-btn {
+    border: none;
+  }
+  
   .input-group {
     background: $rb-pagination-page-bg;
     border-radius: $rb-pagination-page-radius;
