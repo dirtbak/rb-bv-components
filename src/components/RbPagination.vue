@@ -91,6 +91,10 @@
                     this.generatePageRange(this.currPage, this.lastPage)
                 },
                 immediate: true
+            },
+            value(){
+                this.currPage = this.value;
+                this.generatePageRange(this.currPage, this.lastPage)
             }
         },
         methods: {
