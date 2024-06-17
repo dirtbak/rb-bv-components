@@ -11,9 +11,7 @@
       <div class="search">
         <b-input-group class="input-group flex-nowrap">
           <template #prepend>
-            <button @click="selectPage()" class="icon-search-btn">
-                <rb-icon color="#AAABAD" icon="icon-search"/>
-            </button>
+            <rb-icon @click="selectPage()" color="#AAABAD" icon="icon-search"/>
           </template>
           <b-input
               :max="totalRows"
