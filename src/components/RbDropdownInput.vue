@@ -85,6 +85,7 @@
 
 <script>
 import {tbv} from "@/i18n";
+import {UtLang} from '../utils/UtLang';
 
 export default {
   name: 'RbDropdownInput',
@@ -182,7 +183,7 @@ export default {
 
       items.forEach((item) => {
         th.options.push({
-          text: item[th.displayField],
+          text: UtLang.getLabel(item, th.displayField),
           value: item[th.valueField],
           icon: item.icon,
         });
