@@ -114,17 +114,19 @@ export default {
       this.$emit('input', UtDate.toIsoString(dt));
     },
     inputChange(v) {
-
       if (!v || v === '') {
         this.lastNormalDateFormat = null;
+        this.$emit('input', null);
       } else {
-
         const date = this.strToDate(v);
         if (date) {
           if (v.length === this.mask.length && date) {
             this.datePickerValue = dateFormat(date, this.pickerPattern);
-            this.lastNormalDateFormat = date
+            this.lastNormalDateFormat = date;
+            this.$emit('input', UtDate.toIsoString(date));
           }
+        } else {
+          this.$emit('input', null);
         }
       }
     },
@@ -134,34 +136,42 @@ export default {
       } else {
         this.$emit('input', null);
       }
-        
+
     },
     onPropValueChange() {
       if (this.value) {
         const dt = new Date(this.value);
-        this.inputValue = dateFormat(dt, this.inputPattern);
-        this.datePickerValue = dateFormat(dt, this.pickerPattern);
+        if (!isNaN(dt)) {
+          this.inputValue = dateFormat(dt, this.inputPattern);
+          this.datePickerValue = dateFormat(dt, this.pickerPattern);
+          this.lastNormalDateFormat = dt;
+        } else {
+          this.inputValue = null;
+          this.datePickerValue = null;
+          this.lastNormalDateFormat = null;
+        }
       } else {
         this.inputValue = null;
         this.datePickerValue = null;
+        this.lastNormalDateFormat = null;
       }
     },
     strToDate(str) {
       if (/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/.test(str)) {
-            const parts = str.split('.');
-            let dd = parts[0];
-            let mm = parts[1];
-            let yyyy = parts[2];
+        const parts = str.split('.');
+        let dd = parts[0];
+        let mm = parts[1];
+        let yyyy = parts[2];
         if (this.isValidDate(yyyy, mm, dd)) {
           return new Date(`${mm}/${dd}/${yyyy}`);
         } else {
           return null;
         }
       } else if (/[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(str)) {
-          const parts = str.split('-');
-          let yyyy = parts[0];
-          let mm = parts[1];
-          let dd = parts[2];
+        const parts = str.split('-');
+        let yyyy = parts[0];
+        let mm = parts[1];
+        let dd = parts[2];
 
         if (this.isValidDate(yyyy, mm, dd)) {
           return new Date(`${mm}/${dd}/${yyyy}`);
