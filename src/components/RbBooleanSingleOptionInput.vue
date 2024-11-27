@@ -52,7 +52,7 @@ export default {
     if (this.value === null || this.value === undefined) {
       this.setValue(false)
     } else {
-      this.setValue(true)
+      this.setValue(this.value)
     }
   },
   watch: {
@@ -60,7 +60,7 @@ export default {
       if (this.value === null || this.value === undefined) {
         this.setValue(false)
       } else {
-        this.setValue(true)
+        this.setValue(this.value)
       }
     }
   },
