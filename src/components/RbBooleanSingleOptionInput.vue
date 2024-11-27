@@ -49,8 +49,10 @@ export default {
   },
   created() {
     //TODO: Костыль
-    if(this.value === null || this.value === undefined) {
+    if (this.value === null || this.value === undefined) {
       this.setValue(false)
+    } else {
+      this.setValue(true)
     }
   },
   methods: {
