@@ -55,6 +55,15 @@ export default {
       this.setValue(true)
     }
   },
+  watch: {
+    value() {
+      if (this.value === null || this.value === undefined) {
+        this.setValue(false)
+      } else {
+        this.setValue(true)
+      }
+    }
+  },
   methods: {
     setValue(newValue) {
       let innerValue = newValue;
