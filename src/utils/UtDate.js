@@ -1,3 +1,5 @@
+import moment from 'moment-timezone';
+
 export const UtDate = {
     getTextDate(dateInMs) {
         const dt = new Date(dateInMs);
@@ -12,6 +14,10 @@ export const UtDate = {
         } else {
             return new Date().setHours(0, 0, 0, 0);
         }
+    },
+
+    formatWithUserTimezone(dt, format = 'DD.MM.YYYY', tz = 'Asia/Almaty') {
+        return moment(dt).tz(tz).format(format);
     },
 
     equals(dateStr1, dateStr2, includeTime) {

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { dateFormat } from 'vue-filter-date-format';
+// import { dateFormat } from 'vue-filter-date-format';
 import { mask } from 'vue-the-mask';
 import { UtDate } from '../utils/UtDate';
 import dayjs from 'dayjs'
@@ -109,7 +109,7 @@ export default {
         return this.$emit('input', null);
       }
       let dt = this.strToDate(v);
-      this.inputValue = dateFormat(dt, this.inputPattern);
+      this.inputValue = UtDate.formatWithUserTimezone(dt, this.inputPattern);
       this.lastNormalDateFormat = dt
       this.$emit('input', UtDate.toIsoString(dt));
     },
@@ -121,7 +121,7 @@ export default {
         const date = this.strToDate(v);
         if (date) {
           if (v.length === this.mask.length && date) {
-            this.datePickerValue = dateFormat(date, this.pickerPattern);
+            this.datePickerValue = UtDate.formatWithUserTimezone(date, this.pickerPattern);
             this.lastNormalDateFormat = date;
             this.$emit('input', UtDate.toIsoString(date));
           }
@@ -142,8 +142,8 @@ export default {
       if (this.value) {
         const dt = new Date(this.value);
         if (!isNaN(dt)) {
-          this.inputValue = dateFormat(dt, this.inputPattern);
-          this.datePickerValue = dateFormat(dt, this.pickerPattern);
+          this.inputValue = UtDate.formatWithUserTimezone(dt, this.inputPattern);
+          this.datePickerValue = UtDate.formatWithUserTimezone(dt, this.pickerPattern);
           this.lastNormalDateFormat = dt;
         } else {
           this.inputValue = null;
