@@ -19,6 +19,6 @@
   ],
   "clear": "Clear",
   "choosePeriod": "Choose period",
-  "periods": ["For the last week", "For the last month.", "For the last quarter", "For the last year", "For 7 days", "For 30 days", "Set range manually"]
-
+  "periods": ["For the last week", "For the last month.", "For the last quarter", "For the last year", "For 7 days", "For 30 days", "Set range manually"],
+  "date": "DD.MM.YYYY"
 }

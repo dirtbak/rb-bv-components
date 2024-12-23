@@ -57,7 +57,7 @@ export default {
   directives: { mask },
   props: {
     value: { String, Date },
-    placeholder: { type: String, default: 'placeholders.date' },
+    placeholder: { type: String, default: 'date' },
     mask: { type: String, default: '##.##.####' },
     state: { type: Boolean, default: null },
     dropup: Boolean,
