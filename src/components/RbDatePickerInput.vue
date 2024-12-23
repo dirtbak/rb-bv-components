@@ -10,7 +10,7 @@
         @input="inputChange"
         @blur="inputBlur"
         :size="size"
-        :placeholder="placeholder"
+        :placeholder="$tbv(placeholder)"
         :disabled="disabled"
         :state="state"
         v-click-outside="setValue"
@@ -57,7 +57,7 @@ export default {
   directives: { mask },
   props: {
     value: { String, Date },
-    placeholder: { type: String, default: 'ДД.ММ.ГГГГ' },
+    placeholder: { type: String, default: 'placeholders.date' },
     mask: { type: String, default: '##.##.####' },
     state: { type: Boolean, default: null },
     dropup: Boolean,
