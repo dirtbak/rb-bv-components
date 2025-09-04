@@ -7,6 +7,7 @@
         v-mask="mask"
         :resolve-value="inputValue"
         autocomplete="off"
+        :id="id"
         @input="inputChange"
         @blur="inputBlur"
         :size="size"
@@ -56,6 +57,7 @@ export default {
   name: 'RbDatePickerInput',
   directives: { mask },
   props: {
+    id: { type: String, default: '' },
     value: { String, Date },
     placeholder: { type: String, default: 'ДД.ММ.ГГГГ' },
     mask: { type: String, default: '##.##.####' },
